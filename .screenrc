@@ -1,0 +1,27 @@
+#escape ^Ta
+escape ^z^z
+#escape ^\
+#escape ^t^t
+#escape ^Tt
+
+#defhstatus "^En:^Et"
+defencoding UTF-8
+#hardstatus alwayslastline "%H[%n]: %Y/%m/%d (%D) %c  [%Lw]"
+#hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w %-17<%=%{= .y}(%l)'
+caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
+
+vbell off
+autodetach on
+startup_message off
+defscrollback 999999
+
+#termcap  Eterm* 'AF=\E[3%dm:AB=\E[4%dm'
+#terminfo Eterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+#termcap  xterm* 'AF=\E[3%dm:AB=\E[4%dm'
+#terminfo xterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+#termcap  kterm* 'AF=\E[3%dm:AB=\E[4%dm'
+#terminfo kterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+#termcap  vt100 'AF=\E[3%dm:AB=\E[4%dm'
+#terminfo vt100* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+

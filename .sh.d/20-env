@@ -1,0 +1,197 @@
+#!/bin/sh dummy
+
+UNAME=`uname`
+HOSTNAME=`hostname|sed 's/\..*//'`
+if [ "$UNAME" = "SunOS" ]; then
+  UVER=`uname -r`
+  UNAME="$UNAME`expr $UVER : '\(.\).*'`"
+fi
+
+## Generic
+## ======================================================================
+
+#TMP="$HOME/var/tmp"
+#TEMP="$TMP"
+#TMPDIR="$TMP"
+#export TMP TEMP TMPDIR
+#test -d "$TMP" || mkdir -p "$TMP"
+
+#if type w3m >/dev/null 2>&1; then
+#    ## To use migemo in man pages
+#    MANPAGER=w3m
+#    export MANPAGER
+#fi
+
+## Country and Language
+## ======================================================================
+
+TZ=JST-9
+export TZ
+
+## NOTE: DO NOT unset LC_ALL because that breaks readline editing on
+##       multibyte characters.
+#unset LC_ALL
+unset OUTPUT_CHARSET
+
+if [ -n "$TERM" ]; then
+  ## TERM is NOT exported on some odd environment. Why?
+  export TERM
+fi
+
+LANG=C
+case "`tty`" in
+/dev/console|/dev/tty?|/dev/lft?)
+  ;;
+*)
+  case "$TERM" in
+  linux|sun*)
+    ;;
+  *)
+    case "$UNAME" in
+    AIX*)
+      LANG=JA_JP
+      ;;
+    *)
+      LANG=ja_JP.UTF-8
+      ;;
+    esac
+    ;;
+  esac
+  ;;
+esac
+export LANG
+
+TERMINFO="$HOME/.terminfo"
+TERMCAP="$HOME/.termcap"
+export TERMINFO TERMCAP
+
+## less
+#LESSCHARSET=japanese-ujis
+#JLESSCHARSET=japanese-ujis
+#export LESSCHARSET JLESSCHARSET
+
+#VIMRUNTIME="$HOME/.vim"
+
+#if [ "$TERM" = "mlterm" -a "$UNAME" != "Linux" ]; then
+#    TERM=xtermc
+#fi
+
+## Mail, News and Web
+## ======================================================================
+
+## Mail (qmail-inject)
+QMAILUSER=fumiya
+QMAILHOST=samba.gr.jp
+export QMAILUSER QMAILHOST
+
+## NetNews (mnews)
+#JNAMES=$HOME/.jnames
+#NNTPSERVER=news.ykhm.cij.co.jp
+#POP3SERVER=mail.ykhm.cij.co.jp
+#export JNAMES NNTPSERVER POP3SERVER
+
+## FTP
+FTPANONPASS=nobody@example.co.jp
+FTPPROMPT='%/>'
+export FTPANONPASS FTPPROMPT
+
+## PGP
+#PGPPATH=/usr/local/pgp
+#export PGPPATH
+
+## Netscape Navigator?
+#PERSONAL_MIME_TYPES=$HOME/.netscape/mime.types
+#PERSONAL_MAILCAP=$HOME/.netscape/mailcap
+#export PERSONAL_MIME_TYPES PERSONAL_MAILCAP
+
+## X Window System
+## ======================================================================
+
+XMODIFIERS=@im=uim
+GTK_IM_MODULE=uim
+QT_IM_MODULE=uim
+export XMODIFIERS GTK_IM_MODULE QT_IM_MODULE
+
+#XAPPLRESDIR=$HOME/lib/app-defaults
+#XMODIFIERS=@im=SCIM
+#XMODIFIERS=@im=skkinput
+#XMODIFIERS=@im=kinput2
+#export XAPPRESDIR XMODIFIERS
+
+if [ -d /usr/openwin ]; then
+  OPENWINHOME=/usr/openwin
+  export OPENWINHOME
+fi
+
+if [ -d /usr/openwin/lib/config ]; then
+  IMAKEINCLUDE=-I/usr/openwin/lib/config
+  export IMAKEINCLUDE
+fi
+
+#if [ $?DISPLAY ]; then
+#    if [ "`/usr/bin/tty`" != "/dev/console" ]; then
+#        DISPLAY=`who am i|sed -n 's/\(^.*(\)\([-0-9A-z]*\)\([:.)].*\)/\2/p'`:0.0
+#    fi
+#elif [ "$DISPLAY" = ":0.0" -o "$DISPLAY" = ":0" ]; then
+#    DISPLAY=$HOST$DISPLAY
+#fi
+#export DISPLAY
+
+## Debian
+## ======================================================================
+
+DEBEMAIL="fumiyas at osstech"
+DEBFULLNAME="SATOH Fumiyasu"
+export DEBEMAIL DEBFULLNAME
+
+## Misc.
+## ======================================================================
+
+LESS="-R"
+export LESS
+
+LS_COLORS="no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.svgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:"
+export LS_COLORS
+
+GREP_OPTIONS='--text --color=auto'
+echo . |grep . >/dev/null || unset GREP_OPTIONS
+if type ggrep >/dev/null 2>&1; then
+  echo . |ggrep . >/dev/null || unset GREP_OPTIONS
+fi
+
+## Ruby
+RI="--format ansi"
+export RI
+
+## rsync
+RSYNC_RSH=ssh
+export RSYNC_RSH
+
+## UnZip + filename I18N patch
+unzip -ECP932 -t /dev/null >/dev/null 2>&1
+if [ $? -ne 10 ]; then
+  UNZIPOPT="-ECP932"
+  export UNZIPOPT
+else
+  unset UNZIPOPT
+fi
+
+## CVS
+CVS_RSH=ssh
+CVSROOT_SAMBA=:pserver:cvs@cvs.samba.org:/cvsroot
+CVSROOT_SAMBA_JP=:pserver:cvs@cvs.samba.gr.jp:/project/cvs
+export CVS_RSH CVSROOT_SAMBA CVSROOT_SAMBA_JP
+
+## SNMP MIBs
+#MIBDIRS=$HOME/lib/snmp/mibs
+#MIBS=ALL
+#export MIBDIRS MIBS
+
+## Java
+## font (Blackdown JDK 1.3 and earlier)
+#JAVA_FONTS=/var/lib/defoma/x-ttcidfont-conf.d/dirs/TrueType
+#export JAVA_FONTS
+
+EICAR_COM='X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*'
+export EICAR_COM
+

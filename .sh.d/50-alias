@@ -1,0 +1,188 @@
+#!/bin/sh
+## Aliases and functions definition for bash, zsh
+## Author: SATOH Fumiyasu
+## Date: 2009-03-04, since 1999
+
+## Generic
+## ======================================================================
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias cdpwd='cd `pwd`'
+
+alias lang-c='env LC_ALL=C LANG=C'
+
+alias pss="ps -ef"
+alias psu="ps -fu $LOGNAME"
+alias pstreev='pstree -acpu'
+alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
+
+alias whoisj='whois -h whois.nic.ad.jp'
+alias wcp='wget -m -l3 --no-parent'
+
+alias telnet-u='nc.openbsd -U'
+alias ssh-arc4='ssh -c arcfour'
+## UNIX crypt(1) emulation by mcrypt(1)
+alias crypt='mcrypt -a enigma --keymode scrypt --bare'
+
+alias cgrep='grep --color=always'
+alias cegrep='egrep --color=always'
+
+alias ra='. $HOME/.profile'
+alias acroread='command acroread -openInNewWindow'
+
+alias mkisofs-x='env TZ=UTC mkisofs -uid 0 -gid 0 -J -input-charset UTF-8 -r -iso-level 1'
+#alias mkisofs-x='env TZ=UTC mkisofs -uid 0 -gid 0 -J -R -iso-level 4'
+#alias mkisofs-y='env TZ=UTC mkisofs -uid 0 -gid 0 -J -R -r -iso-level 4'
+alias isoinfo-x='isoinfo -lR -i'
+if type wodim >/dev/null 2>&1; then
+  alias cdrecord-x='wodim -v'
+  alias cdrw-blank='wodim -v blank=fast'
+  alias cdrw-blank-slow='wodim -v blank=all'
+else
+  alias cdrecord-x='cdrecord -v'
+  alias cdrw-blank='cdrecord -v blank=fast'
+  alias cdrw-blank-slow='cdrecord -v blank=all'
+fi
+alias truss-x='truss -v all -E'
+
+alias diff='LC_ALL=C diff'
+alias cdiff='colordiff'
+if type vim >/dev/null 2>&1; then
+  if [ x"$UNAME" = x"AIX" ] && [ x"$TERM" = x"mlterm" ]; then
+    vim_env="LC_ALL=C TERM=xterm-xfree86 "
+    alias vim="${vim_env}vim"
+    alias vimdiff="${vim_env}vimdiff"
+    alias view="${vim_env}view"
+  fi
+  alias vi="${vim_env}vim"
+  alias vidos="${vim_env}"'vim -u "$HOME/.vimrc.dos"'
+  alias vimac="${vim_env}"'vim -u "$HOME/.vimrc.mac"'
+  unset vim_env
+fi
+
+git-patch() {
+  if [ $# -eq 1 ]; then
+    git format-patch --stdout "$1^..$1"
+  else
+    git format-patch --stdout "$1..$2"
+  fi
+}
+
+git-patch-mail() {
+  if [ $# -eq 1 ]; then
+    git format-patch --attach --stdout "$1^..$1"
+  else
+    git format-patch --attach --stdout "$1..$2"
+  fi
+}
+
+#type lv >/dev/null 2>&1 || { type less >/dev/null 2>&1 && alias lv='less'; }
+
+if [ -f "$HOME/lib/vim/plugin/less.vim" ]; then
+  lvv() {
+    if [ $# -eq 0 ]; then
+      vim --cmd 'let no_plugin_maps = 1' -c 'source $HOME/lib/vim/plugin/less.vim' -
+    else
+      vim --cmd 'let no_plugin_maps = 1' -c 'source $HOME/lib/vim/plugin/less.vim' "$@"
+    fi
+  }
+elif ls /usr/share/vim/vim*/macros/less.sh >/dev/null 2>&1; then
+  alias lvv="`ls /usr/share/vim/vim*/macros/less.sh |sed -n '$p'`"
+fi
+
+termconv()
+{
+  if [ -t 0 ] && [ -t 1 ]; then
+    :
+  else
+    shift
+    "$@"
+    return $?
+  fi
+
+  proc_code="$1"; shift
+  proc_code_n="`echo "$proc_code" |sed 's/[-_]//g' |tr A-Z a-z`"
+
+  if [ x"${LANG:-C}" = x"C" ]; then
+    term_code="utf-8"
+  else
+    term_code="`echo "$LANG" |sed 's/^.*\.//'`"
+  fi
+  term_code_n="`echo "$term_code" |sed 's/[-_]//g' |tr A-Z a-z`"
+
+  if [ x"$proc_code_n" != x"$term_code_n" ]; then
+    cocot -t "$term_code" -p "$proc_code" -- "$@"
+  else
+    "$@"
+  fi
+}
+
+## Some man(1) command does not see LC_ALL. :-(
+alias mane='LC_ALL=C LANG=C man'
+
+mancat()
+{
+  nroff -man "$@" |"$PAGER"
+}
+
+stderr()
+{
+  "$@" 2>&1|"$PAGER"
+}
+
+#shar -macDB --no-i18n -n ... -o ...
+
+rpm-qq()
+{
+  rpm -q --qf "`rpm --querytags |sort |sed 's/^\(.*\)$/\1: %{\1}/'`\n" "$@" \
+  |egrep -v '^HEADER|: $|: \(none\)$'
+}
+
+rpm-dump()
+{
+  [ -n "$1" ] || { echo "Usage: rpm-dump NAME.rpm"; return 1; }
+  rpm2cpio "$1" | (
+    [ -n "$2" ] || cd "$2" || exit 1
+    cpio -id
+  )
+}
+
+## X11
+## ======================================================================
+
+for n in 10 20 30 40 50 60 70 80 90 100; do
+  alias $n="xbacklight -set $n"
+done
+
+## C-shell compatibility
+## ======================================================================
+
+alias source='.'
+
+which_csh()
+{
+  for cmd in ${1+"$@"}; do
+    type=`type "$cmd"`
+    head=`echo "$type" | head -1`
+    desc=`echo $head | sed 's/^[^ ]* [^ ][^ ]* \([^ ]*\).*$/\1/'`
+    case $desc in
+    /* | hashed )	## command
+      echo $head | sed -e "s#^[^/]*/#/#" -e "s#[)']"'$##'
+      ;;
+    a | aliased | * )	## a function, alias or others
+      echo $head
+      ;;
+    esac
+  done
+}
+
+if type which >/dev/null 2>&1; then
+  : OK
+else
+  alias which='which_csh'
+fi
+
+## EOF

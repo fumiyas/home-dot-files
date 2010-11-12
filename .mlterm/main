@@ -1,0 +1,32 @@
+use_transbg = false
+fontsize = 14
+use_cp932_ucs_for_xft=false
+#not_use_unicode_font= true
+ENCODING = UTF-8
+use_anti_alias = false
+use_variable_column_width = false
+col_size_of_width_a = 2
+brightness = 30
+contrast = 40
+scrollbar_mode = right
+scrollbar_view_name = mozmodern
+logsize = 10000
+vertical_mode = none
+use_dynamic_comb = false
+use_multi_column_char = true
+
+use_login_shell = true
+
+geometry = 90x25
+bg_color = black
+fg_color = white
+fade_ratio = 80
+cursor_bg_color = orange
+cursor_fg_color = black
+
+use_extended_scroll_shortcut = true
+static_backscroll_mode = true
+
+wall_picture = 
+input_method = uim
+receive_string_via_ucs = true

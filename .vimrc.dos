@@ -1,0 +1,3 @@
+source $HOME/.vimrc
+set fileformats=dos,unix
+

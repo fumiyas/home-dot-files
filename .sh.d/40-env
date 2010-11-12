@@ -1,0 +1,18 @@
+## Environment variable definition
+##
+
+for editor in vim jvim vi; do
+  if type $editor >/dev/null 2>&1; then
+    EDITOR="$editor"
+    export EDITOR
+    break
+  fi
+done
+
+for pager in lv less more; do
+  if type $pager >/dev/null 2>&1; then
+    PAGER="$pager"
+    export PAGER
+    break
+  fi
+done

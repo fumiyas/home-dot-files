@@ -1,0 +1,15 @@
+%_topdir	/home/fumiyas/rpm
+%debian		unstable
+%dist		.deb%{debian}
+%_query_all_fmt	%%|epoch?{%%{epoch}:}:{}|%%{name}-%%{version}-%%{release}.%%{arch}
+
+%bcond_with_if(n:) %{expand:%%if %{*}
+%global xxx %%{nil}
+echo true
+%else
+%global xxx out
+echo false
+%endif
+%%{?_with_%{-n*}:%%global with_%{-n*} 2}
+}
+

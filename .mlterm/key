@@ -1,0 +1,3 @@
+#Henkan_Mode=XIM_OPEN
+## Bind C-; to C-\ for screen(1)
+Control+semicolon=""

@@ -1,0 +1,75 @@
+## PATH
+## ======================================================================
+
+shift $#
+
+## Standard
+set -- /bin /usr/bin /sbin /usr/sbin /usr/bin/X11
+
+## X11
+set -- ${1+"$@"} /usr/local/X11
+
+## Solaris
+if [ x"$UNAME" = x"SunOS5" ]; then
+  set -- /usr/xpg6/bin /usr/xpg4/bin ${1+"$@"}
+  set -- ${1+"$@"} /usr/sfw/bin /usr/ccs/bin /usr/openwin/bin
+  set -- ${1+"$@"} /usr/opt/SUNWmd/sbin /opt/SUNWadm/bin
+  set -- ${1+"$@"} /opt/SUNWspro/bin /opt/SUNWspro/sfw/bin
+fi
+
+## Generic (but local)
+set -- /usr/local/bin /usr/local/sbin ${1+"$@"}
+set -- ${1+"$@"} /var/qmail/bin
+set -- ${1+"$@"} /usr/local/samba/bin /usr/local/samba/sbin
+
+## Project common tools
+set -- ${1+"$@"} /project/bin /project/sbin
+
+## Solaris
+if [ x"$UNAME" = x"SunOS5" ]; then
+  ## BSD compatible commands
+  set -- ${1+"$@"} /usr/ucb
+fi
+
+## My tools
+set -- "$HOME/bin" ${1+"$@"} /opt/osstech/bin /opt/osstech/sbin
+
+PATH=""
+for dir in "$@"; do
+  if [ -d "$dir" ]; then
+    PATH="${PATH:+$PATH:}$dir"
+  fi
+done
+export PATH
+
+shift $#
+
+## MANPATH
+## ======================================================================
+
+shift $#
+
+set -- ${1+"$@"} /usr/openwin/man
+set -- ${1+"$@"} /usr/local/man
+set -- ${1+"$@"} /usr/local/*/man
+
+## Solaris
+set -- ${1+"$@"} /usr/opt/SUNWmd/man /opt/SUNWadm/man /opt/SUNWspro/man
+
+if type manpath >/dev/null 2>&1; then
+  ## manpath(1) warns if MANPATH envvar is already set.
+  unset MANPATH
+  ## Some manpath(1) lists language specific directory. :-(
+  MANPATH="`manpath |sed 's#[^:]*/ja:##'`"
+else
+  MANPATH="/usr/share/man"
+fi
+for dir in "$@"; do
+  if [ -d "$dir" ]; then
+    MANPATH="${MANPATH:+$MANPATH:}$dir"
+  fi
+done
+export MANPATH
+
+shift $#
+

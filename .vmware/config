@@ -1,0 +1,20 @@
+#xkeymap.usekeycodeMapIfXFree86 = true
+xkeymap.noKeycodeMap = "TRUE"
+#xkeymap.usekeycodeMap = true
+
+## X keycode (xev) -> $PREFIX/lib/vmware/xkeymap/jp106
+xkeymap.keycode.37 = 0x03a      # Control_L > Caps Lock
+xkeymap.keycode.66 = 0x01d     # Caps Lock > Control_L
+#xkeymap.keycode.49 = 0x038     # Zenkaku_Hankaku > Alt_L
+xkeymap.keycode.109 = 0x029     # Control_R > Zenkaku_Hankaku
+xkeymap.keycode.131 = 0x038     # Muhenkan > Alt_L
+
+#xkeymap.keycode.211 = 0x073     # Undrescore
+xkeymap.keycode.97 = 0x073     # Undrescore
+
+# http://ex.qms.cache.waseda.ac.jp/unix/vmware/
+#xkeymap.keycode.120  = 0x070
+#xkeymap.keycode.123  = 0x073
+#xkeymap.keycode.129  = 0x079
+#xkeymap.keycode.131  = 0x07b
+#xkeymap.keycode.133  = 0x07d

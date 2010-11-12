@@ -1,0 +1,132 @@
+;; f    新たな単語を検索する
+;; SPC  本文バッファを前方へスクロールする
+;; n    次の項目へ移動する
+;; p    前の項目へ移動する
+;; v    概観モード
+;; o    バッファを最大化する
+;; s    本文を前方へインクリメンタルサーチする
+;; i    項目の情報を表示する
+;; t    整形処理を切り替える
+;; w    内容をキルリングに保存する
+;; M    辞書のメニューを表示する
+;; L    リファレンスの一覧を表示する
+;; S    辞書選択モード
+;; r    検索開始バッファへ移動する
+;; h    本文バッファへ移動する
+;; g    検索をやり直す
+;; M-n  次の検索履歴へ移動する
+;; M-p  前の検索履歴へ移動する
+;; M-f  次の辞書グループへ移動する
+;; M-b  前の辞書グループへ移動する
+;; q    Lookup から抜ける
+;; Q    Lookup を終了する
+;; R    Lookup を再起動する
+;; ?    ヘルプを表示する
+
+;(setq lookup-default-method 'prefix) ;; 'exact
+(setq lookup-default-dictionary-options '((:stemmer .  stem-english)))
+
+;(setq ndeb-program-name "/usr/bin/eblook")
+;(setq ndeb-program-arguments "-e utf-8")
+
+(setq lookup-search-agents '(
+    ;(ndtp "localhost")
+    (ndeb "/usr/local/share/dict/srd-fpw")
+    (ndeb "/usr/local/share/dict/spdict-2001")
+    (ndic "/usr/share/dictd")
+    (ndeb "/usr/share/dict/epwing/edict")
+    ;(ndeb "/usr/local/share/dict/ascdates")
+    ;(ndeb "/usr/local/share/dict/fumeikai")
+    ;(ndeb "/usr/local/share/dict/mypaedia")
+    ;(ndeb "/usr/local/share/dict/ryaku")
+    ;(ndeb "/usr/local/share/dict/vera")
+    ;(ndeb "/usr/local/share/dict/wdic")
+    ;(ndeb "/usr/local/share/dict/web")
+    ;(ndkks)
+    (ndspell)
+))
+
+;(setq lookup-search-modules
+;      '(
+;    ("normal"
+;     "ndic+/usr/share/dictd:"
+;     ;;"ndic+/usr/local/share/dictd:"
+;     ;;"ndtp+localhost:jargon/jargon"
+;     )
+;    ("all" "")
+;    ))
+
+(setq lookup-enable-gaiji t)
+(if (not (featurep 'xemacs))
+    (setq lookup-use-bitmap t)
+)
+(setq lookup-max-text 0)
+(setq ndeb-max-image-size 0)
+;(setq ndeb-max-image-size 999999999)
+(lookup-set-dictionary-option "agent:DICT" ':stemmer 'stem-english)
+
+(setq lookup-package-directory "/usr/local/share/dict/package")
+
+;; srd-fpw-package
+;; ----------------------------------------------------------------------
+
+;disabled
+(lookup-use-package "ndeb+/usr/local/share/dict/srd-fpw" "srd-fpw")
+
+;; img.dat のある場所
+(setq srd-fpw-image-directory "/usr/local/share/dict/srd-fpw/srd-fpw/data")
+;; srdra.bnd のある場所
+(setq srd-fpw-sound-directory "/usr/local/share/dict/srd-fpw/srd-fpw/data")
+
+(setq srd-fpw-play-realaudio-process "xxx")
+;(setq srd-fpw-play-realaudio-process "mplayer")
+;(setq srd-fpw-play-realaudio-process "trplayer")
+;(setq srd-fpw-play-realaudio-process "realplay")
+(setq srd-fpw-display-image-process "display")
+
+(setq srd-fpw-image-inline nil)
+(setq srd-fpw-sound-without-notice nil)
+
+;; srd-fpw-package
+;; ----------------------------------------------------------------------
+
+;disabled
+;(lookup-use-package "ndeb+/usr/local/share/dict/mypaedia" "mypaedia-fpw")
+
+;; Where MYPAEDIA BH.DAT, CH.DAT, MAP.DAT and PICT.DAT is stored
+(setq mypaedia-data-directory "/usr/local/share/dict/mypaedia/INDEX")
+;; Where MYPAEDIA *.MID, *.WAV and PICT.DAT is stored
+(setq mypaedia-av-directory "/usr/local/share/dict/mypaedia/DATA")
+
+(setq play-avi-process "esddsp aviplay")
+(setq play-wav-process "esddsp play")
+(setq play-midi-process "timidity")
+
+(setq mypaedia-image-inline nil)
+(setq mypaedia-sound-without-notice t)
+(setq mypaedia-video-without-notice t)
+
+;; This functions are written by Tatsuya Kinoshita. Copyright is disclaimed.
+;; ----------------------------------------------------------------------
+
+(defun my-lookup-word (&optional arg)
+  (interactive "P")
+  (if arg
+      (my-lookup-region)
+    (my-lookup-read-from-minibuffer (lookup-current-word))))
+
+(defun my-lookup-region ()
+  (interactive)
+  (my-lookup-read-from-minibuffer
+   (buffer-substring-no-properties (or (mark) (point)) (point))))
+
+(defun my-lookup-read-from-minibuffer (&optional string)
+  (if (null string) (setq string ""))
+  (while (string-match "[\n\t]+" string)
+    (setq string (replace-match " " nil t string)))
+  (while (string-match "  +" string)
+    (setq string (replace-match " " nil t string)))
+  (while (string-match "\\(^ \\| $\\)" string)
+    (setq string (replace-match "" nil t string)))
+  (lookup-pattern (read-from-minibuffer "Lookup: " string)))
+
