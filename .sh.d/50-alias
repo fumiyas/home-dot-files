@@ -123,6 +123,15 @@ termconv()
 ## NOTE: Some man(1) command does not see LC_ALL. :-(
 alias mane='LC_ALL=C LANG=C man'
 
+alias mans10='MANPATH=/srv/os/solaris-10/usr/share/man man'
+alias mans10e='LC_ALL=C LANG=C MANPATH=/srv/os/solaris-10/usr/share/man man'
+alias manc5='MANPATH=/srv/os/centos-5/usr/share/man man'
+alias manc5e='LC_ALL=C LANG=C MANPATH=/srv/os/centos-5/usr/share/man man'
+alias mana5='MANPATH=/srv/os/aix-5/usr/share/man man'
+alias mana5e='LC_ALL=C LANG=C MANPATH=/srv/os/aix-5/usr/share/man man'
+alias manf8='MANPATH=/srv/os/freebsd-8/usr/share/man man'
+alias manf8e='LC_ALL=C LANG=C MANPATH=/srv/os/freebsd-8/usr/share/man man'
+
 mancat()
 {
   nroff -man "$@" |"$PAGER"
