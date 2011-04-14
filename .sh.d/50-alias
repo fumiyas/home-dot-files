@@ -48,6 +48,7 @@ else
 fi
 
 alias truss-x='truss -v all -E'
+alias gcc-macros='gcc -E -dM - </dev/null'
 
 alias diff='LC_ALL=C diff'
 if type vim >/dev/null 2>&1; then
