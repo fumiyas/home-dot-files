@@ -168,19 +168,13 @@ RSYNC_RSH=ssh
 export RSYNC_RSH
 
 ## UnZip + filename I18N patch
-unzip -ECP932 -t /dev/null >/dev/null 2>&1
+unzip -I UTF-8 -O CP932 -t /dev/null >/dev/null 2>&1
 if [ $? -ne 10 ]; then
-  UNZIPOPT="-ECP932"
+  UNZIPOPT="-I UTF-8 -O CP932"
   export UNZIPOPT
 else
   unset UNZIPOPT
 fi
-
-## CVS
-CVS_RSH=ssh
-CVSROOT_SAMBA=:pserver:cvs@cvs.samba.org:/cvsroot
-CVSROOT_SAMBA_JP=:pserver:cvs@cvs.samba.gr.jp:/project/cvs
-export CVS_RSH CVSROOT_SAMBA CVSROOT_SAMBA_JP
 
 ## SNMP MIBs
 #MIBDIRS=$HOME/lib/snmp/mibs

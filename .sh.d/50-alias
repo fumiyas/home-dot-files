@@ -10,11 +10,12 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 alias cdpwd='cd `pwd`'
 
 alias lang-c='env LC_ALL=C LANG=C'
 
-alias pss="ps -ef"
+alias psv="ps -efly"
 alias psu="ps -fu $LOGNAME"
 alias pstreev='pstree -acpu'
 alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
@@ -23,7 +24,6 @@ alias whoisj='whois -h whois.nic.ad.jp'
 alias wcp='wget -m -l3 --no-parent'
 
 alias telnet-u='nc.openbsd -U'
-alias ssh-arc4='ssh -c arcfour'
 ## UNIX crypt(1) emulation by mcrypt(1)
 alias crypt='mcrypt -a enigma --keymode scrypt --bare'
 
@@ -46,10 +46,10 @@ else
   alias cdrw-blank='cdrecord -v blank=fast'
   alias cdrw-blank-slow='cdrecord -v blank=all'
 fi
+
 alias truss-x='truss -v all -E'
 
 alias diff='LC_ALL=C diff'
-alias cdiff='colordiff'
 if type vim >/dev/null 2>&1; then
   if [ x"$UNAME" = x"AIX" ] && [ x"$TERM" = x"mlterm" ]; then
     vim_env="LC_ALL=C TERM=xterm-xfree86 "
@@ -120,17 +120,12 @@ termconv()
   fi
 }
 
-## Some man(1) command does not see LC_ALL. :-(
+## NOTE: Some man(1) command does not see LC_ALL. :-(
 alias mane='LC_ALL=C LANG=C man'
 
 mancat()
 {
   nroff -man "$@" |"$PAGER"
-}
-
-stderr()
-{
-  "$@" 2>&1|"$PAGER"
 }
 
 #shar -macDB --no-i18n -n ... -o ...
@@ -153,9 +148,11 @@ rpm-dump()
 ## X11
 ## ======================================================================
 
-for n in 10 20 30 40 50 60 70 80 90 100; do
-  alias $n="xbacklight -set $n"
-done
+if type xbacklight >/dev/null 2>&1; then
+  for n in 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
+    alias $n="xbacklight -set $n"
+  done
+fi
 
 ## C-shell compatibility
 ## ======================================================================
