@@ -23,6 +23,25 @@ alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
 alias whoisj='whois -h whois.nic.ad.jp'
 alias wcp='wget -m -l3 --no-parent'
 
+ssh()
+{
+  case "$TERM" in
+  *term*|*vt*)
+    for __arg in ${1+"$@"}; do
+      case "$__arg" in
+      -*)
+	;;
+      *)
+	print -Pn "\e]2;ssh $__arg (`hostname`:${TTY#/dev/})\a"
+	break
+	;;
+      esac
+    done
+  esac
+
+  command ssh ${1+"$@"}
+}
+
 alias telnet-u='nc.openbsd -U'
 ## UNIX crypt(1) emulation by mcrypt(1)
 alias crypt='mcrypt -a enigma --keymode scrypt --bare'
