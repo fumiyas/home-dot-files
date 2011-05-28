@@ -29,6 +29,8 @@ set nocompatible
 
 " zfXX		Create a fold
 " zE		Eliminate all folds
+" zo		Open fold
+" zc		Close fold
 
 " C-a	Increment the number
 " C-x	Decrement the number
@@ -240,6 +242,12 @@ set fileformats=
 set formatoptions-=o
 set formatoptions-=r
 
+set textwidth=0
+if exists('&colorcolumn')
+  set colorcolumn=+1
+  autocmd FileType sh,cpp,perl,vim,ruby,python,haskell,scheme setlocal textwidth=80
+endif
+	"
 " Status-line
 " ======================================================================
 	  
@@ -278,10 +286,12 @@ map <C-p> :cp<CR>
 "map <C-x> :! sort -n
 "map <C-C> :write !xclipx<CR><CR>
 "map <C-V> :r! xclip -out<CR><CR>
-nmap sy <Plug>(fakeclip-y)
-nmap syy <Plug>(fakeclip-Y)
-vmap sy <Plug>(fakeclip-y)
-nmap sp <Plug>(fakeclip-p)
+if version >= 700
+  nmap sy <Plug>(fakeclip-y)
+  nmap syy <Plug>(fakeclip-Y)
+  vmap sy <Plug>(fakeclip-y)
+  nmap sp <Plug>(fakeclip-p)
+endif
 
 function! ClipboardPaste() range
   let text = system("xclip -out")
@@ -375,6 +385,9 @@ augroup END
 "augroup END
 
 " ======================================================================
+
+runtime! ftplugin/man.vim
+nnoremap K :Man <cword><CR>
 
 if filereadable($VIMRUNTIME . "/macros/matchit.vim")
   source $VIMRUNTIME/macros/matchit.vim
