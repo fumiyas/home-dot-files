@@ -327,7 +327,12 @@
 (setq mime-edit-split-message nil)
 
 ;; multipart/alternative で Plain を HTML より優先して表示
-(set-alist 'mime-view-type-subtype-score-alist '(text . plain) 10)
+(eval-after-load "semi-setup"
+  '(set-alist 'mime-view-type-subtype-score-alist '(text . plain) 10)
+) 
+;(eval-after-load "semi-setup"
+;  '(set-alist 'mime-view-type-subtype-score-alist '(text . html) 0)
+;)
 
 (setq pgg-scheme 'gpg)
 (setq pgg-default-scheme 'gpg)
@@ -481,7 +486,6 @@
       'mail-send-hook
     )
 )
-
 
 ;; Default fontset
 ;; ======================================================================
