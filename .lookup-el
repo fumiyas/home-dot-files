@@ -31,6 +31,7 @@
 
 (setq lookup-search-agents '(
     ;(ndtp "localhost")
+    (ndeb "/usr/local/share/dict/eijiro")
     (ndeb "/usr/local/share/dict/srd-fpw")
     (ndeb "/usr/local/share/dict/spdict-2001")
     (ndic "/usr/share/dictd")
