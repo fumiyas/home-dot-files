@@ -71,12 +71,6 @@ alias gcc-macros='gcc -E -dM - </dev/null'
 
 alias diff='LC_ALL=C diff'
 if type vim >/dev/null 2>&1; then
-  if [ x"$UNAME" = x"AIX" ] && [ x"$TERM" = x"mlterm" ]; then
-    vim_env="LC_ALL=C TERM=xterm-xfree86 "
-    alias vim="${vim_env}vim"
-    alias vimdiff="${vim_env}vimdiff"
-    alias view="${vim_env}view"
-  fi
   alias vi="${vim_env}vim"
   alias vidos="${vim_env}"'vim -u "$HOME/.vimrc.dos"'
   alias vimac="${vim_env}"'vim -u "$HOME/.vimrc.mac"'
