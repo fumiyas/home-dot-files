@@ -15,9 +15,9 @@ alias cdpwd='cd `pwd`'
 
 alias lang-c='env LC_ALL=C LANG=C'
 
-alias psv="ps -efly"
-alias psu="ps -fu $LOGNAME"
-alias pstreev='pstree -acpu'
+alias ps-x="ps -efly"
+alias ps-u="ps -fu $LOGNAME"
+alias pstree-x='pstree -acpu'
 alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
 
 alias whoisj='whois -h whois.nic.ad.jp'
@@ -66,8 +66,10 @@ else
   alias cdrw-blank-slow='cdrecord -v blank=all'
 fi
 
+alias strace-x='strace -ffttTCx -s 9999'
 alias truss-x='truss -v all -E'
 alias gcc-macros='gcc -E -dM - </dev/null'
+alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
 
 alias diff='LC_ALL=C diff'
 if type vim >/dev/null 2>&1; then
@@ -172,7 +174,7 @@ rpm-dump()
 ## ======================================================================
 
 if type xbacklight >/dev/null 2>&1; then
-  for n in 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
+  for n in 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
     alias $n="xbacklight -set $n"
   done
 fi
