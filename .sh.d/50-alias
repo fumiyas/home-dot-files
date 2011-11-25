@@ -25,19 +25,21 @@ alias wcp='wget -m -l3 --no-parent'
 
 ssh()
 {
-  case "$TERM" in
-  *term*|*vt*)
-    for __arg in ${1+"$@"}; do
-      case "$__arg" in
-      -*)
-	;;
-      *)
-	print -Pn "\e]2;ssh $__arg (`hostname`:${TTY#/dev/})\a"
-	break
-	;;
-      esac
-    done
-  esac
+  if [ -t 0 ] && [ -t 1 ]; then
+    case "$TERM" in
+    *term*|*vt*)
+      for __arg in ${1+"$@"}; do
+        case "$__arg" in
+        -*)
+          ;;
+        *)
+          print -Pn "\e]2;ssh $__arg (`hostname`:${TTY#/dev/})\a"
+          break
+          ;;
+        esac
+      done
+    esac
+  fi
 
   command ssh ${1+"$@"}
 }
