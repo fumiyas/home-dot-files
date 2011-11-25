@@ -70,10 +70,11 @@ if [ x"$UNAME" = x"AIX" ] && [ x"$TERM" = x"mlterm" ]; then
     export TERM
 fi
 
-## less
-#LESSCHARSET=japanese-ujis
-#JLESSCHARSET=japanese-ujis
-#export LESSCHARSET JLESSCHARSET
+LESS="-R -j 5"
+export LESS
+
+LV="-c -l"
+export LV
 
 #VIMRUNTIME="$HOME/.vim"
 
@@ -81,8 +82,8 @@ fi
 ## ======================================================================
 
 ## Mail (qmail-inject)
-QMAILUSER=fumiya
-QMAILHOST=samba.gr.jp
+QMAILUSER=fumiyas
+QMAILHOST=osstech.co.jp
 export QMAILUSER QMAILHOST
 
 ## NetNews (mnews)
@@ -147,10 +148,6 @@ export DEBEMAIL DEBFULLNAME
 
 ## Misc.
 ## ======================================================================
-
-LV="-c -l"
-LESS="-R -j 5"
-export LV LESS
 
 if [ x"$UNAME" = x"AIX" ]; then
   LDR_CNTRL=MAXDATA=0x20000000

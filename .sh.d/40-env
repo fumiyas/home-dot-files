@@ -9,7 +9,7 @@ for editor in vim jvim vi; do
   fi
 done
 
-for pager in lv less more; do
+for pager in less lv more; do
   if type $pager >/dev/null 2>&1; then
     PAGER="$pager"
     export PAGER
