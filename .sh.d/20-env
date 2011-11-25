@@ -149,7 +149,7 @@ export DEBEMAIL DEBFULLNAME
 ## ======================================================================
 
 LV="-c -l"
-LESS="-R"
+LESS="-R -j 5"
 export LV LESS
 
 if [ x"$UNAME" = x"AIX" ]; then
