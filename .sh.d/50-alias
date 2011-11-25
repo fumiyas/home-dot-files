@@ -69,7 +69,10 @@ else
 fi
 
 alias strace-x='strace -ffttTCx -s 9999'
-alias truss-x='truss -v all -E'
+alias truss-x='truss -aedDE -v all'
+alias truss-xa='truss -aedDE -v all -r all -w all'
+alias truss-xt='truss -aedDE -v alll'
+alias truss-xat='truss -aedDE -v alll -r all -w all'
 alias gcc-macros='gcc -E -dM - </dev/null'
 alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
 
