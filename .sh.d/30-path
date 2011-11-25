@@ -3,6 +3,12 @@
 
 shift $#
 
+if [ -n "${ZSH_VERSION}" ]; then
+  setopt no_NOMATCH
+fi
+
+## ======================================================================
+
 ## Standard
 set -- /bin /usr/bin /sbin /usr/sbin /usr/bin/X11
 
@@ -72,4 +78,10 @@ done
 export MANPATH
 
 shift $#
+
+## ======================================================================
+
+if [ -n "${ZSH_VERSION}" ]; then
+  setopt NOMATCH
+fi
 
