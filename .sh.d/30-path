@@ -4,7 +4,7 @@
 shift $#
 
 if [ -n "${ZSH_VERSION}" ]; then
-:  setopt no_NOMATCH
+  setopt no_NOMATCH
 fi
 
 ## ======================================================================
