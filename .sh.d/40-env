@@ -1,3 +1,4 @@
+#!/bin/sh
 ## Environment variable definition
 ##
 
@@ -16,3 +17,9 @@ for pager in less lv more; do
     break
   fi
 done
+
+if type ifne >/dev/null 2>&1; then
+  GIT_PAGER="ifne $PAGER"
+  export GIT_PAGER
+fi
+
