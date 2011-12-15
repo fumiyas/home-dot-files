@@ -23,6 +23,14 @@ alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
 alias whoisj='whois -h whois.nic.ad.jp'
 alias wcp='wget -m -l3 --no-parent'
 
+cal() {
+  if [ $# -eq 0 ]; then
+    command cal -3
+  else
+    command cal ${1+"$@"}
+  fi
+}
+
 ssh()
 {
   if [ -t 0 ] && [ -t 1 ]; then
@@ -69,10 +77,11 @@ else
 fi
 
 alias strace-x='strace -ffttTCx -s 9999'
-alias truss-x='truss -aedDE -v all'
-alias truss-xa='truss -aedDE -v all -r all -w all'
-alias truss-xt='truss -aedDE -v alll'
-alias truss-xat='truss -aedDE -v alll -r all -w all'
+alias truss-sol-x='truss -aedlDE -v all'
+alias truss-sol-xa='truss -aedlDE -v all -r all -w all'
+alias truss-sol-xt='truss -aedlDE -v all'
+alias truss-sol-xat='truss -aedlDE -v all -r all -w all'
+alias truss-aix-x='truss -aedlD'
 alias gcc-macros='gcc -E -dM - </dev/null'
 alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
 
