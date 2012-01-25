@@ -20,8 +20,11 @@ alias ps-u="ps -fu $LOGNAME"
 alias pstree-x='pstree -acpu'
 alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
 
-alias whoisj='whois -h whois.nic.ad.jp'
 alias wcp='wget -m -l3 --no-parent'
+alias whois-jp='whois -h whois.jprs.jp'
+whois-jp-en() {
+  whois -h whois.jprs.jp ${1+"$1/e"}
+}
 
 cal() {
   if [ $# -eq 0 ]; then
@@ -60,6 +63,8 @@ alias cgrep='grep --color=always'
 alias cegrep='egrep --color=always'
 
 alias ra='. $HOME/.profile'
+
+alias xclip-c='xclip -selection clipboard'
 alias acroread='command acroread -openInNewWindow'
 
 alias mkisofs-x='env TZ=UTC mkisofs -uid 0 -gid 0 -J -input-charset UTF-8 -r -iso-level 1'
