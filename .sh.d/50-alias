@@ -11,14 +11,21 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
 alias cdpwd='cd `pwd`'
 
+alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
 alias lang-c='env LC_ALL=C LANG=C'
+alias nkf-x='nkf -x -m0'
 
 alias ps-x="ps -efly"
 alias ps-u="ps -fu $LOGNAME"
 alias pstree-x='pstree -acpu'
-alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
+alias dstat-full='dstat -Tclmdrn'
+alias dstat-mem='dstat -Tclm'
+alias dstat-cpu='dstat -Tclr'
+alias dstat-net='dstat -Tclnd'
+alias dstat-disk='dstat -Tcldr'
 
 alias wcp='wget -m -l3 --no-parent'
 alias whois-jp='whois -h whois.jprs.jp'
@@ -160,10 +167,14 @@ alias mane='LC_ALL=C LANG=C man'
 
 alias mans10='MANPATH=/srv/os/solaris-10/usr/share/man man'
 alias mans10e='LC_ALL=C LANG=C MANPATH=/srv/os/solaris-10/usr/share/man man'
+alias mans11='MANPATH=/srv/os/solaris-11/usr/share/man man'
+alias mans11e='LC_ALL=C LANG=C MANPATH=/srv/os/solaris-11/usr/share/man man'
 alias manc5='MANPATH=/srv/os/centos-5/usr/share/man man'
 alias manc5e='LC_ALL=C LANG=C MANPATH=/srv/os/centos-5/usr/share/man man'
 alias mana5='MANPATH=/srv/os/aix-5/usr/share/man man'
 alias mana5e='LC_ALL=C LANG=C MANPATH=/srv/os/aix-5/usr/share/man man'
+alias manf9='MANPATH=/srv/os/freebsd-9/usr/share/man man'
+alias manf9e='LC_ALL=C LANG=C MANPATH=/srv/os/freebsd-9/usr/share/man man'
 alias manf8='MANPATH=/srv/os/freebsd-8/usr/share/man man'
 alias manf8e='LC_ALL=C LANG=C MANPATH=/srv/os/freebsd-8/usr/share/man man'
 
