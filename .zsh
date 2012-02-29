@@ -64,6 +64,7 @@ setopt LIST_TYPES
 setopt LIST_PACKED
 
 setopt CORRECT_ALL
+CORRECT_IGNORE='_*'
 
 ## Change directory
 ## ======================================================================
