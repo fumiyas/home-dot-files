@@ -162,6 +162,9 @@ termconv()
   fi
 }
 
+## Convert office documents into CSV format in UTF-8 encoding
+alias unoconv-csv='unoconv -i ,,76 -f csv'
+
 ## NOTE: Some man(1) command does not see LC_ALL. :-(
 alias mane='LC_ALL=C LANG=C man'
 
