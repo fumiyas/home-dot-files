@@ -738,4 +738,21 @@
 ;; デモ
 (set-face-foreground 'wl-highlight-demo-face "blue2")
 
-;; EOF
+;; ======================================================================
+
+;; 初期フレームの設定
+(setq initial-frame-alist
+    (append '(
+	(width	. 90)	; フレーム幅(文字数)
+	(height	. 40)	; フレーム高(文字数)
+    ) initial-frame-alist)
+)
+
+;; 新規フレームの設定
+;(setq default-frame-alist
+;    (append '(
+;	(width	. 90)	; フレーム幅(文字数)
+;	(height	. 40)	; フレーム高(文字数)
+;    ) default-frame-alist)
+;)
+
