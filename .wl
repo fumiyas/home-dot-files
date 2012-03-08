@@ -92,8 +92,8 @@
 
 ; Identifier
 (setq wl-from "SATOH Fumiyasu <fumiyas@osstech.jp>")
-(setq wl-organization "OSS Technology, Inc. / Samba-JP / LDAP-JP / Apache-JP")
-;(setq wl-organization "OSS Technology, Inc. / Samba-JP / Namazu Developer")
+(setq wl-organization "OSS Technology, Corp. / Samba-JP / LDAP-JP / Apache-JP")
+;(setq wl-organization "OSS Technology, Corp. / Samba-JP / Namazu Developer")
 (setq wl-local-domain "sugar.osstech.co.jp")
 ;(setq wl-local-domain "sugar.lan.sfo.jp")
 (setq wl-user-mail-address-list
@@ -228,7 +228,7 @@
 ;	    ("^vim-jp$" . "+ml/misc/vim-jp")
 ;	)
         ("Subject"
-	    ("Mail増強" . "+work/osstech/em")
+	    ("MSGSYS" . "+work/osstech/em")
 
 	    ("^VMware Newsletter " . "+ml/member/vmware")
 
@@ -268,6 +268,7 @@
 	)
         (("To" "Cc")
 	    ("support@osstech.co.jp" . "+work/osstech/support")
+	    ("storage-planner@tele-nisi.co.jp" . "+work/osstech/support")
 	    ("consult@osstech.co.jp" . "+work/osstech/consult")
 	    ("ost-sys@osstech.co.jp" . "+work/osstech/sys")
 	    ("ost-syslog@osstech.co.jp" . "+work/osstech/sys")
@@ -560,6 +561,14 @@
 ;	    (wl-pop-before-smtp-user . "xxxxxxxxxxx")
 ;	    (wl-pop-before-smtp-server . "xxxxxxxxxxx")
 ;	)
+	(reply
+	    "Delivered-To: ost-"
+	    (template . "osstech")
+	)
+	(reply
+	    "Delivered-To: fumiyas@osstech\\.jp"
+	    (template . "osstech-jp")
+	)
 ;	("\\(To\\|B?cc\\):.*\\(\n[ \t]+.*\\)*@\\(miraclelinux\\|.*\\.\\(sra\\|hitachi.*\\)\\)\\."
 ;	    (template . "miracle")
 ;	)
@@ -575,12 +584,6 @@
 ;	("To: west-hp@ntt-ad\\.co\\.jp"
 ;	    ("Cc" . "nttw-proj@net-thrust.com")
 ;	)
-	("Delivered-To: fumiyas@osstech\\.jp"
-	    (template . "osstech-jp")
-	)
-	("Delivered-To: fumiyas@osstech\\.co\\.jp"
-	    (template . "osstech")
-	)
 ;	("\\(To\\|B?Cc\\):.*\\(\n[ \t]+.*\\)*@\\(fujielectric\\|sts-inc\\|jet-t\\)\\."
 ;	    (template . "jet")
 ;	)
