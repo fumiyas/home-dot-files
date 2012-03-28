@@ -70,7 +70,7 @@ if [ x"$UNAME" = x"AIX" ] && [ x"$TERM" = x"mlterm" ]; then
     export TERM
 fi
 
-LESS="-R -j 5"
+LESS="-F -R -j 5"
 export LESS
 
 LV="-c -l"
