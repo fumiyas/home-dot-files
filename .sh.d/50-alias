@@ -74,19 +74,18 @@ alias ra='. $HOME/.profile'
 alias xclip-c='xclip -selection clipboard'
 alias acroread='command acroread -openInNewWindow'
 
-alias mkisofs-x='env TZ=UTC mkisofs -uid 0 -gid 0 -J -input-charset UTF-8 -r -iso-level 1'
-#alias mkisofs-x='env TZ=UTC mkisofs -uid 0 -gid 0 -J -R -iso-level 4'
-#alias mkisofs-y='env TZ=UTC mkisofs -uid 0 -gid 0 -J -R -r -iso-level 4'
 alias isoinfo-x='isoinfo -lR -i'
-if type wodim >/dev/null 2>&1; then
-  alias cdrecord-x='wodim -v'
-  alias cdrw-blank='wodim -v blank=fast'
-  alias cdrw-blank-slow='wodim -v blank=all'
-else
-  alias cdrecord-x='cdrecord -v'
-  alias cdrw-blank='cdrecord -v blank=fast'
-  alias cdrw-blank-slow='cdrecord -v blank=all'
+type genisoimage >/dev/null 2>&1 && mkisofs="genisoimage" || mkisofs="mkisofs"
+alias mkisofs-x="env TZ=UTC $mkisofs -uid 0 -gid 0 -J -input-charset UTF-8 -r -iso-level 1"
+#alias mkisofs-x="env TZ=UTC $mkisofs -uid 0 -gid 0 -J -R -iso-level 4"
+#alias mkisofs-y="env TZ=UTC $mkisofs -uid 0 -gid 0 -J -R -r -iso-level 4"
+unset mkisofs
+type wodim >/dev/null 2>&1 && cdrecord="wodim" || cdrecord="cdrecord"
 fi
+alias cdrecord-x="$cdrecord -v"
+alias cdrw-blank="$cdrecord -v blank=fast"
+alias cdrw-blank-slow="$cdrecord -v blank=all"
+unset cdrecord
 
 alias strace-x='strace -ffttTCx -s 9999'
 alias truss-sol-x='truss -aedlDE -v all'
