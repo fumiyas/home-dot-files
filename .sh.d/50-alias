@@ -81,7 +81,6 @@ alias mkisofs-x="env TZ=UTC $mkisofs -uid 0 -gid 0 -J -input-charset UTF-8 -r -i
 #alias mkisofs-y="env TZ=UTC $mkisofs -uid 0 -gid 0 -J -R -r -iso-level 4"
 unset mkisofs
 type wodim >/dev/null 2>&1 && cdrecord="wodim" || cdrecord="cdrecord"
-fi
 alias cdrecord-x="$cdrecord -v"
 alias cdrw-blank="$cdrecord -v blank=fast"
 alias cdrw-blank-slow="$cdrecord -v blank=all"
