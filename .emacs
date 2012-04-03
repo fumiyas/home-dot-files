@@ -104,9 +104,9 @@
 ;)
 
 ;; Use Mule-UCS
-;(require 'un-define)
+(require 'un-define)
 ;(un-define-debian)
-(un-define-debian-jisx0213)
+;(un-define-debian-jisx0213)
 
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
@@ -185,6 +185,7 @@
 ;; i-search for Japanese
 (load-safe "migemo")
 (setq migemo-coding-system 'utf-8)
+(setq migemo-command "/usr/bin/ruby1.8")
 
 ;; i-search for filename in mini-buffer
 (load-safe "minibuf-isearch")
