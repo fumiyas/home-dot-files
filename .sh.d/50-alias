@@ -103,6 +103,8 @@ if type vim >/dev/null 2>&1; then
   unset vim_env
 fi
 
+alias git-log='git log --graph --decorate --oneline'
+
 git-patch() {
   if [ $# -eq 1 ]; then
     git format-patch --stdout "$1^..$1"
