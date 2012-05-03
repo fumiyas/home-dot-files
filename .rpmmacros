@@ -1,6 +1,5 @@
-%_topdir	/home/fumiyas/rpm
-%debian		unstable
-%dist		.deb%{debian}
+%_gpg_name	SATOH Fumiyasu <fumiyas@osstech.co.jp>
+
 %_query_all_fmt	%%|epoch?{%%{epoch}:}:{}|%%{name}-%%{version}-%%{release}.%%{arch}
 
 %bcond_with_if(n:) %{expand:%%if %{*}
