@@ -13,10 +13,10 @@ TTY=`tty`
 if [ -n "$PS1" ]; then
   if [ "`id |sed 's/(.*//;s/.*=//'`" -eq 0 ]; then
     ## Super user
-    PS1="$HOSTNAME# "
+    PS1="$HOSTNAME # "
   else
     ## Ordinary user
-    PS1="$HOSTNAME$ "
+    PS1="$HOSTNAME \$ "
   fi
   PS2="> "
 fi
