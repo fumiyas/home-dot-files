@@ -29,7 +29,8 @@ alias dstat-disk='dstat -Tcldr'
 
 alias wcp='wget -m -l3 --no-parent'
 alias whois-jp='whois -h whois.jprs.jp'
-whois-jp-en() {
+alias whois-jp-en='whois_jp_en'
+whois_jp_en() {
   whois -h whois.jprs.jp ${1+"$1/e"}
 }
 
@@ -105,7 +106,8 @@ fi
 
 alias git-log='git log --graph --decorate --oneline'
 
-git-patch() {
+alias git-patch='git_patch'
+git_patch() {
   if [ $# -eq 1 ]; then
     git format-patch --stdout "$1^..$1"
   else
@@ -113,7 +115,8 @@ git-patch() {
   fi
 }
 
-git-patch-mail() {
+alias git-patch-mail='git_patch_mail'
+git_patch_mail() {
   if [ $# -eq 1 ]; then
     git format-patch --attach --stdout "$1^..$1"
   else
@@ -188,13 +191,15 @@ mancat()
 
 #shar -macDB --no-i18n -n ... -o ...
 
+alias rpm-qq='rpm_qq'
 rpm-qq()
 {
   rpm -q --qf "`rpm --querytags |sort |sed 's/^\(.*\)$/\1: %{\1}/'`\n" "$@" \
   |egrep -v '^HEADER|: $|: \(none\)$'
 }
 
-rpm-dump()
+alias rpm-dump='rpm_dump'
+rpm_dump()
 {
   [ -n "$1" ] || { echo "Usage: rpm-dump NAME.rpm"; return 1; }
   rpm2cpio "$1" | (
