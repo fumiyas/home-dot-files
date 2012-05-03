@@ -1,7 +1,9 @@
-## Zsh profile
-## Copyright (c) 2008-2010 SATOH Fumiyasu @ OSS Technology, Inc.
+#!/bin/zsh
 ##
-## Date: 2010-02-01, since 2008-05-02
+## zsh profile
+## Copyright (c) 2008-2012 SATOH Fumiyasu @ OSS Technology, Inc.
+##
+## Date: 2012-05-04, since 2008-05-02
 ##
 
 ## ESC q		Suspend current command-line editing
@@ -171,10 +173,7 @@ case "$ZSH_VERSION" in
 esac
 
 case "$TERM" in
-*term|rxvt*|gnome*)
-  precmd() { print -Pn "\e]2;%n@%m:%~ (${TTY#/dev/})\a" }
-  ;;
-screen*)
+screen.*)
   unset PROMPT
   precmd() { echo -ne "\ek\e\\"; print -Pn "\e]0; %~ %n@%m\a" }
 #  unalias s
@@ -189,6 +188,9 @@ screen*)
 #    echo -ne "\eks:$1${2+ $2}${3+ $3}\e\\"
 #    sudo "$@"
 #  }
+  ;;
+*term|rxvt*|gnome*)
+  precmd() { print -Pn "\e]2;%n@%m:%~ (${TTY#/dev/})\a" }
   ;;
 esac
 
