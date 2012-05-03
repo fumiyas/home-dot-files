@@ -36,10 +36,3 @@ done
 [ -n "${ZSH_VERSION-}" ] && . "$HOME/.zsh"
 [ -n "${BASH_VERSION-}" ] && . "$HOME/.bash"
 
-## Interactive shell
-## ----------------------------------------------------------------------
-
-if [ -n "$PS1" ]; then
-  . "$HOME/.shlogin"
-fi
-

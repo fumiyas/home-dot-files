@@ -1,10 +1,11 @@
-## /bin/sh profile for interactive shell
-## Copyright (c) 1999-2008 SATOH Fumiyasu. All rights reserved.
+#!/bin/sh
 ##
-## Date: 2008-05-03, since 1999-09-20
+## Build ssh-agent(1) environment
+## Copyright (c) 1999-2012 SATOH Fumiyasu. All rights reserved.
+##
+## Date: 2012-05-04, since 1999-09-20
 
-## Secure Shell (ssh)
-## ----------------------------------------------------------------------
+[ -n "$PS1" ] || return
 
 ## FIXME!
 ## http://blog.gcd.org/archives/50713097.html
