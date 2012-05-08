@@ -1,3 +1,4 @@
 #!/bin/sh
 exec /usr/bin/X11/X -dpi 100
+#exec /usr/bin/X11/X -dpi 100 -depth 16
 #exec /usr/bin/X11/X -dpi 100 -nolisten tcp
