@@ -97,6 +97,14 @@ alias gcc-macros='gcc -E -dM - </dev/null'
 alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
 
 alias diff='LC_ALL=C diff'
+if ! type colordiff >/dev/null 2>&1; then
+  colordiff()
+  {
+    { [ -z "${1-}" ] && cat || LC_ALL=C diff "$@"; } \
+    |sed -e '/^--- /n;s/^[+>]/\x1b\[32m+/;s/^[-<]/\x1b[31m-/;s/$/\x1b[0m/'
+  }
+fi
+
 if type vim >/dev/null 2>&1; then
   alias vi="${vim_env}vim"
   alias vidos="${vim_env}"'vim -u "$HOME/.vimrc.dos"'
