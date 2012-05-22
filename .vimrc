@@ -8,6 +8,12 @@ set nocompatible
 " Command mode
 " ======================================================================
 
+" FIXME
+" :vert diffsplit と ]c [c dp do
+" :.,$s/\([^ -~、。]\)\([!#-~]\)\|\([!-~]\)\([^ -~、。]\)/\1\3 \2\4/gc
+" :.,$s/\( [^ -~、。]\)\([A-Za-z]\)/\1 \2/gc
+" :.,$s/\( [A-Za-z]\)\([^ -~、。]\)/\1 \2/gc
+
 " ga	Show character's attribute
 
 " q <r>	Record command to register <r>
@@ -278,7 +284,10 @@ map - $
 "map gg :s/.*/\/\*&\*\//            " コメントで囲む
 "map hh :s/^\/\*\(.*\)\*\/$/\1/     " コメントを外す
 
-"" Global / Gtags
+" タグジャンプ時にタグが複数あったらリスト表示
+" カーソルがウィンドウの中心行になるようにジャンプ
+nnoremap <C-]> g<C-]>zz
+" Global / Gtags
 map  :GtagsCursor<CR>
 "map <C-> :GtagsCursor<CR>
 map <C-\> :Gtags -r <CR>
@@ -368,11 +377,11 @@ augroup vimrc
 
   autocmd BufNewFile *.html 0r ~/lib/vim/template/strict.html
   autocmd BufNewFile *.html set fileencoding=UTF-8
+  autocmd BufRead /tmp/ldapvi-*/data set filetype=ldif
 
   "autocmd BufWritePre,FileWritePre *vim/vim/runtime/doc/*.txt if getline(1) =~ "Last modification: "
   "autocmd BufWritePre,FileWritePre *vim/vim/runtime/doc/*.txt normal msgg/Last modification: /e+1"_D"=strftime("%Y %b %d")p`s
   "autocmd BufWritePre,FileWritePre *vim/vim/runtime/doc/*.txt endif
-
 augroup END
 
 "augroup BinaryXXD
