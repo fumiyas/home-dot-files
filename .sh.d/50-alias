@@ -96,7 +96,15 @@ alias truss-aix-x='truss -aedlD'
 alias gcc-macros='gcc -E -dM - </dev/null'
 alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
 
-alias diff='LC_ALL=C diff'
+for cmd in diff make grep egrep fgrep; do
+  type "g$cmd" >/dev/null 2>&1 && alias "$cmd=g$cmd"
+done
+
+if type "g$cmd" >/dev/null 2>&1; then
+  alias diff='LC_ALL=C gdiff'
+else
+  alias diff='LC_ALL=C diff'
+fi
 if ! type colordiff >/dev/null 2>&1; then
   colordiff()
   {
