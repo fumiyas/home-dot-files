@@ -181,6 +181,21 @@ termconv()
   fi
 }
 
+crontab()
+{
+  if [ x"${1-}" = x"-r" ]; then
+    echo -n "crontab: really delete $USER's crontab? (y/n) "
+    typeset answer
+    while :; do
+      read answer
+      [ x"$answer" = x"y" ] && break
+      [ x"$answer" = x"n" ] && return 0
+      echo -n "Please enter Y or N: "
+    done
+  fi
+  command crontab ${1+"$@"}
+}
+
 ## Convert office documents into CSV format in UTF-8 encoding
 alias unoconv-csv='unoconv -i ,,76 -f csv'
 
