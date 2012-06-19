@@ -11,6 +11,7 @@ progress =
 rebase =
 record =
 transplant =
+fetch =
 
 [email]
 method = /home/fumiyas/bin/hg-sendmail
