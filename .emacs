@@ -185,7 +185,7 @@
 ;; i-search for Japanese
 (load-safe "migemo")
 (setq migemo-coding-system 'utf-8)
-(setq migemo-command "/usr/bin/ruby1.8")
+;(setq migemo-command "/usr/bin/cmigemo")
 
 ;; i-search for filename in mini-buffer
 (load-safe "minibuf-isearch")
@@ -563,6 +563,11 @@
 ;; X11
 ;; ======================================================================
 
+;(require 'cua)
+;(cua-mode t)
+;(setq cua-enable-cua-keys nil) ;; 変なキーバインド禁止
+;(CUA-mode 'emacs)
+
 ;; Sync and use clipboard (and selections?)
 ;; http://www.emacswiki.org/cgi-bin/wiki/CopyAndPaste
 ;; ----------------------------------------------------------------------
@@ -574,4 +579,6 @@
 ;; Emacs 21.2.1 or later
 (setq x-select-enable-clipboard t)
 
+;(set-selection-coding-system 'compound-text-unix)
+;(set-clipboard-coding-system 'utf-8-unix)
 
