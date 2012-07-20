@@ -60,6 +60,16 @@ let g:closetag_html_style=1
 inoremap <C-]> <C-R>=GetCloseTag()<CR><ESC>F<i
 map <C-]> a<C-]><ESC>
 
+" FuzzyFinder
+" ----------------------------------------------------------------------
+
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+
+"let g:fuf_useMigemo = 1
+
+nnoremap <silent> <C-f><C-f> :FufFileWithCurrentBufferDir!<CR>
+
 " Command mode
 " ======================================================================
 
