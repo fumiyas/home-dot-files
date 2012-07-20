@@ -22,14 +22,6 @@ if filereadable($VIMRUNTIME . "/macros/matchit.vim")
   source $VIMRUNTIME/macros/matchit.vim
 endif
 
-if filereadable("/usr/bin/ctags") || filereadable("/usr/local/bin/ctags")
-  if filereadable($HOME . "/lib/vim/plugin/taglist.vim")
-    source $HOME/lib/vim/plugin/taglist.vim
-  endif
-  set updatetime=1000
-  set tags=./tags,./TAGS,tags,TAGS;/
-endif
-
 
 " migemo
 " ----------------------------------------------------------------------
@@ -65,6 +57,14 @@ Bundle 'FuzzyFinder'
 "let g:fuf_useMigemo = 1
 
 nnoremap <silent> <C-f><C-f> :FufFileWithCurrentBufferDir!<CR>
+
+" Tagbar
+" ----------------------------------------------------------------------
+
+Bundle 'Tagbar'
+
+set updatetime=1000
+set tags=./tags,./TAGS,tags,TAGS;/
 
 " Command mode
 " ======================================================================
