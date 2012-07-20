@@ -6,7 +6,7 @@ set nocompatible
 "set viminfo+=!
 
 if !exists(expand('$HOME/.vim/private'))
-  silent !umask 077; mkdir -p $HOME/.vim/private
+  silent !umask 077; mkdir -p "$HOME/.vim/private"
 endif
 
 " Plugins
