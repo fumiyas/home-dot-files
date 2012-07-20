@@ -5,6 +5,10 @@
 set nocompatible
 "set viminfo+=!
 
+if !exists(expand('$HOME/.vim/private'))
+  silent !umask 077; mkdir -p $HOME/.vim/private
+endif
+
 " Plugins
 " ======================================================================
 
@@ -36,7 +40,8 @@ endif
 
 Bundle 'YankRing.vim'
 
-let g:yankring_persist = 0
+let g:yankring_history_dir = expand('$HOME/.vim/private')
+let g:yankring_persist = 1
 
 " closetag
 " ----------------------------------------------------------------------
