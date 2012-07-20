@@ -5,6 +5,11 @@
 set nocompatible
 "set viminfo+=!
 
+set runtimepath+=~/.vim/vundle/
+call vundle#rc()
+
+"Bundle 'Markdown-syntax'
+
 " Command mode
 " ======================================================================
 
