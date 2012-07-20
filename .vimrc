@@ -5,10 +5,60 @@
 set nocompatible
 "set viminfo+=!
 
+" Plugins
+" ======================================================================
+
 set runtimepath+=~/.vim/vundle/
 call vundle#rc()
 
-"Bundle 'Markdown-syntax'
+Bundle 'fakeclip'
+Bundle 'BlockDiff'
+
+runtime! ftplugin/man.vim
+nnoremap K :Man <cword><CR>
+
+if filereadable($HOME . "/lib/vim/plugin/verifyenc.vim")
+  source $HOME/lib/vim/plugin/verifyenc.vim
+  let verifyenc_enable=1
+endif
+
+if filereadable($VIMRUNTIME . "/macros/matchit.vim")
+  source $VIMRUNTIME/macros/matchit.vim
+endif
+
+if filereadable("/usr/bin/ctags") || filereadable("/usr/local/bin/ctags")
+  if filereadable($HOME . "/lib/vim/plugin/taglist.vim")
+    source $HOME/lib/vim/plugin/taglist.vim
+  endif
+  set updatetime=1000
+  set tags=./tags,./TAGS,tags,TAGS;/
+endif
+
+
+" migemo
+" ----------------------------------------------------------------------
+
+if filereadable($VIM . "/addons/plugin/migemo.vim")
+  source $VIM/addons/plugin/migemo.vim
+  noremap // :<C-u>Migemo<CR>
+endif
+
+" YankRing
+" ----------------------------------------------------------------------
+
+Bundle 'YankRing.vim'
+
+let g:yankring_persist = 0
+
+" closetag
+" ----------------------------------------------------------------------
+
+Bundle 'closetag.vim'
+
+let g:closetag_html_style=1
+
+inoremap <C-]> <C-R>=GetCloseTag()<CR><ESC>F<i
+map <C-]> a<C-]><ESC>
 
 " Command mode
 " ======================================================================
@@ -398,54 +448,4 @@ augroup END
 "  autocmd BufWritePost * if &binary | silent %!xxd -g 1
 "  autocmd BufWritePost * set nomod | endif
 "augroup END
-
-" ======================================================================
-
-runtime! ftplugin/man.vim
-nnoremap K :Man <cword><CR>
-
-if filereadable($VIMRUNTIME . "/macros/matchit.vim")
-  source $VIMRUNTIME/macros/matchit.vim
-endif
-
-if filereadable($HOME . "/lib/vim/plugin/yankring.vim") && version >= 700
-  let g:yankring_persist = 0
-  source $HOME/lib/vim/plugin/yankring.vim
-endif
-
-if filereadable($HOME . "/lib/vim/plugin/fakeclip.vim") && version >= 700
-  source $HOME/lib/vim/plugin/fakeclip.vim
-endif
-
-if filereadable($HOME . "/lib/vim/plugin/blockdiff.vim")
-  source $HOME/lib/vim/plugin/blockdiff.vim
-endif
-
-if filereadable($HOME . "/lib/vim/plugin/verifyenc.vim")
-  source $HOME/lib/vim/plugin/verifyenc.vim
-  let verifyenc_enable=1
-endif
-
-if filereadable($HOME . "/lib/vim/plugin/grep.vim")
-  source $HOME/lib/vim/plugin/grep.vim
-endif
-
-if filereadable("/usr/bin/ctags") || filereadable("/usr/local/bin/ctags")
-  if filereadable($HOME . "/lib/vim/plugin/taglist.vim")
-    source $HOME/lib/vim/plugin/taglist.vim
-  endif
-  set updatetime=1000
-  set tags=./tags,./TAGS,tags,TAGS;/
-endif
-
-"let migemo=1
-if filereadable($HOME . "/lib/vim/plugin/migemo.vim")
-  source $HOME/lib/vim/plugin/migemo.vim
-endif
-
-if filereadable($HOME . "/lib/vim/plugin/closetag.vim")
-  " C-_ in insert mode
-  let g:closetag_html_style=1
-  au Filetype html,xml,xsl,ant source $HOME/lib/vim/plugin/closetag.vim
-endif
 
