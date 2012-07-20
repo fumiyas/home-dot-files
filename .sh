@@ -36,3 +36,5 @@ done
 [ -n "${ZSH_VERSION-}" ] && . "$HOME/.zsh"
 [ -n "${BASH_VERSION-}" ] && . "$HOME/.bash"
 
+return 0
+
