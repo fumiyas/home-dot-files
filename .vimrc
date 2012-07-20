@@ -11,16 +11,12 @@ set nocompatible
 set runtimepath+=~/.vim/vundle/
 call vundle#rc()
 
+Bundle 'https://github.com/koron/verifyenc-vim.git'
 Bundle 'fakeclip'
 Bundle 'BlockDiff'
 
 runtime! ftplugin/man.vim
 nnoremap K :Man <cword><CR>
-
-if filereadable($HOME . "/lib/vim/plugin/verifyenc.vim")
-  source $HOME/lib/vim/plugin/verifyenc.vim
-  let verifyenc_enable=1
-endif
 
 if filereadable($VIMRUNTIME . "/macros/matchit.vim")
   source $VIMRUNTIME/macros/matchit.vim
