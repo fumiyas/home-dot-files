@@ -437,8 +437,10 @@ iab Yruler 123456789012345678901234567890123456789012345678901234567890123456789
 
 augroup vimrc
   autocmd BufNewFile,BufRead *.[ch] set formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
-  autocmd BufNewFile *.pm 0r ~/.vim/template/package.pm
+  autocmd BufNewFile *.rb 0r ~/.vim/template/ruby.rb
+  autocmd BufNewFile *.py 0r ~/.vim/template/python.py
   autocmd BufNewFile *.pl 0r ~/.vim/template/perl.pl
+  autocmd BufNewFile *.pm 0r ~/.vim/template/package.pm
   "autocmd BufNewFile *.pl execute "normal i#!/usr/bin/env perl\<CR>" | echo "New File"
 
   autocmd BufNewFile *.html 0r ~/.vim/template/strict.html
