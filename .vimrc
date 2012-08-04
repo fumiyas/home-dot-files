@@ -437,11 +437,11 @@ iab Yruler 123456789012345678901234567890123456789012345678901234567890123456789
 
 augroup vimrc
   autocmd BufNewFile,BufRead *.[ch] set formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
-  autocmd BufNewFile *.pm 0r ~/lib/vim/template/package.pm
-  autocmd BufNewFile *.pl 0r ~/lib/vim/template/perl.pl
+  autocmd BufNewFile *.pm 0r ~/.vim/template/package.pm
+  autocmd BufNewFile *.pl 0r ~/.vim/template/perl.pl
   "autocmd BufNewFile *.pl execute "normal i#!/usr/bin/env perl\<CR>" | echo "New File"
 
-  autocmd BufNewFile *.html 0r ~/lib/vim/template/strict.html
+  autocmd BufNewFile *.html 0r ~/.vim/template/strict.html
   autocmd BufNewFile *.html set fileencoding=UTF-8
   autocmd BufRead /tmp/ldapvi-*/data set filetype=ldif
 
