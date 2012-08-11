@@ -12,20 +12,30 @@ endif
 " Plugins
 " ======================================================================
 
-set runtimepath+=~/.vim/vundle/
-call vundle#rc()
+" Vundle
+" ----------------------------------------------------------------------
 
-Bundle 'https://github.com/koron/verifyenc-vim.git'
-Bundle 'fakeclip'
-Bundle 'BlockDiff'
+if version < 703
+  com! -nargs=+ Bundle
+else
+  filetype off
 
-runtime! ftplugin/man.vim
-nnoremap K :Man <cword><CR>
+  set runtimepath+=~/.vim/vundle/
+  call vundle#rc()
 
-if filereadable($VIMRUNTIME . "/macros/matchit.vim")
-  source $VIMRUNTIME/macros/matchit.vim
+  Bundle 'https://github.com/koron/verifyenc-vim.git'
+  Bundle 'fakeclip'
+  Bundle 'BlockDiff'
+
+  runtime! ftplugin/man.vim
+  nnoremap K :Man <cword><CR>
+
+  if filereadable($VIMRUNTIME . "/macros/matchit.vim")
+    source $VIMRUNTIME/macros/matchit.vim
+  endif
+
+  filetype plugin indent on
 endif
-
 
 " migemo
 " ----------------------------------------------------------------------
