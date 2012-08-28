@@ -18,6 +18,7 @@ call vundle#rc()
 Bundle 'https://github.com/koron/verifyenc-vim.git'
 Bundle 'fakeclip'
 Bundle 'BlockDiff'
+Bundle 'vim-creole'
 
 runtime! ftplugin/man.vim
 nnoremap K :Man <cword><CR>
