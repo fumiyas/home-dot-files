@@ -67,7 +67,7 @@ if [ ${BASH_VERSION%%.*} -ge 3 ]; then
 else
   HISTCONTROL=ignoredups
 fi
-shopt -s cmdhist histappend lithist
+shopt -s cmdhist lithist histappend histverify
 
 ## Line-edit mode
 set -o emacs
