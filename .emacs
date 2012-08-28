@@ -104,7 +104,9 @@
 ;)
 
 ;; Use Mule-UCS
-(require 'un-define)
+(if (featurep 'xemacs)
+    (require 'un-define)
+)
 ;(un-define-debian)
 ;(un-define-debian-jisx0213)
 
@@ -131,7 +133,7 @@
 ; Don't display startup message
 (setq inhibit-startup-message t)
 
-(when (>= emacs-major-version 21)
+(when window-system
     (tool-bar-mode -1)
     (when (not (featurep 'xemacs))
 	(auto-image-file-mode t)
@@ -573,8 +575,10 @@
 ;; ----------------------------------------------------------------------
 
 ;; XEmacs
-(setq interprogram-cut-function 'own-clipboard)
-(setq interprogram-paste-function 'get-clipboard)
+(when (featurep 'xemacs)
+    (setq interprogram-cut-function 'own-clipboard)
+    (setq interprogram-paste-function 'get-clipboard)
+)
 
 ;; Emacs 21.2.1 or later
 (setq x-select-enable-clipboard t)
