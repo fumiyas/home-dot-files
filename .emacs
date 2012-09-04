@@ -337,6 +337,9 @@
 ;; 大きいメッセージを送信時に分割しない
 (setq mime-edit-split-message nil)
 
+;; charset=UTF-8 なときに Content-Transfer-Encoding: 8bit
+(setq mime-transfer-level 8)
+
 ;; multipart/alternative で Plain を HTML より優先して表示
 (eval-after-load "semi-setup"
   '(set-alist 'mime-view-type-subtype-score-alist '(text . plain) 10)
