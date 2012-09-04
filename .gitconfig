@@ -6,4 +6,4 @@
 	ui = auto
 
 [alias]
-
+	wdiff = diff --word-diff
