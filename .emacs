@@ -148,6 +148,8 @@
 
 (setq-default line-spacing 0)
 
+(load-safe "bitmap-ci")
+
 (when (locate-library "izonmoji-mode")
   (autoload 'izonmoji-mode "izonmoji-mode" nil t)
   (autoload 'izonmoji-mode-on "izonmoji-mode" nil t)
@@ -332,7 +334,7 @@
 ;; multipart/alternative で Plain を HTML より優先して表示
 (eval-after-load "semi-setup"
   '(set-alist 'mime-view-type-subtype-score-alist '(text . plain) 10)
-) 
+)
 ;(eval-after-load "semi-setup"
 ;  '(set-alist 'mime-view-type-subtype-score-alist '(text . html) 0)
 ;)
@@ -346,7 +348,9 @@
      (set-alist 'text "plain"
                 '(("charset" "" "ISO-2022-JP" "US-ASCII"
                    "ISO-8859-1" "ISO-8859-8" "UTF-8")))
-     (set-alist 'mime-content-types "text" (cdr text))))
+     (set-alist 'mime-content-types "text" (cdr text))
+  )
+)
 
 ;; Wanderlust
 ;; ----------------------------------------------------------------------
