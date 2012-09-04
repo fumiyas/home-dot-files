@@ -97,6 +97,7 @@
 ;; Terminal
 ;; ======================================================================
 
+;;
 ;(if (not (featurep 'xemacs))
     (when (locate-library "jisx0213")
 	(require 'jisx0213)
@@ -150,12 +151,17 @@
 
 (load-safe "bitmap-ci")
 
-(when (locate-library "izonmoji-mode")
-  (autoload 'izonmoji-mode "izonmoji-mode" nil t)
-  (autoload 'izonmoji-mode-on "izonmoji-mode" nil t)
-  (add-hook 'w3m-mode-hook 'izonmoji-mode-on)
-  (add-hook 'mew-message-mode-hook 'izonmoji-mode-on)
-  (add-hook 'wl-message-redisplay-hook 'izonmoji-mode-on))
+;; 機種依存文字
+(when (locate-library "cp5022x")
+  (require 'cp5022x)
+)
+
+;(when (locate-library "izonmoji-mode")
+;  (autoload 'izonmoji-mode "izonmoji-mode" nil t)
+;  (autoload 'izonmoji-mode-on "izonmoji-mode" nil t)
+;  (add-hook 'w3m-mode-hook 'izonmoji-mode-on)
+;  (add-hook 'mew-message-mode-hook 'izonmoji-mode-on)
+;  (add-hook 'wl-message-redisplay-hook 'izonmoji-mode-on))
 
 ;; Edit
 ;; ======================================================================

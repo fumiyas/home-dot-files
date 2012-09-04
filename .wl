@@ -90,6 +90,10 @@
 ;(setq elmo-default-imap4-server "imap4.example.jp")
 ;(setq elmo-default-nntp-server "news.example.jp")
 
+(when (coding-system-p 'cp50220)
+    (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
+)
+
 ; Identifier
 (setq wl-from "SATOH Fumiyasu <fumiyas@osstech.jp>")
 (setq wl-organization "OSS Technology, Corp. / Samba-JP / LDAP-JP / Apache-JP")
@@ -169,6 +173,7 @@
 ;; Prevent from summarizing subject in message from mailing list
 (setq wl-summary-subject-function 'my-wl-summary-subject-func-ml)
 (defun my-wl-summary-subject-func-ml (subject-string) subject-string)
+
 
 ;; View thread as be opened
 (setq wl-thread-insert-opened t)
