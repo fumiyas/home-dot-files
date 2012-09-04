@@ -352,6 +352,12 @@
   )
 )
 
+(eval-after-load "mime-edit"
+  '(set-alist 'mime-file-types "\\.txt$"
+    '("text" "plain" (("charset" . "UTF-8")) "8bit" "attachment" (("filename" . file)))
+  )
+)
+
 ;; Wanderlust
 ;; ----------------------------------------------------------------------
 
