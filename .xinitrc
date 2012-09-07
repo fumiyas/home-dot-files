@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/bin/bash
+
+## startx(1) invokes this script via /bin/sh
+[ ${BASH##*/} = "bash" ] || exec bash "$0" "$@" || exit 1
+
+set -u
 
 log="$HOME/.xclient.log"
 
@@ -6,12 +11,9 @@ LANG=ja_JP.UTF-8
 export LANG
 
 [ -f "$log" ] && mv "$log" "$log.old"
-touch "$log"
 
-uim-xim >>"$log" 2>&1 &
-
-startkde 2>&1\
-  |{ type ts >/dev/null 2>&1 && ts '%Y-%m-%d %H:%M:%S' || cat; } \
-  |tee -a "$log" \
-  ;
+(
+  uim-xim &
+  startkde
+) > >(ts '%Y-%m-%d %H:%M:%S' |tee -a "$log") 2>&1
 
