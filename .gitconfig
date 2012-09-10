@@ -7,3 +7,7 @@
 
 [alias]
 	wdiff = diff --word-diff
+
+[log]
+        date = local
+
