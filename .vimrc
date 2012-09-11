@@ -270,7 +270,7 @@ set autoindent
 set shiftwidth=2
 set shiftround
 set tabstop=8
-set noexpandtab
+set expandtab
 set smarttab
 set backspace=indent,eol,start
 set nrformats-=octal
