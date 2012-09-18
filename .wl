@@ -115,8 +115,8 @@
 ; wl icon directory
 ;(setq wl-icon-dir "~/.wlrc/icon")
 
-; Offline mode is default
-(setq wl-plugged nil)
+; Online mode by default
+(setq wl-plugged t)
 
 ;; Invoke imget on wl: M-i
 ;; http://www.lab3.kuis.kyoto-u.ac.jp/%7Etsumura/emacs/wl.html
