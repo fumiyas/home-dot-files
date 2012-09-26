@@ -1,9 +1,9 @@
 ## Bash profile
-## Copyright (c) 2007-2008 SATOH Fumiyasu @ OSS Technology Co., Ltd.
-## Copyright (c) 2006-2007 SATOH Fumiyasu @ MIRACLE LINUX Co.
+## Copyright (c) 2007-2012 SATOH Fumiyasu @ OSS Technology Corp.
+## Copyright (c) 2006-2007 SATOH Fumiyasu @ MIRACLE LINUX Corp.
 ## Copyright (c) 1999-2003 SATOH Fumiyasu @ Bento Internet
 ##
-## Date: 2008-04-24, since 1999-09-20
+## Date: 2012-09-27, since 1999-09-20
 
 ## C-u	unix-line-discard
 ## C-t	transpose-char
@@ -59,7 +59,7 @@ case "$TERM" in
   ;;
 esac
 
-## Command history 
+## Command history
 HISTSIZE=100000
 HISTFILESIZE=100000
 if [ ${BASH_VERSION%%.*} -ge 3 ]; then
@@ -69,16 +69,11 @@ else
 fi
 shopt -s cmdhist lithist histappend histverify
 
-## Line-edit mode
-set -o emacs
-
-## TTY appearance
+shopt -s globstar
 shopt -s checkwinsize
 
-## File/directory handling
+set -o emacs
 set -o physical
-
-## Other options
 set -o ignoreeof
 
 if type complete >/dev/null 2>&1; then
