@@ -15,31 +15,31 @@ endif
 " Vundle
 " ----------------------------------------------------------------------
 
-if version < 703
-  com! -nargs=+ Bundle
-else
+if version >= 703 && isdirectory(expand('$HOME/.vim/vundle'))
   filetype off
-
   set runtimepath+=~/.vim/vundle/
   call vundle#rc()
-
-  Bundle 'https://github.com/koron/verifyenc-vim.git'
-  Bundle 'fakeclip'
-  Bundle 'BlockDiff'
-  Bundle 'vim-creole'
-
-  runtime! ftplugin/man.vim
-  nnoremap K :Man <cword><CR>
-
-  if filereadable($VIMRUNTIME . "/macros/matchit.vim")
-    source $VIMRUNTIME/macros/matchit.vim
-  endif
-
   filetype plugin indent on
+else
+  "" Vundler is not available, thus define a dummy 'Bundle' command
+  "" to avoid error: "Not an editor command: Bundle 'xxxxx'"
+  command! -nargs=+ Bundle
 endif
 
-" migemo
+Bundle 'https://github.com/koron/verifyenc-vim.git'
+Bundle 'fakeclip'
+Bundle 'BlockDiff'
+Bundle 'vim-creole'
+
+" misc
 " ----------------------------------------------------------------------
+
+runtime! ftplugin/man.vim
+nnoremap K :Man <cword><CR>
+
+if filereadable($VIMRUNTIME . "/macros/matchit.vim")
+  source $VIMRUNTIME/macros/matchit.vim
+endif
 
 if filereadable($VIM . "/addons/plugin/migemo.vim")
   source $VIM/addons/plugin/migemo.vim
