@@ -131,6 +131,7 @@ enable-auto-props = yes
 *.bin = svn:mime-type=application/octet-stream
 *.a = svn:mime-type=application/octet-stream
 *.o = svn:mime-type=application/octet-stream
+*.gem = svn:mime-type=application/x-rubygem
 
 *.reg = svn:mime-type=text/plain; charset=UTF-16LE
 *.reg = svn:eol-style=CRLF
