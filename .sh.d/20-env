@@ -70,7 +70,7 @@ if [ x"$UNAME" = x"AIX" ] && [ x"$TERM" = x"mlterm" ]; then
     export TERM
 fi
 
-LESS="-R -j 5"
+LESS="--RAW-CONTROL-CHARS --jump-target=5 --ignore-case"
 export LESS
 LESS_TERMCAP_mb=`tput bold; tput setaf 1`
 LESS_TERMCAP_md=`tput bold; tput setaf 6`
