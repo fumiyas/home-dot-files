@@ -217,8 +217,14 @@ endif
 " Syntax highlighting
 " ======================================================================
 
-if version >= 700
+if exists('&cursorline')
   set cursorline
+endif
+
+set textwidth=0
+if exists('&colorcolumn')
+  set colorcolumn=+1
+  autocmd FileType sh,cpp,perl,vim,ruby,python,haskell,scheme setlocal textwidth=80
 endif
 
 if has("syntax") && (&t_Co > 2 || has("gui_running"))
@@ -326,15 +332,9 @@ set fileformats=
 set formatoptions-=o
 set formatoptions-=r
 
-set textwidth=0
-if exists('&colorcolumn')
-  set colorcolumn=+1
-  autocmd FileType sh,cpp,perl,vim,ruby,python,haskell,scheme setlocal textwidth=80
-endif
-	"
 " Status-line
 " ======================================================================
-	  
+
 function! GetStatusEx()
   let str = &fileformat . '|'
   if has('multi_byte') && &fileencoding != ''
