@@ -225,6 +225,7 @@ set textwidth=0
 if exists('&colorcolumn')
   set colorcolumn=+1
   autocmd FileType sh,cpp,perl,vim,ruby,python,haskell,scheme setlocal textwidth=80
+  highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 endif
 
 if has("syntax") && (&t_Co > 2 || has("gui_running"))
