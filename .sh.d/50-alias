@@ -243,13 +243,13 @@ rpm_dump()
 ## ======================================================================
 
 if type amixer >/dev/null 2>&1; then
-  for n in 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
+  for n in 0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
     alias v$n="amixer sset Master $n%"
   done
 fi
 
 if type xbacklight >/dev/null 2>&1; then
-  for n in 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
+  for n in 0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
     alias $n="xbacklight -set $n"
     alias b$n="xbacklight -set $n"
   done
