@@ -27,8 +27,6 @@ autoload -U colors; colors
 
 bindkey -e
 
-WORDCHARS="${WORDCHARS//[ |\/._-]/}#"
-
 bindkey -s '^z' '^[q %\\$EDITOR^m'
 
 #run-fg-editor() {
@@ -66,12 +64,15 @@ CORRECT_IGNORE='_*'
 bindkey '^i'   menu-expand-or-complete
 bindkey "\e[Z" reverse-menu-complete ## Shift+Tab
 
+WORDCHARS="${WORDCHARS//[ |\/._-]/}#"
+
 ## Change directory
 ## ======================================================================
 
 ## ディレクトリ名のみの入力をcdの引数として実行
 setopt AUTO_CD
 setopt AUTO_PUSHD
+setopt PUSHD_MINUS
 setopt PUSHD_IGNORE_DUPS
 
 ## History
