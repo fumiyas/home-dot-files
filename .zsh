@@ -27,7 +27,7 @@ autoload -U colors; colors
 
 bindkey -e
 
-WORDCHARS="${WORDCHARS//[ |\/]/}#"
+WORDCHARS="${WORDCHARS//[ |\/._-]/}#"
 
 bindkey -s '^z' '^[q %\\$EDITOR^m'
 
