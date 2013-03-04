@@ -20,9 +20,7 @@
 
 ## http://gihyo.jp/dev/serial/01/zsh-book/0003
 
-if [ "${ZSH_VERSION%%.*}" -ge 4 ]; then
-  autoload -U colors; colors
-fi
+autoload -U colors; colors
 
 ## Key bindng
 ## ======================================================================
@@ -45,20 +43,18 @@ bindkey -s '^z' '^[q %\\$EDITOR^m'
 ## Completion
 ## ======================================================================
 
-if [ "${ZSH_VERSION%%.*}" -ge 4 ]; then
-  autoload -U compinit; compinit
+autoload -U compinit; compinit
 
-  zstyle ':completion:*' menu select=1
-  zstyle ':completion:*' matcher-list '' 'm:{a-z-}={A-Z_} r:|[-_.]=**'
-  if [ -n "${LS_COLORS:-}" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-  else
-    zstyle ':completion:*' list-colors \
-      'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-  fi
-  zstyle ':completion:*' file-patterns \
-    '%p:globbed-files *(-/):directories' '*:all-files'
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' matcher-list '' 'm:{a-z-}={A-Z_} r:|[-_.]=**'
+if [ -n "${LS_COLORS:-}" ]; then
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+else
+  zstyle ':completion:*' list-colors \
+    'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 fi
+zstyle ':completion:*' file-patterns \
+  '%p:globbed-files *(-/):directories' '*:all-files'
 
 setopt AUTO_LIST
 setopt LIST_TYPES
@@ -94,13 +90,11 @@ setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY	# 履歴を上書きせず追加のみ行う(コマンド実行後に追加)
 				# (入力が空の状態で補完・PATH検索をしないのはデフォルト)
 
-if [ "${ZSH_VERSION%%.*}" -ge 4 ]; then
-  autoload -U history-search-end
-  zle -N history-beginning-search-backward-end history-search-end
-  zle -N history-beginning-search-forward-end history-search-end
-  bindkey "^p" history-beginning-search-backward-end
-  bindkey "^n" history-beginning-search-forward-end
-fi
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
 
 ## Global alias
 ## ======================================================================
