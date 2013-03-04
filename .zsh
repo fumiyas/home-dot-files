@@ -61,7 +61,7 @@ setopt LIST_PACKED
 setopt CORRECT_ALL
 CORRECT_IGNORE='_*'
 
-bindkey '^i'    menu-expand-or-complete
+bindkey '^i'    expand-or-complete
 bindkey '\e[Z'  reverse-menu-complete ## Shift+Tab
 
 function _delete-char-or-list-expand() {
