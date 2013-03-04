@@ -48,9 +48,8 @@ bindkey -s '^z' '^[q %\\$EDITOR^m'
 if [ "${ZSH_VERSION%%.*}" -ge 4 ]; then
   autoload -U compinit; compinit
 
-  zstyle ':completion:*' menu select=1                 # 候補からの選択を有効に
-  zstyle ':completion:*' matcher-list 'm:{a-z-}={A-Z_}' # 大文字小文字を区別しない
-  #zstyle ':completion:*' matcher-list 'm:{a-z-}={A-Z_} r:|[-_./]=* r:|=*'
+  zstyle ':completion:*' menu select=1
+  zstyle ':completion:*' matcher-list '' 'm:{a-z-}={A-Z_} r:|[-_.]=**'
   if [ -n "${LS_COLORS:-}" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
   else
