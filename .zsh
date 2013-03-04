@@ -63,7 +63,16 @@ CORRECT_IGNORE='_*'
 
 bindkey '^i'    menu-expand-or-complete
 bindkey '\e[Z'  reverse-menu-complete ## Shift+Tab
-bindkey '^d'    list-expand
+
+function _delete-char-or-list-expand() {
+  if [[ -z "${RBUFFER}" ]]; then
+    zle list-expand
+  else
+    zle delete-char
+  fi
+}
+zle -N _delete-char-or-list-expand
+bindkey '^d' _delete-char-or-list-expand
 
 WORDCHARS="${WORDCHARS//[ |\/._-]/}#"
 
