@@ -1,9 +1,9 @@
 #!/bin/zsh
 ##
 ## zsh profile
-## Copyright (c) 2008-2012 SATOH Fumiyasu @ OSS Technology, Inc.
+## Copyright (c) 2008-2013 SATOH Fumiyasu @ OSS Technology Corp. Japan
 ##
-## Date: 2012-05-04, since 2008-05-02
+## Date: 2013-03-04, since 2008-05-02
 ##
 
 ## ESC q		Suspend current command-line editing
@@ -62,6 +62,9 @@ setopt LIST_PACKED
 
 setopt CORRECT_ALL
 CORRECT_IGNORE='_*'
+
+bindkey '^i'   menu-expand-or-complete
+bindkey "\e[Z" reverse-menu-complete ## Shift+Tab
 
 ## Change directory
 ## ======================================================================
