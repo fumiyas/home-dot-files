@@ -163,6 +163,8 @@ set tags=./tags,./TAGS,tags,TAGS;/
 " ======================================================================
 
 "       C-w     remove word before cursor
+"       C-n     Completion
+"       C-p     Completion (move to backward)
 
 " ======================================================================
 
