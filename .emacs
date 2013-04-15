@@ -189,6 +189,9 @@
     (add-hook 'after-init-hook 'session-initialize)
 )
 
+;; 履歴数を大きくする
+(setq history-length 10000)
+
 ;; word completion by words in all buffers
 (load-safe "dabbrev-ja") ;; M-/
 (load-safe "dabbrev-highlight")
