@@ -344,6 +344,7 @@
 	    ("announce-bounces\\+.*@apache.jp" . "+ml/web/apache-announce")
 	    ("dev-return-.*@httpd.apache.org" . "+ml/web/new-httpd")
 
+	    ("groonga-dev-bounces@" . "+ml/misc/groonga-dev")
 	    ("namazu-devel-..-bounces@namazu.org" . "+ml/misc/namazu-devel")
 	    ("namazu-cvs-bounces@namazu.org" . "+ml/misc/namazu-devel")
 	    ("vaj-admin-bounces@namazu.org" . "+ml/misc/namazu-admin")
