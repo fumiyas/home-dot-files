@@ -171,6 +171,10 @@ if type ggrep >/dev/null 2>&1; then
   echo . |ggrep . >/dev/null || unset GREP_OPTIONS
 fi
 
+## Go
+GOPATH="$HOME/.go"
+export GOPATH
+
 ## Ruby
 RI="--format ansi"
 export RI
