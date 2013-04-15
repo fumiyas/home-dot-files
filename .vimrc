@@ -64,6 +64,13 @@ let g:closetag_html_style=1
 inoremap <C-]> <C-R>=GetCloseTag()<CR><ESC>F<i
 map <C-]> a<C-]><ESC>
 
+" Highlight multiple searche
+" ----------------------------------------------------------------------
+
+Bundle 'MultipleSearch'
+
+let g:MultipleSearchMaxColors = 10
+
 " FuzzyFinder
 " ----------------------------------------------------------------------
 
