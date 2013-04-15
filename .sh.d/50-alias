@@ -42,6 +42,11 @@ cal() {
   fi
 }
 
+term_title()
+{
+  print -Pn "\e]2;$@\a"
+}
+
 ssh()
 {
   if [ -t 0 ] && [ -t 1 ]; then
@@ -120,12 +125,15 @@ if type vim >/dev/null 2>&1; then
   unset vim_env
 fi
 
+alias git-reset-add="git rm --cached"
+alias git-reset-commit="git reset HEAD\^"
 alias git-log='git log --graph --decorate --oneline'
-
 alias git-patch='git_patch'
 git_patch() {
-  if [ $# -eq 1 ]; then
-    git format-patch --stdout "$1^..$1"
+  if [ $# -eq 0 ]; then
+    git format-patch --stdout "HEAD~"
+  elif [ $# -eq 1 ]; then
+    git format-patch --stdout "$1~..$1"
   else
     git format-patch --stdout "$1..$2"
   fi
@@ -133,8 +141,10 @@ git_patch() {
 
 alias git-patch-mail='git_patch_mail'
 git_patch_mail() {
-  if [ $# -eq 1 ]; then
-    git format-patch --attach --stdout "$1^..$1"
+  if [ $# -eq 0 ]; then
+    git format-patch --attach --stdout "HEAD~"
+  elif [ $# -eq 1 ]; then
+    git format-patch --attach --stdout "$1~..$1"
   else
     git format-patch --attach --stdout "$1..$2"
   fi
@@ -241,6 +251,11 @@ rpm_dump()
 
 ## Volume and Backlight adjustment
 ## ======================================================================
+
+alias vstop='amixer sset Master mute; pkill -STOP pulseaudio'
+alias vcont='pkill -CONT pulseaudio; amixer sset Master unmute'
+alias vmute='amixer sset Master mute'
+alias vunmute='amixer sset Master unmute'
 
 if type amixer >/dev/null 2>&1; then
   for n in 0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
