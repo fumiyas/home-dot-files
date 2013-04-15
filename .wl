@@ -96,8 +96,8 @@
 
 ; Identifier
 (setq wl-from "SATOH Fumiyasu <fumiyas@osstech.jp>")
-(setq wl-organization "OSS Technology, Corp. / Samba-JP / LDAP-JP / Apache-JP")
-;(setq wl-organization "OSS Technology, Corp. / Samba-JP / Namazu Developer")
+(setq wl-organization "OSS Technology Corp. / Samba-JP / LDAP-JP / Apache-JP")
+;(setq wl-organization "OSS Technology Corp. / Samba-JP / Namazu Developer")
 (setq wl-local-domain "sugar.osstech.co.jp")
 ;(setq wl-local-domain "sugar.lan.sfo.jp")
 (setq wl-user-mail-address-list
@@ -300,7 +300,7 @@
 ;	    ("suspend2-announce-bounces@" . "+ml/linux/swsusp")
 ;	    ("xfs-bounce@" . "+ml/linux/xfs")
 	    ("solaris2u-bounces@" . "+ml/os/solaris2u")
-	    ("ug-jposug-bounces@" . "+ml/os/solaris-ug")
+	    ("users-bounces@opensolaris" . "+ml/os/solaris-ug")
 	    ("begin-bounces@ml.begi.net" . "+ml/linux/beginet-begin")
 	    ("freetalk-bounces@ml.begi.net" . "+ml/linux/beginet-freetalk")
 
