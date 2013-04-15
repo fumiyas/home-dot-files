@@ -42,6 +42,11 @@ cal() {
   fi
 }
 
+term_title()
+{
+  print -Pn "\e]2;$@\a"
+}
+
 ssh()
 {
   if [ -t 0 ] && [ -t 1 ]; then
@@ -241,6 +246,11 @@ rpm_dump()
 
 ## Volume and Backlight adjustment
 ## ======================================================================
+
+alias vstop='amixer sset Master mute; pkill -STOP pulseaudio'
+alias vcont='pkill -CONT pulseaudio; amixer sset Master unmute'
+alias vmute='amixer sset Master mute'
+alias vunmute='amixer sset Master unmute'
 
 if type amixer >/dev/null 2>&1; then
   for n in 0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
