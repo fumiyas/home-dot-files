@@ -174,6 +174,11 @@
 ;; 折り返し桁数の初期値
 (setq-default fill-column 999)
 
+;; 現在行を目立たせる
+(global-hl-line-mode)
+;; 行末の空白を表示
+(setq-default show-trailing-whitespace t)
+
 ;; Listing kill-ring
 (when (autoload-if-found 'kill-summary "kill-summary" nil t)
     (global-set-key "\M-y" 'kill-summary)
@@ -183,6 +188,9 @@
 (when (load-safe "session")
     (add-hook 'after-init-hook 'session-initialize)
 )
+
+;; 履歴数を大きくする
+(setq history-length 10000)
 
 ;; word completion by words in all buffers
 (load-safe "dabbrev-ja") ;; M-/
