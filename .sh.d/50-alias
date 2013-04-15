@@ -125,12 +125,15 @@ if type vim >/dev/null 2>&1; then
   unset vim_env
 fi
 
+alias git-reset-add="git rm --cached"
+alias git-reset-commit="git reset HEAD\^"
 alias git-log='git log --graph --decorate --oneline'
-
 alias git-patch='git_patch'
 git_patch() {
-  if [ $# -eq 1 ]; then
-    git format-patch --stdout "$1^..$1"
+  if [ $# -eq 0 ]; then
+    git format-patch --stdout "HEAD~"
+  elif [ $# -eq 1 ]; then
+    git format-patch --stdout "$1~..$1"
   else
     git format-patch --stdout "$1..$2"
   fi
@@ -138,8 +141,10 @@ git_patch() {
 
 alias git-patch-mail='git_patch_mail'
 git_patch_mail() {
-  if [ $# -eq 1 ]; then
-    git format-patch --attach --stdout "$1^..$1"
+  if [ $# -eq 0 ]; then
+    git format-patch --attach --stdout "HEAD~"
+  elif [ $# -eq 1 ]; then
+    git format-patch --attach --stdout "$1~..$1"
   else
     git format-patch --attach --stdout "$1..$2"
   fi
