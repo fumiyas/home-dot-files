@@ -59,10 +59,10 @@ setopt LIST_TYPES
 setopt LIST_PACKED
 
 setopt CORRECT_ALL
-CORRECT_IGNORE='_*'
+#CORRECT_IGNORE='_*'
 
-bindkey '^i'    expand-or-complete
-bindkey '\e[Z'  reverse-menu-complete ## Shift+Tab
+bindkey '^i'    expand-or-complete	## Tab
+bindkey '\e[Z'  reverse-menu-complete	## Shift+Tab
 
 function _delete-char-or-list-expand() {
   if [[ -z "${RBUFFER}" ]]; then
