@@ -65,5 +65,6 @@ add mod1 = Alt_L Alt_R
 ! Temp
 ! ======================================================================
 
+keycode 132 = backslash bar backslash bar backslash bar
 keycode 133 = backslash bar backslash bar backslash bar
 
