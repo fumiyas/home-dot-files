@@ -171,6 +171,13 @@
 (setq-default indent-tabs-mode nil)
 (load-library "paren")
 
+;; 対応する括弧をハイライト表示
+(show-paren-mode t)
+;; ウィンドウ内に収まらないときだけ括弧内も光らせる。
+;(setq show-paren-style 'mixed)
+;; 選択されたリージョンを色付き
+(transient-mark-mode t)
+
 ;; 折り返し桁数の初期値
 (setq-default fill-column 999)
 
