@@ -1,3 +1,4 @@
+#termtype = mlterm-256color
 use_transbg = false
 fontsize = 14
 use_cp932_ucs_for_xft=false
