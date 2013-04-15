@@ -1,3 +1,6 @@
+## Ctrl-z, d    Detach
+## Ctrl-z, k    Close window
+
 #escape ^Ta
 escape ^z^z
 #escape ^\
