@@ -74,6 +74,32 @@
 ;;     C-c C-k	delete message
 ;;
 
+(setq default-mime-charset-for-write 'utf-8)
+(setq default-mime-transfer-level 8)
+
+(eval-after-load "mcharset"
+    '(setq charsets-mime-charset-alist
+	(delq
+	    (rassq 'iso-2022-jp charsets-mime-charset-alist)
+	    charsets-mime-charset-alist)))
+(eval-after-load "mcharset"
+    '(setq charsets-mime-charset-alist
+	(delq
+	    (rassq 'iso-2022-jp-2 charsets-mime-charset-alist)
+	    charsets-mime-charset-alist)))
+(eval-after-load "mcharset"
+    '(setq charsets-mime-charset-alist
+	(delq
+	    (rassq 'shift_jis charsets-mime-charset-alist)
+	    charsets-mime-charset-alist)))
+
+(eval-after-load
+    "mime-edit"
+    '(let ((text (assoc "text" mime-content-types)))
+	(set-alist 'text "plain"
+	    '(("charset" "" "UTF-8" "ISO-2022-JP" "US-ASCII")))
+	(set-alist 'mime-content-types "text" (cdr text))))
+
 ; Wanderrust
 ; ======================================================================
 
