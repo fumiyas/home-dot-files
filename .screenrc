@@ -1,3 +1,6 @@
+## Ctrl-z, d    Detach
+## Ctrl-z, k    Close window
+
 #escape ^Ta
 escape ^z^z
 #escape ^\
@@ -15,6 +18,7 @@ vbell off
 autodetach on
 startup_message off
 defscrollback 999999
+#altscreen on
 
 #termcap  Eterm* 'AF=\E[3%dm:AB=\E[4%dm'
 #terminfo Eterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
