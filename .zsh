@@ -60,6 +60,7 @@ setopt LIST_PACKED
 
 setopt CORRECT_ALL
 #CORRECT_IGNORE='_*'
+<<<<<<< Updated upstream
 
 bindkey '^i'    expand-or-complete	## Tab
 bindkey '\e[Z'  reverse-menu-complete	## Shift+Tab
@@ -75,6 +76,8 @@ zle -N _delete-char-or-list-expand
 bindkey '^d' _delete-char-or-list-expand
 
 WORDCHARS="${WORDCHARS//[ |\/._-]/}#"
+=======
+>>>>>>> Stashed changes
 
 ## Change directory
 ## ======================================================================
