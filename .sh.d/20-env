@@ -65,13 +65,14 @@ TERMINFO="$HOME/.terminfo"
 TERMCAP="$HOME/.termcap"
 export TERMINFO TERMCAP
 
-if [ x"$TERM" = x"mlterm" ]; then
-  if TERM="mlterm-256color" tput init >/dev/null 2>&1; then
-    TERM="mlterm-256color"
-  elif [ x"$UNAME" = x"AIX" ]; then
-    TERM="xterm-xfree86"
-    export TERM
-  fi
+if [ -n "$TERM" ]; then
+  for term in "$TERM" xtermc xterm; do
+    if infocmp "$term" >/dev/null 2>&1; then
+      TERM="$term"
+      export TERM
+      break
+    fi
+  done
 fi
 
 LESS="--RAW-CONTROL-CHARS --jump-target=5 --ignore-case"
