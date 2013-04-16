@@ -13,9 +13,8 @@
 if [ -S "${SSH_AUTH_SOCK-/dev/null}" ]; then
   : OK, 'ForwardAgent yes' on client is enabled
 else
-  SSH_AUTH_SOCK="$HOME/.ssh/agent.sock.$HOSTNAME"
-  SSH_AGENT_ENV="$HOME/.ssh/agent.env.$HOSTNAME"
-  export SSH_AUTH_SOCK SSH_AGENT_ENV
+  export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock.$HOSTNAME"
+  export SSH_AGENT_ENV="$HOME/.ssh/agent.env.$HOSTNAME"
 
   . "$SSH_AGENT_ENV" >/dev/null 2>&1
   if [ -n "$SSH_AUTH_SOCK_REAL" ] && [ -S "$SSH_AUTH_SOCK_REAL" ]; then

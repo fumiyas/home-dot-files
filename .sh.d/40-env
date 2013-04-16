@@ -4,22 +4,19 @@
 
 for editor in vim jvim vi; do
   if type $editor >/dev/null 2>&1; then
-    EDITOR="$editor"
-    export EDITOR
+    export EDITOR="$editor"
     break
   fi
 done
 
 for pager in less lv more; do
   if type $pager >/dev/null 2>&1; then
-    PAGER="$pager"
-    export PAGER
+    export PAGER="$pager"
     break
   fi
 done
 
 if type ifne >/dev/null 2>&1; then
-  GIT_PAGER="ifne $PAGER"
-  export GIT_PAGER
+  export GIT_PAGER="ifne $PAGER"
 fi
 
