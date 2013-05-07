@@ -13,6 +13,7 @@ export LANG
 [ -f "$log" ] && mv "$log" "$log.old"
 
 (
+  syndaemon -i 1 -t -k -d
   uim-xim &
   startkde
 ) > >(ts '%Y-%m-%d %H:%M:%S' |tee -a "$log") 2>&1
