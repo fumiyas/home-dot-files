@@ -249,6 +249,9 @@ rpm_dump()
   )
 }
 
+alias swaks-spfchecker1='swaks --to check-auth@verifier.port25.com'
+alias swaks-spfchecker2='swaks --to spf-test@openspf.net'
+
 ## Volume and Backlight adjustment
 ## ======================================================================
 
@@ -300,4 +303,3 @@ else
   alias which='which_csh'
 fi
 
-## EOF
