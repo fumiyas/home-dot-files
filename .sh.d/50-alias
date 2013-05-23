@@ -252,8 +252,10 @@ rpm_dump()
 ## Volume and Backlight adjustment
 ## ======================================================================
 
-alias vstop='amixer sset Master mute; pkill -STOP pulseaudio'
-alias vcont='pkill -CONT pulseaudio; amixer sset Master unmute'
+alias vstop='pactl suspend-sink 0 1'
+alias vcont='pactl suspend-sink 0 0'
+#alias vstop='amixer sset Master mute; pkill -STOP pulseaudio'
+#alias vcont='pkill -CONT pulseaudio; amixer sset Master unmute'
 alias vmute='amixer sset Master mute'
 alias vunmute='amixer sset Master unmute'
 
