@@ -1,3 +1,6 @@
+;; Wanderlust
+;; ======================================================================
+
 ;; M-x wl-save
 ;; M-x wl-summary-pack-number
 ;;
@@ -93,10 +96,25 @@
 	    '(("charset" "" "UTF-8" "ISO-2022-JP" "US-ASCII")))
 	(set-alist 'mime-content-types "text" (cdr text))))
 
-; Wanderrust
-; ======================================================================
+;; クォートされた文字列もデコードする
+(setq mime-header-lexical-analyzer
+      '(
+        ;; eword-analyze-quoted-string
+        eword-analyze-domain-literal
+        eword-analyze-comment
+        eword-analyze-spaces
+        eword-analyze-special
+        eword-analyze-encoded-word
+        eword-analyze-atom))
 
-; Servers
+;; NEC special chars
+;; NEC extended chars from IBM extended chars
+;; IBM extendec chars
+;(add-hook 'wl-message-redisplay-hook 'izonmoji-mode-on)
+
+;; ======================================================================
+
+;; Servers
 (setq
     wl-smtp-posting-server "127.0.0.1"
     wl-smtp-posting-port 25
@@ -450,11 +468,6 @@
 ;    "^X-Loop" "^X-List-Help:"
 ;    "^X-Trace:" "^X-Complaints-To:"
 ;))
-
-;; NEC special chars
-;; NEC extended chars from IBM extended chars
-;; IBM extendec chars
-;(add-hook 'wl-message-redisplay-hook 'izonmoji-mode-on)
 
 ;; Draft mode
 ;; ======================================================================
