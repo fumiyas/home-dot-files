@@ -472,7 +472,14 @@ iab Yruler 123456789012345678901234567890123456789012345678901234567890123456789
 " Auto command
 " ======================================================================
 
+set directory^=~/var/vim
+
 augroup vimrc
+"  autocmd BufReadPre * setlocal noswapfile
+"  autocmd BufEnter ~/Dropbox/* set directory^=~/var/vim
+"  autocmd BufEnter * nested setlocal swapfile
+"  autocmd BufLeave ~/Dropbox/* set directory-=~/var/vim
+
   autocmd BufNewFile,BufRead *.[ch] set formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
   autocmd BufNewFile *.rb 0r ~/.vim/template/ruby.rb
   autocmd BufNewFile *.py 0r ~/.vim/template/python.py
