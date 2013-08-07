@@ -482,6 +482,7 @@ augroup vimrc
 
   autocmd BufNewFile *.html 0r ~/.vim/template/strict.html
   autocmd BufNewFile *.html set fileencoding=UTF-8
+  autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd BufRead /tmp/ldapvi-*/data set filetype=ldif
 
   "autocmd BufWritePre,FileWritePre *vim/vim/runtime/doc/*.txt if getline(1) =~ "Last modification: "
