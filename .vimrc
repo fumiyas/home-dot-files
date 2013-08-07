@@ -309,6 +309,7 @@ set tabstop=8
 set noexpandtab
 set smarttab
 set backspace=indent,eol,start
+set formatoptions=
 set nrformats-=octal
 set nobackup
 set noendofline
