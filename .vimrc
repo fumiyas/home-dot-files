@@ -27,7 +27,6 @@ else
 endif
 
 Bundle 'https://github.com/koron/verifyenc-vim.git'
-Bundle 'fakeclip'
 Bundle 'BlockDiff'
 Bundle 'vim-creole'
 
@@ -44,6 +43,18 @@ endif
 if filereadable($VIM . "/addons/plugin/migemo.vim")
   source $VIM/addons/plugin/migemo.vim
   noremap // :<C-u>Migemo<CR>
+endif
+
+" fakeclip
+" ----------------------------------------------------------------------
+
+Bundle 'fakeclip'
+
+if version >= 700
+  nmap sy <Plug>(fakeclip-y)
+  nmap syy <Plug>(fakeclip-Y)
+  vmap sy <Plug>(fakeclip-y)
+  nmap sp <Plug>(fakeclip-p)
 endif
 
 " YankRing
@@ -67,6 +78,11 @@ map <C-]> a<C-]><ESC>
 " Highlight multiple searche
 " ----------------------------------------------------------------------
 
+" :Search keyword
+" :SearchReset
+" :SearchBuffers keyword
+" :SearchBuffersReset
+
 Bundle 'MultipleSearch'
 
 let g:MultipleSearchMaxColors = 10
@@ -84,10 +100,14 @@ nnoremap <silent> <C-f><C-f> :FufFileWithCurrentBufferDir!<CR>
 " Tagbar
 " ----------------------------------------------------------------------
 
+" :TagbarToggle
+
 Bundle 'Tagbar'
 
 set updatetime=1000
 set tags=./tags,./TAGS,tags,TAGS;/
+
+nmap <F8> :TagbarToggle<CR>
 
 " Command mode
 " ======================================================================
@@ -385,12 +405,6 @@ map <C-p> :cp<CR>
 "map <C-x> :! sort -n
 "map <C-C> :write !xclipx<CR><CR>
 "map <C-V> :r! xclip -out<CR><CR>
-if version >= 700
-  nmap sy <Plug>(fakeclip-y)
-  nmap syy <Plug>(fakeclip-Y)
-  vmap sy <Plug>(fakeclip-y)
-  nmap sp <Plug>(fakeclip-p)
-endif
 
 function! ClipboardPaste() range
   let text = system("xclip -out")
