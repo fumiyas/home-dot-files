@@ -23,6 +23,8 @@
 autoload -U is-at-least
 autoload -U colors; colors
 
+disable r
+
 ## Key bindng
 ## ======================================================================
 
