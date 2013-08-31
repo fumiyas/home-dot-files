@@ -57,6 +57,8 @@ fi
 zstyle ':completion:*' file-patterns \
   '%p:globbed-files *(-/):directories' '*:all-files'
 
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
 setopt AUTO_LIST
 setopt LIST_TYPES
 setopt LIST_PACKED
@@ -81,6 +83,8 @@ WORDCHARS="${WORDCHARS//[ |\/._-]/}#"
 
 ## Change directory
 ## ======================================================================
+
+DIRSTACKSIZE=20
 
 ## ディレクトリ名のみの入力をcdの引数として実行
 setopt AUTO_CD
