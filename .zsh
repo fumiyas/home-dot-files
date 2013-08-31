@@ -20,6 +20,7 @@
 
 ## http://gihyo.jp/dev/serial/01/zsh-book/0003
 
+autoload -U is-at-least
 autoload -U colors; colors
 
 ## Key bindng
@@ -153,13 +154,9 @@ setopt EXTENDED_GLOB		# 拡張パターンマッチングを使用
 ## Filename glob
 ## ======================================================================
 
-case "$ZSH_VERSION" in
-[1-3].*|4.[01].*)
-  ;;
-*)
+if is-at-least 4.2.0; then
   setopt no_CASE_GLOB
-  ;;
-esac
+fi
 
 setopt NUMERIC_GLOB_SORT
 
@@ -170,14 +167,11 @@ zle -N self-insert url-quote-magic
 ## Prompt
 ## ======================================================================
 
-case "$ZSH_VERSION" in
-[1-3].*|4.[012].*)
+if is-at-least 4.3.0; then
   setopt PROMPT_CR
-  ;;
-*)
+else
   setopt PROMPT_SP
-  ;;
-esac
+fi
 
 case "$TERM" in
 screen.*)
