@@ -270,8 +270,6 @@
 ;	    ("^vim-jp$" . "+ml/misc/vim-jp")
 ;	)
         ("Subject"
-	    ("MSGSYS" . "+work/osstech/em")
-
 	    ("^VMware Newsletter " . "+ml/member/vmware")
 
 	    ("^\\[samba-jp:" . "+ml/samba/samba-jp")
@@ -290,33 +288,25 @@
 	    ("^\\[DNSOPS " . "+ml/net/dnsops")
 	    ("^\\[rt100i-users" . "+ml/net/rt100i-users")
 	    ("\\[hyperestraier-" . "+ml/misc/hyperestraier")
-	    ("^\\[vmware-j:" . "+ml/misc/vmware-jp")
 	    ("^\\[jsosug:" . "+ml/linux/jsosug")
 
 	    ("^\\[installer " . "+ml/misc/installer")
-	    ("^\\[chuo_secikusei:" . "+ml/member/chuo-sec")
-	)
-        ("From"
-	    ;("membership@atmarkit.co.jp" . "+ml/member/@it")
-	    ("mag2 0000005897" . "+ml/member/scansecurity-wire")
 	)
         (("To" "Cc")
-	    ("support@osstech.co.jp" . "+work/osstech/support")
-	    ("storage-planner@tele-nisi.co.jp" . "+work/osstech/support")
-	    ("consult@osstech.co.jp" . "+work/osstech/consult")
-	    ("ost-sys@osstech.co.jp" . "+work/osstech/sys")
-	    ("ost-syslog@osstech.co.jp" . "+work/osstech/sys")
-	    ("sys-.*@osstech.co.jp" . "+work/osstech/sys")
-	    ("syslog@osstech.co.jp" . "+work/osstech/sys")
-	    ("ost-tech@osstech.co.jp" . "+work/osstech/tech")
-	    ("ipa-project@osstech.co.jp" . "+work/osstech/ipa")
-
 	    ("dns@list.cr.yp.to" . "+ml/net/djb-dns")
 
 	    ("-admin-@samba.gr.jp" . "+ml/samba/sugj-bounce")
 	    ("-admin-.+=[a-z0-9.-]+@samba.gr.jp" . "+ml/samba/sugj-bounce")
 	)
         ("Return-Path"
+	    ("<ost-support-bounces\\+.*@osstech.co.jp" . "+work/osstech/support")
+	    ("<ost-consult-bounces\\+.*@osstech.co.jp" . "+work/osstech/consult")
+	    ("<ost-sys-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
+	    ("<ost-syslog-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
+	    ("<ost-sys-.*-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
+	    ("<ost-syslog-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
+	    ("<ost-tech-bounces\\+.*@osstech.co.jp" . "+work/osstech/tech")
+
 	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
 
 	    ("solaris2u-bounces@" . "+ml/os/solaris2u")
@@ -340,14 +330,11 @@
 	    ("vaj-admin-bounces@namazu.org" . "+ml/misc/namazu-admin")
 	    ("project-ja-bounces@namazu.org" . "+ml/misc/namazu-project")
 
-	    ("vmailmgr-return" . "+ml/net/vmailmgr")
-
 	    ("ruby-list-admin@" . "+ml/develop/ruby-list")
 	    ("ruby-dev-admin@" . "+ml/develop/ruby-dev")
 	    ("rails=return=" . "+ml/develop/rails")
 	    ("skk-return-" . "+ml/misc/skk")
 	    ("nakajima.yasushi-pdfj-return-" . "+ml/misc/pdfj")
-;	    ("sentto-2296978-" . "+ml/misc/docbook")
 	    ("edict-return-" . "+ml/misc/edict")
 	    ("gunma-ct-bounces@" . "+ml/friend/gunma-ct")
 	)
