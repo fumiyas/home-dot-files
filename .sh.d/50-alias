@@ -100,6 +100,7 @@ alias truss-sol-xat='truss -aedlDE -v all -r all -w all'
 alias truss-aix-x='truss -aedlD'
 alias gcc-macros='gcc -E -dM - </dev/null'
 alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
+alias valgrind-x='valgrind -v --leak-check=full --show-reachable=yes'
 
 for cmd in diff make grep egrep fgrep; do
   type "g$cmd" >/dev/null 2>&1 && alias "$cmd=g$cmd"
