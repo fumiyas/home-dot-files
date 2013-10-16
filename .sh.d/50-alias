@@ -227,7 +227,11 @@ alias manf8e='LC_ALL=C LANG=C MANPATH=/srv/os/freebsd-8/usr/share/man man'
 
 mancat()
 {
-  nroff -man "$@" |"$PAGER"
+  if type roff2text >/dev/null 2>&1; then
+    roff2text -K utf8 -T utf8 "$@" |"$PAGER"
+  else
+    nroff -man "$@" |"$PAGER"
+  fi
 }
 
 #shar -macDB --no-i18n -n ... -o ...
