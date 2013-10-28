@@ -31,3 +31,13 @@ if [ -d "$HOME/perl5/lib/perl5" ]; then
   esac
 fi
 
+## Use Pod::Text::Color::Delight for perldoc(1) if available
+if perl -MPod::Text::Color::Delight -e '' 2>/dev/null; then
+  case " $PERLDOC " in
+  *" -MPod::Text::Color::Delight "*)
+    ;;
+  *)
+    export PERLDOC="${PERLDOC+$PERLDOC }-MPod::Text::Color::Delight"
+    ;;
+  esac
+fi
