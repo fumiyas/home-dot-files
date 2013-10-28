@@ -20,3 +20,14 @@ if type ifne >/dev/null 2>&1; then
   export GIT_PAGER="ifne $PAGER"
 fi
 
+## Perl libs in $HOME by cpanm
+if [ -d "$HOME/perl5/lib/perl5" ]; then
+  case ":$PERL5LIB:" in
+  *":$HOME/perl5/lib/perl5:"*)
+    ;;
+  *)
+    export PERL5LIB="${PERL5LIB+$PERL5LIB:}$HOME/perl5/lib/perl5"
+    ;;
+  esac
+fi
+
