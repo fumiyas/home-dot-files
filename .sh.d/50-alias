@@ -113,7 +113,7 @@ make() {
     LC_ALL=C command make "$@"
   fi \
   2> >(
-    sed \
+    sed --unbuffered \
       -e 's/^\(.*: \)\(error:.*\)$/\1[31m\2[0m/g' \
       -e 's/^\(.*: \)\(warning:.*\)$/\1[33m\2[0m/g' \
     >&2
