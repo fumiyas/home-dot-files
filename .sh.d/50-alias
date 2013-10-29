@@ -102,9 +102,23 @@ alias gcc-macros='gcc -E -dM - </dev/null'
 alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
 alias valgrind-x='valgrind -v --leak-check=full --show-reachable=yes'
 
-for cmd in diff make grep egrep fgrep; do
+for cmd in diff grep egrep fgrep; do
   type "g$cmd" >/dev/null 2>&1 && alias "$cmd=g$cmd"
 done
+
+make() {
+  if type gmake >/dev/null; then
+    LC_ALL=C gmake "$@"
+  else
+    LC_ALL=C command make "$@"
+  fi \
+  2> >(
+    sed \
+      -e 's/^\(.*: \)\(error:.*\)$/\1[31m\2[0m/g' \
+      -e 's/^\(.*: \)\(warning:.*\)$/\1[33m\2[0m/g' \
+    >&2
+  )
+}
 
 if type "g$cmd" >/dev/null 2>&1; then
   alias diff='LC_ALL=C gdiff'
