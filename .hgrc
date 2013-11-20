@@ -41,3 +41,7 @@ attend = annotate, cat, diff, export, glog, log, qdiff, help
 [diff]
 git = True
 
+[color]
+log.changeset = black yellow_background bold
+diff.diffline = underline
+
