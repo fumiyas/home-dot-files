@@ -6,6 +6,7 @@
 	ui = auto
 
 [color "diff"]
+	commit = yellow bold reverse
 	meta = ul
 	frag = magenta bold
 	old = red
