@@ -5,6 +5,12 @@
 [color]
 	ui = auto
 
+[color "diff"]
+	meta = ul
+	frag = magenta bold
+	old = red
+	new = green
+
 [alias]
 	wdiff = diff --word-diff
 
