@@ -62,6 +62,7 @@ esac
 ## Command history
 HISTSIZE=100000
 HISTFILESIZE=100000
+HISTTIMEFORMAT='%Y/%m/%d %T '
 if [ ${BASH_VERSION%%.*} -ge 3 ]; then
   HISTCONTROL=erasedups
 else
