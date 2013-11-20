@@ -10,4 +10,5 @@
 
 [log]
         date = local
+	decorate = full
 
