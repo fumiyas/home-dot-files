@@ -265,10 +265,6 @@
 
 (setq wl-refile-rule-alist
     '(
-;	("X-ML-Name"
-;	    ("^modperl$" . "+ml/develop/mod_perl")
-;	    ("^vim-jp$" . "+ml/misc/vim-jp")
-;	)
         ("Subject"
 	    ("^VMware Newsletter " . "+ml/member/vmware")
 
@@ -299,7 +295,7 @@
 	    ("-admin-.+=[a-z0-9.-]+@samba.gr.jp" . "+ml/samba/sugj-bounce")
 	)
         ("Return-Path"
-	    ("<ost-support-bounces\\+.*@osstech.co.jp" . "+work/osstech/support")
+	    ("<[a-z]+-support-bounces\\+.*@osstech.co.jp" . "+work/osstech/support")
 	    ("<ost-consult-bounces\\+.*@osstech.co.jp" . "+work/osstech/consult")
 	    ("<ost-sys-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
 	    ("<ost-syslog-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
@@ -308,12 +304,15 @@
 	    ("<ost-tech-bounces\\+.*@osstech.co.jp" . "+work/osstech/tech")
 
 	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
+	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
+	    ("openldap-technical-bounces" . "+ml/net/openldap-technical")
 
 	    ("solaris2u-bounces@" . "+ml/os/solaris2u")
 	    ("users-bounces@opensolaris" . "+ml/os/solaris-ug")
 	    ("begin-bounces@ml.begi.net" . "+ml/linux/beginet-begin")
 	    ("freetalk-bounces@ml.begi.net" . "+ml/linux/beginet-freetalk")
 
+	    ("dovecot-bounces@" . "+ml/net/dovecot")
 	    ("postfix-jp-list-bounces@" . "+ml/net/postfix-jp")
 	    ("milter-manager-users-ja-bounces@" . "+ml/net/milter-manager-users-ja")
 	    ("spamassassin-jp-bounces\\+.*@" . "+ml/net/spamassassin-jp")
@@ -330,8 +329,8 @@
 	    ("vaj-admin-bounces@namazu.org" . "+ml/misc/namazu-admin")
 	    ("project-ja-bounces@namazu.org" . "+ml/misc/namazu-project")
 
-	    ("ruby-list-admin@" . "+ml/develop/ruby-list")
-	    ("ruby-dev-admin@" . "+ml/develop/ruby-dev")
+	    ("ruby-list-bounces@" . "+ml/develop/ruby-list")
+	    ("ruby-dev-bounces@" . "+ml/develop/ruby-dev")
 	    ("rails=return=" . "+ml/develop/rails")
 	    ("skk-return-" . "+ml/misc/skk")
 	    ("nakajima.yasushi-pdfj-return-" . "+ml/misc/pdfj")
@@ -423,6 +422,7 @@
     "^X-Loop:"
     "^X-ExtLoop1:"
     "^X-Original-To:"
+    "^X-Original-Received:"
     "^X-Debian:"
     "^X-vs:"
     "^X-Git-"
