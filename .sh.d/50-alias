@@ -108,9 +108,9 @@ done
 
 make() {
   if type gmake >/dev/null; then
-    LC_ALL=C gmake "$@"
+    LC_MESSAGES=C gmake "$@"
   else
-    LC_ALL=C command make "$@"
+    LC_MESSAGES=C command make "$@"
   fi \
   2> >(
     sed --unbuffered \
