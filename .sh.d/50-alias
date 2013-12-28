@@ -28,6 +28,7 @@ alias dstat-net='dstat -Tclnd'
 alias dstat-disk='dstat -Tcldr'
 
 alias wcp='wget -m -l3 --no-parent'
+alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 alias whois-jp='whois -h whois.jprs.jp'
 alias whois-jp-en='whois_jp_en'
 whois_jp_en() {
@@ -72,6 +73,7 @@ alias telnet-u='nc.openbsd -U'
 ## UNIX crypt(1) emulation by mcrypt(1)
 alias crypt='mcrypt -a enigma --keymode scrypt --bare'
 
+alias cls='ls --color=always --classify'
 alias cgrep='grep --color=always'
 alias cegrep='egrep --color=always'
 
@@ -102,9 +104,22 @@ alias gcc-macros='gcc -E -dM - </dev/null'
 alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
 alias valgrind-x='valgrind -v --leak-check=full --show-reachable=yes'
 
-for cmd in diff grep egrep fgrep; do
+for cmd in grep egrep fgrep; do
   type "g$cmd" >/dev/null 2>&1 && alias "$cmd=g$cmd"
 done
+
+if type gdiff >/dev/null 2>&1; then
+  alias diff='LC_MESSAGES=C gdiff'
+else
+  alias diff='LC_MESSAGES=C diff'
+fi
+if ! type colordiff >/dev/null 2>&1; then
+  colordiff()
+  {
+    { [ -z "${1-}" ] && cat || LC_ALL=C diff "$@"; } \
+    |sed -e '/^--- /n;s/^[+>]/\x1b\[32m+/;s/^[-<]/\x1b[31m-/;s/$/\x1b[0m/'
+  }
+fi
 
 make() {
   if type gmake >/dev/null; then
@@ -119,19 +134,6 @@ make() {
     >&2
   )
 }
-
-if type "g$cmd" >/dev/null 2>&1; then
-  alias diff='LC_ALL=C gdiff'
-else
-  alias diff='LC_ALL=C diff'
-fi
-if ! type colordiff >/dev/null 2>&1; then
-  colordiff()
-  {
-    { [ -z "${1-}" ] && cat || LC_ALL=C diff "$@"; } \
-    |sed -e '/^--- /n;s/^[+>]/\x1b\[32m+/;s/^[-<]/\x1b[31m-/;s/$/\x1b[0m/'
-  }
-fi
 
 if type vim >/dev/null 2>&1; then
   alias vi="${vim_env}vim"
@@ -235,6 +237,10 @@ alias manc5='MANPATH=/srv/os/centos-5/usr/share/man man'
 alias manc5e='LC_ALL=C LANG=C MANPATH=/srv/os/centos-5/usr/share/man man'
 alias mana5='MANPATH=/srv/os/aix-5/usr/share/man man'
 alias mana5e='LC_ALL=C LANG=C MANPATH=/srv/os/aix-5/usr/share/man man'
+alias mana6='MANPATH=/srv/os/aix-6/usr/share/man man'
+alias mana6e='LC_ALL=C LANG=C MANPATH=/srv/os/aix-6/usr/share/man man'
+alias mana7='MANPATH=/srv/os/aix-7/usr/share/man man'
+alias mana7e='LC_ALL=C LANG=C MANPATH=/srv/os/aix-7/usr/share/man man'
 alias manf9='MANPATH=/srv/os/freebsd-9/usr/share/man man'
 alias manf9e='LC_ALL=C LANG=C MANPATH=/srv/os/freebsd-9/usr/share/man man'
 alias manf8='MANPATH=/srv/os/freebsd-8/usr/share/man man'
