@@ -35,6 +35,9 @@ NeoBundle 'https://github.com/koron/verifyenc-vim.git'
 NeoBundle 'BlockDiff'
 NeoBundle 'vim-creole'
 
+NeoBundle 'https://github.com/Yggdroot/indentLine.git'
+let g:indentLine_color_term = 239
+
 " misc
 " ----------------------------------------------------------------------
 
