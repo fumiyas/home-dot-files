@@ -12,23 +12,25 @@ endif
 " Plugins
 " ======================================================================
 
-" Vundle
+" NeoBundle
 " ----------------------------------------------------------------------
 
-if version >= 703 && isdirectory(expand('$HOME/.vim/vundle'))
-  filetype off
-  set runtimepath+=~/.vim/vundle/
-  call vundle#rc()
-  filetype plugin indent on
-else
-  "" Vundler is not available, thus define a dummy 'Bundle' command
-  "" to avoid error: "Not an editor command: Bundle 'xxxxx'"
-  command! -nargs=+ Bundle
+filetype off
+
+if has('vim_starting')
+  if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+    call neobundle#rc(expand('~/.vim/bundle'))
+  else
+    "" Neoundler is not available, thus define a dummy 'NeoBundle' command
+    "" to avoid error: "Not an editor command: NeoBundle 'xxxxx'"
+    command! -nargs=+ NeoBundle
+  endif
 endif
 
-Bundle 'https://github.com/koron/verifyenc-vim.git'
-Bundle 'BlockDiff'
-Bundle 'vim-creole'
+NeoBundle 'https://github.com/koron/verifyenc-vim.git'
+NeoBundle 'BlockDiff'
+NeoBundle 'vim-creole'
 
 " misc
 " ----------------------------------------------------------------------
@@ -48,7 +50,7 @@ endif
 " fakeclip
 " ----------------------------------------------------------------------
 
-Bundle 'fakeclip'
+NeoBundle 'fakeclip'
 
 if version >= 700
   nmap sy <Plug>(fakeclip-y)
@@ -61,7 +63,7 @@ endif
 " YankRing
 " ----------------------------------------------------------------------
 
-Bundle 'YankRing.vim'
+NeoBundle 'YankRing.vim'
 
 let g:yankring_history_dir = expand('$HOME/.vim/private')
 let g:yankring_persist = 1
@@ -69,7 +71,7 @@ let g:yankring_persist = 1
 " closetag
 " ----------------------------------------------------------------------
 
-Bundle 'closetag.vim'
+NeoBundle 'closetag.vim'
 
 let g:closetag_html_style=1
 
@@ -84,15 +86,15 @@ map <C-]> a<C-]><ESC>
 " :SearchBuffers keyword
 " :SearchBuffersReset
 
-Bundle 'MultipleSearch'
+NeoBundle 'MultipleSearch'
 
 let g:MultipleSearchMaxColors = 10
 
 " FuzzyFinder
 " ----------------------------------------------------------------------
 
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+NeoBundle 'L9'
+NeoBundle 'FuzzyFinder'
 
 "let g:fuf_useMigemo = 1
 
@@ -103,7 +105,7 @@ nnoremap <silent> <C-f><C-f> :FufFileWithCurrentBufferDir!<CR>
 
 " :TagbarToggle
 
-Bundle 'Tagbar'
+NeoBundle 'Tagbar'
 
 set updatetime=1000
 set tags=./tags,./TAGS,tags,TAGS;/
