@@ -18,7 +18,7 @@ endif
 filetype off
 
 if has('vim_starting')
-  if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
+  if isdirectory(expand('~/.vim/bundle/neobundle.vim')) && version >= 702
     set runtimepath+=~/.vim/bundle/neobundle.vim
     call neobundle#rc(expand('~/.vim/bundle'))
   else
