@@ -55,6 +55,7 @@ if version >= 700
   nmap syy <Plug>(fakeclip-Y)
   vmap sy <Plug>(fakeclip-y)
   nmap sp <Plug>(fakeclip-p)
+  nmap sP <Plug>(fakeclip-P)
 endif
 
 " YankRing
