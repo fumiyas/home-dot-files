@@ -28,6 +28,9 @@ if has('vim_starting')
   endif
 endif
 
+filetype plugin on
+filetype indent on
+
 NeoBundle 'https://github.com/koron/verifyenc-vim.git'
 NeoBundle 'BlockDiff'
 NeoBundle 'vim-creole'
