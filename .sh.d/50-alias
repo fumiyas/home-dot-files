@@ -37,7 +37,7 @@ whois_jp_en() {
 
 cal() {
   if [ $# -eq 0 ]; then
-    command cal -3
+    command cal -A2
   else
     command cal ${1+"$@"}
   fi
@@ -134,6 +134,8 @@ make() {
     >&2
   )
 }
+
+alias rbenv='RUBY_CONFIGURE_OPTS="--enable-load-relative" rbenv'
 
 if type vim >/dev/null 2>&1; then
   alias vi="${vim_env}vim"
