@@ -79,7 +79,17 @@ function _delete-char-or-list-expand() {
 zle -N _delete-char-or-list-expand
 bindkey '^d' _delete-char-or-list-expand
 
-WORDCHARS="${WORDCHARS//[ |\/._-]/}#"
+#WORDCHARS="${WORDCHARS//[ |\/._-]/}#"
+autoload -U select-word-style
+select-word-style default
+#select-word-style bash
+#zstyle ':zle:*' word-chars " _-./;@"
+#zstyle ':zle:*' word-style unspecified
+bindkey '^w' vi-backward-kill-word
+bindkey '^[^w' backward-kill-word
+bindkey '^[^B' vi-backward-blank-word
+bindkey '^[^F' vi-forward-blank-word
+#bindkey '^[^K' delete-word
 
 ## Change directory
 ## ======================================================================
