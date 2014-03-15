@@ -4,3 +4,4 @@ set history filename ~/.gdb_history
 set print pretty on
 set print static-members off
 set charset ASCII
+add-auto-load-safe-path /usr/share/go/src/pkg/runtime/runtime-gdb.py
