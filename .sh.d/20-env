@@ -136,7 +136,7 @@ if type ggrep >/dev/null 2>&1; then
 fi
 
 ## Go
-export GOPATH="$HOME/.go"
+export GOPATH="$HOME/go"
 
 ## Ruby
 export RI="--format ansi"
