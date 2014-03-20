@@ -102,6 +102,7 @@ alias truss-sol-xat='truss -aedlDE -v all -r all -w all'
 alias truss-aix-x='truss -aedlD'
 alias gcc-macros='gcc -E -dM - </dev/null'
 alias gcc-x='gcc -O2 -march=native -pipe -fomit-frame-pointer -flto'
+alias gcc-Wall='gcc -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-pointer-sign -Wno-missing-field-initializers -Wformat=2 -Wstrict-aliasing=2 -Wdisabled-optimization -Wfloat-equal -Wpointer-arith -Wdeclaration-after-statement -Wbad-function-cast -Wcast-align -Wredundant-decls -Winline'
 alias valgrind-x='valgrind -v --leak-check=full --show-reachable=yes'
 
 for cmd in grep egrep fgrep; do
