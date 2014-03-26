@@ -27,6 +27,8 @@ alias dstat-cpu='dstat -Tclr'
 alias dstat-net='dstat -Tclnd'
 alias dstat-disk='dstat -Tcldr'
 
+alias dig-x='dig +qr +multiline'
+
 alias wcp='wget -m -l3 --no-parent'
 alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 alias whois-jp='whois -h whois.jprs.jp'
@@ -94,7 +96,8 @@ alias cdrw-blank="$cdrecord -v blank=fast"
 alias cdrw-blank-slow="$cdrecord -v blank=all"
 unset cdrecord
 
-alias strace-x='strace -fttTCxv -s 9999'
+alias strace-x='strace -fttTCxv'
+alias ltrace-x='ltrace -fttTCS'
 alias truss-sol-x='truss -aedlDE -v all'
 alias truss-sol-xa='truss -aedlDE -v all -r all -w all'
 alias truss-sol-xt='truss -aedlDE -v all'
