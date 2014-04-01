@@ -69,17 +69,6 @@
     )
 )
 
-(if (featurep 'xemacs)
-    (setq load-path
-	(append
-	    (list
-		(expand-file-name "~/lib/elisp/xemacs")
-	    )
-	    load-path
-	)
-    )
-)
-
 (setq temporary-file-directory (expand-file-name "~/var/tmp"))
 
 ;; hoge.txt~ みたいなバックアップファイルを作らないようにする
@@ -98,16 +87,10 @@
 ;; ======================================================================
 
 ;;
-;(if (not (featurep 'xemacs))
-    (when (locate-library "jisx0213")
-	(require 'jisx0213)
-    )
-;)
-
-;; Use Mule-UCS
-(if (featurep 'xemacs)
-    (require 'un-define)
+(when (locate-library "jisx0213")
+    (require 'jisx0213)
 )
+
 ;(un-define-debian)
 ;(un-define-debian-jisx0213)
 
@@ -123,9 +106,6 @@
 ;; ---- language-env DON'T MODIFY THIS LINE!
 ;; 日本語 info が文字化けしないように
 (auto-compression-mode t)
-;; xemacs の shell-mode で 日本語 EUC が使えるようにする
-;(add-hook 'shell-mode-hook (function
-;   (lambda () (set-buffer-process-coding-system 'euc-japan 'euc-japan))))
 ;; 日本語 grep
 ;(if (file-exists-p "/usr/bin/jgrep")
 ;    (setq grep-command "jgrep -n -e ")
@@ -136,10 +116,8 @@
 
 (when window-system
     (tool-bar-mode -1)
-    (when (not (featurep 'xemacs))
-	(auto-image-file-mode t)
-	(mouse-wheel-mode t)
-    )
+    (auto-image-file-mode t)
+    (mouse-wheel-mode t)
 )
 
 (setq visible-bell nil)
@@ -234,7 +212,6 @@
 ;; Imput Method
 ;; ----------------------------------------------------------------------
 
-;(setq load-path (delete "/usr/share/xemacs21/site-lisp/ddskk" load-path))
 ;(skk-mode)
 ;(setq default-input-method "japanese-skk")
 
@@ -266,9 +243,7 @@
 ;; ----------------------------------------------------------------------
 
 (require 'font-lock)
-(if (not (featurep 'xemacs))
-    (global-font-lock-mode t)
-)
+(global-font-lock-mode t)
 (add-hook 'font-lock-mode-hook
     '(lambda ()
 	(make-face 'comment-face)
@@ -546,17 +521,6 @@
 ;    'prepend
 ;)
 
-;(when (featurep 'xemacs)
-;    (set-face-font
-;	'default "-ricoh-ms.gothic-medium-r-normal--14-*-*-*-*-*-*-*"
-;	'global
-;	'(mule-fonts)
-;	'prepend
-;    )
-;    ;(set-face-font 'default "-ricoh-ms.gothic-medium-r-normal--15-*-*-*-*-*-*-*")
-;    ;(set-face-font 'default "-mplus-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
-;)
-
 ;(setq initial-frame-alist
 ;    '(
 ;	(font . "fontset-14")
@@ -574,21 +538,6 @@
 ;	(auto-raise . t)
 ;    )
 ;)
-
-;; C プログラムの書式
-;; ======================================================================
-;(defun my-c-mode-common-hook ()
-;   (c-set-style "linux") (setq indent-tabs-mode t) ;linux 式がいいとき
-;      /usr/src/linux/Documentation/CodingStyle 参照
-;   (c-set-style "k&r") ;k&r式がいいときはこれを有効にする
-;   (c-set-style "gnu") ;デフォルトの設定
-; )
-;(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-
-;> これは load-pathにconsをつかわないで全部指定する以外に、
-;> /usr/share/xemacs20/site-lisp/skkだけをdebian標準から抜く方法は
-;> あるでしょうか?
-;(setq load-path (delete "ぬきたいパス" load-path))
 
 (custom-set-variables
  '(load-home-init-file t t))
@@ -608,13 +557,6 @@
 ;; http://www.emacswiki.org/cgi-bin/wiki/CopyAndPaste
 ;; ----------------------------------------------------------------------
 
-;; XEmacs
-(when (featurep 'xemacs)
-    (setq interprogram-cut-function 'own-clipboard)
-    (setq interprogram-paste-function 'get-clipboard)
-)
-
-;; Emacs 21.2.1 or later
 (setq x-select-enable-clipboard t)
 
 ;(set-selection-coding-system 'compound-text-unix)
