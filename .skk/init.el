@@ -2,6 +2,7 @@
 (setq skk-server-portnum 1178)
 (setq skk-aux-large-jisyo "/usr/share/skk/SKK-JISYO.L")
 ;(setq skk-large-jisyo "/usr/share/skk/SKK-JISYO.L")
+(setq skk-jisyo-code 'utf-8)
 
 ;; 複数の Emacsen を起動して個人辞書を共有する
 (setq skk-share-private-jisyo t)
