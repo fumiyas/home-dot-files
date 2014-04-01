@@ -18,6 +18,7 @@ done
 
 if type ifne >/dev/null 2>&1; then
   export GIT_PAGER="ifne $PAGER"
+  export HG_PAGER="ifne $PAGER" ## See ~/.hgrc
 fi
 
 ## Perl libs in $HOME by cpanm

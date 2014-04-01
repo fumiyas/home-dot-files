@@ -1,6 +1,8 @@
 [ui]
 username = SATOH Fumiyasu <fumiyas@osstech.co.jp>
 
+[defaults]
+
 [extensions]
 hgext.patchbomb =
 color =
@@ -37,8 +39,10 @@ nudge = push --rev .
 
 [pager]
 attend = annotate, cat, diff, export, glog, log, qdiff, help
+pager = $HG_PAGER
 
 [diff]
+showfunc = True
 git = True
 
 [color]
