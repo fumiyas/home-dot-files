@@ -153,6 +153,8 @@ nmap <F8> :TagbarToggle<CR>
 
 " C-a	Increment the number
 " C-x	Decrement the number
+" C-o	Move to old cursor place
+" C-i	Move to new cursor place
 " [I	??
 " *	Search locations for same words on cursor
 
@@ -493,7 +495,8 @@ augroup vimrc
 "  autocmd BufEnter * nested setlocal swapfile
 "  autocmd BufLeave ~/Dropbox/* set directory-=~/var/vim
 
-  autocmd BufNewFile,BufRead *.[ch] set formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=8
+  autocmd BufNewFile,BufRead *.[ch] setlocal formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
   autocmd BufNewFile *.rb 0r ~/.vim/template/ruby.rb
   autocmd BufNewFile *.py 0r ~/.vim/template/python.py
   autocmd BufNewFile *.pl 0r ~/.vim/template/perl.pl
@@ -501,9 +504,9 @@ augroup vimrc
   "autocmd BufNewFile *.pl execute "normal i#!/usr/bin/env perl\<CR>" | echo "New File"
 
   autocmd BufNewFile *.html 0r ~/.vim/template/strict.html
-  autocmd BufNewFile *.html set fileencoding=UTF-8
-  autocmd BufNewFile,BufRead *.md set filetype=markdown
-  autocmd BufRead /tmp/ldapvi-*/data set filetype=ldif
+  autocmd BufNewFile *.html setlocal fileencoding=UTF-8
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  autocmd BufRead /tmp/ldapvi-*/data setlocal filetype=ldif
 
   "autocmd BufWritePre,FileWritePre *vim/vim/runtime/doc/*.txt if getline(1) =~ "Last modification: "
   "autocmd BufWritePre,FileWritePre *vim/vim/runtime/doc/*.txt normal msgg/Last modification: /e+1"_D"=strftime("%Y %b %d")p`s
