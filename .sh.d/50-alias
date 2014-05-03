@@ -20,6 +20,7 @@ alias nkf-x='nkf -x -m0'
 
 alias ps-x="ps -efly"
 alias ps-u="ps -fu $LOGNAME"
+alias iostat-x="iostat -xtc"
 alias pstree-x='pstree -acpu'
 alias dstat-full='dstat -Tclmdrn'
 alias dstat-mem='dstat -Tclm'
