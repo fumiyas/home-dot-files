@@ -469,6 +469,10 @@
 ;(skk-mode)
 ;)))
 
+;; Re: Re[2]: -> Re:
+(setq wl-subject-re-prefix-regexp
+  "^[ \t]*\\([Rr][Ee]\\(\\[[0-9]+\\]\\)?[:>][ \t]*\\)*[ \t]*")
+
 ; File Carbon Copy
 (setq wl-fcc "+sent")
 (setq wl-fcc-force-as-read t)  ; IMAP4 only
