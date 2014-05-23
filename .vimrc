@@ -268,6 +268,22 @@ if exists('&colorcolumn')
   highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 endif
 
+let g:markdown_fenced_languages = [
+\  'c',
+\  'css',
+\  'erb=eruby',
+\  'go',
+\  'javascript',
+\  'js=javascript',
+\  'json=javascript',
+\  'perl',
+\  'python',
+\  'ruby',
+\  'sass',
+\  'sh',
+\  'xml',
+\]
+
 if has("syntax") && (&t_Co > 2 || has("gui_running"))
   syntax on
 
