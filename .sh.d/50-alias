@@ -79,6 +79,9 @@ alias crypt='mcrypt -a enigma --keymode scrypt --bare'
 alias cls='ls --color=always --classify'
 alias cgrep='grep --color=always'
 alias cegrep='egrep --color=always'
+## Depend on GNU grep
+alias grep-r='egrep --recursive --binary-files=without-match'
+alias grep-R='egrep --dereference-recursive --binary-files=without-match'
 
 alias ra='. $HOME/.profile'
 
