@@ -260,6 +260,10 @@ endif
 if exists('&cursorline')
   set cursorline
 endif
+if exists('&cursorcolumn')
+  set cursorcolumn
+  highlight CursorColumn ctermbg=darkgrey
+endif
 
 set textwidth=0
 if exists('&colorcolumn')
