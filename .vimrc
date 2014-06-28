@@ -262,7 +262,11 @@ if exists('&cursorline')
 endif
 if exists('&cursorcolumn')
   set cursorcolumn
-  highlight CursorColumn ctermbg=darkgrey
+  if &t_Co >= 256
+    highlight CursorColumn ctermbg=17
+  else
+    highlight CursorColumn ctermbg=darkgrey
+  endif
 endif
 
 set textwidth=0
