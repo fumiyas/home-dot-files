@@ -38,7 +38,7 @@ if [ x"$UNAME" = x"SunOS5" ]; then
 fi
 
 ## My tools
-set -- "$HOME/bin" ${1+"$@"} /opt/osstech/bin /opt/osstech/sbin
+set -- "$HOME/bin" "$GOPATH/bin" ${1+"$@"} /opt/osstech/bin /opt/osstech/sbin
 
 PATH=""
 for dir in "$@"; do
