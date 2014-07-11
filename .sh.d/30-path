@@ -10,10 +10,7 @@ fi
 ## ======================================================================
 
 ## Standard
-set -- /bin /usr/bin /sbin /usr/sbin /usr/bin/X11
-
-## X11
-set -- ${1+"$@"} /usr/local/X11
+set -- /bin /usr/bin /sbin /usr/sbin
 
 ## Solaris
 if [ x"$UNAME" = x"SunOS5" ]; then
@@ -25,7 +22,6 @@ fi
 
 ## Generic (but local)
 set -- /usr/local/bin /usr/local/sbin ${1+"$@"}
-set -- ${1+"$@"} /var/qmail/bin
 set -- ${1+"$@"} /usr/local/samba/bin /usr/local/samba/sbin
 
 ## Project common tools
