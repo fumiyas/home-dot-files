@@ -262,11 +262,7 @@ if exists('&cursorline')
 endif
 if exists('&cursorcolumn')
   set cursorcolumn
-  if &t_Co >= 256
-    highlight CursorColumn ctermbg=17
-  else
-    highlight CursorColumn ctermbg=darkgrey
-  endif
+  highlight CursorColumn cterm=bold ctermbg=none
 endif
 
 set textwidth=0
@@ -294,9 +290,6 @@ let g:markdown_fenced_languages = [
 
 if has("syntax") && (&t_Co > 2 || has("gui_running"))
   syntax on
-
-  "set cursorcolumn
-  "highlight CursorLine ctermbg=DarkBlue
 
   highlight default link TagName Search
 
