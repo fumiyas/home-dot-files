@@ -22,11 +22,11 @@ alias ps-x="ps -efly"
 alias ps-u="ps -fu $LOGNAME"
 alias iostat-x="iostat -xtc"
 alias pstree-x='pstree -acpu'
-alias dstat-full='dstat -Tclmdrn'
-alias dstat-mem='dstat -Tclm'
-alias dstat-cpu='dstat -Tclr'
-alias dstat-net='dstat -Tclnd'
-alias dstat-disk='dstat -Tcldr'
+alias dstat-full='dstat --time --load --cpu --top-cpu --mem --top-mem --io --top-io --disk --net'
+alias dstat-mem='dstat --time --load --cpu --top-cpu --mem --top-mem'
+alias dstat-cpu='dstat --time --load --cpu --top-cpu --io --top-io'
+alias dstat-net='dstat --time --load --cpu --top-cpu --net --top-io'
+alias dstat-disk='dstat --time --load --cpu --top-cpu --load --disk --top-io'
 
 alias dig-x='dig +qr +multiline'
 
