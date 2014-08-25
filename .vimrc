@@ -35,9 +35,6 @@ NeoBundle 'https://github.com/koron/verifyenc-vim.git'
 NeoBundle 'BlockDiff'
 NeoBundle 'vim-creole'
 
-"NeoBundle 'https://github.com/Yggdroot/indentLine.git'
-"let g:indentLine_color_term = 239
-
 " misc
 " ----------------------------------------------------------------------
 
@@ -52,6 +49,18 @@ if filereadable($VIM . "/addons/plugin/migemo.vim")
   source $VIM/addons/plugin/migemo.vim
   noremap // :<C-u>Migemo<CR>
 endif
+
+" vim-indent-guides
+" ----------------------------------------------------------------------
+
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+let g:indent_guides_auto_colors=0
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size=1
+
+autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  ctermbg=233
+autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven ctermbg=236
 
 " fakeclip
 " ----------------------------------------------------------------------
@@ -238,6 +247,8 @@ endif " has ("autocmd")
 " Coloring
 " ======================================================================
 
+colorscheme default
+
 " For test:
 " :e $VIMRUNTIME/syntax/colortest.vim
 " :so %
@@ -262,14 +273,14 @@ if exists('&cursorline')
 endif
 if exists('&cursorcolumn')
   set cursorcolumn
-  highlight CursorColumn cterm=bold ctermbg=none
+  autocmd VimEnter,Colorscheme * :highlight CursorColumn cterm=bold ctermbg=none
 endif
 
 set textwidth=0
 if exists('&colorcolumn')
   set textwidth=80
   set colorcolumn=+1
-  highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+  autocmd VimEnter,Colorscheme * :highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 endif
 
 let g:markdown_fenced_languages = [
@@ -291,13 +302,13 @@ let g:markdown_fenced_languages = [
 if has("syntax") && (&t_Co > 2 || has("gui_running"))
   syntax on
 
-  highlight default link TagName Search
+  autocmd VimEnter,Colorscheme * :highlight default link TagName Search
 
   function! ActivateInvisibleCharIndicator()
     syntax match InvisibleJISX0208Space "　" display containedin=ALL
-    highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
+    autocmd VimEnter,Colorscheme * :highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
     syntax match InvisibleTrailingSpace "[ \t]\+$" display containedin=ALL
-    highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
+    autocmd VimEnter,Colorscheme * :highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
   endf
   augroup vimrc
     autocmd BufNewFile,BufRead * call ActivateInvisibleCharIndicator()
