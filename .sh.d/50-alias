@@ -113,6 +113,38 @@ alias gcc-Wall='gcc -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-p
 alias disasm='objdump -CSlw -M intel'
 alias valgrind-x='valgrind -v --leak-check=full --show-reachable=yes'
 
+java-x() {
+  typeset -a args
+
+  args=(
+    -server
+    -Xms8g
+    -Xmx8g
+    -XX:-UseGCOverheadLimit
+    -XX:+UseConcMarkSweepGC
+    -XX:+UseCompressedOops
+    -XX:CMSInitiatingOccupancyFraction=70
+    -XX:+UseCMSInitiatingOccupancyOnly
+    -XX:NewRatio=1
+    -XX:SurvivorRatio=2
+    -XX:MaxTenuringThreshold=15
+    -XX:TargetSurvivorRatio=80
+    -XX:SoftRefLRUPolicyMSPerMB=200
+    ## GC log
+    -Xloggc:/var/log/java/gc.log
+    -XX:+UseGCLogFileRotation
+    -XX:NumberOfGCLogFiles=9
+    -XX:GCLogFileSize=10000000
+    ## Head dump
+    -XX:+HeapDumpOnOutOfMemoryError
+    -XX:HeapDumpPath=/var/log/java/heapdump/
+    ## Profiler
+    #-agentlib:hprof=help
+  )
+
+  java "${args[@]}" "$@"
+}
+
 java-default() {
   java "$@" -XX:+PrintFlagsFinal -version
 }
