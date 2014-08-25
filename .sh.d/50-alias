@@ -337,6 +337,11 @@ rpm_dump()
 alias swaks-spfchecker1='swaks --to check-auth@verifier.port25.com'
 alias swaks-spfchecker2='swaks --to spf-test@openspf.net'
 
+alias mysqldump-all-bare='mysqldump --all-databases --events --hex-blob --default-character-set=binary'
+alias mysqldump-all='mysqldump-all-bare --single-transaction'
+alias mysqldump-all-master='mysqldump-all --master-data=2'
+alias mysqldump-all-lock='mysqldump-all-bare --lock-all-tables'
+
 ## Volume and Backlight adjustment
 ## ======================================================================
 
