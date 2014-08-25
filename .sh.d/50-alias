@@ -146,7 +146,20 @@ java-x() {
 }
 
 java-default() {
-  java "$@" -XX:+PrintFlagsFinal -version
+  typeset java=java
+  if [[ -n ${1+set} && ${1##*/} == java* ]]; then
+    java="$1"
+    shift
+  fi
+
+  typeset -a args
+  args=(
+    -XX:+PrintFlagsFinal
+    -XX:+UnlockDiagnosticVMOptions
+    #-XX:+UnlockExperimentalVMOptions
+  )
+
+  "$java" "${args[@]}" "$@" -version 2>&1
 }
 
 for cmd in grep egrep fgrep; do
