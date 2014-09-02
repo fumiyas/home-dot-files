@@ -1,0 +1,2 @@
+bind generic <Backspace>	scroll-page-up
+#bind main <Backspace>	scroll-page-up
