@@ -354,7 +354,7 @@ set nobackup
 set noendofline
 set cinoptions=:0
 set comments=
-set history=99999
+set history=10000
 
 set encoding=UTF-8
 set termencoding=UTF-8
