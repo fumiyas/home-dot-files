@@ -222,3 +222,10 @@ fi
 SPROMPT="%{$fg[yellow]%}%R%{${reset_color}%}
 %{$fg[yellow]%}%r%{${reset_color}%} %B[No|Yes|Abort|Edit]?%b "
 
+## Plugin
+## ======================================================================
+
+if is-at-least 4.3.17 && [ -d ~/git/zsh-syntax-highlighting ]; then
+  source ~/git/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+fi
+
