@@ -238,7 +238,7 @@ if [ -f "$HOME/lib/vim/plugin/less.vim" ]; then
       vim --cmd 'let no_plugin_maps = 1' -c 'source $HOME/lib/vim/plugin/less.vim' "$@"
     fi
   }
-elif ls /usr/share/vim/vim*/macros/less.sh >/dev/null 2>&1; then
+elif (echo /usr/share/vim/vim*/macros/less.sh) >/dev/null 2>&1; then
   alias lvv="`ls /usr/share/vim/vim*/macros/less.sh |sed -n '$p'`"
 fi
 
