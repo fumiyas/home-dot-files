@@ -342,6 +342,28 @@ alias mysqldump-all='mysqldump-all-bare --single-transaction'
 alias mysqldump-all-master='mysqldump-all --master-data=2'
 alias mysqldump-all-lock='mysqldump-all-bare --lock-all-tables'
 
+alias openssl-selfcert='openssl_selfcert'
+openssl_selfcert()
+{
+  if [[ -z $1 ]]; then
+    echo "Usage: openssl_selfcert CN [DAYS]" 1>&2
+    return
+  fi
+  (
+    umask 0027
+    openssl \
+      req \
+      -new \
+      -x509 \
+      -nodes \
+      -subj "/CN=$1" \
+      -days "${2-3650}" \
+      -out "$1.crt" \
+      -keyout "$1.key" \
+    ;
+  )
+}
+
 ## Volume and Backlight adjustment
 ## ======================================================================
 
