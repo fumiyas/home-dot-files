@@ -185,7 +185,7 @@ zle -N self-insert url-quote-magic
 
 if is-at-least 4.3.0; then
   setopt PROMPT_CR
-else
+elif is-at-least 4.2.3; then
   setopt PROMPT_SP
 fi
 
