@@ -130,6 +130,7 @@ java-x() {
     -XX:MaxTenuringThreshold=15
     -XX:TargetSurvivorRatio=80
     -XX:SoftRefLRUPolicyMSPerMB=200
+    -Djava.security.egd=file:/dev/./urandom
     ## GC log
     -Xloggc:/var/log/java/gc.log
     -XX:+UseGCLogFileRotation
