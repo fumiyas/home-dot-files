@@ -56,7 +56,7 @@ esac
 export LANG
 
 export TERMINFO="$HOME/.terminfo"
-export TERMCAP="$HOME/.termcap"
+#export TERMCAP="$HOME/.termcap"
 
 if [ -n "$TERM" ]; then
   for term in "$TERM" xtermc xterm; do
