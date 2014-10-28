@@ -59,7 +59,7 @@ export TERMINFO="$HOME/.terminfo"
 #export TERMCAP="$HOME/.termcap"
 
 if [ -n "$TERM" ]; then
-  for term in "$TERM-256color" "$TERM+256color" "$TERM" xtermc xterm; do
+  for term in "$TERM"{-,+}256color "$TERM" "${TERM%%[-+]256color}" xtermc xterm; do
     if infocmp "$term" >/dev/null 2>&1; then
       export TERM="$term"
       break
