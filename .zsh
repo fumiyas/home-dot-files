@@ -205,7 +205,7 @@ screen.*)
 #    sudo "$@"
 #  }
   ;;
-*term|rxvt*|gnome*)
+*term|*term[-+]*|rxvt*|gnome*)
   precmd() { print -Pn "\e]2;%n@%m:%~ (${TTY#/dev/})\a" }
   ;;
 esac
