@@ -321,6 +321,11 @@ endif
 
 " ======================================================================
 
+set directory^=~/var/vim
+if version >= 730
+  set undodir=~/var/vim
+endif
+
 set shortmess+=I
 
 set nolist
@@ -398,26 +403,6 @@ set fileformats=
 
 set formatoptions-=o
 set formatoptions-=r
-
-" Status-line
-" ======================================================================
-
-function! GetStatusEx()
-  let str = &fileformat . '|'
-  if has('multi_byte') && &fileencoding != ''
-    let str = str . &fileencoding . '|'
-  endif
-  "let str = str . cfi#format("%s()", "-") . '|'
-  return str
-endfunction
-"let &statusline='%n %f %Y|%{&fileformat}|%{&fileencoding}|%04B|%R|%M%=%c%V,%l/%L %P'
-let &statusline='%n %f %Y|%{GetStatusEx()}%04B|%R|%M%=%c%V,%l/%L %P'
-"set statusline=%n\ %f\ %y%{GetStatusEx()}[%04B]%m%h%r%=%c%V,%l/%L\ %P
-"set statusline=[%n]\ %t\ %y%{GetStatusEx()}\ %m%h%r=%l/%L,%c%V\ %P
-"set statusline=%<%f\ %m%r%h%w%{GetStatusEx()}%=%l,%c%V%8P
-set laststatus=2
-
-":set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 " Key binding
 " ======================================================================
@@ -506,14 +491,6 @@ nmap g# g#zz
 
 iab Yruler 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-" ======================================================================
-
-set directory^=~/var/vim
-
-if version >= 730
-  set undodir=~/var/vim
-endif
-
 " Auto command
 " ======================================================================
 
@@ -550,4 +527,24 @@ augroup END
 "  autocmd BufWritePost * if &binary | silent %!xxd -g 1
 "  autocmd BufWritePost * set nomod | endif
 "augroup END
+
+" Status-line
+" ======================================================================
+
+function! GetStatusEx()
+  let str = &fileformat . '|'
+  if has('multi_byte') && &fileencoding != ''
+    let str = str . &fileencoding . '|'
+  endif
+  "let str = str . cfi#format("%s()", "-") . '|'
+  return str
+endfunction
+"let &statusline='%n %f %Y|%{&fileformat}|%{&fileencoding}|%04B|%R|%M%=%c%V,%l/%L %P'
+let &statusline='%n %f %Y|%{GetStatusEx()}%04B|%R|%M%=%c%V,%l/%L %P'
+"set statusline=%n\ %f\ %y%{GetStatusEx()}[%04B]%m%h%r%=%c%V,%l/%L\ %P
+"set statusline=[%n]\ %t\ %y%{GetStatusEx()}\ %m%h%r=%l/%L,%c%V\ %P
+"set statusline=%<%f\ %m%r%h%w%{GetStatusEx()}%=%l,%c%V%8P
+set laststatus=2
+
+":set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
