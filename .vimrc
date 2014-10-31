@@ -21,10 +21,16 @@ if has('vim_starting')
   if isdirectory(expand('~/.vim/bundle/neobundle.vim')) && version >= 702
     set runtimepath+=~/.vim/bundle/neobundle.vim
     call neobundle#rc(expand('~/.vim/bundle'))
+    function! NeoBundleIsInstalled(name)
+      return neobundle#is_installed(a:name)
+    endfunction
   else
     "" Neoundler is not available, thus define a dummy 'NeoBundle' command
     "" to avoid error: "Not an editor command: NeoBundle 'xxxxx'"
     command! -nargs=+ NeoBundle
+    function! NeoBundleIsInstalled(name)
+      return ''
+    endfunction
   endif
 endif
 
@@ -58,7 +64,7 @@ let g:indent_guides_auto_colors=0
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
-if neobundle#is_installed('vim-indent-guides')
+if NeoBundleIsInstalled('vim-indent-guides')
   autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  ctermbg=233
   autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven ctermbg=236
 endif
@@ -555,7 +561,7 @@ set laststatus=2
 
 NeoBundle 'vim-scripts/diffchar.vim'
 
-if neobundle#is_installed('diffchar.vim')
+if NeoBundleIsInstalled('diffchar.vim')
   if &diff
     augroup vimrc
       autocmd!
