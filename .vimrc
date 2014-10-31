@@ -548,3 +548,31 @@ set laststatus=2
 
 ":set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
+" vimdiff
+" ======================================================================
+
+" https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
+
+let g:git_diff_normal="git-diff-normal"
+let g:git_diff_normal_opts=["--diff-algorithm=histogram"]
+
+function! GitDiffNormal()
+  let args=[g:git_diff_normal]
+  if &diffopt =~ "iwhite"
+    call add(args, "--ignore-all-space")
+  endif
+  call extend(args, g:git_diff_normal_opts)
+  call extend(args, [v:fname_in, v:fname_new])
+  let cmd="!" . join(args, " ") . ">" . v:fname_out
+  silent execute cmd
+  "redraw!
+  "echo cmd
+endfunction
+
+if executable(g:git_diff_normal)
+  call system(g:git_diff_normal)
+  if v:shell_error == 0
+    set diffexpr=GitDiffNormal()
+  endif
+endif
+
