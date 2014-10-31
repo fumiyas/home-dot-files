@@ -50,7 +50,6 @@ if filereadable($VIM . "/addons/plugin/migemo.vim")
   noremap // :<C-u>Migemo<CR>
 endif
 
-" vim-indent-guides
 " ----------------------------------------------------------------------
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -62,7 +61,6 @@ let g:indent_guides_guide_size=1
 autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  ctermbg=233
 autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven ctermbg=236
 
-" fakeclip
 " ----------------------------------------------------------------------
 
 NeoBundle 'fakeclip'
@@ -75,7 +73,6 @@ if version >= 700
   nmap sP <Plug>(fakeclip-P)
 endif
 
-" YankRing
 " ----------------------------------------------------------------------
 
 NeoBundle 'YankRing.vim'
@@ -83,7 +80,6 @@ NeoBundle 'YankRing.vim'
 let g:yankring_history_dir = expand('$HOME/.vim/private')
 let g:yankring_persist = 1
 
-" closetag
 " ----------------------------------------------------------------------
 
 NeoBundle 'closetag.vim'
@@ -93,7 +89,6 @@ let g:closetag_html_style=1
 inoremap <C-]> <C-R>=GetCloseTag()<CR><ESC>F<i
 map <C-]> a<C-]><ESC>
 
-" Highlight multiple searche
 " ----------------------------------------------------------------------
 
 " :Search keyword
@@ -105,7 +100,6 @@ NeoBundle 'MultipleSearch'
 
 let g:MultipleSearchMaxColors = 10
 
-" FuzzyFinder
 " ----------------------------------------------------------------------
 
 NeoBundle 'L9'
@@ -115,7 +109,6 @@ NeoBundle 'FuzzyFinder'
 
 nnoremap <silent> <C-f><C-f> :FufFileWithCurrentBufferDir!<CR>
 
-" Tagbar
 " ----------------------------------------------------------------------
 
 " :TagbarToggle
@@ -126,6 +119,10 @@ set updatetime=1000
 set tags=./tags,./TAGS,tags,TAGS;/
 
 nmap <F8> :TagbarToggle<CR>
+
+" ----------------------------------------------------------------------
+
+NeoBundle 'tpope/vim-fugitive'
 
 " Command mode
 " ======================================================================
