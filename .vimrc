@@ -58,20 +58,22 @@ let g:indent_guides_auto_colors=0
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
-autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  ctermbg=233
-autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven ctermbg=236
+if neobundle#is_installed('vim-indent-guides')
+  autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  ctermbg=233
+  autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven ctermbg=236
+endif
 
 " ----------------------------------------------------------------------
 
-NeoBundle 'fakeclip'
-
 if version >= 700
-  nmap sy <Plug>(fakeclip-y)
-  nmap syy <Plug>(fakeclip-Y)
-  vmap sy <Plug>(fakeclip-y)
-  nmap sp <Plug>(fakeclip-p)
-  nmap sP <Plug>(fakeclip-P)
+  NeoBundle 'fakeclip'
 endif
+
+nmap sy <Plug>(fakeclip-y)
+nmap syy <Plug>(fakeclip-Y)
+vmap sy <Plug>(fakeclip-y)
+nmap sp <Plug>(fakeclip-p)
+nmap sP <Plug>(fakeclip-P)
 
 " ----------------------------------------------------------------------
 
@@ -550,6 +552,17 @@ set laststatus=2
 
 " vimdiff
 " ======================================================================
+
+NeoBundle 'vim-scripts/diffchar.vim'
+
+if neobundle#is_installed('diffchar.vim')
+  if &diff
+    augroup vimrc
+      autocmd!
+      autocmd VimEnter * execute "%SDChar"
+    augroup END
+  endif
+endif
 
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
