@@ -551,6 +551,11 @@ set laststatus=2
 " vimdiff
 " ======================================================================
 
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+
 " https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
 
 let g:git_diff_normal="git-diff-normal"
@@ -565,8 +570,7 @@ function! GitDiffNormal()
   call extend(args, [v:fname_in, v:fname_new])
   let cmd="!" . join(args, " ") . ">" . v:fname_out
   silent execute cmd
-  "redraw!
-  "echo cmd
+  redraw!
 endfunction
 
 if executable(g:git_diff_normal)
