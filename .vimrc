@@ -66,7 +66,7 @@ endif
 " ----------------------------------------------------------------------
 
 if version >= 700
-  NeoBundle 'fakeclip'
+  NeoBundle 'kana/vim-fakeclip'
 endif
 
 nmap sy <Plug>(fakeclip-y)
