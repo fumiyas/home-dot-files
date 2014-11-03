@@ -365,6 +365,8 @@ set noendofline
 set cinoptions=:0
 set comments=
 set history=10000
+set wildmenu
+set wildmode=longest:full
 
 set encoding=UTF-8
 set termencoding=UTF-8
