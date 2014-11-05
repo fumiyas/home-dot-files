@@ -58,7 +58,7 @@ export LANG
 export TERMINFO="$HOME/.terminfo"
 #export TERMCAP="$HOME/.termcap"
 
-if [ -n "$TERM" ]; then
+if [ -n "$TERM" ] && [ -n "$SSH_CONNECTION" ]; then
   for term in "$TERM"{-,+}256color "$TERM" "${TERM%%[-+]256color}" xtermc xterm; do
     if infocmp "$term" >/dev/null 2>&1; then
       export TERM="$term"
