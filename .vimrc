@@ -330,8 +330,9 @@ endif
 " ======================================================================
 
 set directory^=~/var/vim
-if version >= 730
-  set undodir=~/var/vim
+if version >= 703
+  set undodir=~/var/vim/undodir
+  set undofile
 endif
 
 set shortmess+=I
