@@ -30,8 +30,11 @@ disable r
 
 bindkey -e
 
-bindkey -s '^z' '^[q %\\$EDITOR^m'
+bindkey '^]'   vi-find-next-char
+bindkey '^[^]' vi-find-prev-char
 
+#bindkey -s '^z' '^[q %\\$EDITOR^m'
+#
 #run-fg-editor() {
 #  zle push-input
 #  local BUFFER="fg %$EDITOR:t"
