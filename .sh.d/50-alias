@@ -14,9 +14,18 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias cdpwd='cd `pwd`'
 
+alias nohistory='set +o sharehistory; SAVEHIST='
+
 alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
+a2image() {
+  if [ -z "$1" ]; then
+    echo "Usage: a2image FILENAME.EXT"
+    return
+  fi
+  convert label:@- "$1"
+}
 
 alias ps-x="ps -efly"
 alias ps-u="ps -fu $LOGNAME"
