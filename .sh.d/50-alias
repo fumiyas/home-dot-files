@@ -215,6 +215,12 @@ fi
 alias git-reset-add="git rm --cached"
 alias git-reset-commit="git reset HEAD\^"
 alias git-log='git log --graph --decorate --oneline'
+
+alias git-diff-reflog='git_diff_reflog'
+git_diff_reflog() {
+  git diff "@{${1-1}}"
+}
+
 alias git-patch='git_patch'
 git_patch() {
   if [ $# -eq 0 ]; then
