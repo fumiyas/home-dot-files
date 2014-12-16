@@ -158,6 +158,7 @@ setopt IGNORE_EOF		# Ctrl+dを続けて9回までは押しても終了しない
 setopt no_HASH_CMDS		# コマンド位置をハッシュしない
 setopt no_HASH_DIRS		# ディレクトリ位置をハッシュしない
 
+setopt no_MULTIOS
 setopt PRINT_EIGHT_BIT
 setopt NOTIFY			# バックグラウンドのジョブが終了したらその時点で通知
 setopt PRINT_EXIT_VALUE		# コマンド終了コードが 0 以外のときに表示
