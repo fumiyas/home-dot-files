@@ -1,4 +1,5 @@
 ;; Wanderlust
+;; -*- encoding: utf-8 -*- vim:filetype=lisp:tabstop=8:shiftwidth=2
 ;; ======================================================================
 
 ;; M-x wl-save
