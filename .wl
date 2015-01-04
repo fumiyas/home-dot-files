@@ -306,6 +306,7 @@
 	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
 	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
 	    ("openldap-technical-bounces" . "+ml/net/openldap-technical")
+	    ("openldap-devel-bounces" . "+ml/net/openldap-technical")
 
 	    ("solaris2u-bounces@" . "+ml/os/solaris2u")
 	    ("users-bounces@opensolaris" . "+ml/os/solaris-ug")
@@ -566,6 +567,9 @@
 ;	("\\(To\\|B?cc\\):.*\\(\n[ \t]+.*\\)*@\\(miraclelinux\\|.*\\.\\(sra\\|hitachi.*\\)\\)\\."
 ;	    (template . "miracle")
 ;	)
+	("\\(To\\|From\\):.*\\(\n[ \t]+.*\\)*satoh.fumiyasu@gmail\\.com"
+	    (template . "gmail")
+	)
 	("Delivered-To: fumiyas?@samba\\.gr\\.jp"
 	    (template . "samba")
 	)
@@ -614,6 +618,10 @@
 	("sfo.jp"
 	    ("From" . "SATOH Fumiyasu <fumiyas@sfo.jp>")
 	    (top . "さとうふみやす です。\n\n")
+	)
+	("gmail"
+	    ("From" . "SATOH Fumiyasu <satoh.fumiyasu@gmail.com>")
+	    (top . "ふみやす です。\n\n")
 	)
 ;	("report"
 ;	    ("From" . wl-from)
