@@ -19,3 +19,7 @@
         date = local
 	decorate = full
 
+[diff]
+	algorithm = histogram
+	tool = vimdiff
+
