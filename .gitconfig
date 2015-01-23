@@ -23,3 +23,5 @@
 	algorithm = histogram
 	tool = vimdiff
 
+[push]
+	default = nothing
