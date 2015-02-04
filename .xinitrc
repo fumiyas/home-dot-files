@@ -14,7 +14,7 @@ export LANG=ja_JP.UTF-8
 eval `wcwidth-cjk --sh-init`
 
 (
-  syndaemon -i 1 -t -k -d
+  syndaemon -d -R -t -i 1.0
   uim-xim &
   startkde
 ) > >(ts '%Y-%m-%d %H:%M:%S' |tee -a "$log") 2>&1
