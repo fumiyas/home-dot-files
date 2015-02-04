@@ -15,7 +15,9 @@ eval `wcwidth-cjk --sh-init`
 
 (
   syndaemon -d -R -t -i 1.0
+  #fcitx -r
   uim-xim &
+  uim-toolbar-qt4 &
   startkde
 ) > >(ts '%Y-%m-%d %H:%M:%S' |tee -a "$log") 2>&1
 
