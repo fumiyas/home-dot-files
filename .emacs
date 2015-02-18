@@ -502,48 +502,26 @@
 ;; Default fontset
 ;; ======================================================================
 
-;(set-face-font 'default
-;    '(
-;	"-ricoh-ms.gothic-medium-r-normal--14-*-*-*-*-*-*-*"
-;	"-*-*-medium-r-normal--14-*-*-*-*-*-jisx0213.2004-1"
-;	"-*-*-medium-r-normal--14-*-*-*-*-*-jisx0213.2000-2"
-;    )
-;    'global
-;    '(mule-fonts)
-;    'prepend
-;)
-;(set-face-font 'bold
-;    '(
-;	"-ricoh-ms.gothic-medium-r-bold--14-*-*-*-*-*-*-*"
-;    )
-;    'global
-;    '(mule-fonts)
-;    'prepend
-;)
-
-;(setq initial-frame-alist
-;    '(
-;	(font . "fontset-14")
-;	(width . 90)
-;	(height . 50)
-;	(auto-raise . t)
-;    )
-;)
-
-;(setq default-frame-alist
-;    '(
-;	(font . "fontset-14")
-;	(width . 90)
-;	(height . 50)
-;	(auto-raise . t)
-;    )
-;)
-
 (custom-set-variables
  '(load-home-init-file t t))
 (custom-set-faces)
 
-;; EOF
+(set-face-attribute 'default nil
+  :family "DejaVu Sans Mono"
+  :height 112)
+
+(set-fontset-font
+  nil 'japanese-jisx0208
+  (font-spec :family "IPAゴシック"))
+(set-fontset-font
+  nil 'japanese-jisx0212
+  (font-spec :family "IPAゴシック"))
+(set-fontset-font
+  nil 'katakana-jisx0201
+  (font-spec :family "IPAゴシック"))
+
+(setq face-font-rescale-alist
+  '((".*IPA" . 1.2)))
 
 ;; X11
 ;; ======================================================================
