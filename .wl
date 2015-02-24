@@ -298,6 +298,7 @@
         ("Return-Path"
 	    ("<[a-z]+-support-bounces\\+.*@osstech.co.jp" . "+work/osstech/support")
 	    ("<ost-consult-bounces\\+.*@osstech.co.jp" . "+work/osstech/consult")
+	    ("<ost-partner-bounces\\+.*@osstech.co.jp" . "+work/osstech/partner")
 	    ("<ost-sys-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
 	    ("<ost-syslog-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
 	    ("<ost-sys-.*-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
