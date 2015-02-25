@@ -95,6 +95,7 @@ alias grep-R='egrep --dereference-recursive --binary-files=without-match'
 alias ra='. $HOME/.profile'
 
 alias xclip-c='xclip -selection clipboard'
+alias xo='xdg-open'
 alias acroread='command acroread -openInNewWindow'
 
 alias isoinfo-x='isoinfo -lR -i'
