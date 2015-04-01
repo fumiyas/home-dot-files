@@ -72,10 +72,12 @@ shopt -s cmdhist lithist histappend histverify
 
 shopt -s globstar
 shopt -s checkwinsize
+shopt -s lastpipe
 
 set -o emacs
 set -o physical
 set -o ignoreeof
+set -o pipefail
 
 if type complete >/dev/null 2>&1; then
   complete -d cd
