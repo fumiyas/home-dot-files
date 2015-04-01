@@ -105,9 +105,7 @@ alias acroread='command acroread -openInNewWindow'
 
 alias isoinfo-x='isoinfo -lR -i'
 type genisoimage >/dev/null 2>&1 && mkisofs="genisoimage" || mkisofs="mkisofs"
-alias mkisofs-x="env TZ=UTC $mkisofs -uid 0 -gid 0 -J -input-charset UTF-8 -r -iso-level 1"
-#alias mkisofs-x="env TZ=UTC $mkisofs -uid 0 -gid 0 -J -R -iso-level 4"
-#alias mkisofs-y="env TZ=UTC $mkisofs -uid 0 -gid 0 -J -R -r -iso-level 4"
+alias mkisofs-x="env TZ=UTC $mkisofs -r -J -iso-level 1 -input-charset UTF-8"
 unset mkisofs
 type wodim >/dev/null 2>&1 && cdrecord="wodim" || cdrecord="cdrecord"
 alias cdrecord-x="$cdrecord -v"
