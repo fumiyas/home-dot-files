@@ -27,6 +27,13 @@ a2image() {
   convert label:@- "$1"
 }
 
+base64url() {
+  base64 "$@" |sed 's/+/-/g;s/\//_/g'
+}
+base64url_decode() {
+  sed 's/-/+/g;s/_/\//g' |base64 --decode "$@"
+}
+
 alias zsh-unmetafy='perl -pe "s/\\x83(.)/@{[\$1^q( )]}/g"'
 #alias zsh-unmetafy='perl -pe "s/\\x83(.)/chr(ord(\$1)^32)/ge"'
 alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9d\\xa0]/\\x83@{[\$&^q( )]}/g"'
