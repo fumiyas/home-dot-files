@@ -207,10 +207,19 @@ make() {
     LC_MESSAGES=C command make "$@"
   fi \
   2> >(
-    sed --unbuffered \
-      -e 's/^\(.*: \)\(error:.*\)$/\1[31m\2[0m/g' \
-      -e 's/^\(.*: \)\(warning:.*\)$/\1[33m\2[0m/g' \
-    >&2
+    if type perl >/dev/null 2>&1; then
+      perl -p \
+	-e 'BEGIN { $|=1; }' \
+	-e 's/^(.*: )(error:.*)$/$1\e[31m$2\e[0m/g;' \
+	-e 's/^(.*: )(warning:.*)$/$1\e[33m$2\e[0m/g;' \
+      >&2
+    else
+      ## GNU sed is required
+      sed --unbuffered \
+	-e 's/^\(.*: \)\(error:.*\)$/\1[31m\2[0m/g' \
+	-e 's/^\(.*: \)\(warning:.*\)$/\1[33m\2[0m/g' \
+      >&2
+    fi
   )
 }
 
