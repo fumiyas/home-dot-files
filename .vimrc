@@ -447,9 +447,9 @@ function! ClipboardPaste() range
   "if visualmode() == 'v'
   "  execute ":delete"
   "endif
-  set noautoindent
+  set paste
   execute ":normal i" . text
-  set autoindent
+  set nopaste
   call setpos(".", pos)
 endfunction
 command! ClipboardPaste :call ClipboardPaste()
