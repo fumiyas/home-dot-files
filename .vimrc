@@ -1,3 +1,4 @@
+scriptencoding UTF-8
 " http://vim.sf.net/
 " http://pcmania.jp/~moraz/basics.html
 " http://www.kawaz.jp/pukiwiki/?vim
