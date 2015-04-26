@@ -31,3 +31,21 @@ defscrollback 999999
 #termcap  vt100 'AF=\E[3%dm:AB=\E[4%dm'
 #terminfo vt100* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
 
+## Layout
+## ======================================================================
+
+#screen 0
+#screen -t date 99 sh -c "while :; do clear; echo -n $(date '+%F %T'); sleep 10; done"
+#
+#layout new 0:layout0:horizontal
+#
+#layout select 0
+#split
+#
+#focus down
+#resize -v 1
+#select 99
+#
+#focus up
+#select 0
+
