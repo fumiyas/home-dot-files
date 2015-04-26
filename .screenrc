@@ -7,8 +7,10 @@ escape ^z^z
 #escape ^t^t
 #escape ^Tt
 
-#defhstatus "^En:^Et"
 defencoding UTF-8
+termcapinfo mlterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+#defhstatus "^En:^Et"
 #hardstatus alwayslastline "%H[%n]: %Y/%m/%d (%D) %c  [%Lw]"
 #hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
 hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w %-17<%=%{= .y}(%l)'
