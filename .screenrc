@@ -8,7 +8,10 @@ escape ^z^z
 #escape ^Tt
 
 defencoding UTF-8
-termcapinfo mlterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+## Remove DECCOLM (\E[?3l) to avoid resizing on startup
+termcapinfo mlterm 'is=\E7\E[r\E[m\E[?7h\E[?1;4;6l\E[4l\E8\E>'
+termcapinfo mlterm-256color 'is=\E7\E[r\E[m\E[?7h\E[?1;4;6l\E[4l\E8\E>'
+
 
 #defhstatus "^En:^Et"
 #hardstatus alwayslastline "%H[%n]: %Y/%m/%d (%D) %c  [%Lw]"
