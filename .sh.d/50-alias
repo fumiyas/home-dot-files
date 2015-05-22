@@ -134,6 +134,10 @@ alias gcc-Wall='gcc -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-p
 alias disasm='objdump -CSlw -M intel'
 alias valgrind-x='valgrind -v --leak-check=full --show-reachable=yes'
 
+alias ss-x='ss -aeiomp'
+alias ss-tcp='ss -ateiomp'
+alias ss-udp='ss -auemp'
+
 java-x() {
   typeset -a args
 
@@ -162,6 +166,8 @@ java-x() {
     -XX:HeapDumpPath=/var/log/java/heapdump/
     ## Profiler
     #-agentlib:hprof=help
+    ## Character encoding name mapping
+    #-Dsun.nio.cs.map=x-windows-iso2022jp/ISO-2022-JP
   )
 
   java "${args[@]}" "$@"
