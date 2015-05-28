@@ -93,7 +93,8 @@ ssh()
   command ssh ${1+"$@"}
 }
 
-alias telnet-u='nc.openbsd -U'
+alias telnet-unix='nc.openbsd -U'
+alias telnet.py='python -m telnetlib'
 ## UNIX crypt(1) emulation by mcrypt(1)
 alias crypt='mcrypt -a enigma --keymode scrypt --bare'
 
