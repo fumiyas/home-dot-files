@@ -16,7 +16,7 @@ alias cdpwd='cd `pwd`'
 
 alias nohistory='set +o sharehistory; SAVEHIST='
 
-alias ko='/bin/echo ""; /bin/echo "c"; stty sane; reset'
+alias c='printf "\017\033c"; stty sane; reset'
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
 a2image() {
