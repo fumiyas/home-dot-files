@@ -68,6 +68,7 @@ setopt LIST_PACKED
 
 setopt CORRECT_ALL
 #CORRECT_IGNORE='_*'
+CORRECT_IGNORE_FILE='.*'
 
 bindkey '^i'    expand-or-complete	## Tab
 bindkey '\e[Z'  reverse-menu-complete	## Shift+Tab
