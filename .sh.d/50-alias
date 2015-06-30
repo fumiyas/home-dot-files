@@ -39,6 +39,9 @@ alias zsh-unmetafy='perl -pe "s/\\x83(.)/@{[\$1^q( )]}/g"'
 alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9d\\xa0]/\\x83@{[\$&^q( )]}/g"'
 #alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9D\\xA0]/qq(\\x83).chr(ord(\$&)^32)/ge"'
 
+## http://richmegginson.livejournal.com/18726.html
+alias ldifunwrap='sed -n "1 {h; $ !d}; $ {x; s/\n //g; p}; /^ / {H; d}; /^ /! {x; s/\n //g; p}"'
+
 alias ps-x="ps -efly"
 alias ps-u="ps -fu $LOGNAME"
 alias iostat-x="iostat -xtc"
