@@ -294,27 +294,8 @@
 ;; Web Browser
 ;; ----------------------------------------------------------------------
 
-;(setq browse-url-browser-function 'w3m-browse-url)
-;(setq browse-url-browser-function 'browse-url-gnome-moz)
-;(setq browse-url-browser-function 'browse-url-mozilla)
-;(setq browse-url-browser-function 'browse-url-galeon)
-;(setq browse-url-browser-function
-;    (if (eq window-system 'x)
-;	'browse-url-mozilla
-;    )
-;)
-;(autoload 'browse-url "browse-url"
-;	"Ask a WWW browser to show a URL." t)
-;(autoload 'browse-url-at-point "browse-url"
-;	"Ask a WWW browser to show a URL." t)
-;(autoload 'browse-url-of-file "browse-url"
-;	"Ask a WWW browser to display the current file." t)
-;(autoload 'browse-url-of-buffer "browse-url"
-;	"Ask a WWW browser to display the current buffer." t)
-;(autoload 'browse-url-netscape-reload "browse-url"
-;	"Ask a WWW browser to redisplay the current file." t)
-;(autoload 'browse-url-at-mouse  "browse-url"
-;	"Ask a WWW browser to display the URL clicked on." t)
+(setq browse-url-browser-function 'browse-url-generic
+	browse-url-generic-program "iceweasel")
 
 ;; Internet Message
 ;; ======================================================================
