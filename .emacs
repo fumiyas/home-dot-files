@@ -502,26 +502,18 @@
 ;; Default fontset
 ;; ======================================================================
 
-(custom-set-variables
- '(load-home-init-file t t))
-(custom-set-faces)
-
 (set-face-attribute 'default nil
-  :family "DejaVu Sans Mono"
-  :height 112)
-
-(set-fontset-font
-  nil 'japanese-jisx0208
-  (font-spec :family "IPAゴシック"))
-(set-fontset-font
-  nil 'japanese-jisx0212
-  (font-spec :family "IPAゴシック"))
-(set-fontset-font
-  nil 'katakana-jisx0201
-  (font-spec :family "IPAゴシック"))
-
-(setq face-font-rescale-alist
-  '((".*IPA" . 1.2)))
+                    :family "Ricty Diminished Discord"
+                    :height 140)
+(set-fontset-font (frame-parameter nil 'font)
+                  'japanese-jisx0208
+                  (cons "Ricty Diminished Discord" "iso10646-1"))
+(set-fontset-font (frame-parameter nil 'font)
+                  'japanese-jisx0212
+                  (cons "Ricty Diminished Discord" "iso10646-1"))
+(set-fontset-font (frame-parameter nil 'font)
+                  'katakana-jisx0201
+                  (cons "Ricty Diminished Discord" "iso10646-1"))
 
 ;; X11
 ;; ======================================================================
