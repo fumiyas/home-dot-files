@@ -327,6 +327,9 @@ if has("syntax") && (&t_Co > 2 || has("gui_running"))
 
   highlight Search term=NONE cterm=NONE ctermfg=black  ctermbg=grey
   highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
+
+  autocmd FileType go :highlight goErr cterm=bold ctermfg=214
+  autocmd FileType go :match goErr /\<err\>/
 endif
 
 " ======================================================================
