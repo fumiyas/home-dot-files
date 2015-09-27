@@ -76,9 +76,10 @@ if version >= 700
   NeoBundle 'kana/vim-fakeclip'
 endif
 
-nmap sy <Plug>(fakeclip-y)
+map sy <Plug>(fakeclip-y)
+map sd <Plug>(fakeclip-d)
 nmap syy <Plug>(fakeclip-Y)
-vmap sy <Plug>(fakeclip-y)
+nmap sdd <Plug>(fakeclip-dd)
 nmap sp <Plug>(fakeclip-p)
 nmap sP <Plug>(fakeclip-P)
 
