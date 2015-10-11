@@ -356,7 +356,10 @@ alias manf8e='LC_ALL=C LANG=C MANPATH=/srv/os/freebsd-8/usr/share/man man'
 mancat()
 {
   if type roff2text >/dev/null 2>&1; then
-    roff2text -K utf8 -T utf8 "$@" |"$PAGER"
+    roff2text -K UTF-8 -T UTF-8 "$@" |"$PAGER"
+  elif [ -f /etc/debian_version ]; then
+    ## See also: groff(1) and grotty(1)
+    nroff -man -- -K UTF-8  -T UTF-8 "$@" |"$PAGER"
   else
     nroff -man "$@" |"$PAGER"
   fi

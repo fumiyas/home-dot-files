@@ -55,6 +55,9 @@ case "`tty`" in
 esac
 export LANG
 
+## Debian groff(1) only?
+export GROFF_ENCODING=UTF-8
+
 export TERMINFO="$HOME/.terminfo"
 #export TERMCAP="$HOME/.termcap"
 
