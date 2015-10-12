@@ -21,14 +21,26 @@ filetype off
 if has('vim_starting')
   if isdirectory(expand('~/.vim/bundle/neobundle.vim')) && version >= 702
     set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle'))
+    call neobundle#begin(expand('~/.vim/bundle/'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    NeoBundle 'https://github.com/koron/verifyenc-vim.git'
+    NeoBundle 'BlockDiff'
+    NeoBundle 'vim-creole'
+    NeoBundle 'vim-scripts/diffchar.vim'
+    NeoBundle 'nathanaelkane/vim-indent-guides'
+    NeoBundle 'kana/vim-fakeclip'
+    NeoBundle 'YankRing.vim'
+    NeoBundle 'closetag.vim'
+    NeoBundle 'MultipleSearch'
+    NeoBundle 'L9'
+    NeoBundle 'FuzzyFinder'
+    NeoBundle 'Tagbar'
+    NeoBundle 'tpope/vim-fugitive'
+    call neobundle#end()
     function! NeoBundleIsInstalled(name)
       return neobundle#is_installed(a:name)
     endfunction
   else
-    "" Neoundler is not available, thus define a dummy 'NeoBundle' command
-    "" to avoid error: "Not an editor command: NeoBundle 'xxxxx'"
-    command! -nargs=+ NeoBundle
     function! NeoBundleIsInstalled(name)
       return ''
     endfunction
@@ -37,10 +49,6 @@ endif
 
 filetype plugin on
 filetype indent on
-
-NeoBundle 'https://github.com/koron/verifyenc-vim.git'
-NeoBundle 'BlockDiff'
-NeoBundle 'vim-creole'
 
 " misc
 " ----------------------------------------------------------------------
@@ -59,8 +67,6 @@ endif
 
 " ----------------------------------------------------------------------
 
-NeoBundle 'nathanaelkane/vim-indent-guides'
-
 let g:indent_guides_auto_colors=0
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
@@ -72,10 +78,6 @@ endif
 
 " ----------------------------------------------------------------------
 
-if version >= 700
-  NeoBundle 'kana/vim-fakeclip'
-endif
-
 map sy <Plug>(fakeclip-y)
 map sd <Plug>(fakeclip-d)
 nmap syy <Plug>(fakeclip-Y)
@@ -85,14 +87,10 @@ nmap sP <Plug>(fakeclip-P)
 
 " ----------------------------------------------------------------------
 
-NeoBundle 'YankRing.vim'
-
 let g:yankring_history_dir = expand('$HOME/.vim/private')
 let g:yankring_persist = 1
 
 " ----------------------------------------------------------------------
-
-NeoBundle 'closetag.vim'
 
 let g:closetag_html_style=1
 
@@ -106,14 +104,9 @@ map <C-]> a<C-]><ESC>
 " :SearchBuffers keyword
 " :SearchBuffersReset
 
-NeoBundle 'MultipleSearch'
-
 let g:MultipleSearchMaxColors = 10
 
 " ----------------------------------------------------------------------
-
-NeoBundle 'L9'
-NeoBundle 'FuzzyFinder'
 
 "let g:fuf_useMigemo = 1
 
@@ -123,16 +116,10 @@ nnoremap <silent> <C-f><C-f> :FufFileWithCurrentBufferDir!<CR>
 
 " :TagbarToggle
 
-NeoBundle 'Tagbar'
-
 set updatetime=1000
 set tags=./tags,./TAGS,tags,TAGS;/
 
 nmap <F8> :TagbarToggle<CR>
-
-" ----------------------------------------------------------------------
-
-NeoBundle 'tpope/vim-fugitive'
 
 " Command mode
 " ======================================================================
@@ -566,8 +553,6 @@ set laststatus=2
 
 " vimdiff
 " ======================================================================
-
-NeoBundle 'vim-scripts/diffchar.vim'
 
 if NeoBundleIsInstalled('diffchar.vim')
   if &diff
