@@ -36,6 +36,11 @@ if has('vim_starting')
     NeoBundle 'FuzzyFinder'
     NeoBundle 'Tagbar'
     NeoBundle 'tpope/vim-fugitive'
+
+    NeoBundle 'godlygeek/tabular'
+    NeoBundle 'plasticboy/vim-markdown'
+    let g:vim_markdown_folding_disabled=1
+
     call neobundle#end()
     function! NeoBundleIsInstalled(name)
       return neobundle#is_installed(a:name)
