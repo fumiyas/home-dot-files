@@ -143,6 +143,8 @@ function colorgrep_pager()
 
 alias -g P='|$PAGER'
 alias -g P2='2>&1|$PAGER'
+alias -g V='|view -'
+alias -g V2='2>&1|view -'
 alias -g T='|tee'
 alias -g T2='2>&1|tee'
 alias -g G='|colorgrep_pager'
