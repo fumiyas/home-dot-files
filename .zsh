@@ -152,12 +152,13 @@ alias -g D='|colordiff |$PAGER'
 
 setopt no_HUP			# exit時にHUPシグナルを出さない
 setopt no_ALL_EXPORT		# 変数を勝手にexportしない
-#setopt no_UNSET			# 未定義の変数を参照するとエラーを表示
+#setopt no_UNSET		# 未定義の変数を参照するとエラーを表示
 #setopt no_FLOW_CONTROL		# フロー制御(Ctrl+S, Ctrl+Q)を使わない
 setopt RM_STAR_SILENT
 setopt IGNORE_EOF		# Ctrl+dを続けて9回までは押しても終了しない
 setopt no_HASH_CMDS		# コマンド位置をハッシュしない
 setopt no_HASH_DIRS		# ディレクトリ位置をハッシュしない
+setopt INTERACTIVE_COMMENTS	# 対話シェル時に「#コメント」を記述可能にする
 
 setopt no_MULTIOS
 setopt PRINT_EIGHT_BIT
