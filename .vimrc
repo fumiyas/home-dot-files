@@ -559,6 +559,8 @@ set laststatus=2
 " vimdiff
 " ======================================================================
 
+command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_| diffthis | wincmd p | diffthis
+
 if NeoBundleIsInstalled('diffchar.vim')
   if &diff
     augroup vimrc
