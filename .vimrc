@@ -36,6 +36,7 @@ if has('vim_starting')
     NeoBundle 'FuzzyFinder'
     NeoBundle 'Tagbar'
     NeoBundle 'tpope/vim-fugitive'
+    NeoBundle 'scrooloose/syntastic.git'
 
     NeoBundle 'godlygeek/tabular'
     NeoBundle 'plasticboy/vim-markdown'
@@ -597,5 +598,15 @@ if executable(g:git_diff_normal)
   if v:shell_error == 0
     set diffexpr=GitDiffNormal()
   endif
+endif
+
+" ----------------------------------------------------------------------
+
+if NeoBundleIsInstalled('syntastic')
+  let g:syntastic_always_populate_loc_list=1
+  let g:syntastic_auto_loc_list=1
+  let g:syntastic_check_on_open=1
+  let g:syntastic_check_on_wq=0
+  let g:syntastic_loc_list_height=5
 endif
 
