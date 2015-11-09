@@ -14,6 +14,7 @@
 
 [alias]
 	wdiff = diff --word-diff
+	jwdiff = "!f() { git diff $@ | jwdiff -d | colordiff; }; f"
 
 [log]
         date = local
