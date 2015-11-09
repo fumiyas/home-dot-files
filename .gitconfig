@@ -17,7 +17,7 @@
 	jwdiff = "!f() { git diff $@ | jwdiff -d | colordiff; }; f"
 
 [log]
-        date = local
+        date = iso8601
 	decorate = full
 
 [diff]
