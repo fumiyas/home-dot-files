@@ -2,6 +2,9 @@
 	email = fumiyas@osstech.co.jp
 	name = SATOH Fumiyasu
 
+[core]
+	quotepath = false
+
 [color]
 	ui = auto
 
