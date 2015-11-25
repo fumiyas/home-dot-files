@@ -44,7 +44,7 @@ alias ldifunwrap='sed -n "1 {h; $ !d}; $ {x; s/\n //g; p}; /^ / {H; d}; /^ /! {x
 
 alias ps-x="ps -efly"
 alias ps-u="ps -fu $LOGNAME"
-alias iostat-x="iostat -xtc"
+alias iostat-x="iostat -xtcz -p ALL"
 alias pstree-x='pstree -acpu'
 alias dstat-full='dstat --time --load --cpu --top-cpu --mem --top-mem --io --top-io --disk --net'
 alias dstat-mem='dstat --time --load --cpu --top-cpu --mem --top-mem'
