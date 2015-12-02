@@ -116,7 +116,13 @@ let g:MultipleSearchMaxColors = 10
 
 "let g:fuf_useMigemo = 1
 
-nnoremap <silent> <C-f><C-f> :FufFileWithCurrentBufferDir!<CR>
+let g:fuf_patternSeparator = ' '
+let g:fuf_modesDisable = ['mrucmd']
+let g:fuf_file_exclude = '\v\.DS_Store|\.git|\.svn|\.swp'
+let g:fuf_mrufile_exclude = '\v\.DS_Store|\.git|\.svn|\.swp'
+let g:fuf_enumeratingLimit = 20
+
+nnoremap <silent> <C-f><C-f> :FufRenewCache<CR>:FufFileWithCurrentBufferDir!<CR>
 
 " ----------------------------------------------------------------------
 
