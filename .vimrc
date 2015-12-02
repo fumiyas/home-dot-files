@@ -37,6 +37,7 @@ if has('vim_starting')
     NeoBundle 'Tagbar'
     NeoBundle 'tpope/vim-fugitive'
     NeoBundle 'scrooloose/syntastic.git'
+    NeoBundle 'lambdalisue/vim-unified-diff'
     "NeoBundle 'https://github.com/dhruvasagar/vim-table-mode/'
     "NeoBundle 'https://github.com/AndrewRadev/inline_edit.vim'
 
@@ -584,27 +585,31 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
-" https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
+if NeoBundleIsInstalled('vim-unified-diff')
+  set diffexpr=unified_diff#diffexpr()
+else
+  " https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
 
-let g:git_diff_normal="git-diff-normal"
-let g:git_diff_normal_opts=["--diff-algorithm=histogram"]
+  let g:git_diff_normal="git-diff-normal"
+  let g:git_diff_normal_opts=["--diff-algorithm=histogram"]
 
-function! GitDiffNormal()
-  let args=[g:git_diff_normal]
-  if &diffopt =~ "iwhite"
-    call add(args, "--ignore-all-space")
-  endif
-  call extend(args, g:git_diff_normal_opts)
-  call extend(args, [v:fname_in, v:fname_new])
-  let cmd="!" . join(args, " ") . ">" . v:fname_out
-  silent execute cmd
-  redraw!
-endfunction
+  function! GitDiffNormal()
+    let args=[g:git_diff_normal]
+    if &diffopt =~ "iwhite"
+      call add(args, "--ignore-all-space")
+    endif
+    call extend(args, g:git_diff_normal_opts)
+    call extend(args, [v:fname_in, v:fname_new])
+    let cmd="!" . join(args, " ") . ">" . v:fname_out
+    silent execute cmd
+    redraw!
+  endfunction
 
-if executable(g:git_diff_normal)
-  call system(g:git_diff_normal)
-  if v:shell_error == 0
-    set diffexpr=GitDiffNormal()
+  if executable(g:git_diff_normal)
+    call system(g:git_diff_normal)
+    if v:shell_error == 0
+      set diffexpr=GitDiffNormal()
+    endif
   endif
 endif
 
