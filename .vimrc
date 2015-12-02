@@ -37,6 +37,8 @@ if has('vim_starting')
     NeoBundle 'Tagbar'
     NeoBundle 'tpope/vim-fugitive'
     NeoBundle 'scrooloose/syntastic.git'
+    "NeoBundle 'https://github.com/dhruvasagar/vim-table-mode/'
+    "NeoBundle 'https://github.com/AndrewRadev/inline_edit.vim'
 
     NeoBundle 'godlygeek/tabular'
     NeoBundle 'plasticboy/vim-markdown'
