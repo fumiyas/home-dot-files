@@ -622,5 +622,6 @@ if NeoBundleIsInstalled('syntastic')
   let g:syntastic_check_on_wq=0
   let g:syntastic_loc_list_height=5
   let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+  let g:syntastic_spec_rpmlint_args = "-o 'NetworkEnabled False'"
 endif
 
