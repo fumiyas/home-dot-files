@@ -1,4 +1,4 @@
-// ln -s ../user.pref ./profilename/user.pref
+// ln -s ../global/user.pref ./profilename/user.pref
 
 user_pref("mousewheel.with_control.action", 0);
 
