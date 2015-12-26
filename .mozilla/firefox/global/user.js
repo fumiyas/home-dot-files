@@ -10,7 +10,7 @@ user_pref("layout.frames.force_resizability", true);
 
 // Twitter Web UI 表示時の不具合の回避
 // https://twitter.com/d_toybox/status/637088309072625664
-user_pref("layout.interruptible-reflow.enabled", false);
+//user_pref("layout.interruptible-reflow.enabled", false);
 
 // 「タブを閉じる」ボタンの表示方法
 // 0:アクティブなタブのみ *1:全てのタブ 2:表示しない 3:タブバーの右端
@@ -21,4 +21,9 @@ user_pref("browser.search.showOneOffButtons", false);
 
 // テキストエリアへの中ボタンクリックでクリップボードでなくセレクションをペースト
 user_pref("dom.event.clipboardevents.enabled", false);
+
+// 署名なしの拡張を有効化
+user_pref("xpinstall.signatures.required", false);
+
+//user_pref("layers.acceleration.force-enabled", true);
 
