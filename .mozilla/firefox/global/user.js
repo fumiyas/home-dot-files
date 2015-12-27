@@ -1,5 +1,9 @@
 // ln -s ../global/user.pref ./profilename/user.pref
 
+// Back Space でページスクロールアップ
+user_pref("browser.backspace_action", 1);
+
+// Ctrl + マウスホイール回転で何もしない
 user_pref("mousewheel.with_control.action", 0);
 
 // 右クリック禁止ページを回避（JavaScript の詳細設定）
