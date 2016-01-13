@@ -319,10 +319,6 @@
 ;  '(set-alist 'mime-view-type-subtype-score-alist '(text . html) 0)
 ;)
 
-(setq pgg-scheme 'gpg)
-(setq pgg-default-scheme 'gpg)
-(setq pgg-insert-url-function #'w3m-retrieve)
-
 (eval-after-load "mime-edit"
   '(let ((text (assoc "text" mime-content-types)))
      (set-alist 'text "plain"
