@@ -509,7 +509,7 @@ nmap g# g#zz
 
 iab Yruler 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-" Auto command
+" Misc auto commands
 " ======================================================================
 
 augroup vimrc
@@ -517,6 +517,8 @@ augroup vimrc
 "  autocmd BufEnter ~/Dropbox/* set directory^=~/var/vim
 "  autocmd BufEnter * nested setlocal swapfile
 "  autocmd BufLeave ~/Dropbox/* set directory-=~/var/vim
+"
+  autocmd FileType spec setlocal path=.,./../SOURCES,,
 
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=8
   autocmd BufNewFile,BufRead *.[ch] setlocal formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
@@ -569,7 +571,7 @@ set laststatus=2
 " vimdiff
 " ======================================================================
 
-command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_| diffthis | wincmd p | diffthis
+command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_| diffthis | wincmd p | diffthis
 
 if NeoBundleIsInstalled('diffchar.vim')
   if &diff
