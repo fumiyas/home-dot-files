@@ -613,6 +613,12 @@ else
   endif
 endif
 
+augroup DiffAutocommands
+  autocmd!
+  " Turn off diff mode automatically
+  autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&diff')) == 1 | diffoff | endif
+augroup END
+
 " ----------------------------------------------------------------------
 
 if NeoBundleIsInstalled('syntastic')
