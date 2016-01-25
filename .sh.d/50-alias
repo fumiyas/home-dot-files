@@ -5,19 +5,23 @@
 ## Generic
 ## ======================================================================
 
+alias cd.='cd `pwd`'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
-alias cd.='cd `pwd`'
 
 alias nohistory='set +o sharehistory; SAVEHIST='
 
 alias c='printf "\017\033c"; stty sane; reset'
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
+tsize() {
+  printf "\e[8;%d;%dt" ${1:-63} ${2-100}
+}
+
 a2image() {
   if [ -z "$1" ]; then
     echo "Usage: a2image FILENAME.EXT"
