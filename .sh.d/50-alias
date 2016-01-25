@@ -1,7 +1,6 @@
 #!/bin/sh
 ## Aliases and functions definition for bash, zsh
 ## Author: SATOH Fumiyasu
-## Date: 2009-03-04, since 1999
 
 ## Generic
 ## ======================================================================
@@ -12,7 +11,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
-alias cdpwd='cd `pwd`'
+alias cd.='cd `pwd`'
 
 alias nohistory='set +o sharehistory; SAVEHIST='
 
