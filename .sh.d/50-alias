@@ -56,8 +56,7 @@ alias dig-x='dig +qr +multiline'
 alias wcp='wget -m -l3 --no-parent'
 alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 alias whois-jp='whois -h whois.jprs.jp'
-alias whois-jp-en='whois_jp_en'
-whois_jp_en() {
+whois-jp-en() {
   whois -h whois.jprs.jp ${1+"$1/e"}
 }
 
@@ -246,13 +245,11 @@ alias git-reset-add="git rm --cached"
 alias git-reset-commit="git reset HEAD\^"
 alias git-log='git log --graph --decorate --oneline'
 
-alias git-diff-reflog='git_diff_reflog'
-git_diff_reflog() {
+git-diff-reflog() {
   git diff "@{${1-1}}"
 }
 
-alias git-patch='git_patch'
-git_patch() {
+git-patch() {
   if [ $# -eq 0 ]; then
     git format-patch --stdout "HEAD~"
   elif [ $# -eq 1 ]; then
@@ -262,8 +259,7 @@ git_patch() {
   fi
 }
 
-alias git-patch-mail='git_patch_mail'
-git_patch_mail() {
+git-patch-mail() {
   if [ $# -eq 0 ]; then
     git format-patch --attach --stdout "HEAD~"
   elif [ $# -eq 1 ]; then
@@ -366,15 +362,13 @@ mancat()
 
 #shar -macDB --no-i18n -n ... -o ...
 
-alias rpm-qq='rpm_qq'
 rpm-qq()
 {
   rpm -q --qf "`rpm --querytags |sort |sed 's/^\(.*\)$/\1: %{\1}/'`\n" "$@" \
   |egrep -v '^HEADER|: $|: \(none\)$'
 }
 
-alias rpm-dump='rpm_dump'
-rpm_dump()
+rpm-dump()
 {
   [ -n "$1" ] || { echo "Usage: rpm-dump NAME.rpm"; return 1; }
   rpm2cpio "$1" | (
@@ -391,8 +385,7 @@ alias mysqldump-all='mysqldump-all-bare --single-transaction'
 alias mysqldump-all-master='mysqldump-all --master-data=2'
 alias mysqldump-all-lock='mysqldump-all-bare --lock-all-tables'
 
-alias openssl-selfcert='openssl_selfcert'
-openssl_selfcert()
+openssl-selfcert()
 {
   if [[ -z $1 ]]; then
     echo "Usage: openssl_selfcert CN [DAYS]" 1>&2
@@ -442,26 +435,24 @@ fi
 
 alias source='.'
 
-which_csh()
-{
-  for cmd in ${1+"$@"}; do
-    type=`type "$cmd"`
-    head=`echo "$type" | head -1`
-    desc=`echo $head | sed 's/^[^ ]* [^ ][^ ]* \([^ ]*\).*$/\1/'`
-    case $desc in
-    /* | hashed )	## command
-      echo $head | sed -e "s#^[^/]*/#/#" -e "s#[)']"'$##'
-      ;;
-    a | aliased | * )	## a function, alias or others
-      echo $head
-      ;;
-    esac
-  done
-}
-
 if type which >/dev/null 2>&1; then
   : OK
 else
-  alias which='which_csh'
+  which()
+  {
+    for cmd in ${1+"$@"}; do
+      type=`type "$cmd"`
+      head=`echo "$type" | head -1`
+      desc=`echo $head | sed 's/^[^ ]* [^ ][^ ]* \([^ ]*\).*$/\1/'`
+      case $desc in
+      /* | hashed )	## command
+	echo $head | sed -e "s#^[^/]*/#/#" -e "s#[)']"'$##'
+	;;
+      a | aliased | * )	## a function, alias or others
+	echo $head
+	;;
+      esac
+    done
+  }
 fi
 
