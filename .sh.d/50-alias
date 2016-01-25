@@ -15,11 +15,16 @@ alias .......='cd ../../../../../..'
 
 alias nohistory='set +o sharehistory; SAVEHIST='
 
-alias c='printf "\017\033c"; stty sane; reset'
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
+
+alias c='printf "\017\033c"; stty sane; reset'
 tsize() {
-  printf "\e[8;%d;%dt" ${1:-63} ${2-100}
+  printf '\e[8;%d;%dt' ${1:-63} ${2-100}
+}
+ttitle()
+{
+  printf "\e]2;%s\a" "$*"
 }
 
 a2image() {
@@ -33,7 +38,7 @@ a2image() {
 base64url() {
   base64 "$@" |sed 's/+/-/g;s/\//_/g'
 }
-base64url_decode() {
+base64url-decode() {
   sed 's/-/+/g;s/_/\//g' |base64 --decode "$@"
 }
 
@@ -72,22 +77,19 @@ cal() {
   fi
 }
 
-term_title()
-{
-  print -Pn "\e]2;$@\a"
-}
-
 ssh()
 {
+  local arg
+
   if [ -t 0 ] && [ -t 1 ]; then
     case "$TERM" in
     *term*|*vt*)
-      for __arg in ${1+"$@"}; do
-        case "$__arg" in
+      for arg in ${1+"$@"}; do
+        case "$arg" in
         -*)
           ;;
         *)
-          print -Pn "\e]2;ssh $__arg (`hostname`:${TTY#/dev/})\a"
+	  printf '\e]2;ssh %s (%s:%s)\a' "$arg" $(hostname) "${TTY#/dev/}"
           break
           ;;
         esac
