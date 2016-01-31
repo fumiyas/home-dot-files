@@ -36,7 +36,7 @@ user_pref("xpinstall.signatures.required", false);
 
 // ======================================================================
 
-user_pref("layout.css.devPixelsPerPx", 1.2);
+user_pref("layout.css.devPixelsPerPx", "1.2");
 
 user_pref("font.size.variable.ar",19);
 user_pref("font.size.variable.el",19);
