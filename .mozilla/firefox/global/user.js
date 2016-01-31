@@ -1,5 +1,8 @@
 // ln -s ../global/user.pref ./profilename/user.pref
 
+// http://www.hackermusings.com/2012/05/firefoxs-graphics-performance-on-x11/
+user_pref("gfx.xrender.enabled", false);
+
 // Back Space でページスクロールアップ
 user_pref("browser.backspace_action", 1);
 
