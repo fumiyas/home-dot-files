@@ -33,6 +33,8 @@ user_pref("xpinstall.signatures.required", false);
 
 // ======================================================================
 
+user_pref("layout.css.devPixelsPerPx", 1.2);
+
 user_pref("font.size.variable.ar",19);
 user_pref("font.size.variable.el",19);
 user_pref("font.size.variable.he",19);
@@ -93,35 +95,35 @@ user_pref("font.size.fixed.zh-CN", 19);
 user_pref("font.size.fixed.zh-HK", 19);
 user_pref("font.size.fixed.zh-TW", 19);
 
-user_pref("font.minimum-size.ar", 17);
-user_pref("font.minimum-size.el", 17);
-user_pref("font.minimum-size.he", 17);
-user_pref("font.minimum-size.ja", 17);
-user_pref("font.minimum-size.ko", 17);
-user_pref("font.minimum-size.th", 17);
-user_pref("font.minimum-size.x-armn", 17);
-user_pref("font.minimum-size.x-beng", 17);
-user_pref("font.minimum-size.x-cans", 17);
-user_pref("font.minimum-size.x-cyrillic", 17);
-user_pref("font.minimum-size.x-devanagari", 17);
-user_pref("font.minimum-size.x-ethi", 17);
-user_pref("font.minimum-size.x-geor", 17);
-user_pref("font.minimum-size.x-gujr", 17);
-user_pref("font.minimum-size.x-guru", 17);
-user_pref("font.minimum-size.x-khmr", 17);
-user_pref("font.minimum-size.x-knda", 17);
-user_pref("font.minimum-size.x-math", 17);
-user_pref("font.minimum-size.x-mlym", 17);
-user_pref("font.minimum-size.x-orya", 17);
-user_pref("font.minimum-size.x-sinh", 17);
-user_pref("font.minimum-size.x-tamil", 17);
-user_pref("font.minimum-size.x-telu", 17);
-user_pref("font.minimum-size.x-tibt", 17);
-user_pref("font.minimum-size.x-unicode", 17);
-user_pref("font.minimum-size.x-western", 17);
-user_pref("font.minimum-size.zh-CN", 17);
-user_pref("font.minimum-size.zh-HK", 17);
-user_pref("font.minimum-size.zh-TW", 17);
+user_pref("font.minimum-size.ar", 0);
+user_pref("font.minimum-size.el", 0);
+user_pref("font.minimum-size.he", 0);
+user_pref("font.minimum-size.ja", 0);
+user_pref("font.minimum-size.ko", 0);
+user_pref("font.minimum-size.th", 0);
+user_pref("font.minimum-size.x-armn", 0);
+user_pref("font.minimum-size.x-beng", 0);
+user_pref("font.minimum-size.x-cans", 0);
+user_pref("font.minimum-size.x-cyrillic", 0);
+user_pref("font.minimum-size.x-devanagari", 0);
+user_pref("font.minimum-size.x-ethi", 0);
+user_pref("font.minimum-size.x-geor", 0);
+user_pref("font.minimum-size.x-gujr", 0);
+user_pref("font.minimum-size.x-guru", 0);
+user_pref("font.minimum-size.x-khmr", 0);
+user_pref("font.minimum-size.x-knda", 0);
+user_pref("font.minimum-size.x-math", 0);
+user_pref("font.minimum-size.x-mlym", 0);
+user_pref("font.minimum-size.x-orya", 0);
+user_pref("font.minimum-size.x-sinh", 0);
+user_pref("font.minimum-size.x-tamil", 0);
+user_pref("font.minimum-size.x-telu", 0);
+user_pref("font.minimum-size.x-tibt", 0);
+user_pref("font.minimum-size.x-unicode", 0);
+user_pref("font.minimum-size.x-western", 0);
+user_pref("font.minimum-size.zh-CN", 0);
+user_pref("font.minimum-size.zh-HK", 0);
+user_pref("font.minimum-size.zh-TW", 0);
 
 // ======================================================================
 
