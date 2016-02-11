@@ -24,6 +24,7 @@ if has('vim_starting')
     call neobundle#begin(expand('~/.vim/bundle/'))
     NeoBundleFetch 'Shougo/neobundle.vim'
     NeoBundle 'https://github.com/koron/verifyenc-vim.git'
+    NeoBundle 'https://github.com/itchyny/lightline.vim.git'
     NeoBundle 'BlockDiff'
     NeoBundle 'vim-creole'
     NeoBundle 'vim-scripts/diffchar.vim'
@@ -551,22 +552,66 @@ augroup END
 " Status-line
 " ======================================================================
 
-function! GetStatusEx()
-  let str = &fileformat . '|'
-  if has('multi_byte') && &fileencoding != ''
-    let str = str . &fileencoding . '|'
-  endif
-  "let str = str . cfi#format("%s()", "-") . '|'
-  return str
-endfunction
-"let &statusline='%n %f %Y|%{&fileformat}|%{&fileencoding}|%04B|%R|%M%=%c%V,%l/%L %P'
-let &statusline='%n %f %Y|%{GetStatusEx()}%04B|%R|%M%=%c%V,%l/%L %P'
-"set statusline=%n\ %f\ %y%{GetStatusEx()}[%04B]%m%h%r%=%c%V,%l/%L\ %P
-"set statusline=[%n]\ %t\ %y%{GetStatusEx()}\ %m%h%r=%l/%L,%c%V\ %P
-"set statusline=%<%f\ %m%r%h%w%{GetStatusEx()}%=%l,%c%V%8P
 set laststatus=2
 
-":set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+if NeoBundleIsInstalled('lightline.vim')
+  let g:lightline = {
+    \ 'colorscheme': 'jellybeans',
+    \ 'separator': { 'left': "", 'right': "" },
+    \ 'subseparator': { 'left': "", 'right': "" },
+    \ 'active': {
+    \   'left': [ [ 'filename', 'paste' ] ],
+    \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \ },
+    \ 'inactive': {
+    \   'left': [ [ 'filename', 'paste' ] ],
+    \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \ },
+    \ 'component_function': {
+    \   'filename': 'LightLineFilename',
+    \   'filetype': 'LightLineFiletype',
+    \ },
+    \ 'component_expand': {
+    \   'lineinfo': 'LightLineLineinfo',
+    \
+    \ },
+  \ }
+  function! LightLineModified()
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  endfunction
+  function! LightLineReadonly()
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+  endfunction
+  function! LightLineFilename()
+    return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+      \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+      \  &ft == 'unite' ? unite#get_status_string() :
+      \  &ft == 'vimshell' ? vimshell#get_status_string() :
+      \ '' != expand('%') ? expand('%') : '[No Name]') .
+      \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+  endfunction
+  function! LightLineFiletype()
+     return strlen(&filetype) ? &filetype : '?'
+  endfunction
+  function! LightLineLineinfo()
+    return '%v,%l/%L'
+  endfunction
+else
+  function! GetStatusEx()
+    let str = &fileformat . '|'
+    if has('multi_byte') && &fileencoding != ''
+      let str = str . &fileencoding . '|'
+    endif
+    "let str = str . cfi#format("%s()", "-") . '|'
+    return str
+  endfunction
+  "let &statusline='%n %f %Y|%{&fileformat}|%{&fileencoding}|%04B|%R|%M%=%c%V,%l/%L %P'
+  let &statusline='%n %f %Y|%{GetStatusEx()}%04B|%R|%M%=%c%V,%l/%L %P'
+  "set statusline=%n\ %f\ %y%{GetStatusEx()}[%04B]%m%h%r%=%c%V,%l/%L\ %P
+  "set statusline=[%n]\ %t\ %y%{GetStatusEx()}\ %m%h%r=%l/%L,%c%V\ %P
+  "set statusline=%<%f\ %m%r%h%w%{GetStatusEx()}%=%l,%c%V%8P
+  "set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+endif
 
 " vimdiff
 " ======================================================================
