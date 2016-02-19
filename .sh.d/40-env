@@ -21,6 +21,11 @@ if type ifne >/dev/null 2>&1; then
   export HG_PAGER="ifne $PAGER" ## See ~/.hgrc
 fi
 
+if lsmod 2>/dev/null |grep '^vboxdrv ' >/dev/null; then
+  ## Linux KVM cannot run with another hypervisor, such as VirtualBox
+  export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
+fi
+
 ## Perl libs in $HOME by cpanm
 if [ -d "$HOME/perl5/lib/perl5" ]; then
   case ":$PERL5LIB:" in
