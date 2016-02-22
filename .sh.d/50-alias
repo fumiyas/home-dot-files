@@ -20,7 +20,25 @@ alias nkf-x='nkf -x -m0'
 
 alias c='printf "\017\033c"; stty sane; reset'
 tsize() {
-  printf '\e[8;%d;%dt' ${1:-63} ${2-100}
+  local cols lines
+
+  if [[ $# -eq 0 ]]; then
+    cols=100
+    lines=64
+  else
+    if [[ -n ${1#-} ]]; then
+      cols="$1"
+    else
+	cols=$(tput cols)
+    fi
+    if [[ -n ${2#-} ]]; then
+      lines="$2"
+    else
+	lines=$(tput lines)
+    fi
+  fi
+
+  printf '\e[8;%d;%dt' "$lines" "$cols"
 }
 ttitle()
 {
