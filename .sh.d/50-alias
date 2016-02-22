@@ -459,6 +459,12 @@ if type xbacklight >/dev/null 2>&1; then
   done
 fi
 
+## GNU compatibility
+## ======================================================================
+
+## GNU xargs --no-run-if-empty (-r)
+alias xargs-r="xargs sh -c '[ \$# -le 1 ] || exec \"\$@\"' -"
+
 ## C-shell compatibility
 ## ======================================================================
 
