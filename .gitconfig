@@ -38,5 +38,9 @@
 	algorithm = histogram
 	tool = vimdiff
 
+[diff "odf"]
+	binary = true
+	textconv = unoconv --stdout --format txt
+
 [push]
 	default = nothing
