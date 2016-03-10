@@ -16,8 +16,19 @@
 	new = green
 
 [alias]
+	s = status
+	ss = status --short
+	d = diff
+	d1 = "!f() { git diff \"$@\" HEAD~; }; f"
+	d2 = "!f() { git diff \"$@\" HEAD~2; }; f"
+	d3 = "!f() { git diff \"$@\" HEAD~3; }; f"
+	ds = diff --staged
+	l = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	wdiff = diff --word-diff
+	wdiff-staged = diff --staged --word-diff
 	jwdiff = "!f() { git diff $@ | jwdiff -d | colordiff; }; f"
+	jwdiff-staged = "!f() { git diff --staged $@ | jwdiff -d | colordiff; }; f"
 
 [log]
         date = iso8601
