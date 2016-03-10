@@ -1,3 +1,4 @@
+## screen -r <session>
 ## Ctrl-z, d    Detach
 ## Ctrl-z, k    Close window
 
@@ -8,10 +9,10 @@ escape ^z^z
 #escape ^Tt
 
 defencoding UTF-8
-## Remove DECCOLM (\E[?3l) to avoid resizing on startup
-termcapinfo mlterm 'is=\E7\E[r\E[m\E[?7h\E[?1;4;6l\E[4l\E8\E>'
-termcapinfo mlterm-256color 'is=\E7\E[r\E[m\E[?7h\E[?1;4;6l\E[4l\E8\E>'
-
+## Remove DECCOLM (\E[?3l) from is  to avoid resizing on startup
+## See `tput is2 |od -tcx1` and run the following:
+## TERM=mlterm tput is2 |perl -pe 's#(\e\[\?)((?:\d+;)*\d+)l#"$1".join(";",grep(!/^3$/,split(/;/,$2)))."l"#e; s/\e/\\E/g; $_.="\n"'
+termcapinfo mlterm* 'is=\E7\E[r\E[m\E[?7h\E[?1;4;6l\E[4l\E8\E>'
 
 #defhstatus "^En:^Et"
 #hardstatus alwayslastline "%H[%n]: %Y/%m/%d (%D) %c  [%Lw]"
