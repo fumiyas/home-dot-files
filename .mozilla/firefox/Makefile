@@ -12,7 +12,7 @@ link:
 	  done; \
 	  for p in *; do \
 	    [[ -f $$p/prefs.js ]] || continue; \
-	    echo ln -sf "$$r/$$f" "$$p/$${f#*/}"; \
+	    ln -sf "$$r/$$f" "$$p/$${f#*/}"; \
 	  done; \
 	done
 
