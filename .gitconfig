@@ -42,5 +42,7 @@
 	binary = true
 	textconv = unoconv --stdout --format txt
 
+[pull]
+	rebase = preserve
 [push]
 	default = nothing
