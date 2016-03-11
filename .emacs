@@ -113,6 +113,10 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 
+(setq frame-title-format
+  (format "%%f @ %s" (system-name))
+)
+
 (when window-system
     (tool-bar-mode -1)
     (auto-image-file-mode t)
