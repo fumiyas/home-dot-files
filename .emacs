@@ -103,7 +103,6 @@
     (set-terminal-coding-system 'utf-8)
 )
 
-;; ---- language-env DON'T MODIFY THIS LINE!
 ;; 日本語 info が文字化けしないように
 (auto-compression-mode t)
 ;; 日本語 grep
@@ -111,8 +110,8 @@
 ;    (setq grep-command "jgrep -n -e ")
 ;)
 
-; Don't display startup message
 (setq inhibit-startup-message t)
+(setq initial-scratch-message "")
 
 (when window-system
     (tool-bar-mode -1)
