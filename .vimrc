@@ -677,6 +677,7 @@ if NeoBundleIsInstalled('syntastic')
   let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
   let g:syntastic_spec_rpmlint_args = "-o 'NetworkEnabled False'"
   " SC1007: Remove space after = if trying to assign a value
-  let g:syntastic_sh_shellcheck_args = "-e SC1007"
+  " SC2039: In POSIX sh, 'type' is not supported
+  let g:syntastic_sh_shellcheck_args = "-e SC1007,SC2039"
 endif
 
