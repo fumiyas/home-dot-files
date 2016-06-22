@@ -1,9 +1,7 @@
 #!/bin/zsh
 ##
 ## zsh profile
-## Copyright (c) 2008-2013 SATOH Fumiyasu @ OSS Technology Corp. Japan
-##
-## Date: 2013-03-04, since 2008-05-02
+## Copyright (c) 2008-2016 SATOH Fumiyasu @ OSS Technology Corp. Japan
 ##
 
 ## ESC q		Suspend current command-line editing
@@ -147,8 +145,13 @@ alias -g V='|view -'
 alias -g V2='2>&1|view -'
 alias -g T='|tee'
 alias -g T2='2>&1|tee'
+alias -g 2N='2>/dev/null'
 alias -g G='|colorgrep_pager'
-alias -g D='|colordiff |$PAGER'
+if type diff-highlight &>/dev/null; then
+  alias -g D='|diff-highlight |$PAGER'
+else
+  alias -g D='|colordiff |$PAGER'
+fi
 
 ## ======================================================================
 
