@@ -337,7 +337,7 @@ endif
 
 " ======================================================================
 
-set directory^=~/var/vim
+set directory^=~/var/vim//
 if version >= 703
   set undodir=~/var/vim/undodir
   set undofile
