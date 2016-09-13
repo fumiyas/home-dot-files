@@ -25,10 +25,21 @@
 	ds = diff --staged
 	l = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+	precommit = diff --cached --diff-algorithm=minimal -w
 	wdiff = diff --word-diff
 	wdiff-staged = diff --staged --word-diff
 	jwdiff = "!f() { git diff $@ | jwdiff -d | colordiff; }; f"
 	jwdiff-staged = "!f() { git diff --staged $@ | jwdiff -d | colordiff; }; f"
+	ci = commit --verbose
+	cia = commit --verbose --amend
+	b = branch
+	branches = branch -a
+	tags = tag
+	stashes = stash list
+	unstage = reset -q HEAD --
+	discard = checkout --
+	uncommit = reset --mixed HEAD~
 
 [log]
         date = iso8601
