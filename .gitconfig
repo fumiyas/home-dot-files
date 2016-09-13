@@ -15,6 +15,11 @@
 	old = red
 	new = green
 
+[pager]
+	log = (diff-highlight 2>/dev/null 2>&1 || cat) |$PAGER
+	diff = (diff-highlight 2>/dev/null 2>&1 || cat) |$PAGER
+	show = (diff-highlight 2>/dev/null 2>&1 || cat) |$PAGER
+
 [alias]
 	s = status
 	ss = status --short
@@ -48,12 +53,24 @@
 [diff]
 	algorithm = histogram
 	tool = vimdiff
+	compactionHeuristic = true
+	renames = true
 
 [diff "odf"]
 	binary = true
 	textconv = unoconv --stdout --format txt
 
+[difftool]
+	prompt = false
+
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
+
 [pull]
-	rebase = preserve
+	#rebase = preserve
 [push]
 	default = nothing
+[commit]
+	verbose = true
