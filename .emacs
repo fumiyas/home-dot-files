@@ -298,7 +298,7 @@
 ;; ----------------------------------------------------------------------
 
 (setq browse-url-browser-function 'browse-url-generic
-	browse-url-generic-program "iceweasel")
+	browse-url-generic-program "firefox")
 
 ;; Internet Message
 ;; ======================================================================
