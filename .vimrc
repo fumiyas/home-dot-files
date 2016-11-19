@@ -608,7 +608,7 @@ set laststatus=2
 
 if NeoBundleIsInstalled('lightline.vim')
   let g:lightline = {
-    \ 'colorscheme': 'jellybeans',
+    \ 'colorscheme': 'PaperColor',
     \ 'separator': { 'left': "", 'right': "" },
     \ 'subseparator': { 'left': "", 'right': "" },
     \ 'active': {
