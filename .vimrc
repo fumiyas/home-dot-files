@@ -563,6 +563,9 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+" Search selected string in Visual mode
+vnoremap * "zy:let @/ = @z<CR>n
+
 " Misc auto commands
 " ======================================================================
 
