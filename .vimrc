@@ -39,6 +39,13 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
     call neobundle#begin(expand('~/.vim/bundle/'))
     NeoBundleFetch 'Shougo/neobundle.vim'
+    NeoBundle 'Shougo/vimproc.vim'
+    NeoBundle 'Shougo/vimproc.vim', {
+    \ 'build' : {
+    \     'linux' : 'make',
+    \     'unix' : 'gmake',
+    \    },
+    \ }
     NeoBundle 'https://github.com/koron/verifyenc-vim.git'
     NeoBundle 'https://github.com/itchyny/lightline.vim.git'
     NeoBundle 'BlockDiff'
