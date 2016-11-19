@@ -57,7 +57,8 @@ if has('vim_starting')
     NeoBundle 'closetag.vim'
     NeoBundle 'MultipleSearch'
     NeoBundle 'L9'
-    NeoBundle 'FuzzyFinder'
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/neoyank.vim'
     NeoBundle 'Tagbar'
     NeoBundle 'tpope/vim-fugitive'
     NeoBundle 'scrooloose/syntastic.git'
@@ -141,15 +142,43 @@ let g:MultipleSearchMaxColors = 10
 
 " ----------------------------------------------------------------------
 
-"let g:fuf_useMigemo = 1
+" Vimでunite.vimプラグインを使い始めて一週間 - アインシュタインの電話番号
+" http://blog.ruedap.com/2011/01/17/vim-unite-plugin-1-week
 
-let g:fuf_patternSeparator = ' '
-let g:fuf_modesDisable = ['mrucmd']
-let g:fuf_file_exclude = '\v\.DS_Store|\.git|\.svn|\.swp'
-let g:fuf_mrufile_exclude = '\v\.DS_Store|\.git|\.svn|\.swp'
-let g:fuf_enumeratingLimit = 20
+" VimのUniteプラグインでファイル、バッファ、ブックマーク管理 | karakaram-blog
+" http://www.karakaram.com/unite
 
-nnoremap <silent> <C-f><C-f> :FufRenewCache<CR>:FufFileWithCurrentBufferDir!<CR>
+nnoremap	[unite]		<Nop>
+nmap		<Space>f	[unite]
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" 起動時にインサートモードで開始
+let g:unite_enable_start_insert = 1
+
+" 現在開いているファイルのディレクトリ下のファイル一覧
+" 開いていない場合はカレントディレクトリ
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
+" バッファ一覧
+nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+" レジスタ一覧
+nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+" ブックマーク一覧
+nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
+" ブックマークに追加
+nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+
+" unite を開いている間のキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"{{{
+  " ESCでuniteを終了
+  nmap <buffer> <ESC> <Plug>(unite_exit)
+  " 入力モードのとき Ctrl+w でバックスラッシュも削除
+  " 空のときは親ディレクトリへ移動
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+endfunction"}}}
 
 " ----------------------------------------------------------------------
 
