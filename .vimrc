@@ -1,3 +1,19 @@
+" .vimrc
+" ======================================================================
+
+" Normal mode
+"	Open previous file	Ctrl+^
+"	Move to previous place	Ctrl+o
+"	Move to next place	Ctrl+i
+
+" Insert mode
+"	Add indent		Ctrl+t
+"	Delete indent		Ctrl+d
+"	Complete word		Ctrl+n
+"	Complete word		Ctrl+p
+
+" ======================================================================
+
 scriptencoding UTF-8
 " http://vim.sf.net/
 " http://pcmania.jp/~moraz/basics.html
