@@ -1,9 +1,10 @@
+#!/bin/bash
+##
 ## Bash profile
-## Copyright (c) 2007-2012 SATOH Fumiyasu @ OSS Technology Corp.
+## Copyright (c) 2007-2016 SATOH Fumiyasu @ OSS Technology Corp.
 ## Copyright (c) 2006-2007 SATOH Fumiyasu @ MIRACLE LINUX Corp.
 ## Copyright (c) 1999-2003 SATOH Fumiyasu @ Bento Internet
 ##
-## Date: 2012-09-27, since 1999-09-20
 
 ## C-u	unix-line-discard
 ## C-t	transpose-char
