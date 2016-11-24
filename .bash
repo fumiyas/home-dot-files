@@ -24,7 +24,7 @@ PS2="> "
 PS3="#? "
 PS4="+"
 
-if type tput >/dev/null 2>&1 && [ "`tput colors`" -ge 8 ]; then
+if type tput >/dev/null 2>&1 && [ $(tput colors) -ge 8 ]; then
   ## 1/2	bold
   ## 3/4	underline
   ## 5	glay background
@@ -56,7 +56,7 @@ fi
 
 case "$TERM" in
 *term)
-  PS1="$PS1\[\e]2;\$USER@\$HOSTNAME_DOT:\$PWD `tty`\007\]"
+  PS1="$PS1\[\e]2;\$USER@\$HOSTNAME_DOT:\$PWD $(tty)\007\]"
   ;;
 esac
 

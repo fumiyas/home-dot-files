@@ -11,7 +11,9 @@ log="$HOME/.xclient.log"
 [ -f "$log" ] && mv "$log" "$log.old"
 
 export LANG=ja_JP.UTF-8
-eval `wcwidth-cjk --sh-init`
+#export UIM_CANDWIN_PROG=uim-candwin-qt4
+#export UIM_CANDWIN_PROG=uim-candwin-gtk3
+eval $(wcwidth-cjk --sh-init)
 
 (
   syndaemon -d -R -t -i 1.0

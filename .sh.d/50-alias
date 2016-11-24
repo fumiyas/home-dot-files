@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 ## Aliases and functions definition for bash, zsh
 ## Author: SATOH Fumiyasu
 
 ## Generic
 ## ======================================================================
 
-alias cd.='cd `pwd`'
+alias cd.='cd $(pwd)'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -309,7 +309,7 @@ if [ -f "$HOME/lib/vim/plugin/less.vim" ]; then
     fi
   }
 elif (echo /usr/share/vim/vim*/macros/less.sh) >/dev/null 2>&1; then
-  alias lvv="`ls /usr/share/vim/vim*/macros/less.sh |sed -n '$p'`"
+  alias lvv="$(ls /usr/share/vim/vim*/macros/less.sh |tail -n -1)"
 fi
 
 termconv()
@@ -323,14 +323,14 @@ termconv()
   fi
 
   proc_code="$1"; shift
-  proc_code_n="`echo "$proc_code" |sed 's/[-_]//g' |tr A-Z a-z`"
+  proc_code_n="$(echo "$proc_code" |sed 's/[-_]//g' |tr A-Z a-z)"
 
   if [ x"${LANG:-C}" = x"C" ]; then
     term_code="utf-8"
   else
-    term_code="`echo "$LANG" |sed 's/^.*\.//'`"
+    term_code="$(echo "$LANG" |sed 's/^.*\.//')"
   fi
-  term_code_n="`echo "$term_code" |sed 's/[-_]//g' |tr A-Z a-z`"
+  term_code_n="$(echo "$term_code" |sed 's/[-_]//g' |tr A-Z a-z)"
 
   if [ x"$proc_code_n" != x"$term_code_n" ]; then
     cocot -t "$term_code" -p "$proc_code" -- "$@"
@@ -393,7 +393,7 @@ mancat()
 
 rpm-qq()
 {
-  rpm -q --qf "`rpm --querytags |sort |sed 's/^\(.*\)$/\1: %{\1}/'`\n" "$@" \
+  rpm -q --qf "$(rpm --querytags |sort |sed 's/^\(.*\)$/\1: %{\1}/')\n" "$@" \
   |egrep -v '^HEADER|: $|: \(none\)$'
 }
 
