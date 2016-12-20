@@ -462,31 +462,8 @@ fi
 ## ======================================================================
 
 ## GNU xargs --no-run-if-empty (-r)
-alias xargs-r="xargs sh -c '[ \$# -le 1 ] || exec \"\$@\"' -"
-
-## C-shell compatibility
-## ======================================================================
-
-alias source='.'
-
-if type which >/dev/null 2>&1; then
-  : OK
-else
-  which()
-  {
-    for cmd in ${1+"$@"}; do
-      type=`type "$cmd"`
-      head=`echo "$type" | head -1`
-      desc=`echo $head | sed 's/^[^ ]* [^ ][^ ]* \([^ ]*\).*$/\1/'`
-      case $desc in
-      /* | hashed )	## command
-	echo $head | sed -e "s#^[^/]*/#/#" -e "s#[)']"'$##'
-	;;
-      a | aliased | * )	## a function, alias or others
-	echo $head
-	;;
-      esac
-    done
-  }
-fi
+function xargs-r
+{
+  xargs sh -c '[ \$# -le 1 ] || exec \"\$@\"' -
+}
 
