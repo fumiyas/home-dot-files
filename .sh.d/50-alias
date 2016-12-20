@@ -261,10 +261,9 @@ make() {
 alias rbenv='RUBY_CONFIGURE_OPTS="--enable-load-relative" rbenv'
 
 if type vim >/dev/null 2>&1; then
-  alias vi="${vim_env}vim"
-  alias vidos="${vim_env}"'vim -u "$HOME/.vimrc.dos"'
-  alias vimac="${vim_env}"'vim -u "$HOME/.vimrc.mac"'
-  unset vim_env
+  alias vi='vim'
+  alias vidos='vim -u "$HOME/.vimrc.dos"'
+  alias vimac='vim -u "$HOME/.vimrc.mac"'
 fi
 
 alias git-reset-add="git rm --cached"
