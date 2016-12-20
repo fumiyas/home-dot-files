@@ -69,11 +69,11 @@ alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9d\\xa0]/\\x83@{[\$&^q( )]}/g"'
 alias ldifunwrap='sed -n "1 {h; $ !d}; $ {x; s/\n //g; p}; /^ / {H; d}; /^ /! {x; s/\n //g; p}"'
 
 if ps -H $$ >/dev/null 2>&1; then
-  alias ps-x="ps -eflyH"
-  alias ps-u="ps -fHu $LOGNAME"
+  alias ps-x='ps -eflyH'
+  alias ps-u='ps -fHu "$LOGNAME"'
 else
-  alias ps-x="ps -efly"
-  alias ps-u="ps -fu $LOGNAME"
+  alias ps-x='ps -efly'
+  alias ps-u='ps -fu $LOGNAME"'
 fi
 alias iostat-x="iostat -xytcz -p ALL"
 alias pstree-x='pstree -acpu'
