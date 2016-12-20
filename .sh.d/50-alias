@@ -230,10 +230,22 @@ if type gdiff >/dev/null 2>&1; then
 else
   alias diff='LC_MESSAGES=C diff'
 fi
-if ! type colordiff >/dev/null 2>&1; then
+
+if type diff-highlight >/dev/null 2>&1; then
+  : OK
+elif type colordiff >/dev/null 2>&1; then
+  alias diff-highlight=colordiff
+else
+  alias diff-highlight=colordiff
   colordiff()
   {
-    { [ -z "${1-}" ] && cat || LC_ALL=C diff "$@"; } \
+    {
+      if [ -z "${1-}" ]; then
+	cat
+      else
+	LC_ALL=C diff "$@"
+      fi
+    } \
     |sed -e '/^--- /n;s/^[+>]/\x1b\[32m+/;s/^[-<]/\x1b[31m-/;s/$/\x1b[0m/'
   }
 fi

@@ -147,11 +147,7 @@ alias -g T='|tee'
 alias -g T2='2>&1|tee'
 alias -g 2N='2>/dev/null'
 alias -g G='|colorgrep_pager'
-if type diff-highlight &>/dev/null; then
-  alias -g D='|diff-highlight |$PAGER'
-else
-  alias -g D='|colordiff |$PAGER'
-fi
+alias -g D='|diff-highlight |${=PAGER}'
 
 ## ======================================================================
 
