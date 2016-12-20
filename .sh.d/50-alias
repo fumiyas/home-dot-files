@@ -112,7 +112,7 @@ ssh()
         -*)
           ;;
         *)
-	  printf '\e]2;ssh %s (%s:%s)\a' "$arg" $(hostname) "${TTY#/dev/}"
+	  printf '\e]2;ssh %s (%s:%s)\a' "$arg" "$(hostname)" "${TTY#/dev/}"
           break
           ;;
         esac
