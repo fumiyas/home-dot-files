@@ -431,6 +431,9 @@ openssl-selfcert()
   )
 }
 
+alias ansible-lint='PYTHONPATH="$PYTHONPATH:$HOME/git/ansible-lint/lib" "$HOME/git/ansible-lint/bin/ansible-lint"'
+alias ansible-lint-x='ansible-lint -r "$HOME/git/ansible-lint-rules/rules"'
+
 ## Volume and Backlight adjustment
 ## ======================================================================
 
