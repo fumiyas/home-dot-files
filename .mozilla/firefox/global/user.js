@@ -9,6 +9,9 @@ user_pref("browser.backspace_action", 1);
 // Ctrl + マウスホイール回転で何もしない
 user_pref("mousewheel.with_control.action", 0);
 
+// 中クリックでクリップボードの URL を開かない
+user_pref("middlemouse.contentLoadURL", true);
+
 // 右クリック禁止ページを回避（JavaScript の詳細設定）
 user_pref("dom.event.contextmenu.enabled", false);
 
