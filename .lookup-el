@@ -59,9 +59,6 @@
 ;    ))
 
 (setq lookup-enable-gaiji t)
-(if (not (featurep 'xemacs))
-    (setq lookup-use-bitmap t)
-)
 (setq lookup-max-text 0)
 (setq ndeb-max-image-size 0)
 ;(setq ndeb-max-image-size 999999999)
