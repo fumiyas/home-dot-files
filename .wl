@@ -522,7 +522,7 @@
 (add-hook 'wl-mail-setup-hook
     '(lambda ()
 	;; C-x C-s 時のコード指定を自動化
-	(set-buffer-file-coding-system 'iso-2022-jp)
+	(set-buffer-file-coding-system 'utf-8)
 	;; 再編集時に wl-draft-config-alist を適用しない
 	(unless wl-draft-reedit
 	    (wl-draft-config-exec wl-draft-config-alist)
