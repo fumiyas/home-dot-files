@@ -437,13 +437,13 @@
 ))
 
 (setq wl-message-sort-field-list '(
+    "^From"
     "^To"
     "^Cc"
     "^Subject"
-    "^From"
-    "^Reply-To"
     "^Date"
     "^Message-ID"
+    "^Reply-To"
 ))
 
 ;(setq wl-message-ignored-field-list nil)
