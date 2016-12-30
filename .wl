@@ -757,8 +757,8 @@
 ;; 初期フレームの設定
 (setq initial-frame-alist
     (append '(
-	(width	. 90)	; フレーム幅(文字数)
-	(height	. 40)	; フレーム高(文字数)
+	(width	. 120)	; フレーム幅(文字数)
+	(height	. 50)	; フレーム高(文字数)
     ) initial-frame-alist)
 )
 
