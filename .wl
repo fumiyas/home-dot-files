@@ -489,8 +489,12 @@
 ; 
 (setq wl-draft-always-delete-myself nil)
 
-;;
-;(signature-insert-at-eof t)
+;; 署名付加処理を sendmail.el の mail-signature でなく
+;; SEMI signature.el の insert-signature を使う
+(require 'signature)
+(setq signature-insert-at-eof nil)
+(define-key wl-draft-mode-map "\C-c\C-w" 'insert-signature)
+
 ;; ドラフトを新しいフレームで書く
 (setq wl-draft-use-frame t)
 
