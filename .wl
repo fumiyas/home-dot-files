@@ -358,7 +358,6 @@
 
 (setq wl-message-ignored-field-list '(
     "^Sender:"
-    "^Return-Path:"
     "^Received:"
     "^Received-SPF:"
     "^X-Received:"
@@ -368,7 +367,6 @@
     "^References:"
     "^In-Reply-To:"
     "^Errors-To:"
-    "^Message-ID:"
     "^Resent-Message-ID:"
     "^MIME-Version:"
     "^Content-Disposition:"
@@ -410,8 +408,6 @@
     "^X-Quarantine-ID:"
     "^X-IronPort-"
     "^X-IRONPORT:"
-    "^X-MS-Has-Attatch:"
-    "^X-MS-TNEF-Correlator:"
     "^X-MimeOLE:"
     ;"^Received-SPF:"
     "^Authentication-Results:"
@@ -419,7 +415,6 @@
     "^X-Spam-"
     "^X-ESAFE-"
     "^X-MSW-SpamLogic:"
-    "^Thread-:"
     "^Resent-Date:"
     "^X-OriginalArrivalTime:"
     "^X-No-Archive:"
@@ -430,6 +425,15 @@
     "^X-Debian:"
     "^X-vs:"
     "^X-Git-"
+    "^X-Forefront-PRVS:"
+    "^SpamDiagnosticMetadata:"
+    "^SpamDiagnosticOutput:"
+    ;"^X-MS-Has-Attatch:"
+    ;"^X-MS-TNEF-Correlator:"
+    "^X-MS-Exchange-"
+    "^X-MS-Office365-Filtering-HT:"
+    "^X-Microsoft-Antispam"
+    "^X-Microsoft-Exchange-"
 ))
 
 (setq wl-message-sort-field-list '(
