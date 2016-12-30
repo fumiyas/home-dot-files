@@ -647,6 +647,7 @@
 ; ======================================================================
 
 (setq wl-expire-use-log t)
+(setq wl-expire-localdir-date-folder-name-fmt "%s/%%04d-%%02d")
 
 (setq wl-expire-alist
     '(
