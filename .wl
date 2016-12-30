@@ -52,7 +52,8 @@
 ;;
 ;;     @		add from address to address book
 ;;
-;;     A		reply message with citation (draft mode)
+;;     A		reply message with citation (draft mode) to sender
+;;     C-u A		reply message with citation (draft mode) to all
 ;;     f		forward message (draft mode)
 ;;     y		save message
 ;;
