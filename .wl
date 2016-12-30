@@ -134,7 +134,7 @@
 )
 
 ; Identifier
-(setq wl-from "SATOH Fumiyasu <fumiyas@osstech.jp>")
+(setq wl-from "SATOH Fumiyasu <fumiyas@osstech.co.jp>")
 (setq wl-organization "OSS Technology Corp. / Samba-JP / LDAP-JP / Apache-JP")
 ;(setq wl-organization "OSS Technology Corp. / Samba-JP / Namazu Developer")
 (setq wl-local-domain "sugar.osstech.co.jp")
