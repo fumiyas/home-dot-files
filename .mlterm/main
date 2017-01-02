@@ -1,10 +1,10 @@
 #termtype = mlterm-256color
 use_transbg = false
-fontsize = 14
+fontsize = 22
 use_cp932_ucs_for_xft=false
 #not_use_unicode_font= true
 ENCODING = UTF-8
-use_anti_alias = false
+use_anti_alias = true
 use_variable_column_width = false
 col_size_of_width_a = 2
 brightness = 100
