@@ -4,6 +4,7 @@
 
 [core]
 	quotepath = false
+	precomposeunicode = true
 
 [color]
 	ui = auto
