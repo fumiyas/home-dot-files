@@ -653,6 +653,7 @@
     '(
 	("^\\+trash$" (date 60) remove)
 	("^\\+dust$" (date 60) remove)
+	("^\\+work/osstech/consult$" (date 2000) wl-expire-localdir-date)
 	("^\\+work/ntt-west-admin$" (date 180) remove)
 ;	("^\\+ml/samba/sugj-" (date 365) remove)
 ;	("^\\+ml/samba/samba-" (date 365) remove)
