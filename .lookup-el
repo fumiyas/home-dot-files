@@ -1,27 +1,27 @@
-;; f    ������ñ��򸡺�����
-;; SPC  ��ʸ�Хåե��������إ��������뤹��
-;; n    ���ι��ܤذ�ư����
-;; p    ���ι��ܤذ�ư����
-;; v    ���ѥ⡼��
-;; o    �Хåե�����粽����
-;; s    ��ʸ�������إ��󥯥��󥿥륵��������
-;; i    ���ܤξ����ɽ������
-;; t    �����������ڤ��ؤ���
-;; w    ���Ƥ򥭥��󥰤���¸����
-;; M    ����Υ�˥塼��ɽ������
-;; L    ��ե���󥹤ΰ�����ɽ������
-;; S    ��������⡼��
-;; r    �������ϥХåե��ذ�ư����
-;; h    ��ʸ�Хåե��ذ�ư����
-;; g    ��������ľ��
-;; M-n  ���θ�������ذ�ư����
-;; M-p  ���θ�������ذ�ư����
-;; M-f  ���μ��񥰥롼�פذ�ư����
-;; M-b  ���μ��񥰥롼�פذ�ư����
-;; q    Lookup ����ȴ����
-;; Q    Lookup ��λ����
-;; R    Lookup ��Ƶ�ư����
-;; ?    �إ�פ�ɽ������
+;; f    新たな単語を検索する
+;; SPC  本文バッファを前方へスクロールする
+;; n    次の項目へ移動する
+;; p    前の項目へ移動する
+;; v    概観モード
+;; o    バッファを最大化する
+;; s    本文を前方へインクリメンタルサーチする
+;; i    項目の情報を表示する
+;; t    整形処理を切り替える
+;; w    内容をキルリングに保存する
+;; M    辞書のメニューを表示する
+;; L    リファレンスの一覧を表示する
+;; S    辞書選択モード
+;; r    検索開始バッファへ移動する
+;; h    本文バッファへ移動する
+;; g    検索をやり直す
+;; M-n  次の検索履歴へ移動する
+;; M-p  前の検索履歴へ移動する
+;; M-f  次の辞書グループへ移動する
+;; M-b  前の辞書グループへ移動する
+;; q    Lookup から抜ける
+;; Q    Lookup を終了する
+;; R    Lookup を再起動する
+;; ?    ヘルプを表示する
 
 ;(setq lookup-default-method 'prefix) ;; 'exact
 (setq lookup-default-dictionary-options '((:stemmer .  stem-english)))
@@ -72,9 +72,9 @@
 ;disabled
 (lookup-use-package "ndeb+/usr/local/share/dict/srd-fpw" "srd-fpw")
 
-;; img.dat �Τ�����
+;; img.dat のある場所
 (setq srd-fpw-image-directory "/usr/local/share/dict/srd-fpw/srd-fpw/data")
-;; srdra.bnd �Τ�����
+;; srdra.bnd のある場所
 (setq srd-fpw-sound-directory "/usr/local/share/dict/srd-fpw/srd-fpw/data")
 
 (setq srd-fpw-play-realaudio-process "mplayer")
