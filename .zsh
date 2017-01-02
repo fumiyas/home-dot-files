@@ -60,6 +60,9 @@ zstyle ':completion:*' file-patterns \
 
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
+zstyle ':completion:*:complete:ssh:*:hosts' command \
+  'getent hosts; sed -n "s/^Host[[:blank:]]*/dummy /p" ~/.ssh/config*'
+
 setopt AUTO_LIST
 setopt LIST_TYPES
 setopt LIST_PACKED
