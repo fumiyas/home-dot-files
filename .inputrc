@@ -4,3 +4,4 @@ set convert-meta off
 set mark-symlinked-directories on
 set completion-ignore-case on
 set expand-tilde on
+set enable-bracketed-paste on
