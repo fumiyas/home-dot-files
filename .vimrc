@@ -151,37 +151,39 @@ let g:MultipleSearchMaxColors = 10
 " VimのUniteプラグインでファイル、バッファ、ブックマーク管理 | karakaram-blog
 " http://www.karakaram.com/unite
 
-nnoremap	[unite]		<Nop>
-nmap		<Space>f	[unite]
+if NeoBundleIsInstalled('unite.vim')
+  nnoremap	[unite]		<Nop>
+  nmap		<Space>f	[unite]
 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
-" 起動時にインサートモードで開始
-let g:unite_enable_start_insert = 1
+  " 起動時にインサートモードで開始
+  let g:unite_enable_start_insert = 1
 
-" 現在開いているファイルのディレクトリ下のファイル一覧
-" 開いていない場合はカレントディレクトリ
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
-" バッファ一覧
-nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-" レジスタ一覧
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-" 最近使用したファイル一覧
-nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-" ブックマーク一覧
-nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
-" ブックマークに追加
-nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+  " 現在開いているファイルのディレクトリ下のファイル一覧
+  " 開いていない場合はカレントディレクトリ
+  nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
+  " バッファ一覧
+  nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+  " レジスタ一覧
+  nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+  " 最近使用したファイル一覧
+  nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+  " ブックマーク一覧
+  nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
+  " ブックマークに追加
+  nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
 
-" unite を開いている間のキーマッピング
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
-  " ESCでuniteを終了
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-  " 入力モードのとき Ctrl+w でバックスラッシュも削除
-  " 空のときは親ディレクトリへ移動
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-endfunction"}}}
+  " unite を開いている間のキーマッピング
+  autocmd FileType unite call s:unite_my_settings()
+  function! s:unite_my_settings()"{{{
+    " ESCでuniteを終了
+    nmap <buffer> <ESC> <Plug>(unite_exit)
+    " 入力モードのとき Ctrl+w でバックスラッシュも削除
+    " 空のときは親ディレクトリへ移動
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  endfunction"}}}
+endif
 
 " ----------------------------------------------------------------------
 
