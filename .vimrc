@@ -743,4 +743,7 @@ if NeoBundleIsInstalled('syntastic')
   if executable('python3')
     let g:syntastic_python_checkers = ['python3', 'flake8']
   endif
+  " E266: too many leading '#' for block comment
+  " E501: line too long (82 > 79 characters)
+  let g:syntastic_python_flake8_args = "--ignore=E266,E501"
 endif
