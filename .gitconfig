@@ -23,7 +23,7 @@
 
 [alias]
 	s = status
-	ss = status --short
+	st = status --short --branch
 	d = diff
 	d1 = "!f() { git diff \"$@\" HEAD~; }; f"
 	d2 = "!f() { git diff \"$@\" HEAD~2; }; f"
@@ -37,15 +37,17 @@
 	wdiff-staged = diff --staged --word-diff
 	jwdiff = "!f() { git diff $@ | jwdiff -d | colordiff; }; f"
 	jwdiff-staged = "!f() { git diff --staged $@ | jwdiff -d | colordiff; }; f"
+	co = checkout
 	ci = commit --verbose
 	cia = commit --verbose --amend
-	b = branch
-	branches = branch -a
+	b = branch -vv --color=always
+	ba = branch -a --color=always
 	tags = tag
 	stashes = stash list
 	unstage = reset -q HEAD --
 	discard = checkout --
 	uncommit = reset --mixed HEAD~
+	r = remote --verbose
 
 [log]
         date = iso8601
