@@ -1,5 +1,4 @@
 set meta-flag on
-set ouput-meta on
 set convert-meta off
 set mark-symlinked-directories on
 set completion-ignore-case on
