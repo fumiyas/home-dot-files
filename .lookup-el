@@ -77,7 +77,7 @@
 ;; srdra.bnd のある場所
 (setq srd-fpw-sound-directory "/usr/local/share/dict/srd-fpw/srd-fpw/data")
 
-(setq srd-fpw-play-realaudio-process "mplayer")
+(setq srd-fpw-play-realaudio-process "vlc")
 (setq srd-fpw-display-image-process "display")
 
 (setq srd-fpw-image-inline nil)
