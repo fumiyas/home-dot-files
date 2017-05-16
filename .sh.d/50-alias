@@ -15,6 +15,9 @@ alias .......='cd ../../../../../..'
 
 alias nohistory='set +o sharehistory; SAVEHIST='
 
+## Enable alias expansion on sudo command-line
+alias sudo='sudo '
+
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
 
