@@ -68,8 +68,9 @@ alias zsh-unmetafy='perl -pe "s/\\x83(.)/@{[\$1^q( )]}/g"'
 alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9d\\xa0]/\\x83@{[\$&^q( )]}/g"'
 #alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9D\\xA0]/qq(\\x83).chr(ord(\$&)^32)/ge"'
 
-## http://richmegginson.livejournal.com/18726.html
-alias ldifunwrap='sed -n "1 {h; $ !d}; $ {x; s/\n //g; p}; /^ / {H; d}; /^ /! {x; s/\n //g; p}"'
+## http://richmegginson.livejournal.com/18726.html (POSIX incompatible?)
+#alias ldifunwrap='sed -n '\''1 {h; $ !d}; $ {x; s/\n //g; p}; /^ / {H; d}; /^ /! {x; s/\n //g; p}'\'
+alias ldifunwrap='awk '\''NR>1 && !sub(/^ /,"") { print s; s="" } { s = s $0 } END { print s }'\'
 
 if ps -H $$ >/dev/null 2>&1; then
   alias ps-x='ps -eflyH'
