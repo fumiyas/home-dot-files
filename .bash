@@ -11,10 +11,10 @@
 ## C-/	undo
 ## M-.	yank-last-word
 
-[ -z "$PS1" ] && return
+[[ -z $PS1 ]] && return
 
 ## Prompt
-if [ "$UID" -eq 0 ]; then
+if [[ $UID -eq 0 ]]; then
   PS1='# '
 else
   PS1='$ '
