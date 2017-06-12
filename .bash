@@ -24,7 +24,7 @@ PS2="> "
 PS3="#? "
 PS4="+"
 
-if type tput >/dev/null 2>&1 && [ $(tput colors) -ge 8 ]; then
+if type tput >/dev/null 2>&1 && [[ $(tput colors) -ge 8 ]]; then
   ## 1/2	bold
   ## 3/4	underline
   ## 5	glay background
@@ -64,11 +64,7 @@ esac
 HISTSIZE=100000
 HISTFILESIZE=100000
 HISTTIMEFORMAT='%Y/%m/%d %T '
-if [ ${BASH_VERSION%%.*} -ge 3 ]; then
-  HISTCONTROL=erasedups
-else
-  HISTCONTROL=ignoredups
-fi
+HISTCONTROL=erasedups
 shopt -s cmdhist lithist histappend histverify
 
 shopt -s globstar
