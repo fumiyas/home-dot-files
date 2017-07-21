@@ -1,0 +1,3 @@
+addFilter("E: broken-syntax-in-scriptlet-requires Requires\(pre,preun\)")
+addFilter("E: use-of-RPM_SOURCE_DIR")
+addFilter("W: deprecated-grep \[u'egrep'\]")
