@@ -171,6 +171,9 @@ alias grep-R='egrep --dereference-recursive --binary-files=without-match'
 alias ra='. $HOME/.profile'
 
 alias xclip-c='xclip -selection clipboard'
+## OSC 52 (PASTE64) を利用した端末エミュレータ経由でのクリップボード書き込み
+## https://gist.github.com/ttdoda/6c30de9a5f2112e72486
+alias tclip="echo -ne '\e]52;0;'; base64 | tr -d '\012'; echo -ne '\e\\'"
 alias xo='xdg-open'
 alias acroread='command acroread -openInNewWindow'
 
