@@ -70,14 +70,15 @@ if [ -n "$TERM" ] && [ -n "$SSH_CONNECTION" ]; then
   done
 fi
 
-export LESS="--RAW-CONTROL-CHARS --jump-target=5 --ignore-case"
-export LESS_TERMCAP_mb=`tput bold; tput setaf 1`
-export LESS_TERMCAP_md=`tput bold; tput setaf 6`
-export LESS_TERMCAP_me=`tput sgr0`
-export LESS_TERMCAP_se=`tput sgr0`
-export LESS_TERMCAP_so=`tput bold; tput setaf 3; tput setab 4`
-export LESS_TERMCAP_ue=`tput sgr0`
-export LESS_TERMCAP_us=`tput bold; tput setaf 3`
+export LESS="--no-init --LONG-PROMPT --RAW-CONTROL-CHARS --quit-if-one-screen --jump-target=5 --ignore-case --shift=4"
+## See terminfo(5)
+export LESS_TERMCAP_mb=`tput bold; tput setaf 1`		## turn on bold
+export LESS_TERMCAP_md=`tput bold; tput setaf 6`		## turn on blink
+export LESS_TERMCAP_me=`tput sgr0`				## turn off all
+export LESS_TERMCAP_so=`tput bold; tput setaf 3; tput setab 4`  ## begin standout mode
+export LESS_TERMCAP_se=`tput sgr0`				## exit standout mode
+export LESS_TERMCAP_us=`tput bold; tput setaf 3`		## begin underline mode
+export LESS_TERMCAP_ue=`tput sgr0`				## exit underline mode
 
 export LV="-c -l"
 
