@@ -93,6 +93,33 @@ alias dig-x='dig +qr +multiline'
 
 alias wcp='wget -m -l3 --no-parent'
 alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
+
+alias curl-x='curl --remote-name --remote-header-name'
+alias curl-v='curl --write-out @<(
+  echo -E "url_effective\t\t%{url_effective}\n"
+  echo -E "http_version\t\t%{http_version}\n"
+  echo -E "http_code\t\t%{http_code}\n"
+  echo -E "http_connect\t\t%{http_connect}\n"
+  echo -E "ssl_verify_result\t%{ssl_verify_result}\n"
+  echo -E "content_type\t\t%{content_type}\n"
+  echo -E "filename_effective\t%{filename_effective}\n"
+  echo -E "redirect_url\t\t%{redirect_url}\n"
+  echo -E "num_redirects\t\t%{num_redirects}\n"
+  echo -E "time_total\t\t%{time_total}\n"
+  echo -E "time_namelookup\t\t%{time_namelookup}\n"
+  echo -E "time_connect\t\t%{time_connect}\n"
+  echo -E "time_appconnect\t\t%{time_appconnect}\n"
+  echo -E "time_pretransfer\t%{time_pretransfer}\n"
+  echo -E "time_redirect\t\t%{time_redirect}\n"
+  echo -E "time_starttransfer\t%{time_starttransfer}\n"
+  echo -E "size_download\t\t%{size_download}\n"
+  echo -E "size_upload\t\t%{size_upload}\n"
+  echo -E "size_header\t\t%{size_header}\n"
+  echo -E "size_request\t\t%{size_request}\n"
+  echo -E "speed_download\t\t%{speed_download}\n"
+  echo -E "speed_upload\t\t%{speed_upload}\n"
+)'
+
 alias whois-jp='whois -h whois.jprs.jp'
 whois-jp-en() {
   whois -h whois.jprs.jp ${1+"$1/e"}
