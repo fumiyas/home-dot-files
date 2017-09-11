@@ -716,7 +716,7 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
-if NeoBundleIsInstalled('vim-unified-diff')
+if NeoBundleIsInstalled('vim-unified-diff') && version > 704
   set diffexpr=unified_diff#diffexpr()
 else
   " https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
