@@ -74,7 +74,7 @@ if has('vim_starting')
     NeoBundle 'https://github.com/itchyny/lightline.vim.git'
     NeoBundle 'BlockDiff'
     NeoBundle 'vim-creole'
-    NeoBundle 'vim-scripts/diffchar.vim'
+    NeoBundle 'rickhowe/diffchar.vim'
     NeoBundle 'nathanaelkane/vim-indent-guides'
     NeoBundle 'kana/vim-fakeclip'
     NeoBundle 'YankRing.vim'
