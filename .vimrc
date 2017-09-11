@@ -606,6 +606,7 @@ augroup vimrc
 
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=8
   autocmd BufNewFile,BufRead *.[ch] setlocal formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
+  autocmd BufNewFile *.bash 0r ~/.vim/template/bash.bash
   autocmd BufNewFile *.rb 0r ~/.vim/template/ruby.rb
   autocmd BufNewFile *.py 0r ~/.vim/template/python.py
   autocmd BufNewFile *.pl 0r ~/.vim/template/perl.pl
