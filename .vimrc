@@ -602,6 +602,7 @@ augroup vimrc
 "  autocmd BufLeave ~/Dropbox/* set directory-=~/var/vim
 "
   autocmd FileType spec setlocal path=.,./../SOURCES,,
+  autocmd FileType yaml setlocal indentexpr=
 
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=8
   autocmd BufNewFile,BufRead *.[ch] setlocal formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
