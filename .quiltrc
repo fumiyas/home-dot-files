@@ -1,0 +1,11 @@
+for where in ./ ../ ../../ ../../../ ../../../../ ../../../../../; do
+  if [ -e ${where}debian/rules -a -d ${where}debian/patches ]; then
+    QUILT_PATCHES=debian/patches
+    break
+  fi
+done
+
+QUILT_NO_DIFF_INDEX=1
+QUILT_NO_DIFF_TIMESTAMPS=1
+QUILT_REFRESH_ARGS="-p ab"
+QUILT_DIFF_ARGS="--color=auto"
