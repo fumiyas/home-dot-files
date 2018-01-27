@@ -25,9 +25,9 @@
 	s = status
 	st = status --short --branch
 	d = diff
-	d1 = "!f() { git diff \"$@\" HEAD~; }; f"
-	d2 = "!f() { git diff \"$@\" HEAD~2; }; f"
-	d3 = "!f() { git diff \"$@\" HEAD~3; }; f"
+	d1 = "!f() { git diff \"$@\" @~; }; f"
+	d2 = "!f() { git diff \"$@\" @~2; }; f"
+	d3 = "!f() { git diff \"$@\" @~3; }; f"
 	ds = diff --staged
 	l = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -44,9 +44,9 @@
 	ba = branch -a --color=always
 	tags = tag
 	stashes = stash list
-	unstage = reset -q HEAD --
+	unstage = reset -q @ --
 	discard = checkout --
-	uncommit = reset --mixed HEAD~
+	uncommit = reset --mixed @~
 	r = remote --verbose
 
 [log]
