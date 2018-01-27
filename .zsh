@@ -190,6 +190,9 @@ setopt NUMERIC_GLOB_SORT
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
 ## Prompt
 ## ======================================================================
 
