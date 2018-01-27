@@ -261,15 +261,18 @@ java-default() {
   "$java" "${args[@]}" "$@" -version 2>&1
 }
 
-for cmd in grep egrep fgrep; do
-  type "g$cmd" >/dev/null 2>&1 && alias "$cmd=g$cmd"
+for a in grep egrep fgrep; do
+  type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
+  if [[ -z $("$c" --directories=skip . / 2>&1 >/dev/null) ]]; then
+    alias "$a"="$c --directories=skip"
+  else
+    [[ $a != $c ]] && alias "$a"="$c"
+  fi
 done
-
-if type gdiff >/dev/null 2>&1; then
-  alias diff='LC_MESSAGES=C gdiff'
-else
-  alias diff='LC_MESSAGES=C diff'
-fi
+for a in diff; do
+  type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
+  alias "$a"="LC_MESSAGES=C $c"
+done
 
 if type diff-highlight >/dev/null 2>&1; then
   : OK
