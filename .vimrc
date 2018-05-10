@@ -499,7 +499,7 @@ if has('iconv')
   unlet s:enc_jis
 endif
 
-set fileformats=
+let &fileformats=$VIM_FILEFORMATS
 
 set formatoptions-=o
 set formatoptions-=r

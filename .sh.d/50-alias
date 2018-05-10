@@ -305,8 +305,8 @@ alias rbenv='RUBY_CONFIGURE_OPTS="--enable-load-relative" rbenv'
 
 if type vim >/dev/null 2>&1; then
   alias vi='vim'
-  alias vidos='vim -u "$HOME/.vimrc.dos"'
-  alias vimac='vim -u "$HOME/.vimrc.mac"'
+  alias vidos='VIM_FILEFORMATS=dos vim'
+  alias vimac='VIM_FILEFORMATS=mac vim'
 fi
 
 alias git-reset-add="git rm --cached"
