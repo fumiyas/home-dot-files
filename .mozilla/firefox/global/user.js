@@ -10,7 +10,7 @@ user_pref("browser.backspace_action", 1);
 user_pref("mousewheel.with_control.action", 0);
 
 // 中クリックでクリップボードの URL を開かない
-user_pref("middlemouse.contentLoadURL", true);
+user_pref("middlemouse.contentLoadURL", false);
 
 // 右クリック禁止ページを回避（JavaScript の詳細設定）
 user_pref("dom.event.contextmenu.enabled", false);
@@ -150,7 +150,7 @@ user_pref("extensions.tabmix.loadOnNewTab.type", 0);
 // 開くタブの位置を現在タブの隣にする
 user_pref("extensions.tabmix.openNewTabNext", true);
 user_pref("extensions.tabmix.openTabNext", true);
-user_pref("browser.tabs.insertRelatedAfterCurrent", false);
+user_pref("browser.tabs.insertRelatedAfterCurrent", true);
 
 // 最後のタブを閉じたとき、ウィンドウ自体は閉じない
 user_pref("browser.closeWindowWithLastTab", false);
