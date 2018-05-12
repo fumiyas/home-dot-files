@@ -18,6 +18,9 @@ user_pref("dom.event.contextmenu.enabled", false);
 // フレームなページで強制的にリサイズ可能に
 user_pref("layout.frames.force_resizability", true);
 
+// 国際化ドメイン名を punycode のまま表示
+user_pref("network.IDN_show_punycode", true);
+
 // Twitter Web UI 表示時の不具合の回避
 // https://twitter.com/d_toybox/status/637088309072625664
 //user_pref("layout.interruptible-reflow.enabled", false);
