@@ -17,6 +17,7 @@ alias nohistory='set +o sharehistory; SAVEHIST='
 
 ## Enable alias expansion on sudo command-line
 alias sudo='sudo '
+alias xargs='xargs '
 
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
@@ -62,6 +63,10 @@ base64url() {
 base64url-decode() {
   sed 's/-/+/g;s/_/\//g' |base64 --decode "$@"
 }
+
+if dd status=progress </dev/null >&/dev/null; then
+  alias dd='dd status=progress'
+fi
 
 alias zsh-unmetafy='perl -pe "s/\\x83(.)/@{[\$1^q( )]}/g"'
 #alias zsh-unmetafy='perl -pe "s/\\x83(.)/chr(ord(\$1)^32)/ge"'
