@@ -328,7 +328,7 @@ git-patch() {
   elif [ $# -eq 1 ]; then
     git format-patch --stdout "$1~..$1"
   else
-    git format-patch --stdout "$1..$2"
+    git format-patch --stdout "$1~..$2"
   fi
 }
 
@@ -338,7 +338,7 @@ git-patch-mail() {
   elif [ $# -eq 1 ]; then
     git format-patch --attach --stdout "$1~..$1"
   else
-    git format-patch --attach --stdout "$1..$2"
+    git format-patch --attach --stdout "$1~..$2"
   fi
 }
 
