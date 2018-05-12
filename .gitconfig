@@ -43,6 +43,9 @@
 	cia = commit --verbose --amend
 	## Print current working branch name
 	pwb = rev-parse --abbrev-ref @
+	cwb = rev-parse --abbrev-ref @
+	root = rev-parse --show-toplevel
+	root-relative = rev-parse --show-cdup
 	b = branch -vv --color=always
 	ba = branch -a --color=always
 	tags = tag
