@@ -196,8 +196,10 @@
 
 ;; i-search for Japanese
 (load-safe "migemo")
-(setq migemo-coding-system 'utf-8)
-;(setq migemo-command "/usr/bin/cmigemo")
+(setq migemo-command "/usr/bin/cmigemo")
+(setq migemo-options '("-q" "--emacs"))
+(setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
+(setq migemo-coding-system 'utf-8-unix)
 
 ;; i-search for filename in mini-buffer
 (load-safe "minibuf-isearch")
