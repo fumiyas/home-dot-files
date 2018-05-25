@@ -1,3 +1,7 @@
+## catch syscall <system call name>
+## info b[reakpoint]
+## del <number>
+
 set history save on
 set history size 99999
 set history filename ~/.gdb_history
