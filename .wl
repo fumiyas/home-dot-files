@@ -277,8 +277,8 @@
 	    ("^\\[sugj-tech:" . "+ml/samba/sugj-tech")
 	    ("^\\[sugj-web:" . "+ml/samba/sugj-web")
 
-	    ("^\\[debian-users:" . "+ml/linux/debian-users")
-	    ("^\\[debian-devel:" . "+ml/linux/debian-devel")
+	    ("^\\[debian-users " . "+ml/linux/debian-users")
+	    ("^\\[debian-devel " . "+ml/linux/debian-devel")
 
 	    ("^\\[LDAP-Staff:" . "+ml/net/ldap-staff")
 	    ("^\\[LDAP-Users:" . "+ml/net/ldap-users")
@@ -357,11 +357,12 @@
 (setq wl-message-visible-field-list '())
 
 (setq wl-message-ignored-field-list '(
-    "^Sender:"
     "^Received:"
     "^Received-SPF:"
     "^X-Received:"
     "^X-post-Received:"
+    "^X-SES-Outgoing"
+    "^Sender:"
     "^Old-Return-Path:"
     "^Delivered-To:"
     "^References:"
@@ -394,6 +395,7 @@
     "^X-Mailing-List"
     "^X-list"
     "^X-archive-position:"
+    "^ARC-"
     "^X-ecartis-version:"
     "^X-Saved-"
     "^X-Disclaimer:"
@@ -419,6 +421,8 @@
     "^X-OriginalArrivalTime:"
     "^X-No-Archive:"
     "^X-Loop:"
+    "^x-exchange-antispam-"
+    "^x-ms-"
     "^X-ExtLoop1:"
     "^X-Original-To:"
     "^X-Original-Received:"
@@ -426,6 +430,7 @@
     "^X-vs:"
     "^X-Git-"
     "^X-Forefront-PRVS:"
+    "^Autocrypt:"
     "^SpamDiagnosticMetadata:"
     "^SpamDiagnosticOutput:"
     ;"^X-MS-Has-Attatch:"
@@ -493,6 +498,7 @@
 ;; SEMI signature.el の insert-signature を使う
 (require 'signature)
 (setq signature-insert-at-eof nil)
+(setq signature-separator "")
 (define-key wl-draft-mode-map "\C-c\C-w" 'insert-signature)
 
 ;; ドラフトを新しいフレームで書く
@@ -614,16 +620,16 @@
 	)
 	("osstech"
 	    ("From" . "SATOH Fumiyasu <fumiyas@osstech.co.jp>")
-	    (top . "様\n\nOSSTech さとうふみやす です。\nお世話になっております。\n\n")
+	    (top . "様\n\nOSSTech さとうふみやす です。\n\n")
 ;	    (body. "body")
 	)
 	("osstech2"
 	    ("From" . "SATOH Fumiyasu <fumiyas@osstech.co.jp>")
-	    (top . "様\n\nさとうふみやす です。\nさとうふみやす @ OSSTech です。\nOSSTech さとうふみやす です。\nお世話になっております。\n\n")
+	    (top . "様\n\nさとうふみやす です。\nさとうふみやす @ OSSTech です。\nOSSTech さとうふみやす です。\n\n")
 ;	    (body. "body")
 	)
 	("osstech-jp"
-	    ("From" . "SATOH Fumiyasu <fumiyas@osstech.jp>")
+	    ("From" . "SATOH Fumiyasu <fumiyas@osstech.co.jp>")
 	    (top . "さとうふみやす @ OSSTech です。\n\n")
 	)
 	("sfo.jp"
@@ -770,4 +776,3 @@
 ;	(height	. 40)	; フレーム高(文字数)
 ;    ) default-frame-alist)
 ;)
-
