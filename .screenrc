@@ -1,6 +1,7 @@
 ## screen -r <session>
 ## Ctrl-z, d    Detach
 ## Ctrl-z, k    Close window
+## Ctrl-z, ESC  Backscroll
 
 #escape ^Ta
 escape ^z^z
