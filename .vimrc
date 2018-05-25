@@ -19,7 +19,6 @@ scriptencoding UTF-8
 " http://pcmania.jp/~moraz/basics.html
 " http://www.kawaz.jp/pukiwiki/?vim
 
-set nocompatible
 "set viminfo+=!
 
 if !exists(expand('$HOME/.vim/private'))
@@ -82,11 +81,13 @@ if has('vim_starting')
     NeoBundle 'MultipleSearch'
     NeoBundle 'L9'
     NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/neomru.vim'
     NeoBundle 'Shougo/neoyank.vim'
     NeoBundle 'Tagbar'
     NeoBundle 'tpope/vim-fugitive'
     NeoBundle 'scrooloose/syntastic.git'
     NeoBundle 'lambdalisue/vim-unified-diff'
+    NeoBundle 'andviro/flake8-vim'
     "NeoBundle 'https://github.com/dhruvasagar/vim-table-mode/'
     "NeoBundle 'https://github.com/AndrewRadev/inline_edit.vim'
 
@@ -235,9 +236,6 @@ nmap <F8> :TagbarToggle<CR>
 " @ <r> Run command in register <r>
 " @@	Run command in latest recoded command
 
-" :sp		Split window
-" :vsp		Split window vertically
-" C-w C-w	Move to next window
 " C-w +		Increase size of window
 " C-w -		Decrease size of window
 " :only		Close other windows
@@ -261,6 +259,9 @@ nmap <F8> :TagbarToggle<CR>
 " !G command	Filter contents via command
 
 " q: q/
+" :Ctrl-f
+" /Ctrl-f
+
 " :help object-select
 " dib diB cib ciB yib yiB >ib >iB ...
 " di> di]
@@ -426,6 +427,8 @@ endif
 
 set shortmess+=I
 
+set modeline
+
 set nolist
 "set listchars+=tab:>-
 "set listchars+=eol:$
@@ -451,6 +454,7 @@ set backspace=indent,eol,start
 set formatoptions=
 set nrformats-=octal
 set nobackup
+set cryptmethod=blowfish2
 set noendofline
 set cinoptions=:0
 set comments=
@@ -461,9 +465,6 @@ set wildmode=longest:full
 set encoding=UTF-8
 set termencoding=UTF-8
 set fileencodings=UCS-BOM,UTF-8
-if $LANG =~ "euc"
-  set termencoding=EUC-JP
-endif
 
 set ambiwidth=double
 
@@ -703,6 +704,7 @@ endif
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_| diffthis | wincmd p | diffthis
 
 if NeoBundleIsInstalled('diffchar.vim')
+  let g:DiffUnit = "Word3"
   if &diff
     augroup vimrc
       autocmd!
