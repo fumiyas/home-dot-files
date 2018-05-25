@@ -3,14 +3,3 @@
 %_query_all_fmt	%%|epoch?{%%{epoch}:}:{}|%%{name}-%%{version}-%%{release}.%%{arch}
 
 %__spec_install_pre %{___build_pre};chmod g-s $(dirname %{buildroot});
-
-%bcond_with_if(n:) %{expand:%%if %{*}
-%global xxx %%{nil}
-echo true
-%else
-%global xxx out
-echo false
-%endif
-%%{?_with_%{-n*}:%%global with_%{-n*} 2}
-}
-
