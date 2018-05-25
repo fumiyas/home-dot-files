@@ -121,7 +121,7 @@ fi
 ## Debian
 ## ======================================================================
 
-export DEBEMAIL="fumiyas at osstech"
+export DEBEMAIL="fumiyas at osstech.co.jp"
 export DEBFULLNAME="SATOH Fumiyasu"
 
 ## Misc.
