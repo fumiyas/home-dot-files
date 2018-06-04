@@ -454,13 +454,18 @@ set backspace=indent,eol,start
 set formatoptions=
 set nrformats-=octal
 set nobackup
-set cryptmethod=blowfish2
 set noendofline
 set cinoptions=:0
 set comments=
 set history=10000
 set wildmenu
 set wildmode=longest:full
+
+if version >= 705
+  set cryptmethod=blowfish2
+else
+  set cryptmethod=blowfish
+endif
 
 set encoding=UTF-8
 set termencoding=UTF-8
