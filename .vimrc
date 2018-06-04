@@ -52,58 +52,39 @@ endif
 " Plugins
 " ======================================================================
 
-" NeoBundle
+" Dein.vim
 " ----------------------------------------------------------------------
 
-filetype off
+if isdirectory(expand('~/git/vim/dein.vim')) "&& version >= 702
+  set runtimepath+=~/git/vim/dein.vim
 
-if has('vim_starting')
-  if isdirectory(expand('~/.vim/bundle/neobundle.vim')) && version >= 702
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#begin(expand('~/.vim/bundle/'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
-    NeoBundle 'Shougo/vimproc.vim'
-    NeoBundle 'Shougo/vimproc.vim', {
-    \ 'build' : {
-    \     'linux' : 'make',
-    \     'unix' : 'gmake',
-    \    },
-    \ }
-    NeoBundle 'https://github.com/koron/verifyenc-vim.git'
-    NeoBundle 'https://github.com/itchyny/lightline.vim.git'
-    NeoBundle 'BlockDiff'
-    NeoBundle 'vim-creole'
-    NeoBundle 'rickhowe/diffchar.vim'
-    NeoBundle 'nathanaelkane/vim-indent-guides'
-    NeoBundle 'kana/vim-fakeclip'
-    NeoBundle 'YankRing.vim'
-    NeoBundle 'closetag.vim'
-    NeoBundle 'MultipleSearch'
-    NeoBundle 'L9'
-    NeoBundle 'Shougo/unite.vim'
-    NeoBundle 'Shougo/neomru.vim'
-    NeoBundle 'Shougo/neoyank.vim'
-    NeoBundle 'Tagbar'
-    NeoBundle 'tpope/vim-fugitive'
-    NeoBundle 'scrooloose/syntastic.git'
-    NeoBundle 'lambdalisue/vim-unified-diff'
-    NeoBundle 'andviro/flake8-vim'
-    "NeoBundle 'https://github.com/dhruvasagar/vim-table-mode/'
-    "NeoBundle 'https://github.com/AndrewRadev/inline_edit.vim'
+  call dein#begin(expand('~/git/vim/dein.vim'))
 
-    NeoBundle 'godlygeek/tabular'
-    NeoBundle 'plasticboy/vim-markdown'
-    let g:vim_markdown_folding_disabled=1
+  call dein#add('Shougo/dein.vim')
+  call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
-    call neobundle#end()
-    function! NeoBundleIsInstalled(name)
-      return neobundle#is_installed(a:name)
-    endfunction
-  else
-    function! NeoBundleIsInstalled(name)
-      return ''
-    endfunction
-  endif
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/neomru.vim')
+  "call dein#add('Shougo/neosnippet')
+
+  call dein#add('itchyny/lightline.vim.git')
+  call dein#add('koron/verifyenc-vim.git')
+  call dein#add('lambdalisue/vim-unified-diff')
+  call dein#add('rickhowe/diffchar.vim')
+  call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('vim-scripts/BlockDiff')
+  call dein#add('vim-scripts/MultipleSearch')
+  call dein#add('kana/vim-fakeclip')
+  call dein#add('AndrewRadev/inline_edit.vim')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('scrooloose/syntastic.git')
+
+  call dein#end()
+else
+  function! dein#tap(name)
+    return 0
+  endfunction
 endif
 
 filetype plugin on
@@ -130,7 +111,7 @@ let g:indent_guides_auto_colors=0
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
-if NeoBundleIsInstalled('vim-indent-guides')
+if dein#tap('vim-indent-guides')
   let g:indent_guides_auto_colors=0
   let g:indent_guides_enable_on_vim_startup=1
   let g:indent_guides_guide_size=1
@@ -176,7 +157,7 @@ let g:MultipleSearchMaxColors = 10
 " VimのUniteプラグインでファイル、バッファ、ブックマーク管理 | karakaram-blog
 " http://www.karakaram.com/unite
 
-if NeoBundleIsInstalled('unite.vim')
+if dein#tap('unite.vim')
   nnoremap	[unite]		<Nop>
   nmap		<Space>f	[unite]
 
@@ -644,7 +625,7 @@ augroup END
 
 set laststatus=2
 
-if NeoBundleIsInstalled('lightline.vim')
+if dein#tap('lightline.vim')
   let g:lightline = {
     \ 'colorscheme': 'PaperColor',
     \ 'separator': { 'left': "", 'right': "" },
@@ -708,7 +689,7 @@ endif
 
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_| diffthis | wincmd p | diffthis
 
-if NeoBundleIsInstalled('diffchar.vim')
+if dein#tap('diffchar.vim')
   let g:DiffUnit = "Word3"
   if &diff
     augroup vimrc
@@ -723,7 +704,7 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
-if NeoBundleIsInstalled('vim-unified-diff') && version > 704
+if dein#tap('vim-unified-diff') && version > 704
   set diffexpr=unified_diff#diffexpr()
 else
   " https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
@@ -759,7 +740,7 @@ augroup END
 
 " ----------------------------------------------------------------------
 
-if NeoBundleIsInstalled('syntastic')
+if dein#tap('syntastic')
   let g:syntastic_always_populate_loc_list=0
   let g:syntastic_auto_loc_list=1
   let g:syntastic_check_on_open=0
