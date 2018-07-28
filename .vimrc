@@ -40,7 +40,7 @@ if &term =~ '^\(x\|ml\)term'
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
 
-    function XTermPasteBegin(ret)
+    function! XTermPasteBegin(ret)
         set pastetoggle=<Esc>[201~
         set paste
         return a:ret
