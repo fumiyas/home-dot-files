@@ -70,7 +70,7 @@ if isdirectory(expand('~/git/vim/dein.vim')) "&& version >= 702
 
   call dein#add('itchyny/lightline.vim.git')
   call dein#add('koron/verifyenc-vim.git')
-  call dein#add('lambdalisue/vim-unified-diff')
+  "call dein#add('lambdalisue/vim-unified-diff')
   call dein#add('rickhowe/diffchar.vim')
   call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('vim-scripts/BlockDiff')
