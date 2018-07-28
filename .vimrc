@@ -345,8 +345,6 @@ endif
 " Highlighting
 " ======================================================================
 
-highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
-
 if exists('&cursorline')
   set cursorline
 endif
@@ -399,6 +397,8 @@ if has("syntax") && (&t_Co > 2 || has("gui_running"))
   syntax on
 
   autocmd VimEnter,Colorscheme * :highlight default link TagName Search
+  autocmd VimEnter,Colorscheme * :highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
+  autocmd VimEnter,Colorscheme * :highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
 
   function! ActivateInvisibleCharIndicator()
     syntax match InvisibleJISX0208Space "　" display containedin=ALL
@@ -413,9 +413,6 @@ if has("syntax") && (&t_Co > 2 || has("gui_running"))
   " Status line
   highlight StatusLine   term=NONE cterm=NONE ctermfg=yellow ctermbg=red
   highlight StatusLineNC term=NONE cterm=NONE ctermfg=black  ctermbg=white
-
-  highlight Search term=NONE cterm=NONE ctermfg=black  ctermbg=grey
-  highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
 
   autocmd FileType go :highlight goErr cterm=bold ctermfg=214
   autocmd FileType go :match goErr /\<err\>/
@@ -784,3 +781,4 @@ if dein#tap('syntastic')
   " E501: line too long (82 > 79 characters)
   let g:syntastic_python_flake8_args = "--ignore=E266,E501"
 endif
+highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
