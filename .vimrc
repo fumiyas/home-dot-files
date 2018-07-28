@@ -342,8 +342,10 @@ if &t_Co == '' && &term =~ '.*term$'
   endif
 endif
 
-" Syntax highlighting
+" Highlighting
 " ======================================================================
+
+highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
 
 if exists('&cursorline')
   set cursorline
