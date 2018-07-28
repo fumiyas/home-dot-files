@@ -396,15 +396,15 @@ endif
 if has("syntax") && (&t_Co > 2 || has("gui_running"))
   syntax on
 
-  autocmd VimEnter,Colorscheme * :highlight default link TagName Search
-  autocmd VimEnter,Colorscheme * :highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
-  autocmd VimEnter,Colorscheme * :highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
+  autocmd VimEnter,Colorscheme * highlight default link TagName Search
+  autocmd VimEnter,Colorscheme * highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
+  autocmd VimEnter,Colorscheme * highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
 
   function! ActivateInvisibleCharIndicator()
     syntax match InvisibleJISX0208Space "　" display containedin=ALL
-    autocmd VimEnter,Colorscheme * :highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
+    autocmd VimEnter,Colorscheme * highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
     syntax match InvisibleTrailingSpace "[ \t]\+$" display containedin=ALL
-    autocmd VimEnter,Colorscheme * :highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
+    autocmd VimEnter,Colorscheme * highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
   endf
   augroup vimrc
     autocmd BufNewFile,BufRead * call ActivateInvisibleCharIndicator()
@@ -414,8 +414,8 @@ if has("syntax") && (&t_Co > 2 || has("gui_running"))
   highlight StatusLine   term=NONE cterm=NONE ctermfg=yellow ctermbg=red
   highlight StatusLineNC term=NONE cterm=NONE ctermfg=black  ctermbg=white
 
-  autocmd FileType go :highlight goErr cterm=bold ctermfg=214
-  autocmd FileType go :match goErr /\<err\>/
+  autocmd FileType go highlight goErr cterm=bold ctermfg=214
+  autocmd FileType go match goErr /\<err\>/
 endif
 
 " ======================================================================
