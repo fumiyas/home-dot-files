@@ -15,6 +15,8 @@ export LANG=ja_JP.UTF-8
 #export UIM_CANDWIN_PROG=uim-candwin-gtk3
 eval $(wcwidth-cjk --sh-init)
 
+xset b off
+
 (
   #syndaemon -d -R -t -i 1.0
   #fcitx -r
