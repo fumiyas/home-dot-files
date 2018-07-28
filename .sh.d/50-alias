@@ -276,7 +276,7 @@ for a in grep egrep fgrep; do
 done
 for a in diff; do
   type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
-  alias "$a"="LC_MESSAGES=C $c"
+  alias "$a"="env LC_MESSAGES=C $c"
 done
 
 if type diff-highlight >/dev/null 2>&1; then
@@ -306,12 +306,12 @@ make() {
   fi
 }
 
-alias rbenv='RUBY_CONFIGURE_OPTS="--enable-load-relative" rbenv'
+alias rbenv='env RUBY_CONFIGURE_OPTS="--enable-load-relative" rbenv'
 
 if type vim >/dev/null 2>&1; then
   alias vi='vim'
-  alias vidos='VIM_FILEFORMATS=dos vim'
-  alias vimac='VIM_FILEFORMATS=mac vim'
+  alias vidos='env VIM_FILEFORMATS=dos vim'
+  alias vimac='env VIM_FILEFORMATS=mac vim'
 fi
 
 alias git-reset-add="git rm --cached"
@@ -491,7 +491,7 @@ openssl-selfcert()
   )
 }
 
-alias ansible-lint='PYTHONPATH="$PYTHONPATH:$HOME/git/ansible-lint/lib" "$HOME/git/ansible-lint/bin/ansible-lint"'
+alias ansible-lint='env PYTHONPATH="$PYTHONPATH:$HOME/git/ansible-lint/lib" "$HOME/git/ansible-lint/bin/ansible-lint"'
 alias ansible-lint-x='ansible-lint -r "$HOME/git/ansible-lint-rules/rules"'
 
 ## Volume and Backlight adjustment
