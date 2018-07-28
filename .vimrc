@@ -80,6 +80,10 @@ if isdirectory(expand('~/git/vim/dein.vim')) "&& version >= 702
   call dein#add('tpope/vim-fugitive')
   call dein#add('scrooloose/syntastic.git')
 
+  call dein#add('godlygeek/tabular')
+  call dein#add('joker1007/vim-markdown-quote-syntax')
+  call dein#add('rcmdnk/vim-markdown')
+
   call dein#end()
 else
   function! dein#tap(name)
@@ -356,6 +360,7 @@ if exists('&colorcolumn')
   autocmd VimEnter,Colorscheme * :highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 endif
 
+let g:vim_markdown_folding_disabled=1
 let g:markdown_fenced_languages = [
 \  'c',
 \  'css',
@@ -370,7 +375,23 @@ let g:markdown_fenced_languages = [
 \  'sass',
 \  'sh',
 \  'xml',
+\  'yaml',
+\  'json',
 \]
+
+if dein#tap('vim-markdown')
+  let g:markdown_quote_syntax_filetypes = {
+	  \ "go" : {
+	  \   "start" : "go",
+	  \},
+	  \ "yaml" : {
+	  \   "start" : "yaml",
+	  \},
+	  \ "json" : {
+	  \   "start" : "json",
+	  \},
+  \}
+endif
 
 if has("syntax") && (&t_Co > 2 || has("gui_running"))
   syntax on
