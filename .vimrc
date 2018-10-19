@@ -85,8 +85,12 @@ if isdirectory(expand('~/git/vim/dein.vim')) "&& version >= 702
   call dein#add('rcmdnk/vim-markdown')
 
   call dein#end()
+
+  function! s:dein_tap(name)
+    return dein#tap(name)
+  endfunction
 else
-  function! dein#tap(name)
+  function! s:dein_tap(name)
     return 0
   endfunction
 endif
@@ -120,7 +124,7 @@ let g:indent_guides_auto_colors=0
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
-if dein#tap('vim-indent-guides')
+if s:dein_tap('vim-indent-guides')
   let g:indent_guides_auto_colors=0
   let g:indent_guides_enable_on_vim_startup=1
   let g:indent_guides_guide_size=1
@@ -166,7 +170,7 @@ let g:MultipleSearchMaxColors = 10
 " VimのUniteプラグインでファイル、バッファ、ブックマーク管理 | karakaram-blog
 " http://www.karakaram.com/unite
 
-if dein#tap('unite.vim')
+if s:dein_tap('unite.vim')
   nnoremap	[unite]		<Nop>
   nmap		<Space>f	[unite]
 
@@ -384,7 +388,7 @@ let g:markdown_fenced_languages = [
 \  'json',
 \]
 
-if dein#tap('vim-markdown')
+if s:dein_tap('vim-markdown')
   let g:markdown_quote_syntax_filetypes = {
 	  \ "go" : {
 	  \   "start" : "go",
@@ -650,7 +654,7 @@ augroup END
 
 set laststatus=2
 
-if dein#tap('lightline.vim')
+if s:dein_tap('lightline.vim')
   let g:lightline = {
     \ 'colorscheme': 'PaperColor',
     \ 'separator': { 'left': "", 'right': "" },
@@ -714,7 +718,7 @@ endif
 
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_| diffthis | wincmd p | diffthis
 
-if dein#tap('diffchar.vim')
+if s:dein_tap('diffchar.vim')
   let g:DiffUnit = "Word3"
   if &diff
     augroup vimrc
@@ -729,7 +733,7 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
-if dein#tap('vim-unified-diff') && version > 704
+if s:dein_tap('vim-unified-diff') && version > 704
   set diffexpr=unified_diff#diffexpr()
 else
   " https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
@@ -765,7 +769,7 @@ augroup END
 
 " ----------------------------------------------------------------------
 
-if dein#tap('syntastic')
+if s:dein_tap('syntastic')
   let g:syntastic_always_populate_loc_list=0
   let g:syntastic_auto_loc_list=1
   let g:syntastic_check_on_open=0
