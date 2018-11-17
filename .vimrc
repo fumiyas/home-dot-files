@@ -87,7 +87,7 @@ if isdirectory(expand('~/git/vim/dein.vim')) "&& version >= 702
   call dein#end()
 
   function! s:dein_tap(name)
-    return dein#tap(name)
+    return dein#tap(a:name)
   endfunction
 else
   function! s:dein_tap(name)
