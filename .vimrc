@@ -622,14 +622,14 @@ augroup vimrc
 
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=8
   autocmd BufNewFile,BufRead *.[ch] setlocal formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
-  autocmd BufNewFile *.bash 0r ~/.vim/template/bash.bash
-  autocmd BufNewFile *.rb 0r ~/.vim/template/ruby.rb
-  autocmd BufNewFile *.py 0r ~/.vim/template/python.py
-  autocmd BufNewFile *.pl 0r ~/.vim/template/perl.pl
-  autocmd BufNewFile *.pm 0r ~/.vim/template/package.pm
+  autocmd BufNewFile *.bash 0r ~/.vim/template/template.bash
+  autocmd BufNewFile *.rb 0r ~/.vim/template/template.rb
+  autocmd BufNewFile *.py 0r ~/.vim/template/template.py
+  autocmd BufNewFile *.pl 0r ~/.vim/template/template.pl
+  autocmd BufNewFile *.pm 0r ~/.vim/template/template.pm
   "autocmd BufNewFile *.pl execute "normal i#!/usr/bin/env perl\<CR>" | echo "New File"
 
-  autocmd BufNewFile *.html 0r ~/.vim/template/strict.html
+  autocmd BufNewFile *.html 0r ~/.vim/template/template.html
   autocmd BufNewFile *.html setlocal fileencoding=UTF-8
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown expandtab
   autocmd BufRead /tmp/ldapvi-*/data setlocal filetype=ldif
