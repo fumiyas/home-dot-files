@@ -339,27 +339,63 @@ colorscheme default
 " :e $VIMRUNTIME/syntax/colortest.vim
 " :so %
 
-if &t_Co == '' && &term =~ '.*term$'
-  if has("terminfo")
-    set t_Co=8
-    set t_Sf=^[[3%p1%dm
-    set t_Sb=^[[4%p1%dm
-  else
-    set t_Co=8
-    set t_Sf=^[[3%dm
-    set t_Sb=^[[4%dm
-  endif
-endif
+"if &t_Co == '' && &term =~ '.*term$'
+"  if has("terminfo")
+"    set t_Co=8
+"    set t_Sf=^[[3%p1%dm
+"    set t_Sb=^[[4%p1%dm
+"  else
+"    set t_Co=8
+"    set t_Sf=^[[3%dm
+"    set t_Sb=^[[4%dm
+"  endif
+"endif
 
 " Highlighting
 " ======================================================================
 
-if exists('&cursorline')
-  set cursorline
-endif
-if exists('&cursorcolumn')
-  set cursorcolumn
-  autocmd Colorscheme * highlight CursorColumn cterm=bold ctermbg=none
+if &diff
+  syntax off
+  " vimdiff is very slow if cursorline and/or curorcolumn
+  if exists('&cursorline')
+    set nocursorline
+  endif
+  if exists('&cursorcolumn')
+    set nocursorcolumn
+  endif
+else
+  if exists('&cursorline')
+    set cursorline
+  endif
+  if exists('&cursorcolumn')
+    set cursorcolumn
+    autocmd Colorscheme * highlight CursorColumn cterm=bold ctermbg=none
+  endif
+
+  if has("syntax") && (&t_Co > 2 || has("gui_running"))
+    syntax on
+
+    autocmd Colorscheme * highlight default link TagName Search
+    autocmd Colorscheme * highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
+    autocmd Colorscheme * highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
+
+    function! ActivateInvisibleCharIndicator()
+      syntax match InvisibleJISX0208Space "　" display containedin=ALL
+      autocmd Colorscheme * highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
+      syntax match InvisibleTrailingSpace "[ \t]\+$" display containedin=ALL
+      autocmd Colorscheme * highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
+    endf
+    augroup vimrc
+      autocmd BufNewFile,BufRead * call ActivateInvisibleCharIndicator()
+    augroup END
+
+    " Status line
+    highlight StatusLine   term=NONE cterm=NONE ctermfg=yellow ctermbg=red
+    highlight StatusLineNC term=NONE cterm=NONE ctermfg=black  ctermbg=white
+
+    autocmd FileType go highlight goErr cterm=bold ctermfg=214
+    autocmd FileType go match goErr /\<err\>/
+  endif
 endif
 
 set textwidth=0
@@ -400,31 +436,6 @@ if s:dein_tap('vim-markdown')
 	  \   "start" : "json",
 	  \},
   \}
-endif
-
-if has("syntax") && (&t_Co > 2 || has("gui_running"))
-  syntax on
-
-  autocmd Colorscheme * highlight default link TagName Search
-  autocmd Colorscheme * highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
-  autocmd Colorscheme * highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
-
-  function! ActivateInvisibleCharIndicator()
-    syntax match InvisibleJISX0208Space "　" display containedin=ALL
-    autocmd Colorscheme * highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
-    syntax match InvisibleTrailingSpace "[ \t]\+$" display containedin=ALL
-    autocmd Colorscheme * highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
-  endf
-  augroup vimrc
-    autocmd BufNewFile,BufRead * call ActivateInvisibleCharIndicator()
-  augroup END
-
-  " Status line
-  highlight StatusLine   term=NONE cterm=NONE ctermfg=yellow ctermbg=red
-  highlight StatusLineNC term=NONE cterm=NONE ctermfg=black  ctermbg=white
-
-  autocmd FileType go highlight goErr cterm=bold ctermfg=214
-  autocmd FileType go match goErr /\<err\>/
 endif
 
 " ======================================================================
