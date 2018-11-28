@@ -55,7 +55,7 @@ endif
 " Dein.vim
 " ----------------------------------------------------------------------
 
-if isdirectory(expand('~/git/vim/dein.vim')) "&& version >= 702
+if isdirectory(expand('~/git/vim/dein.vim')) && version >= 704
   set runtimepath+=~/git/vim/dein.vim
 
   call dein#begin(expand('~/git/vim/dein.vim'))
