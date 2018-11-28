@@ -64,6 +64,15 @@ base64url-decode() {
   sed 's/-/+/g;s/_/\//g' |base64 --decode "$@"
 }
 
+unixtime() {
+  local unixtime="$1"; shift
+  date --iso-8601=ns --date=@$(($unixtime))
+}
+wintime() {
+  local wintime="$1"; shift
+  date --iso-8601=ns --date=@$((($wintime - 0x019db1ded53e8000)/10000000))
+}
+
 if dd status=progress </dev/null >&/dev/null; then
   alias dd='dd status=progress'
 fi
