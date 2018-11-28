@@ -35,6 +35,7 @@
 	foresta = "!f() { git-foresta \"$@\"; }; f"
 	precommit = diff --cached --diff-algorithm=minimal -w
 	wdiff = diff --word-diff
+	cwdiff = diff --word-diff --color-words
 	wdiff-staged = diff --staged --word-diff
 	jwdiff = "!f() { git diff $@ | jwdiff -d | colordiff; }; f"
 	jwdiff-staged = "!f() { git diff --staged $@ | jwdiff -d | colordiff; }; f"
