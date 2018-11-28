@@ -484,8 +484,6 @@ set wildmode=longest:full
 
 if version >= 705
   set cryptmethod=blowfish2
-else
-  set cryptmethod=blowfish
 endif
 
 set encoding=UTF-8
