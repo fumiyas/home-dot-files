@@ -35,17 +35,19 @@ let &t_SI .= "\e[1 q"
 " Cursor mode in command mode: box, no blink
 let &t_EI .= "\e[2 q"
 
-" クリップボードからの貼り付け時に自動インデントを無効
 if &term =~ '^\(x\|ml\)term'
+    " 縦分割時のスクロールの高速化
+    let &t_ti .= "\e[?69h"
+    let &t_te .= "\e[?69l"
+    let &t_CV = "\e[%i%p1%d;%p2%ds"
+    " クリップボードからの貼り付け時に自動インデントを無効
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
-
     function! XTermPasteBegin(ret)
         set pastetoggle=<Esc>[201~
         set paste
         return a:ret
     endfunction
-
     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 
@@ -54,6 +56,9 @@ endif
 
 " Dein.vim
 " ----------------------------------------------------------------------
+
+" Update packages	:call dein#update()
+" Show update log	:echo dein#get_updates_log()
 
 if isdirectory(expand('~/git/vim/dein.vim')) && version >= 704
   set runtimepath+=~/git/vim/dein.vim
