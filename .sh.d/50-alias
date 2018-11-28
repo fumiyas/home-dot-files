@@ -356,7 +356,7 @@ git-patch-mail() {
 #type lv >/dev/null 2>&1 || { type less >/dev/null 2>&1 && alias lv='less'; }
 
 if [ -f "$HOME/lib/vim/plugin/less.vim" ]; then
-  lvv() {
+  function lvv {
     if [ $# -eq 0 ]; then
       vim --cmd 'let no_plugin_maps = 1' -c 'source $HOME/lib/vim/plugin/less.vim' -
     else
