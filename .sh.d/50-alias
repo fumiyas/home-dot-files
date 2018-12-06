@@ -97,6 +97,10 @@ else
   alias ps-x='ps -efly'
   alias ps-u='ps -fu $LOGNAME"'
 fi
+
+alias ss-x='ss -aeiomp'
+alias ss-tcp='ss -ateiomp'
+alias ss-udp='ss -auemp'
 alias iostat-x="iostat -xytcz -p ALL"
 alias pstree-x='pstree -acpu'
 alias dstat-full='dstat --time --load --cpu --top-cpu --mem --top-mem --io --top-io --disk --net'
@@ -221,10 +225,6 @@ alias gcc-Wall='gcc -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-p
 alias disasm='objdump -CSlw -M intel'
 alias valgrind-x='valgrind -v --leak-check=full --show-reachable=yes'
 
-alias ss-x='ss -aeiomp'
-alias ss-tcp='ss -ateiomp'
-alias ss-udp='ss -auemp'
-
 java-x() {
   typeset -a args
 
@@ -276,6 +276,8 @@ java-default() {
 
   "$java" "${args[@]}" "$@" -version 2>&1
 }
+
+alias perl-e-utf8='perl -e "use utf8; use open \":utf8\"; use open \":std\";"'
 
 for a in grep egrep fgrep; do
   type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
