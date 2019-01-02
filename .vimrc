@@ -747,7 +747,9 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
-if s:dein_tap('vim-unified-diff') && v:version > 704
+if match(split(&diffopt, ','), 'internal') != -1
+  set diffopt+=algorithm:minimal,indent-heuristic
+elseif s:dein_tap('vim-unified-diff') && v:version > 704
   set diffexpr=unified_diff#diffexpr()
 else
   " https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
