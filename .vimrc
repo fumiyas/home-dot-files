@@ -634,6 +634,7 @@ augroup vimrc
   autocmd FileType spec setlocal path=.,./../SOURCES,,
   autocmd FileType yaml setlocal indentexpr=
 
+  autocmd BufNewFile *.md 0r ~/.vim/template/template.md
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=8
   autocmd BufNewFile,BufRead *.[ch] setlocal formatoptions=croql cindent comments=sr:/*,bm:*,el:*/,://
   autocmd BufNewFile *.bash 0r ~/.vim/template/template.bash
