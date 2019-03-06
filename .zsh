@@ -246,13 +246,23 @@ precmd() {
   vcs_info
 }
 
+## ----------------------------------------------------------------------
+
 setopt PROMPT_SUBST
-PROMPT="%{$fg[blue]%}%d%{${reset_color}%}%{$fg[green]%}"'${(r:($COLUMNS-${#PWD}-${#vcs_info_msg_0_}):: :)}$vcs_info_msg_0_'"%{${reset_color}%}
-%{$fg[cyan]%}%B%n@%m%b%{${reset_color}%}"
+
+PROMPT=
+## 1st-line left prompt:  Current working directory
+PROMPT+="%{$fg[blue]%}%d%{${reset_color}%}"
+## 1st-line right prompt: VCS information
+PROMPT+='${(r:($COLUMNS-${#PWD}-${#vcs_info_msg_0_}):: :)}'
+PROMPT+="%{$fg[green]%}"'$vcs_info_msg_0_'"%{${reset_color}%}"$'\n'
+## 2nd-line left prompt:  Username and hostname
+PROMPT+="%{$fg[cyan]%}%B%n@%m%b%{${reset_color}%}"
+
 if [ "$UID" -eq 0 ]; then
-  PROMPT="$PROMPT %{$fg[red]%}%B#%b%{${reset_color}%} "
+  PROMPT+=" %{$fg[red]%}%B#%b%{${reset_color}%} "
 else
-  PROMPT="$PROMPT %{$fg[cyan]%}%B\$%b%{${reset_color}%} "
+  PROMPT+=" %{$fg[cyan]%}%B\$%b%{${reset_color}%} "
 fi
 
 SPROMPT="%{$fg[yellow]%}%R%{${reset_color}%}
