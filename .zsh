@@ -201,10 +201,28 @@ if is-at-least 4.3.0; then
   setopt PROMPT_CR
 fi
 
+## ----------------------------------------------------------------------
+
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' enable git svn hg
+zstyle ':vcs_info:*' formats '(%s)[%b] '
+zstyle ':vcs_info:*' actionformats '(%s)[%b|%a] '
+zstyle ':vcs_info:svn:*' branchformat '%b:r%r'
+
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "+"
+zstyle ':vcs_info:git:*' unstagedstr "-"
+zstyle ':vcs_info:git:*' formats '(%s)[%b]%c%u'
+zstyle ':vcs_info:git:*' actionformats '(%s)[%b|%a]%c%u'
+
+psvar=("foo" "bar")
+## ----------------------------------------------------------------------
+
 case "$TERM" in
 screen.*)
   unset PROMPT
-  precmd() { echo -ne "\ek\e\\"; print -Pn "\e]0; %~ %n@%m\a" }
+  precmd_set_title() { echo -ne "\ek\e\\"; print -Pn "\e]0; %~ %n@%m\a" }
 #  unalias s
 #  function t()
 #  {
@@ -219,11 +237,17 @@ screen.*)
 #  }
   ;;
 *term|*term[-+]*|rxvt*|gnome*)
-  precmd() { print -Pn "\e]2;%n@%m:%~ (${TTY#/dev/})\a" }
+  precmd_set_title() { print -Pn "\e]2;%n@%m:%~ (${TTY#/dev/})\a" }
   ;;
 esac
 
-PROMPT="%{$fg[blue]%}%d%{${reset_color}%}
+precmd() {
+  precmd_set_title
+  vcs_info
+}
+
+setopt PROMPT_SUBST
+PROMPT="%{$fg[blue]%}%d%{${reset_color}%}%{$fg[green]%}"'${(r:($COLUMNS-${#PWD}-${#vcs_info_msg_0_}):: :)}$vcs_info_msg_0_'"%{${reset_color}%}
 %{$fg[cyan]%}%B%n@%m%b%{${reset_color}%}"
 if [ "$UID" -eq 0 ]; then
   PROMPT="$PROMPT %{$fg[red]%}%B#%b%{${reset_color}%} "
