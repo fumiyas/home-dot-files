@@ -36,10 +36,6 @@ let &t_SI .= "\e[1 q"
 let &t_EI .= "\e[2 q"
 
 if &term =~ '^\(x\|ml\)term'
-    " 縦分割時のスクロールの高速化
-    let &t_ti .= "\e[?69h"
-    let &t_te .= "\e[?69l"
-    let &t_CV = "\e[%i%p1%d;%p2%ds"
     " クリップボードからの貼り付け時に自動インデントを無効
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
