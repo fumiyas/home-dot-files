@@ -16,6 +16,16 @@
 ## 	ls foo-<2000-2001>????.log
 ##
 
+
+if [[ -f "$HOME/.zplug/init.zsh" ]]; then
+  source "$HOME/.zplug/init.zsh"
+  zplug "mollifier/anyframe"
+  zplug check || zplug install
+  zplug load
+fi
+
+## ======================================================================
+
 ## http://gihyo.jp/dev/serial/01/zsh-book/0003
 
 autoload -U is-at-least
@@ -95,6 +105,15 @@ bindkey '^[^w' backward-kill-word
 bindkey '^[^B' vi-backward-blank-word
 bindkey '^[^F' vi-forward-blank-word
 #bindkey '^[^K' delete-word
+
+
+if type anyframe-init >&/dev/null; then
+  #autoload -Uz anyframe-init
+  #anyframe-init
+  zstyle ":anyframe:selector:" use peco
+  zstyle ":anyframe:selector:peco:" command 'env TERM=xterm peco --layout=bottom-up'
+  bindkey '^R' anyframe-widget-put-history
+fi
 
 ## Change directory
 ## ======================================================================
@@ -243,7 +262,7 @@ esac
 
 precmd() {
   precmd_set_title
-  vcs_info
+  LC_ALL=en_US.UTF-8 vcs_info
 }
 
 ## ----------------------------------------------------------------------
