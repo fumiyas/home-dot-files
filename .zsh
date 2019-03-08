@@ -212,7 +212,7 @@ zle -N self-insert url-quote-magic
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 
-## Prompt
+## Prompt, Window Title
 ## ======================================================================
 
 if is-at-least 4.3.0; then
@@ -235,13 +235,12 @@ zstyle ':vcs_info:git:*' unstagedstr "-"
 zstyle ':vcs_info:git:*' formats '(%s)[%b]%c%u'
 zstyle ':vcs_info:git:*' actionformats '(%s)[%b|%a]%c%u'
 
-psvar=("foo" "bar")
 ## ----------------------------------------------------------------------
 
 case "$TERM" in
 screen.*)
   unset PROMPT
-  precmd_set_title() { echo -ne "\ek\e\\"; print -Pn "\e]0; %~ %n@%m\a" }
+  precmd_set_windowtitle() { echo -ne "\ek\e\\"; print -Pn "\e]0; %~ %n@%m\a" }
 #  unalias s
 #  function t()
 #  {
@@ -256,13 +255,14 @@ screen.*)
 #  }
   ;;
 *term|*term[-+]*|rxvt*|gnome*)
-  precmd_set_title() { print -Pn "\e]2;%n@%m:%~ (${TTY#/dev/})\a" }
+  precmd_set_windowtitle() { print -Pn "\e]2;%n@%m:%~ (${TTY#/dev/})\a" }
   ;;
 esac
 
 precmd() {
-  precmd_set_title
+  precmd_set_windowtitle
   LC_ALL=en_US.UTF-8 vcs_info
+  [[ $PWD == $HOME ]] && CWD='~' || CWD="${PWD/$HOME\//~/}"
 }
 
 ## ----------------------------------------------------------------------
@@ -271,21 +271,21 @@ setopt PROMPT_SUBST
 
 PROMPT=
 ## 1st-line left prompt:  Current working directory
-PROMPT+="%{$fg[blue]%}%d%{${reset_color}%}"
+PROMPT+="%F{blue}"'$CWD'"%f"
 ## 1st-line right prompt: VCS information
-PROMPT+='${(r:($COLUMNS-${#PWD}-${#vcs_info_msg_0_}):: :)}'
-PROMPT+="%{$fg[green]%}"'$vcs_info_msg_0_'"%{${reset_color}%}"$'\n'
+PROMPT+='${(r:($COLUMNS-${#CWD}-${#vcs_info_msg_0_}):: :)}'
+PROMPT+="%F{green}"'$vcs_info_msg_0_'"%f"$'\n'
 ## 2nd-line left prompt:  Username and hostname
-PROMPT+="%{$fg[cyan]%}%B%n@%m%b%{${reset_color}%}"
+PROMPT+="%F{cyan}%B%n@%m%b%f"
 
 if [ "$UID" -eq 0 ]; then
-  PROMPT+=" %{$fg[red]%}%B#%b%{${reset_color}%} "
+  PROMPT+=" %F{red}%B#%b%f "
 else
-  PROMPT+=" %{$fg[cyan]%}%B\$%b%{${reset_color}%} "
+  PROMPT+=" %F{cyan}%B\$%b%f "
 fi
 
-SPROMPT="%{$fg[yellow]%}%R%{${reset_color}%}
-%{$fg[yellow]%}%r%{${reset_color}%} %B[No|Yes|Abort|Edit]?%b "
+SPROMPT="%F{yellow}%R%f
+%F{yellow}%r%f %B[No|Yes|Abort|Edit]?%b "
 
 ## Plugin
 ## ======================================================================
