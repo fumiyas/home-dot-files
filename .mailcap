@@ -1,5 +1,6 @@
 text/*; mime-view '%s'
 image/*; mime-view '%s'
+application/x-shellscript; mime-view '%s'
 application/text; mime-view '%s'
 application/pdf; mime-view '%s'
 application/octet-stream; mime-view '%s'
