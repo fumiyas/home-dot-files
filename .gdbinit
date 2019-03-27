@@ -1,6 +1,11 @@
+## info locals
+##
 ## catch syscall <system call name>
 ## info b[reakpoint]
 ## del <number>
+##
+## info threads
+## thead <number>
 
 set history save on
 set history size 99999
