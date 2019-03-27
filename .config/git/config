@@ -39,8 +39,8 @@
 	wdiff = diff --word-diff
 	cwdiff = diff --word-diff --color-words
 	wdiff-staged = diff --staged --word-diff
-	jwdiff = "!f() { git diff $@ | jwdiff -d | colordiff; }; f"
-	jwdiff-staged = "!f() { git diff --staged $@ | jwdiff -d | colordiff; }; f"
+	jwdiff = "!f() { git diff \"$@\" | jwdiff -d | colordiff; }; f"
+	jwdiff-staged = "!f() { git diff --staged \"$@\" | jwdiff -d | colordiff; }; f"
 	co = checkout
 	ci = commit --verbose
 	cia = commit --verbose --amend
@@ -77,6 +77,7 @@
 
 [merge]
 	tool = vimdiff
+	conflictstyle = diff3
 [mergetool]
 	prompt = false
 
