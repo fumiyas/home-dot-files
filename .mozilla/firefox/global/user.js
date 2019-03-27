@@ -3,7 +3,13 @@
 // http://www.hackermusings.com/2012/05/firefoxs-graphics-performance-on-x11/
 user_pref("gfx.xrender.enabled", false);
 
-// Back Space でページスクロールアップ
+// URL バーの URL を省略表示しない
+user_pref("browser.urlbar.trimURLs", false);
+
+// URL バーでの検索を無効化
+user_pref("keyword.enabled", false);
+
+// Backspace でページスクロールアップ
 user_pref("browser.backspace_action", 1);
 
 // Ctrl + マウスホイール回転で何もしない
