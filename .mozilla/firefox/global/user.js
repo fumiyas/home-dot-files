@@ -136,25 +136,8 @@ user_pref("font.minimum-size.zh-TW", 0);
 
 // ======================================================================
 
-// Firefox 内臓のセッション復元機能を使用
-user_pref("extensions.tabmix.sessions.manager", false);
-
 // [閉じたタブを復元] の記憶するタブの数
 user_pref("browser.sessionstore.max_tabs_undo", 100);
 
-// 新しいタブを開くボタンを表示しない
-user_pref("extensions.tabmix.newTabButton", false);
-// タブを閉じるボタンをタブにカーソルが載っている間だけ表示
-user_pref("extensions.tabmix.tabs.closebuttons", 2);
-
-// 新しいタブに空白ページを表示する
-user_pref("extensions.tabmix.loadOnNewTab.type", 0);
-
-// 開くタブの位置を現在タブの隣にする
-user_pref("extensions.tabmix.openNewTabNext", true);
-user_pref("extensions.tabmix.openTabNext", true);
-user_pref("browser.tabs.insertRelatedAfterCurrent", true);
-
 // 最後のタブを閉じたとき、ウィンドウ自体は閉じない
 user_pref("browser.closeWindowWithLastTab", false);
-
