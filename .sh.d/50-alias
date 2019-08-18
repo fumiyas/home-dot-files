@@ -12,6 +12,16 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
+mkcd() {
+  mkdir "$@" || return $?
+  while [ $# -gt 0 ]; do
+    if [ -d "$1" ]; then
+      cd "$1"
+      return $?
+    fi
+    shift
+  done
+}
 
 alias nohistory='set +o sharehistory; SAVEHIST='
 
