@@ -138,7 +138,7 @@ export GOPATH="$HOME/go"
 export GO15VENDOREXPERIMENT=1
 
 ## Python
-export PYTHONWARNINGS=default
+#export PYTHONWARNINGS=default
 
 ## Ruby
 export RI="--format ansi"
