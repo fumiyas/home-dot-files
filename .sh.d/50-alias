@@ -99,6 +99,7 @@ alias ldifunwrap='awk '\''NR>1 && !sub(/^ /,"") { print s; s="" } { s = s $0 } E
 alias pickle-dump.py3='python3 -m pickle'
 alias telnet.py3='python3 -m telnetlib'
 alias httpd.py3='python3 -m http.server'
+alias json-pp.py3='python3 -m json.tool'
 
 if ps -H $$ >/dev/null 2>&1; then
   alias ps-x='ps -eflyH'
@@ -106,6 +107,10 @@ if ps -H $$ >/dev/null 2>&1; then
 else
   alias ps-x='ps -efly'
   alias ps-u='ps -fu $LOGNAME"'
+fi
+
+if [[ $UNAME == Linux ]]; then
+  alias lsof-x='lsof +E'
 fi
 
 alias ss-x='ss -aeiomp'
