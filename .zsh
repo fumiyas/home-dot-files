@@ -16,7 +16,6 @@
 ## 	ls foo-<2000-2001>????.log
 ##
 
-
 if [[ -f "$HOME/.zplug/init.zsh" ]]; then
   source "$HOME/.zplug/init.zsh"
   zplug "mollifier/anyframe"
@@ -132,6 +131,7 @@ setopt PUSHD_IGNORE_DUPS
 HISTSIZE=999999
 SAVEHIST=999999
 HISTFILE="$HOME/.zhistory"
+setopt EXTENDED_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_DUPS
@@ -140,10 +140,6 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_NO_STORE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_VERIFY
-setopt EXTENDED_HISTORY
-# setopt APPEND_HISTORY		# 履歴を上書きせず追加のみ行う
-setopt INC_APPEND_HISTORY	# 履歴を上書きせず追加のみ行う(コマンド実行後に追加)
-				# (入力が空の状態で補完・PATH検索をしないのはデフォルト)
 
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
