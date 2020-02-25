@@ -221,14 +221,14 @@ fi
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git svn hg
-zstyle ':vcs_info:*' formats '(%s)[%b] '
-zstyle ':vcs_info:*' actionformats '(%s)[%b|%a] '
+zstyle ':vcs_info:*' formats '%s %b '
+zstyle ':vcs_info:*' actionformats '%s %b|%a '
 zstyle ':vcs_info:svn:*' branchformat '%b:r%r'
 
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "+"
 zstyle ':vcs_info:git:*' unstagedstr "-"
-zstyle ':vcs_info:git:*' formats '(%s)[%b]%c%u'
+zstyle ':vcs_info:git:*' formats '%s %b%c%u'
 zstyle ':vcs_info:git:*' actionformats '(%s)[%b|%a]%c%u'
 
 ## ----------------------------------------------------------------------
