@@ -292,7 +292,7 @@ java-default() {
   "$java" "${args[@]}" "$@" -version 2>&1
 }
 
-alias perl-e-utf8='perl -e "use utf8; use open \":utf8\"; use open \":std\";"'
+alias perl-utf8='perl -Mutf8 -Mopen=:utf8 -Mopen=:std'
 
 for a in grep egrep fgrep; do
   type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
