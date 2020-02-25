@@ -293,6 +293,16 @@ nmap <F8> :TagbarToggle<CR>
 
 " C-p, c-n
 
+" Command-line window
+" ======================================================================
+
+augroup cmdwindow
+  " Remove bogus history in the command-line window
+  autocmd CmdwinEnter : g/^qa\?!\?$/d
+  autocmd CmdwinEnter : g/^wq\?a\?!\?$/d
+  autocmd CmdwinEnter : g/^\(n\|rew\|sp\)$/d
+augroup END
+
 " Insert mode
 " ======================================================================
 
