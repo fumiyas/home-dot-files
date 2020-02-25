@@ -143,9 +143,6 @@ export GO15VENDOREXPERIMENT=1
 ## Ruby
 export RI="--format ansi"
 
-## rsync
-export RSYNC_RSH=ssh
-
 ## UnZip + filename I18N patch
 unzip -I UTF-8 -O CP932 -t /dev/null >/dev/null 2>&1
 if [ $? -ne 10 ]; then
