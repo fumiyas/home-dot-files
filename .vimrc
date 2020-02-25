@@ -367,7 +367,7 @@ colorscheme default
 
 if &diff
   syntax off
-  " vimdiff is very slow if cursorline and/or curorcolumn
+  " vimdiff is very slow if cursorline and/or cursorcolumn
   if exists('&cursorline')
     set nocursorline
   endif
