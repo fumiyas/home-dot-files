@@ -17,7 +17,8 @@ for pager in less lv more; do
 done
 
 if type ifne >/dev/null 2>&1; then
-  export GIT_PAGER="ifne $PAGER"
+  ## Do NOT set GIT_PAGER that overrides `[pager]` settings in git-config(1)
+  #export GIT_PAGER="ifne $PAGER"
   export HG_PAGER="ifne $PAGER" ## See ~/.hgrc
 fi
 
