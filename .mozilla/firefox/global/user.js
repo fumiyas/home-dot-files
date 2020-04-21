@@ -6,6 +6,11 @@ user_pref("gfx.xrender.enabled", false);
 // URL バーの URL を省略表示しない
 user_pref("browser.urlbar.trimURLs", false);
 
+// URL バーのデザインを Firefox 74 以前に戻す
+// これでないと履歴の表示幅が狭くなって URL が見切れる。
+// https://www.userchrome.org/megabar-styling-firefox-address-bar.html
+user_pref("browser.urlbar.update1", false);
+
 // URL バーでの検索を無効化
 user_pref("keyword.enabled", false);
 
