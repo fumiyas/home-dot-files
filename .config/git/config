@@ -58,6 +58,7 @@
 	discard = checkout --
 	uncommit = reset --mixed @~
 	r = remote --verbose
+	push-force = push --force-with-lease
 
 [log]
         date = iso8601
