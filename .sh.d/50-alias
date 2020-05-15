@@ -195,6 +195,21 @@ ssh()
   command ssh ${1+"$@"}
 }
 
+nmap-ssl-enum-ciphers() {
+  if [[ $# -lt 1 ]]; then
+    echo "Usage: nmap-ssl-enum-ciphers HOST[:PORT] [NMAP OPTIONS ...]"
+    return 1
+  fi
+  local host="$1"; shift
+  local port_range='443'
+  if [[ $host == *:* ]]; then
+    port_range="${host#*:}"
+    host="${host%%:*}"
+  fi
+
+  nmap --script ssl-enum-ciphers -p "$port_range" "$@" "$host"
+}
+
 alias telnet-unix='nc.openbsd -U'
 alias telnet.py='python -m telnetlib'
 ## UNIX crypt(1) emulation by mcrypt(1)
