@@ -128,7 +128,7 @@ alias skype-web='mkdir -p -m 0755 $HOME/.local/share/skypeweb && start env GDK_B
 alias wcp='wget -m -l3 --no-parent'
 alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 
-alias curl-x='curl --remote-name --remote-header-name'
+alias curl-x='curl --remote-name --remote-header-name --xattr'
 alias curl-v='curl --write-out @<(
   echo -E "url_effective\t\t%{url_effective}\n"
   echo -E "http_version\t\t%{http_version}\n"
