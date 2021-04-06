@@ -101,13 +101,8 @@ alias telnet.py3='python3 -m telnetlib'
 alias httpd.py3='python3 -m http.server'
 alias json-pp.py3='python3 -m json.tool'
 
-if ps -H $$ >/dev/null 2>&1; then
-  alias ps-x='ps -eflyH'
-  alias ps-u='ps -fHu "$LOGNAME"'
-else
-  alias ps-x='ps -efly'
-  alias ps-u='ps -fu $LOGNAME"'
-fi
+alias ps-x='ps -eFlyH'
+alias ps-u='ps -FHu "$LOGNAME"'
 
 if [[ $UNAME == Linux ]]; then
   alias lsof-x='lsof +E'
