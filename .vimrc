@@ -129,8 +129,8 @@ if s:dein_tap('vim-indent-guides')
   let g:indent_guides_auto_colors=0
   let g:indent_guides_enable_on_vim_startup=1
   let g:indent_guides_guide_size=1
-  autocmd Colorscheme * highlight IndentGuidesOdd  ctermbg=235
-  autocmd Colorscheme * highlight IndentGuidesEven ctermbg=237
+  autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd  ctermbg=235
+  autocmd VimEnter,Colorscheme * highlight IndentGuidesEven ctermbg=237
 endif
 
 " ----------------------------------------------------------------------
@@ -380,21 +380,21 @@ else
   endif
   if exists('&cursorcolumn')
     set cursorcolumn
-    autocmd Colorscheme * highlight CursorColumn cterm=bold ctermbg=none
+    autocmd VimEnter,Colorscheme * highlight CursorColumn cterm=bold ctermbg=none
   endif
 
   if has("syntax") && (&t_Co > 2 || has("gui_running"))
     syntax on
 
-    autocmd Colorscheme * highlight default link TagName Search
-    autocmd Colorscheme * highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
-    autocmd Colorscheme * highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
+    autocmd VimEnter,Colorscheme * highlight default link TagName Search
+    autocmd VimEnter,Colorscheme * highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
+    autocmd VimEnter,Colorscheme * highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
 
     function! ActivateInvisibleCharIndicator()
       syntax match InvisibleJISX0208Space "　" display containedin=ALL
-      autocmd Colorscheme * highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
+      autocmd VimEnter,Colorscheme * highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
       syntax match InvisibleTrailingSpace "[ \t]\+$" display containedin=ALL
-      autocmd Colorscheme * highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
+      autocmd VimEnter,Colorscheme * highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
     endf
     augroup vimrc
       autocmd BufNewFile,BufRead * call ActivateInvisibleCharIndicator()
@@ -413,7 +413,7 @@ set textwidth=0
 if exists('&colorcolumn')
   set textwidth=80
   set colorcolumn=+1
-  autocmd Colorscheme * highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+  autocmd VimEnter,Colorscheme * highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 endif
 
 let g:vim_markdown_folding_disabled=1
