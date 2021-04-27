@@ -60,7 +60,7 @@ endif
 " Update packages	:call dein#update()
 " Show update log	:echo dein#get_updates_log()
 
-if isdirectory(expand('~/git/vim/dein.vim')) && v:version >= 704
+if isdirectory(expand('~/git/vim/dein.vim'))
   set runtimepath+=~/git/vim/dein.vim
 
   call dein#begin(expand('~/git/vim/dein.vim'))
@@ -424,10 +424,8 @@ endif
 " ======================================================================
 
 set directory^=~/var/vim//
-if v:version >= 703
-  set undodir=~/var/vim/undodir
-  set undofile
-endif
+set undodir=~/var/vim/undodir
+set undofile
 
 set shortmess+=I
 
@@ -466,9 +464,7 @@ set history=10000
 set wildmenu
 set wildmode=longest:full
 
-if v:version >= 705
-  set cryptmethod=blowfish2
-endif
+set cryptmethod=blowfish2
 
 set encoding=UTF-8
 set termencoding=UTF-8
@@ -728,7 +724,7 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
 if match(split(&diffopt, ','), 'internal') != -1
   set diffopt+=algorithm:minimal,indent-heuristic
-elseif s:dein_tap('vim-unified-diff') && v:version > 704
+elseif s:dein_tap('vim-unified-diff')
   set diffexpr=unified_diff#diffexpr()
 else
   " https://github.com/fumiyas/home-commands/blob/master/git-diff-normal
