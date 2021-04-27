@@ -14,6 +14,10 @@
 
 " ======================================================================
 
+augroup vimrc
+  autocmd!
+augroup END
+
 scriptencoding UTF-8
 " http://vim.sf.net/
 " http://pcmania.jp/~moraz/basics.html
@@ -121,16 +125,14 @@ endif
 
 " ----------------------------------------------------------------------
 
-let g:indent_guides_auto_colors=0
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
-
 if s:dein_tap('vim-indent-guides')
   let g:indent_guides_auto_colors=0
   let g:indent_guides_enable_on_vim_startup=1
   let g:indent_guides_guide_size=1
-  autocmd VimEnter,Colorscheme * highlight IndentGuidesOdd  ctermbg=235
-  autocmd VimEnter,Colorscheme * highlight IndentGuidesEven ctermbg=237
+  augroup vimrc
+    autocmd Colorscheme * highlight IndentGuidesOdd  ctermbg=235
+    autocmd Colorscheme * highlight IndentGuidesEven ctermbg=237
+  augroup END
 endif
 
 " ----------------------------------------------------------------------
@@ -195,7 +197,9 @@ if s:dein_tap('unite.vim')
   nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
 
   " unite を開いている間のキーマッピング
-  autocmd FileType unite call s:unite_my_settings()
+  augroup vimrc
+    autocmd FileType unite call s:unite_my_settings()
+  augroup END
   function! s:unite_my_settings()"{{{
     " ESCでuniteを終了
     nmap <buffer> <ESC> <Plug>(unite_exit)
@@ -296,7 +300,7 @@ nmap <F8> :TagbarToggle<CR>
 " Command-line window
 " ======================================================================
 
-augroup cmdwindow
+augroup vimrc
   " Remove bogus history in the command-line window
   autocmd CmdwinEnter : g/^qa\?!\?$/d
   autocmd CmdwinEnter : g/^wq\?a\?!\?$/d
@@ -322,52 +326,21 @@ augroup END
 
 " ======================================================================
 
-" Reset "vimrc" autocmd group
-augroup vimrc
-  autocmd! vimrc
-augroup END
-
-if has("autocmd")
 " Enabled file type detection
 " Use the default filetype settings. If you also want to load indent files
 " to automatically do language-dependent indenting add 'indent' as well.
-  filetype plugin on
-  augroup vimrc
-    autocmd BufReadPost /tmp/cvs* set fileencoding=EUC-JP
-  augroup END
-endif " has ("autocmd")
+filetype plugin on
 
 "syn region myFold start="{" end="}" transparent fold
 "set foldnestmax=1
 "set foldmethod=syntax
-
-" Coloring
-" ======================================================================
-
-colorscheme default
-
-" For test:
-" :e $VIMRUNTIME/syntax/colortest.vim
-" :so %
-
-"if &t_Co == '' && &term =~ '.*term$'
-"  if has("terminfo")
-"    set t_Co=8
-"    set t_Sf=^[[3%p1%dm
-"    set t_Sb=^[[4%p1%dm
-"  else
-"    set t_Co=8
-"    set t_Sf=^[[3%dm
-"    set t_Sb=^[[4%dm
-"  endif
-"endif
 
 " Highlighting
 " ======================================================================
 
 if &diff
   syntax off
-  " vimdiff is very slow if cursorline and/or cursorcolumn
+  " vimdiff is very slow with cursorline and/or cursorcolumn
   if exists('&cursorline')
     set nocursorline
   endif
@@ -375,37 +348,15 @@ if &diff
     set nocursorcolumn
   endif
 else
+  syntax enable
   if exists('&cursorline')
     set cursorline
   endif
   if exists('&cursorcolumn')
     set cursorcolumn
-    autocmd VimEnter,Colorscheme * highlight CursorColumn cterm=bold ctermbg=none
-  endif
-
-  if has("syntax") && (&t_Co > 2 || has("gui_running"))
-    syntax on
-
-    autocmd VimEnter,Colorscheme * highlight default link TagName Search
-    autocmd VimEnter,Colorscheme * highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
-    autocmd VimEnter,Colorscheme * highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
-
-    function! ActivateInvisibleCharIndicator()
-      syntax match InvisibleJISX0208Space "　" display containedin=ALL
-      autocmd VimEnter,Colorscheme * highlight InvisibleJISX0208Space ctermbg=DarkBlue guibg=DarkBlue
-      syntax match InvisibleTrailingSpace "[ \t]\+$" display containedin=ALL
-      autocmd VimEnter,Colorscheme * highlight InvisibleTrailingSpace ctermbg=Red guibg=Red
-    endf
     augroup vimrc
-      autocmd BufNewFile,BufRead * call ActivateInvisibleCharIndicator()
+      autocmd Colorscheme * highlight CursorColumn cterm=bold ctermbg=235
     augroup END
-
-    " Status line
-    highlight StatusLine   term=NONE cterm=NONE ctermfg=yellow ctermbg=red
-    highlight StatusLineNC term=NONE cterm=NONE ctermfg=black  ctermbg=white
-
-    autocmd FileType go highlight goErr cterm=bold ctermfg=214
-    autocmd FileType go match goErr /\<err\>/
   endif
 endif
 
@@ -413,8 +364,26 @@ set textwidth=0
 if exists('&colorcolumn')
   set textwidth=80
   set colorcolumn=+1
-  autocmd VimEnter,Colorscheme * highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+  augroup vimrc
+    autocmd Colorscheme * highlight ColorColumn ctermbg=235
+  augroup END
 endif
+
+augroup vimrc
+  autocmd Colorscheme * highlight default link TagName Search
+  autocmd Colorscheme * highlight StatusLine   term=NONE cterm=NONE ctermfg=yellow ctermbg=red
+  autocmd Colorscheme * highlight StatusLineNC term=NONE cterm=NONE ctermfg=black  ctermbg=white
+  autocmd Colorscheme * highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
+  autocmd Colorscheme * highlight IncSearch term=NONE cterm=NONE ctermfg=black  ctermbg=yellow
+
+  autocmd FileType go match goErr /\<err\>/
+  autocmd FileType go highlight goErr cterm=bold ctermfg=214
+
+  autocmd VimEnter * syntax match JISX0208Space "　" containedin=ALL display
+  autocmd Colorscheme * highlight JISX0208Space ctermbg=DarkBlue guibg=DarkBlue
+  autocmd VimEnter * syntax match TrailingSpace "[ \t]\+$" containedin=ALL display
+  autocmd Colorscheme * highlight TrailingSpace ctermbg=DarkRed guibg=DarkRed
+augroup END
 
 let g:vim_markdown_folding_disabled=1
 let g:markdown_fenced_languages = [
@@ -665,8 +634,7 @@ augroup vimrc
   "autocmd BufWritePre,FileWritePre *vim/vim/runtime/doc/*.txt endif
 augroup END
 
-"augroup BinaryXXD
-"  autocmd!
+"augroup vimrc
 "  autocmd BufReadPre  *.bin let &binary =1
 "  autocmd BufReadPost * if &binary | silent %!xxd -g 1
 "  autocmd BufReadPost * set ft=xxd | endif
@@ -748,7 +716,6 @@ if s:dein_tap('diffchar.vim')
   let g:DiffUnit = "Word3"
   if &diff
     augroup vimrc
-      autocmd!
       autocmd VimEnter * execute "%SDChar"
     augroup END
   endif
@@ -789,8 +756,7 @@ else
   endif
 endif
 
-augroup DiffAutocommands
-  autocmd!
+augroup vimrc
   " Turn off diff mode automatically
   autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&diff')) == 1 | diffoff | endif
 augroup END
@@ -819,3 +785,23 @@ if s:dein_tap('syntastic')
   let g:syntastic_python_flake8_args = "--ignore=E266,E501"
 endif
 highlight Search ctermfg=lightgreen ctermbg=darkyellow cterm=bold
+
+" ======================================================================
+
+colorscheme default
+
+" For test:
+" :e $VIMRUNTIME/syntax/colortest.vim
+" :so %
+
+"if &t_Co == '' && &term =~ '.*term$'
+"  if has("terminfo")
+"    set t_Co=8
+"    set t_Sf=^[[3%p1%dm
+"    set t_Sb=^[[4%p1%dm
+"  else
+"    set t_Co=8
+"    set t_Sf=^[[3%dm
+"    set t_Sb=^[[4%dm
+"  endif
+"endif
