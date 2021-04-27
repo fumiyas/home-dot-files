@@ -446,6 +446,9 @@ if s:dein_tap('vim-markdown')
 	  \ "json" : {
 	  \   "start" : "json",
 	  \},
+	  \ "vb" : {
+	  \   "start" : "vb",
+	  \},
   \}
 endif
 
