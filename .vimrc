@@ -60,10 +60,18 @@ endif
 " Update packages	:call dein#update()
 " Show update log	:echo dein#get_updates_log()
 
-if isdirectory(expand('~/git/vim/dein.vim'))
-  set runtimepath+=~/git/vim/dein.vim
+if v:version >= 800
+  let dein_dir=expand('~/git/vim/dein.vim')
+  let dein_cache_dir=expand('~/.cache/dein.vim')
+else
+  let dein_dir=expand('~/git/vim/dein.vim-1.5')
+  let dein_cache_dir=expand('~/.cache/dein.vim-1.5')
+endif
 
-  call dein#begin(expand('~/git/vim/dein.vim'))
+if isdirectory(dein_dir)
+  let &runtimepath.=','.dein_dir
+
+  call dein#begin(dein_cache_dir)
 
   call dein#add('Shougo/dein.vim')
   call dein#add('Shougo/vimproc.vim', {'build': 'make'})
