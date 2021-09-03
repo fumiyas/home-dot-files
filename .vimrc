@@ -94,6 +94,7 @@ if isdirectory(dein_dir)
   call dein#add('scrooloose/syntastic.git')
 
   call dein#add('godlygeek/tabular')
+  call dein#add('pearofducks/ansible-vim')
   call dein#add('joker1007/vim-markdown-quote-syntax')
   call dein#add('rcmdnk/vim-markdown')
 
