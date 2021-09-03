@@ -782,6 +782,9 @@ if s:dein_tap('syntastic')
   " SC2039: In POSIX sh, 'type' is not supported
   let g:syntastic_sh_shellcheck_args = "-e SC1007,SC2039"
 
+  " 206: Variables should have spaces before and after: {{ var_name }}
+  let g:syntastic_ansible_ansible_lint_args = "-x 206"
+
   if executable('python3')
     let g:syntastic_python_checkers = ['python3', 'flake8']
   endif
