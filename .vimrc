@@ -632,6 +632,10 @@ augroup vimrc
   autocmd BufNewFile *.html 0r ~/.vim/template/template.html
   autocmd BufNewFile *.html setlocal fileencoding=UTF-8
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown expandtab
+  if s:dein_tap('ansible-vim')
+    autocmd BufNewFile,BufRead *.yml setlocal filetype=yaml.ansible
+    autocmd BufNewFile,BufRead *.yaml setlocal filetype=yaml.ansible
+  endif
   autocmd BufRead /tmp/ldapvi-*/data setlocal filetype=ldif
 
   "autocmd BufWritePre,FileWritePre *vim/vim/runtime/doc/*.txt if getline(1) =~ "Last modification: "
