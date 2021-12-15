@@ -8,7 +8,7 @@ umask 0002
 ## Limit data size
 ulimit -H -d 6000000
 ## Limit processes (threads)
-ulimit -H -u 2048
+ulimit -H -u 6000
 
 TTY=`tty`
 : ${HOSTNAME:=`hostname |sed 's/\..*//'`}
@@ -41,4 +41,3 @@ done
 [ -n "${BASH_VERSION-}" ] && . "$HOME/.bash"
 
 return 0
-
