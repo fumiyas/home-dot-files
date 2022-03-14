@@ -1,10 +1,11 @@
 #!/bin/bash
 
 set -u
-set -o pipefail || exit $?	## bash 3.0+
-shopt -s lastpipe || exit $?	## bash 4.2+
-shopt -s nullglob || exit $?	## bash 2.0+
-#shopt -s failglob || exit $?	## bash 3.0+
+set -o pipefail || exit $?		## bash 3.0+
+shopt -s lastpipe || exit $?		## bash 4.2+
+#shopt -s inherit_errexit || exit $?	## bash 4.4+ for set -e
+#shopt -s nullglob || exit $?		## bash 2.0+
+#shopt -s failglob || exit $?		## bash 3.0+
 
 perr() {
   echo "$0: ERROR: $1" 1>&2
