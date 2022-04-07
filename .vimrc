@@ -360,6 +360,9 @@ else
   syntax enable
   if exists('&cursorline')
     set cursorline
+    augroup vimrc
+      autocmd Colorscheme * highlight CursorLine cterm=bold ctermbg=235
+    augroup END
   endif
   if exists('&cursorcolumn')
     set cursorcolumn
