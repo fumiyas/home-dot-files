@@ -24,6 +24,13 @@
 
 (setq skk-auto-okuri-process t)
 
+(setq skk-show-mode-show t)
+;(setq skk-show-mode-style 'tooltip)
+;(setq skk-show-icon t)
+(setq skk-show-candidates-nth-henkan-char 1)
+(setq skk-henkan-number-to-display-candidates 9)
+(setq skk-henkan-show-candidates-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
+
 ;; 変換時に註釈 (annotation) を表示する
 (setq skk-show-annotation t)
 
