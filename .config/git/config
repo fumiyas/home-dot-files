@@ -63,6 +63,7 @@
 [log]
         date = iso8601
 	decorate = full
+	follow = true
 
 [diff]
 	algorithm = histogram
