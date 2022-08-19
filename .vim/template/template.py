@@ -15,9 +15,9 @@ def main(argv):
     logger.warning("warning log test")
     logger.info("info log test")
     try:
-        undefined_func()
+        raise
     except Exception as e:
-        logger.error("error log test with trace: %s" % (e), exc_info=True)
+        logger.error("error log test with trace: %s", e, exc_info=True)
 
     return 0
 
