@@ -4,7 +4,6 @@
 from __future__ import print_function
 
 import logging
-import logging.handlers
 import os
 import sys
 
@@ -25,18 +24,26 @@ def main(argv):
 
 if __name__ == '__main__':
     logging_handlers = []
-    if True:
-        logging_handlers.append(logging.StreamHandler())
-    if True:
-        syslog_handler = logging.handlers.SysLogHandler(
-            address='/dev/log',
-            facility='user',
-        )
-        syslog_handler.ident = f'{os.path.basename(sys.argv[0])}[{os.getpid()}]: '
 
-        logging_handlers.append(
-            syslog_handler
-        )
+    ## stderr
+    logging_handlers.append(logging.StreamHandler())
+
+    ## file
+    import datetime
+    log_basename = f'{os.path.splitext(os.path.basename(sys.argv[0]))[0]}'
+    log_filename = f'{log_basename}.{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}.log'
+    logging_handlers.append(logging.FileHandler(log_filename))
+
+    ## syslog
+    import logging.handlers
+    syslog_handler = logging.handlers.SysLogHandler(
+        address='/dev/log',
+        facility='user',
+    )
+    syslog_handler.ident = f'{os.path.basename(sys.argv[0])}[{os.getpid()}]: '
+    logging_handlers.append(
+        syslog_handler
+    )
 
     logging.basicConfig(
         level=logging.WARN,
