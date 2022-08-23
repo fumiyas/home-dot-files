@@ -459,7 +459,8 @@ set sidescrolloff=8
 set incsearch hlsearch ignorecase smartcase nowrapscan
 
 set autoindent
-set noexpandtab
+set expandtab
+set textwidth=0
 set tabstop=8
 set softtabstop=2
 set shiftwidth=2
