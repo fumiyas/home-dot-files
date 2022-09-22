@@ -628,7 +628,7 @@ augroup vimrc
   autocmd BufNewFile *.bash 0r ~/.vim/template/template.bash
   autocmd BufNewFile *.rb 0r ~/.vim/template/template.rb
   autocmd BufNewFile *.py 0r ~/.vim/template/template.py
-  autocmd BufNewFile,BufRead *.py setlocal expandtab
+  autocmd BufNewFile,BufRead *.py setlocal expandtab tabstop=8
   autocmd BufNewFile *.pl 0r ~/.vim/template/template.pl
   autocmd BufNewFile *.pm 0r ~/.vim/template/template.pm
   "autocmd BufNewFile *.pl execute "normal i#!/usr/bin/env perl\<CR>" | echo "New File"
