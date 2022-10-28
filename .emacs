@@ -299,7 +299,8 @@
 ;; ----------------------------------------------------------------------
 
 (setq browse-url-browser-function 'browse-url-generic
-	browse-url-generic-program "firefox")
+	browse-url-generic-program "firefox"
+        browse-url-generic-args '("--new-tab"))
 
 ;; Internet Message
 ;; ======================================================================
