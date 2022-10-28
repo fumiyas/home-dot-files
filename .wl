@@ -98,16 +98,10 @@
 	    '(("charset" "" "UTF-8" "ISO-2022-JP" "US-ASCII")))
 	(set-alist 'mime-content-types "text" (cdr text))))
 
-;; クォートされた文字列もデコードする
-(setq mime-header-lexical-analyzer
-      '(
-        ;; eword-analyze-quoted-string
-        eword-analyze-domain-literal
-        eword-analyze-comment
-        eword-analyze-spaces
-        eword-analyze-special
-        eword-analyze-encoded-word
-        eword-analyze-atom))
+;; ヘッダーのクォートされた MIME エンコード文字列 (RFC 違反) もデコードする
+(mime-set-field-decoder 'From nil 'eword-decode-and-unfold-unstructured-field-body)
+(mime-set-field-decoder 'To nil 'eword-decode-and-unfold-unstructured-field-body)
+(mime-set-field-decoder 'Cc nil 'eword-decode-and-unfold-unstructured-field-body)
 
 ;; NEC special chars
 ;; NEC extended chars from IBM extended chars
