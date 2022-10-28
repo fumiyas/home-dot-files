@@ -100,14 +100,7 @@
 ;(un-define-debian)
 ;(un-define-debian-jisx0213)
 
-(set-language-environment "Japanese")
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(setq file-name-coding-system 'utf-8)
-(if (not window-system)
-    (set-terminal-coding-system 'utf-8)
-)
+(set-language-environment 'UTF-8)
 
 ;; 日本語 info が文字化けしないように
 (auto-compression-mode t)
