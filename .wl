@@ -128,8 +128,8 @@
 )
 
 ; Identifier
-(setq wl-from "SATOH Fumiyasu <fumiyas@osstech.co.jp>")
-(setq wl-organization "OSS Technology Corp. / Samba-JP / LDAP-JP / Apache-JP")
+(setq wl-from "SATOH Fumiyasu (TSUCHIDA Fumiyasu) <fumiyas@osstech.co.jp>")
+(setq wl-organization "OSSTech Corp., Japan/ Samba-JP / LDAP-JP / Apache-JP")
 ;(setq wl-organization "OSS Technology Corp. / Samba-JP / Namazu Developer")
 (setq wl-local-domain "sugar.osstech.co.jp")
 ;(setq wl-local-domain "sugar.lan.sfo.jp")
@@ -262,8 +262,9 @@
 (setq wl-refile-rule-alist
     '(
         ("Subject"
-	    ("^VMware Newsletter " . "+ml/member/vmware")
+	    ("^週報 *202" . "+work/osstech/weekly")
 
+	    ("^\\[samba-jp:" . "+ml/samba/samba-jp")
 	    ("^\\[samba-jp:" . "+ml/samba/samba-jp")
 	    ("^\\[sugj-free:" . "+ml/samba/sugj-free")
 	    ("^\\[sugj-staff:" . "+ml/samba/sugj-staff")
@@ -276,13 +277,7 @@
 
 	    ("^\\[LDAP-Staff:" . "+ml/net/ldap-staff")
 	    ("^\\[LDAP-Users:" . "+ml/net/ldap-users")
-	    ("^\\[mailman-users-jp " . "+ml/net/mailman-users-jp")
 	    ("^\\[DNSOPS " . "+ml/net/dnsops")
-	    ("^\\[rt100i-users" . "+ml/net/rt100i-users")
-	    ("\\[hyperestraier-" . "+ml/misc/hyperestraier")
-	    ("^\\[jsosug:" . "+ml/linux/jsosug")
-
-	    ("^\\[installer " . "+ml/misc/installer")
 	)
         (("To" "Cc")
 	    ("dns@list.cr.yp.to" . "+ml/net/djb-dns")
@@ -291,14 +286,16 @@
 	    ("-admin-.+=[a-z0-9.-]+@samba.gr.jp" . "+ml/samba/sugj-bounce")
 	)
         ("Return-Path"
-	    ("<[a-z]+-support-bounces\\+.*@osstech.co.jp" . "+work/osstech/support")
-	    ("<ost-consult-bounces\\+.*@osstech.co.jp" . "+work/osstech/consult")
-	    ("<ost-partner-bounces\\+.*@osstech.co.jp" . "+work/osstech/partner")
-	    ("<ost-sys-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
-	    ("<ost-syslog-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
-	    ("<ost-sys-.*-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
-	    ("<ost-syslog-bounces\\+.*@osstech.co.jp" . "+work/osstech/sys")
-	    ("<ost-tech-bounces\\+.*@osstech.co.jp" . "+work/osstech/tech")
+	    ("<[a-z]+-support-bounces@osstech.co.jp" . "+work/osstech/support")
+	    ("<ost-consult-bounces@osstech.co.jp" . "+work/osstech/consult")
+	    ("<ost-partner-bounces@osstech.co.jp" . "+work/osstech/partner")
+	    ("<ost-scm-bounces@osstech.co.jp" . "+work/osstech/scm")
+	    ("<ost-sys-bounces@osstech.co.jp" . "+work/osstech/sys")
+	    ("<ost-sec-bounces@osstech.co.jp" . "+work/osstech/sec")
+	    ("<ost-tech-bounces@osstech.co.jp" . "+work/osstech/tech")
+	    ("<ost-syslog-bounces@osstech.co.jp" . "+work/osstech/sys")
+	    ("<ost-sys-.*-bounces@osstech.co.jp" . "+work/osstech/sys")
+	    ("<ost-syslog-bounces:osstech.co.jp" . "+work/osstech/sys")
 
 	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
 	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
@@ -340,13 +337,15 @@
 
 ;; 添付ファイルがある場合は「@」を表示
 ;(setq wl-summary-line-format "%n%T%P%1@%M/%D(%W)%h:%m %t%[%17(%c %f%) %] %#%~%s")
-(setq wl-summary-line-format "%n%T%P%1@%M/%D(%W)%h:%m %t%[%17(%c %f%) %] %~%s")
+(setq wl-summary-line-format "%n%T%P%1@%Y-%M-%D %W %h:%m %t%[%17(%c %f%) %] %~%s")
 (setq wl-summary-line-format-spec-alist
       (append wl-summary-line-format-spec-alist
               '((?@ (wl-summary-line-attached)))))
 
-; Message(?) mode
+; Message buffer
 ; ======================================================================
+
+(setq wl-message-window-size '(1 . 3))
 
 (setq wl-message-visible-field-list '())
 
@@ -406,8 +405,10 @@
     "^X-Scanned-By:"
     "^X-Virus-"
     "^X-Quarantine-ID:"
+    "^IronPort-"
     "^X-IronPort-"
     "^X-IRONPORT:"
+    "^X-IPAS-"
     "^X-MimeOLE:"
     ;"^Received-SPF:"
     "^Authentication-Results:"
@@ -419,8 +420,10 @@
     "^X-OriginalArrivalTime:"
     "^X-No-Archive:"
     "^X-Loop:"
+    "^X-Iguazu-"
     "^x-exchange-antispam-"
-    "^x-ms-"
+    "^x-tm-as-"
+    "^x-tmase-"
     "^X-ExtLoop1:"
     "^X-Original-To:"
     "^X-Original-Received:"
@@ -431,10 +434,7 @@
     "^Autocrypt:"
     "^SpamDiagnosticMetadata:"
     "^SpamDiagnosticOutput:"
-    ;"^X-MS-Has-Attatch:"
-    ;"^X-MS-TNEF-Correlator:"
-    "^X-MS-Exchange-"
-    "^X-MS-Office365-Filtering-HT:"
+    "^X-MS-"
     "^X-Microsoft-Antispam"
     "^X-Microsoft-Exchange-"
 ))
@@ -763,7 +763,7 @@
 (setq initial-frame-alist
     (append '(
 	(width	. 120)	; フレーム幅(文字数)
-	(height	. 50)	; フレーム高(文字数)
+	(height	. 70)	; フレーム高(文字数)
     ) initial-frame-alist)
 )
 
