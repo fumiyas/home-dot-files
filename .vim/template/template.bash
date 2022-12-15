@@ -58,3 +58,61 @@ clean_tempfiles() {
 
 ## ======================================================================
 
+getopts_want_arg()
+{
+  if [[ $# -lt 2 ]]; then
+    pdie "Option requires an argument: $1"
+  fi
+  if [[ -n ${3:+set} ]]; then
+    if [[ $2 =~ $3 ]]; then
+      : OK
+    else
+      pdie "Invalid value for option: $1: $2"
+    fi
+  fi
+  if [[ -n ${4:+set} ]]; then
+    if [[ $2 =~ $4 ]]; then
+      pdie "Invalid value for option: $1: $2"
+    fi
+  fi
+}
+
+while [[ $# -gt 0 ]]; do
+  opt="$1"; shift
+
+  if [[ -z "${opt##-[!-]?*}" ]]; then
+    set -- "-${opt#??}" ${1+"$@"}
+    opt="${opt%${1#-}}"
+  fi
+  if [[ -z "${opt##--*=*}" ]]; then
+    set -- "${opt#--*=}" ${1+"$@"}
+    opt="${opt%%=*}"
+  fi
+
+  case "$opt" in
+  -n|--no-run)
+    no_run_flag="yes"
+    ;;
+  -f|--force)
+    force_flag="yes"
+    ;;
+  -v|--verbose)
+    getopts_want_arg "$opt" ${1+"$1"} ${1+"[0-9]"}
+    verbose_level="$1"; shift
+    ;;
+  -f|--file)
+    getopts_want_arg "$opt" ${1+"$1"}
+    file="$1"; shift
+    ;;
+  --)
+    break
+    ;;
+  -*)
+    pdie "Invalid option: $opt"
+    ;;
+  *)
+    set -- "$opt" ${1+"$@"}
+    break
+    ;;
+  esac
+done
