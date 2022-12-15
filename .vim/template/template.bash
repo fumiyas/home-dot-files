@@ -82,7 +82,7 @@ while [[ $# -gt 0 ]]; do
 
   if [[ -z "${opt##-[!-]?*}" ]]; then
     set -- "-${opt#??}" ${1+"$@"}
-    opt="${opt%${1#-}}"
+    opt="${opt%"${1#-}"}"
   fi
   if [[ -z "${opt##--*=*}" ]]; then
     set -- "${opt#--*=}" ${1+"$@"}
@@ -96,13 +96,13 @@ while [[ $# -gt 0 ]]; do
   -f|--force)
     force_flag="yes"
     ;;
+  --file)
+    getopts_want_arg "$opt" ${1+"$1"}
+    file="$1"; shift
+    ;;
   -v|--verbose)
     getopts_want_arg "$opt" ${1+"$1"} ${1+"[0-9]"}
     verbose_level="$1"; shift
-    ;;
-  -f|--file)
-    getopts_want_arg "$opt" ${1+"$1"}
-    file="$1"; shift
     ;;
   --)
     break
