@@ -90,15 +90,8 @@ while [[ $# -gt 0 ]]; do
   fi
 
   case "$opt" in
-  -n|--no-run)
-    no_run_flag="yes"
-    ;;
   -f|--force)
-    force_flag="yes"
-    ;;
-  --file)
-    getopts_want_arg "$opt" ${1+"$1"}
-    file="$1"; shift
+    force_p="yes"
     ;;
   -v|--verbose)
     getopts_want_arg "$opt" ${1+"$1"} ${1+"[0-9]"}
@@ -116,3 +109,6 @@ while [[ $# -gt 0 ]]; do
     ;;
   esac
 done
+
+echo "${force_p-}"
+echo "${verbose_level-}"
