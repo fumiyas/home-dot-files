@@ -16,8 +16,7 @@ mkcd() {
   mkdir "$@" || return $?
   while [ $# -gt 0 ]; do
     if [ -d "$1" ]; then
-      cd "$1"
-      return $?
+      cd "$1" || return $?
     fi
     shift
   done
@@ -76,11 +75,11 @@ base64url-decode() {
 
 unixtime() {
   local unixtime="$1"; shift
-  date --iso-8601=ns --date=@$(($unixtime))
+  date --iso-8601=ns --date=@$((unixtime))
 }
 wintime() {
   local wintime="$1"; shift
-  date --iso-8601=ns --date=@$((($wintime - 0x019db1ded53e8000)/10000000))
+  date --iso-8601=ns --date=@$(((wintime - 0x019db1ded53e8000)/10000000))
 }
 
 if dd status=progress </dev/null >&/dev/null; then
@@ -324,7 +323,7 @@ for a in grep egrep fgrep; do
   if [[ -z $("$c" --directories=skip . / 2>&1 >/dev/null) ]]; then
     alias "$a"="$c --directories=skip"
   else
-    [[ $a != $c ]] && alias "$a"="$c"
+    [[ $a != "$c" ]] && alias "$a"="$c"
   fi
 done
 for a in diff; do
@@ -332,6 +331,7 @@ for a in diff; do
   alias "$a"="env LC_MESSAGES=C $c"
 done
 
+unalias diff-highlight 2>/dev/null
 if type diff-highlight >/dev/null 2>&1; then
   : OK
 elif type colordiff >/dev/null 2>&1; then
