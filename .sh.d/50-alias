@@ -124,6 +124,8 @@ alias rsync-compress="rsync --compress --skip-compress='7z/ace/avi/bz2/deb/gpg/g
 
 alias skype-web='mkdir -p -m 0755 $HOME/.local/share/skypeweb && start env GDK_BACKEND=x11 chromium --user-data-dir=$HOME/.local/share/skypeweb https://web.skype.com'
 
+alias firefox='firefox --new-tab'
+
 alias wcp='wget -m -l3 --no-parent'
 alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 
