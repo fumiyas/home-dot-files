@@ -333,7 +333,8 @@ for a in grep egrep fgrep; do
 done
 for a in diff; do
   type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
-  alias "$a"="env LC_MESSAGES=C $c"
+  "$c" -x dummy /dev/null /dev/null 2>/dev/null && c="$c -x '.*.sw[po]'"
+  alias "$a"="env LC_MESSAGES=C $c "
 done
 
 unalias diff-highlight 2>/dev/null
