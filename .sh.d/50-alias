@@ -2,6 +2,11 @@
 ## Aliases and functions definition for bash, zsh
 ## Author: SATOH Fumiyasu
 
+alias2() {
+  # shellcheck disable=SC2139 # This expands when defined, not when used
+  alias "$1"="$2"
+}
+
 ## Generic
 ## ======================================================================
 
@@ -87,6 +92,7 @@ if dd status=progress </dev/null >&/dev/null; then
   alias dd='dd status=progress'
 fi
 
+# shellcheck disable=SC2142 # Aliases can't use positional parameters
 alias zsh-unmetafy='perl -pe "s/\\x83(.)/@{[\$1^q( )]}/g"'
 #alias zsh-unmetafy='perl -pe "s/\\x83(.)/chr(ord(\$1)^32)/ge"'
 alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9d\\xa0]/\\x83@{[\$&^q( )]}/g"'
@@ -243,12 +249,12 @@ alias acroread='command acroread -openInNewWindow'
 
 alias isoinfo-x='isoinfo -lR -i'
 type genisoimage >/dev/null 2>&1 && mkisofs="genisoimage" || mkisofs="mkisofs"
-alias mkisofs-x="env TZ=UTC $mkisofs -r -J -iso-level 1 -input-charset UTF-8"
+alias2 mkisofs-x "env TZ=UTC $mkisofs -r -J -iso-level 1 -input-charset UTF-8"
 unset mkisofs
 type wodim >/dev/null 2>&1 && cdrecord="wodim" || cdrecord="cdrecord"
-alias cdrecord-x="$cdrecord -v"
-alias cdrw-blank="$cdrecord -v blank=fast"
-alias cdrw-blank-slow="$cdrecord -v blank=all"
+alias2 cdrecord-x "$cdrecord -v"
+alias2 cdrw-blank "$cdrecord -v blank=fast"
+alias2 cdrw-blank-slow "$cdrecord -v blank=all"
 unset cdrecord
 
 alias strace-x='strace -fttTCxyyv'
@@ -322,21 +328,20 @@ alias perl-utf8='perl -Mutf8 -Mopen=:utf8 -Mopen=:std'
 
 ## 日本語UTF8文字列を禁則処理付きfoldで折りたたむ方法
 ## https://kanasys.com/tech/788
+# shellcheck disable=SC1112 # This is a unicode quote
 jfold() { AC=$# AG=$1 perl -CS -ne 'use utf8;BEGIN{if($ENV{"AC"}>0){$f=$ENV{"AG"}}else{$f=80};$f*=2;}@b=split(//,$_);$i=0;while($c=shift(@b)){print $c;$i++;if(!($c=~/\p{ascii}/)){$i++;}if(($i>=($f-1) && !($b[0]=~/[,\)\]）｝、〕〉》」』】〙〗〟ゝゞーァィゥェォッャュョヮヵヶぁぃぅぇぉっゃゅょゎゕゖ‐゠–〜～\?!‼⁇⁈⁉・:;\/ㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇷ゚ㇺㇻㇼㇽㇾㇿ々〻’”｠»。.]/))||($b[0]=~/[（\([｛〔〈《「『【〘〖〝‘“｟«]/&&$i>=($f-3))){print "\n";$i=0;}}'; }
 
 for a in grep egrep fgrep; do
   type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
   if [[ -z $("$c" --directories=skip . / 2>&1 >/dev/null) ]]; then
-    alias "$a"="$c --directories=skip"
+    alias2 "$a" "$c --directories=skip"
   else
-    [[ $a != "$c" ]] && alias "$a"="$c"
+    [[ $a != "$c" ]] && alias2 "$a" "$c"
   fi
 done
-for a in diff; do
-  type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
-  "$c" -x dummy /dev/null /dev/null 2>/dev/null && c="$c -x '.*.sw[po]'"
-  alias "$a"="env LC_MESSAGES=C $c "
-done
+type "gdiff" >/dev/null 2>&1 && c="gdiff" || c="diff"
+"$c" -x dummy /dev/null /dev/null 2>/dev/null && c="$c -x '.*.sw[po]'"
+alias2 diff "env LC_MESSAGES=C $c"
 
 unalias diff-highlight 2>/dev/null
 if type diff-highlight >/dev/null 2>&1; then
@@ -407,24 +412,25 @@ git-patch-mail() {
 if [ -f "$HOME/lib/vim/plugin/less.vim" ]; then
   function lvv {
     if [ $# -eq 0 ]; then
-      vim --cmd 'let no_plugin_maps = 1' -c 'source $HOME/lib/vim/plugin/less.vim' -
+      vim --cmd 'let no_plugin_maps = 1' -c 'source ~/lib/vim/plugin/less.vim' -
     else
-      vim --cmd 'let no_plugin_maps = 1' -c 'source $HOME/lib/vim/plugin/less.vim' "$@"
+      vim --cmd 'let no_plugin_maps = 1' -c 'source ~/lib/vim/plugin/less.vim' "$@"
     fi
   }
-elif (echo /usr/share/vim/vim*/macros/less.sh) >/dev/null 2>&1; then
-  alias lvv="$(ls /usr/share/vim/vim*/macros/less.sh |tail -n -1)"
+elif ls /usr/share/vim/vim*/macros/less.sh >/dev/null 2>&1; then
+  # shellcheck disable=SC2012 # Use find instead of ls
+  alias2 lvv "$(ls /usr/share/vim/vim*/macros/less.sh |tail -n -1)"
 fi
 
 crontab()
 {
-  if [ x"${1-}" = x"-r" ]; then
+  if [ "${1-}" = "-r" ]; then
     echo -n "crontab: really delete $USER's crontab? (y/n) "
     typeset answer
     while :; do
-      read answer
-      [ x"$answer" = x"y" ] && break
-      [ x"$answer" = x"n" ] && return 0
+      read -r answer
+      [ "$answer" = "y" ] && break
+      [ "$answer" = "n" ] && return 0
       echo -n "Please enter Y or N: "
     done
   fi
@@ -484,6 +490,7 @@ rpm-dump()
 }
 
 apt-upgrade-pkg-with-depends() {
+  # shellcheck disable=SC2046 # Quote this to prevent word splitting
   sudo /usr/bin/apt install \
     "$@" \
     $(
@@ -539,15 +546,15 @@ alias vunmute='amixer sset Master unmute'
 
 if type amixer >/dev/null 2>&1; then
   for n in 0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
-    alias "v$n"="amixer sset Master $n%"
+    alias2 "v$n" "amixer sset Master $n%"
   done
 fi
 
 if type xbacklight >/dev/null 2>&1; then
   for n in 0 1 2 3 4 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100; do
     [ $n -lt 1 ] && v="1" || v="$n"
-    alias "$n"="xbacklight -set $v"
-    alias "b$n"="xbacklight -set $v"
+    alias2 "$n" "xbacklight -set $v"
+    alias2 "b$n" "xbacklight -set $v"
   done
 fi
 
@@ -559,4 +566,3 @@ function xargs-r
 {
   xargs sh -c '[ \$# -le 1 ] || exec \"\$@\"' -
 }
-
