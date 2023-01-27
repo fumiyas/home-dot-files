@@ -363,6 +363,28 @@ else
   }
 fi
 
+## Workaround for broken look(1) and words file
+## #973471 - look has unpredictable behavior - Debian Bug report logs
+## https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=973471
+look() {
+  local words="/usr/share/dict/words"
+  local words_sorted="$HOME/var/tmp/words"
+
+  if [ ! -f "$words" ]; then
+    command look "$@"
+    return $?
+  fi
+
+  if [ ! -f "$words_sorted" ] || [ "$words" -nt "$words_sorted" ]; then
+    sort <"$words" >"$words_sorted"
+    if diff -q "$words" "$words_sorted" >/dev/null; then
+      echo "WARNING: $words already sorted"
+    fi
+  fi
+
+  command look "$@" "$words_sorted"
+}
+
 make() {
   if type gmake >/dev/null; then
     LC_MESSAGES=C gmake "$@"
