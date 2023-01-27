@@ -180,7 +180,7 @@ fi
 
 ssh()
 {
-  local arg
+  local arg arg_prev
 
   if [ -t 0 ] && [ -t 1 ]; then
     case "$TERM" in
@@ -190,10 +190,13 @@ ssh()
         -*)
           ;;
         *)
-	  printf '\e]2;ssh %s (%s:%s)\a' "$arg" "$(hostname)" "${TTY#/dev/}"
-          break
+          if [[ $arg_prev != -[BbcDEeFIiJLlmOopQRSWw] ]]; then
+            printf '\e]2;ssh %s (%s:%s)\a' "$arg" "$(hostname)" "${TTY#/dev/}"
+            break
+          fi
           ;;
         esac
+        arg_prev="$arg"
       done
     esac
   fi
