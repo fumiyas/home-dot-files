@@ -159,13 +159,23 @@ whois-jp-en() {
   whois -h whois.jprs.jp ${1+"$1/e"}
 }
 
-cal() {
-  if [ $# -eq 0 ]; then
-    command cal -A2
-  else
-    command cal ${1+"$@"}
-  fi
-}
+if type ncal >&/dev/null; then
+  cal() {
+    if [ $# -eq 0 ]; then
+      ncal -3 -b -M
+    else
+      command cal ${1+"$@"}
+    fi
+  }
+else
+  cal() {
+    if [ $# -eq 0 ]; then
+      command cal -3 -m
+    else
+      command cal ${1+"$@"}
+    fi
+  }
+fi
 
 ssh()
 {
