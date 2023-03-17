@@ -60,6 +60,9 @@
 	r = remote --verbose
 	push-force = push --force-with-lease
 
+[init]
+	defaultBranch = main
+
 [log]
         date = iso8601
 	decorate = full
@@ -77,6 +80,9 @@
 
 [difftool]
 	prompt = false
+
+[rebase]
+	autoStash = true
 
 [merge]
 	tool = vimdiff
