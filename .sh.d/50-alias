@@ -126,6 +126,7 @@ alias dstat-net='dstat --time --load --cpu --top-cpu --net --top-io'
 alias dstat-disk='dstat --time --load --cpu --top-cpu --load --disk --top-io'
 
 alias dig-x='dig +qr +multiline'
+alias dig-answer-only='dig +noall +answer'
 
 alias rsync-compress="rsync --compress --skip-compress='7z/ace/avi/bz2/deb/gpg/gz/iso/jpeg/jpg/lz/lzma/lzo/mov/mp3/mp4/ogg/png/rar/rpm/rzip/tbz/tgz/tlz/txz/xz/z/zip/docx/xlsx/pptx/od[tspg]'"
 
