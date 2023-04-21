@@ -105,7 +105,6 @@ bindkey '^[^B' vi-backward-blank-word
 bindkey '^[^F' vi-forward-blank-word
 #bindkey '^[^K' delete-word
 
-
 if type anyframe-init >&/dev/null; then
   #autoload -Uz anyframe-init
   #anyframe-init
@@ -124,6 +123,41 @@ setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
 setopt PUSHD_IGNORE_DUPS
+
+## ----------------------------------------------------------------------
+
+cdpath=(~)
+
+cdp()
+{
+  if [[ $# -eq 0 ]]; then
+    # shellcheck disable=SC2164 # Use 'cd ... || exit' or 'cd ... || return'
+    builtin cd
+    return $?
+  fi
+
+  local cd="$1"
+  local dir
+  local reply
+
+  if [[ ! -d "$cd" ]]; then
+    for dir in ${cdpath-}; do
+      if [[ -d $dir/$cd ]]; then
+        read -rq "reply?Change directory under $dir? (y/n) "
+        if [[ $reply != y ]]; then
+          echo 'Canceled.'
+          return 1
+        fi
+        break
+      fi
+    done
+  fi
+
+  builtin cd "$cd" || return $?
+}
+
+alias cd=cdp
+compdef cdp=cd
 
 ## History
 ## ======================================================================
