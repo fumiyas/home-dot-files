@@ -6,6 +6,7 @@
 	quotepath = false
 	precomposeunicode = true
 	pager = type ifne >/dev/null 2>&1 && exec ifne $PAGER || exec $PAGER
+	sharedRepository = 0600
 
 [color]
 	ui = auto
