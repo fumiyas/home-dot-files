@@ -172,3 +172,12 @@ done
 
 echo "${force_p-}"
 echo "${verbose_level-}"
+
+create_tempfile tmp_dir -d
+# shellcheck disable=SC2154 # tmp_dir is referenced but not assigned
+ls -ld "$tmp_dir"
+create_tempfile tmp_file
+# shellcheck disable=SC2154 # tmp_file is referenced but not assigned
+ls -l "$tmp_file"
+
+exit 0
