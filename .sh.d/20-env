@@ -10,11 +10,11 @@ fi
 ## Generic
 ## ======================================================================
 
-TMP="$HOME/var/tmp"
-TEMP="$TMP"
-TMPDIR="$TMP"
-export TMP TEMP TMPDIR
-test -d "$TMP" || mkdir -p "$TMP"
+#TMP="$HOME/var/tmp"
+#TEMP="$TMP"
+#TMPDIR="$TMP"
+#export TMP TEMP TMPDIR
+#test -d "$TMP" || mkdir -p "$TMP"
 
 #if type w3m >/dev/null 2>&1; then
 #    ## To use migemo in man pages
