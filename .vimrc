@@ -633,6 +633,7 @@ augroup vimrc
 "
   autocmd FileType spec setlocal path=.,./../SOURCES,,
   autocmd FileType yaml setlocal indentexpr=
+  autocmd FileType sh setlocal comments=
 
   autocmd BufNewFile *.md 0r ~/.vim/template/template.md
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab shiftwidth=8
@@ -648,6 +649,7 @@ augroup vimrc
   autocmd BufNewFile *.html 0r ~/.vim/template/template.html
   autocmd BufNewFile *.html setlocal fileencoding=UTF-8
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown expandtab
+  autocmd BufNewFile,BufRead *.crontab setlocal filetype=crontab
   if s:dein_tap('ansible-vim')
     autocmd BufNewFile,BufRead *.yml setlocal filetype=yaml.ansible
     autocmd BufNewFile,BufRead *.yaml setlocal filetype=yaml.ansible
@@ -739,11 +741,6 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_| diffthis | wincmd
 
 if s:dein_tap('diffchar.vim')
   let g:DiffUnit = "Word3"
-  if &diff
-    augroup vimrc
-      autocmd VimEnter * execute "%SDChar"
-    augroup END
-  endif
 endif
 
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
