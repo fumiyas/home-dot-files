@@ -102,3 +102,8 @@
 	verbose = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[color "diff-highlight"]
+	oldNormal = red
+	oldHighlight = red bold 52
+	newNormal = green
+	newHighlight = green bold 22
