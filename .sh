@@ -6,9 +6,9 @@
 PATH=/bin:/usr/bin:/usr/local/bin
 umask 0002
 ## Limit data size
-ulimit -H -d 6000000
+ulimit -H -d 10000000
 ## Limit processes (threads)
-ulimit -H -u 6000
+ulimit -H -u 8000
 
 TTY=`tty`
 : ${HOSTNAME:=`hostname |sed 's/\..*//'`}
