@@ -245,6 +245,7 @@ zle -N bracketed-paste bracketed-paste-magic
 ## Prompt, Window Title
 ## ======================================================================
 
+setopt TRANSIENT_RPROMPT
 if is-at-least 4.3.0; then
   setopt PROMPT_SP
   setopt PROMPT_CR
