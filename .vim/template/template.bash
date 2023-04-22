@@ -7,8 +7,28 @@ shopt -s lastpipe || exit $?		## bash 4.2+
 #shopt -s nullglob || exit $?		## bash 2.0+
 #shopt -s failglob || exit $?		## bash 3.0+
 
+if tty >/dev/null 2>&1; then
+  _pdeco_reset=$(tput sgr0)
+  _pdeco_info=$(tput setaf 2)
+  _pdeco_warn=$(tput setaf 3)
+  _pdeco_error=$(tput setaf 1)
+else
+  _pdeco_reset=''
+  _pdeco_info=''
+  _pdeco_warn=''
+  _pdeco_error=''
+fi
+
+pinfo() {
+  echo "$0: ${_pdeco_info}INFO${_pdeco_reset}: $1" 1>&2
+}
+
+pwarn() {
+  echo "$0: ${_pdeco_warn}WARNING${_pdeco_reset}: $1" 1>&2
+}
+
 perr() {
-  echo "$0: ERROR: $1" 1>&2
+  echo "$0: ${_pdeco_error}ERROR${_pdeco_reset}: $1" 1>&2
 }
 
 pdie() {
