@@ -10,3 +10,6 @@ set http:accept *
 
 #set ftp:use-feat/ftp.miraclelinux.com off
 set ftp:use-feat off
+#set ssl:verify-certificate no
+#set ssl:ca-file "/etc/ssl/certs/ca-certificates.crt"
+#set ssl:check-hostname no;
