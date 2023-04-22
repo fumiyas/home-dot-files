@@ -88,7 +88,7 @@ cmds_at_exit() {
 # shellcheck disable=SC2154 # ret is referenced but not assigned
 trap 'ret="$?"; cmds_at_exit; exit "$ret"' EXIT
 for signal in HUP INT TERM; do
-  trap 'cmds_at_exit; trap - EXIT '$signal'; kill -'$signal' -$$' $signal
+  trap 'trap - EXIT '$signal'; cmds_at_exit; kill -'$signal' -$$' $signal
 done
 
 ## ----------------------------------------------------------------------
