@@ -29,7 +29,7 @@ use_extended_scroll_shortcut = true
 static_backscroll_mode = true
 
 wall_picture = 
-input_method = uim
+input_method = fcitx
 receive_string_via_ucs = true
 type_engine = xft
 line_space = 1
