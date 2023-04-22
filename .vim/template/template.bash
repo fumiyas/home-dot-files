@@ -38,8 +38,45 @@ pdie() {
 
 ## ----------------------------------------------------------------------
 
+password_prompt() {
+  local for="$1"; shift
+  local password password2 ret
+
+  IFS= read -r -s -p "Enter password for $for: " password
+  ret="$?"
+  echo >/dev/tty 2>/dev/null
+  [[ $ret == 0 ]] || pdie "Failed to read password"
+  [[ -n "$password" ]] || pdie "No password given"
+
+  IFS= read -r -s -p "Re-enter password for $for to confirm: " password2
+  ret="$?"
+  echo >/dev/tty 2>/dev/null
+  [[ $ret == 0 ]] || pdie "Failed to read password"
+  [[ $password == "$password2" ]] || pdie "Passwords does NOT match"
+
+  echo -n "$password"
+}
+
+string_escape() {
+  local str="$1"; shift
+  local escape_char="${1-\\}"
+
+  local escape_char_escaped="${escape_char//\\/\\\\}";
+  local needle_char needle_char_escaped
+
+  for needle_char in "$@"; do
+    needle_char_escaped="${needle_char//\\/\\\\}";
+    str="${str//$needle_char_escaped/$escape_char_escaped$needle_char_escaped}"
+  done
+
+  echo -n "$str"
+}
+
+## ----------------------------------------------------------------------
+
 _cmds_at_exit=()
 
+# shellcheck disable=SC2317 # Command appears to be unreachable
 cmds_at_exit() {
   local cmd
 
