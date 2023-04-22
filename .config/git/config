@@ -74,9 +74,13 @@
 	compactionHeuristic = true
 	renames = true
 
-[diff "odf"]
+[diff "opendocument"]
 	binary = true
-	textconv = unoconv --stdout --format txt
+	textconv = any2text
+	#textconv = unoconv --stdout --format txt
+[diff "openxml"]
+	binary = true
+	textconv = any2text
 
 [difftool]
 	prompt = false
