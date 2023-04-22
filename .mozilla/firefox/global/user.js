@@ -11,7 +11,7 @@ user_pref("browser.urlbar.trimURLs", false);
 // URL バーのドロップダウンメニューに表示する URL の数
 user_pref("browser.urlbar.maxRichResults", 30);
 // URL バーの入力補完を自動的に適用しない
-user_pref("browser.urlbar.autoFill", false);
+//user_pref("browser.urlbar.autoFill", false);
 // URL バーにフォーカスを移したときにドロップダウンメニューを表示しない
 // [Privacy & Search] Category > [Address Bar] Clause > [Shortcuts] Check
 // (↓キーで開く)
@@ -45,6 +45,11 @@ user_pref("network.IDN_show_punycode", true);
 user_pref("browser.tabs.insertAfterCurrent", true);
 // タブをダブルクリックで閉じる
 user_pref("browser.tabs.closeTabByDblclick", true);
+// 最後のタブを閉じたとき、ウィンドウ自体は閉じない
+user_pref("browser.tabs.closeWindowWithLastTab", false);
+
+// [閉じたタブを復元] の記憶するタブの数
+user_pref("browser.sessionstore.max_tabs_undo", 1000);
 
 // テキストエリアへの中ボタンクリックでクリップボードでなくセレクションをペースト
 // This breaks copy-and-paste behavior on Google Docs, Twitter, Facebook
@@ -149,8 +154,4 @@ user_pref("browser.tabs.closeTabByDblclick", true);
 
 // ======================================================================
 
-// [閉じたタブを復元] の記憶するタブの数
-user_pref("browser.sessionstore.max_tabs_undo", 100);
 
-// 最後のタブを閉じたとき、ウィンドウ自体は閉じない
-user_pref("browser.closeWindowWithLastTab", false);
