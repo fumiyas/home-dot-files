@@ -110,12 +110,14 @@ create_tempfile() {
   eval "$vname=\"\$fname\""
 }
 
+# shellcheck disable=SC2317
 clean_tempfiles() {
   [[ -n "${_temp_files[0]+set}" ]] && rm -rf "${_temp_files[@]}"
 }
 
 ## ======================================================================
 
+# shellcheck disable=SC2317
 getopts_want_arg()
 {
   if [[ $# -lt 2 ]]; then
