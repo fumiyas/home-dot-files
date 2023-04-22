@@ -18,6 +18,12 @@
 	old = red
 	new = green
 
+[color "diff-highlight"]
+	oldNormal = red
+	oldHighlight = red bold 52
+	newNormal = green
+	newHighlight = green bold 22
+
 [pager]
 	log = (type diff-highlight >/dev/null 2>&1 && exec diff-highlight || exec cat) |(type ifne >/dev/null 2>&1 && exec ifne $PAGER || exec $PAGER)
 	diff = (type diff-highlight >/dev/null 2>&1 && exec diff-highlight || exec cat) |(type ifne >/dev/null 2>&1 && exec ifne $PAGER || exec $PAGER)
@@ -103,8 +109,3 @@
 	verbose = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
-[color "diff-highlight"]
-	oldNormal = red
-	oldHighlight = red bold 52
-	newNormal = green
-	newHighlight = green bold 22
