@@ -307,16 +307,16 @@
 	    ("begin-bounces@ml.begi.net" . "+ml/linux/beginet-begin")
 	    ("freetalk-bounces@ml.begi.net" . "+ml/linux/beginet-freetalk")
 
-	    ("dovecot-bounces@" . "+ml/net/dovecot")
+	    ("dovecot-bounces\\+[^@]+@" . "+ml/net/dovecot")
 	    ("postfix-jp-list-bounces@" . "+ml/net/postfix-jp")
 	    ("milter-manager-users-ja-bounces@" . "+ml/net/milter-manager-users-ja")
-	    ("spamassassin-jp-bounces\\+.*@" . "+ml/net/spamassassin-jp")
+	    ("spamassassin-jp-bounces\\+[^@]+@" . "+ml/net/spamassassin-jp")
 	    ("clamav-jp-users-bounces@" . "+ml/misc/clamav-jp")
 	    ("ml-admin@mysql.gr.jp" . "+ml/db/mysql-jp")
 
-	    ("apache-core-bounces\\+.*@apache.jp" . "+ml/web/apache-core")
+	    ("apache-core-bounces\\+[^@]+@apache.jp" . "+ml/web/apache-core")
 	    ("apache-users-bounces.*@apache.jp" . "+ml/web/apache-users")
-	    ("announce-bounces\\+.*@apache.jp" . "+ml/web/apache-announce")
+	    ("announce-bounces\\+[^@]+@apache.jp" . "+ml/web/apache-announce")
 
 	    ("groonga-dev-bounces@" . "+ml/misc/groonga-dev")
 	    ("namazu-devel-..-bounces@namazu.org" . "+ml/misc/namazu-devel")
@@ -350,13 +350,11 @@
 (setq wl-message-visible-field-list '())
 
 (setq wl-message-ignored-field-list '(
+    "^Sender:"
     "^Received:"
-    "^Received-SPF:"
     "^X-Received:"
     "^X-post-Received:"
     "^X-SES-Outgoing"
-    "^X-Google-DKIM-Signature:"
-    "^Sender:"
     "^Old-Return-Path:"
     "^Delivered-To:"
     "^References:"
@@ -375,10 +373,13 @@
     "^Priority:"
     "^X-Priority:"
     "^User-Agent:"
+    "^Auto-Submitted:"
+    "^X-Auto-Response-"
     "^X-Face:"
     "^Face:"
     "^DKIM-Signature:"
     "^DomainKeys-Signature:"
+    "^X-Google-"
     "^X-Greylist:"
     "^X-Mailer:"
     "^X-ML-"
@@ -405,12 +406,13 @@
     "^X-Scanned-By:"
     "^X-Virus-"
     "^X-Quarantine-ID:"
+    "^X-Proofpoint-"
+    "^X-exo-"
     "^IronPort-"
     "^X-IronPort-"
     "^X-IRONPORT:"
     "^X-IPAS-"
     "^X-MimeOLE:"
-    ;"^Received-SPF:"
     "^Authentication-Results:"
     "^DomainKey-Signature:"
     "^X-Spam-"
@@ -430,6 +432,8 @@
     "^X-Debian:"
     "^X-vs:"
     "^X-Git-"
+    "^X-GitLab-"
+    "^X-Bugzilla-"
     "^x-forefront-"
     "^Autocrypt:"
     "^SpamDiagnosticMetadata:"
@@ -447,6 +451,7 @@
     "^Date"
     "^Message-ID"
     "^Reply-To"
+    "^Received-SPF"
 ))
 
 ;(setq wl-message-ignored-field-list nil)
@@ -670,7 +675,7 @@
 	("^\\+ml/misc/security-memo" (date 365) remove)
 ;	("^\\+ml/misc/namazu-devel" (date 365) remove)
 	("^\\+ml/misc/openoffice" (date 365) remove)
-	("^\\+.*" (date 365) remove)
+;	("^\\+.*" (date 365) remove)
     )
 )
 
@@ -763,14 +768,14 @@
 (setq initial-frame-alist
     (append '(
 	(width	. 120)	; フレーム幅(文字数)
-	(height	. 70)	; フレーム高(文字数)
+	(height	. 50)	; フレーム高(文字数)
     ) initial-frame-alist)
 )
 
 ;; 新規フレームの設定
-;(setq default-frame-alist
-;    (append '(
-;	(width	. 90)	; フレーム幅(文字数)
-;	(height	. 40)	; フレーム高(文字数)
-;    ) default-frame-alist)
-;)
+(setq default-frame-alist
+    (append '(
+	(width	. 120)	; フレーム幅(文字数)
+	(height	. 40)	; フレーム高(文字数)
+    ) default-frame-alist)
+)
