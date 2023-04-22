@@ -329,8 +329,10 @@ alias perl-utf8='perl -Mutf8 -Mopen=:utf8 -Mopen=:std'
 
 ## 日本語UTF8文字列を禁則処理付きfoldで折りたたむ方法
 ## https://kanasys.com/tech/788
+## NOTE: 指定する数値はいわゆる全角の幅。いわゆる半角の幅ではない。
+## FIXME: ちょうど割りきれる幅のとき余計な改行が付かないか?
 # shellcheck disable=SC1112 # This is a unicode quote
-jfold() { AC=$# AG=$1 perl -CS -ne 'use utf8;BEGIN{if($ENV{"AC"}>0){$f=$ENV{"AG"}}else{$f=80};$f*=2;}@b=split(//,$_);$i=0;while($c=shift(@b)){print $c;$i++;if(!($c=~/\p{ascii}/)){$i++;}if(($i>=($f-1) && !($b[0]=~/[,\)\]）｝、〕〉》」』】〙〗〟ゝゞーァィゥェォッャュョヮヵヶぁぃぅぇぉっゃゅょゎゕゖ‐゠–〜～\?!‼⁇⁈⁉・:;\/ㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇷ゚ㇺㇻㇼㇽㇾㇿ々〻’”｠»。.]/))||($b[0]=~/[（\([｛〔〈《「『【〘〖〝‘“｟«]/&&$i>=($f-3))){print "\n";$i=0;}}'; }
+jfold() { AC=$# AG=$1 perl -CS -ne 'use utf8;BEGIN{if($ENV{"AC"}>0){$f=$ENV{"AG"}}else{$f=40};$f*=2;}@b=split(//,$_);$i=0;while($c=shift(@b)){print $c;$i++;if(!($c=~/\p{ascii}/)){$i++;}if(($i>=($f-1) && !($b[0]=~/[,\)\]）｝、〕〉》」』】〙〗〟ゝゞーァィゥェォッャュョヮヵヶぁぃぅぇぉっゃゅょゎゕゖ‐゠–〜～\?!‼⁇⁈⁉・:;\/ㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇷ゚ㇺㇻㇼㇽㇾㇿ々〻’”｠»。.]/))||($b[0]=~/[（\([｛〔〈《「『【〘〖〝‘“｟«]/&&$i>=($f-3))){print "\n";$i=0;}}'; }
 
 for a in grep egrep fgrep; do
   type "g$a" >/dev/null 2>&1 && c="g$a" || c="$a"
