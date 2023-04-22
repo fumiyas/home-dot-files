@@ -5,7 +5,7 @@
 [core]
 	quotepath = false
 	precomposeunicode = true
-	pager = type ifne >/dev/null 2>&1 && ifne $PAGER || $PAGER
+	pager = type ifne >/dev/null 2>&1 && exec ifne $PAGER || exec $PAGER
 
 [color]
 	ui = auto
@@ -18,9 +18,9 @@
 	new = green
 
 [pager]
-	log = (type diff-highlight >/dev/null 2>&1 && diff-highlight || cat) |(type ifne >/dev/null 2>&1 && ifne $PAGER || $PAGER)
-	diff = (type diff-highlight >/dev/null 2>&1 && diff-highlight || cat) |(type ifne >/dev/null 2>&1 && ifne $PAGER || $PAGER)
-	show = (type diff-highlight >/dev/null 2>&1 && diff-highlight || cat) |(type ifne >/dev/null 2>&1 && ifne $PAGER || $PAGER)
+	log = (type diff-highlight >/dev/null 2>&1 && exec diff-highlight || exec cat) |(type ifne >/dev/null 2>&1 && exec ifne $PAGER || exec $PAGER)
+	diff = (type diff-highlight >/dev/null 2>&1 && exec diff-highlight || exec cat) |(type ifne >/dev/null 2>&1 && exec ifne $PAGER || exec $PAGER)
+	show = (type diff-highlight >/dev/null 2>&1 && diff-highlight || cat) |(type ifne >/dev/null 2>&1 && exec ifne $PAGER || exec $PAGER)
 
 [alias]
 	s = status
