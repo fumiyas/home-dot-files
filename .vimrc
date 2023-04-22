@@ -127,10 +127,15 @@ if filereadable($VIMRUNTIME . "/macros/matchit.vim")
   source $VIMRUNTIME/macros/matchit.vim
 endif
 
-if filereadable($VIM . "/addons/plugin/migemo.vim")
-  source $VIM/addons/plugin/migemo.vim
-  noremap // :<C-u>Migemo<CR>
-endif
+function! SetPluginOptions()
+  if exists(":Migemo")
+    noremap // :<C-u>Migemo<CR>
+  endif
+endfunction
+
+augroup vimrc
+  autocmd VimEnter * call SetPluginOptions()
+augroup END
 
 " ----------------------------------------------------------------------
 
