@@ -105,9 +105,9 @@ export FTPPROMPT='%/>'
 ## X Window System
 ## ======================================================================
 
-export XMODIFIERS=@im=uim
-export GTK_IM_MODULE=uim
-export QT_IM_MODULE=uim
+#export XMODIFIERS=@im=uim
+#export GTK_IM_MODULE=uim
+#export QT_IM_MODULE=uim
 
 #export XAPPLRESDIR=$HOME/lib/app-defaults
 #export XMODIFIERS=@im=SCIM
