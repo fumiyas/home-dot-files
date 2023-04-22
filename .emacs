@@ -89,13 +89,8 @@
 ;; Enable `Open Recent' menu
 (exec-if-bound (recentf-mode))
 
-;; Terminal
+;; Charachter Encoding
 ;; ======================================================================
-
-;;
-(when (locate-library "jisx0213")
-    (require 'jisx0213)
-)
 
 ;(un-define-debian)
 ;(un-define-debian-jisx0213)
@@ -108,6 +103,17 @@
 ;(if (file-exists-p "/usr/bin/jgrep")
 ;    (setq grep-command "jgrep -n -e ")
 ;)
+
+(when (locate-library "jisx0213")
+    (require 'jisx0213)
+)
+(when (locate-library "cp5022x")
+  (require 'cp5022x)
+
+)
+
+;; Terminal
+;; ======================================================================
 
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
@@ -130,11 +136,6 @@
 (setq-default line-spacing 0)
 
 (load-safe "bitmap-ci")
-
-;; 機種依存文字
-(when (locate-library "cp5022x")
-  (require 'cp5022x)
-)
 
 ;(when (locate-library "izonmoji-mode")
 ;  (autoload 'izonmoji-mode "izonmoji-mode" nil t)
@@ -500,7 +501,7 @@
 ;                  'katakana-jisx0201
 ;                  (cons "Ricty Diminished Discord" "iso10646-1"))
 
-(set-face-attribute 'default nil :height 180)
+(set-face-attribute 'default nil :height 150)
 
 ;; Emacs で全世界の文字を表示・編集可能にする。 - Qiita
 ;; https://qiita.com/kawabata@github/items/2c4b0b689834c9c193aa
