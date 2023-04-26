@@ -161,6 +161,13 @@ cdp()
 alias cd=cdp
 compdef cdp=cd
 
+## Heading for all respective groups of completion suggestions
+#zstyle ':completion:*' group-name ''
+#zstyle ':completion:*:descriptions' format %d
+
+## Remove path-directories from the suggestion sources
+zstyle ':completion:*:complete:(cd|cdp|pushd):*' tag-order 'local-directories named-directories'
+
 ## History
 ## ======================================================================
 
