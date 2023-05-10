@@ -145,7 +145,7 @@ cdp()
   if [[ ! -d "$cd" ]]; then
     for dir in ${cdpath-}; do
       if [[ -d $dir/$cd ]]; then
-        read -rq "reply?Change directory under $dir? (y/n) "
+        read -rsq "reply?Change directory under $dir? (y/n) "
         if [[ $reply != y ]]; then
           echo 'Canceled.'
           return 1
