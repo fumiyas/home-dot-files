@@ -302,7 +302,13 @@ esac
 precmd() {
   precmd_set_windowtitle
   LC_ALL=en_US.UTF-8 vcs_info
-  [[ $PWD == $HOME ]] && CWD='~' || CWD="${PWD/$HOME\//~/}"
+  if [[ $PWD == $HOME ]]; then
+    CWD='~'
+  elif [[ $PWD == $HOME/* ]]; then
+    CWD="${PWD/$HOME\//~/}"
+  else
+    CWD="$PWD"
+  fi
 }
 
 ## ----------------------------------------------------------------------
