@@ -1,6 +1,7 @@
 require 'irb/completion'
 require 'pp'
 require 'rubygems'
+require 'katakata_irb' rescue nil
 IRB.conf[:USE_READLINE] = true
 IRB.conf[:SAVE_HISTORY] = 999999
 IRB.conf[:AUTO_INDENT] = true
