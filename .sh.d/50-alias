@@ -106,6 +106,7 @@ alias pickle-dump.py3='python3 -m pickle'
 alias telnet.py3='python3 -m telnetlib'
 alias httpd.py3='python3 -m http.server'
 alias json-pp.py3='python3 -m json.tool'
+alias quoted-printable.py3='python3 -m quopri'
 
 alias ps-x='ps -eFlyH'
 alias ps-u='ps -FHu "$LOGNAME"'
