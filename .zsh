@@ -128,9 +128,10 @@ setopt PUSHD_IGNORE_DUPS
 
 ## ----------------------------------------------------------------------
 
-cdpath=(~)
+unset cdpath
+cd_paths=(~)
 
-cdp()
+cd_path()
 {
   if [[ $# -eq 0 ]]; then
     # shellcheck disable=SC2164 # Use 'cd ... || exit' or 'cd ... || return'
@@ -138,28 +139,30 @@ cdp()
     return $?
   fi
 
-  local cd="$1"
-  local dir
+  local cd_new="$1"
+  local cd_path
   local reply
 
-  if [[ ! -d "$cd" ]]; then
-    for dir in ${cdpath-}; do
-      if [[ -d $dir/$cd ]]; then
-        read -rsq "reply?Change directory under $dir? (y/n) "
+  if [[ ! -d "$cd_new" ]]; then
+    for cd_path in ${cd_paths-}; do
+      if [[ -d $cd_path/$cd_new ]]; then
+        read -rsq "reply?Change directory under $cd_path? (y/n) "
         if [[ $reply != y ]]; then
           echo 'Canceled.'
           return 1
         fi
+        cd_new="$cd_path/$cd_new"
         break
       fi
     done
+    echo
   fi
 
-  builtin cd "$cd" || return $?
+  builtin cd "$cd_new" || return $?
 }
 
-alias cd=cdp
-compdef cdp=cd
+alias cd=cd_path
+compdef cd_path=cd
 
 ## Heading for all respective groups of completion suggestions
 #zstyle ':completion:*' group-name ''
