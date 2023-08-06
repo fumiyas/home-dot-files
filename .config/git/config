@@ -102,6 +102,7 @@
 	prompt = false
 
 [pull]
+	rebase = true
 	#rebase = preserve
 [push]
 	default = nothing
