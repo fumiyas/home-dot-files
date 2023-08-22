@@ -93,10 +93,12 @@ if isdirectory(dein_dir)
   call dein#add('tpope/vim-fugitive')
   call dein#add('scrooloose/syntastic.git')
 
-  call dein#add('godlygeek/tabular')
   call dein#add('pearofducks/ansible-vim')
-  call dein#add('joker1007/vim-markdown-quote-syntax')
+
   call dein#add('rcmdnk/vim-markdown')
+  call dein#add('godlygeek/tabular')
+  call dein#add('joker1007/vim-markdown-quote-syntax')
+  call dein#add('inkarkat/vim-SyntaxRange')
 
   call dein#end()
 
@@ -649,6 +651,13 @@ augroup vimrc
   autocmd BufNewFile *.html 0r ~/.vim/template/template.html
   autocmd BufNewFile *.html setlocal fileencoding=UTF-8
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown expandtab
+  if s:dein_tap('vim-SyntaxRange')
+    autocmd BufNewFile,BufRead *.md call s:syntax_range_markdown()
+    function! s:syntax_range_markdown() abort
+      call SyntaxRange#Include("^<!--$", "^-->$", "html")
+    endfunction
+  endif
+
   autocmd BufNewFile,BufRead *.crontab setlocal filetype=crontab
   if s:dein_tap('ansible-vim')
     autocmd BufNewFile,BufRead *.yml setlocal filetype=yaml.ansible
