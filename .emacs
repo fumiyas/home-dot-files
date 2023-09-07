@@ -647,7 +647,8 @@
   (set-fontset-font t 'old-turkic "Noto Sans Old Turkic")
   (set-fontset-font t 'old-hungarian "Noto Sans OldHung")
   (set-fontset-font t 'hanifi-rohingya "Noto Sans Hanifi Rohingya")
-  (set-fontset-font t 'rumi-number "Noto Sans Symbols2")
+  ;; Emacs 29.1: error: Invalid script or charset name: rumi-number
+  ;;(set-fontset-font t 'rumi-number "Noto Sans Symbols2")
   (set-fontset-font t 'old-sogdian "Noto Sans OldSogdian")
   (set-fontset-font t 'sogdian "Noto Sans Sogdian")
   (set-fontset-font t 'elymaic "Noto Sans Elymaic")
@@ -657,7 +658,8 @@
   (set-fontset-font t 'chakma "Noto Sans Chakma")
   (set-fontset-font t 'mahajani "Noto Sans Mahajani")
   (set-fontset-font t 'sharada "Noto Sans Sharada")
-  (set-fontset-font t 'sinhala-archaic-number "Noto Sans Sinhala")
+  ;; Emacs 29.1: error: Invalid script or charset name: sinhala-archaic-number
+  ;(set-fontset-font t 'sinhala-archaic-number "Noto Sans Sinhala")
   (set-fontset-font t 'khojki "Noto Sans Khojki")
   (set-fontset-font t 'multani "Noto Sans Multani")
   (set-fontset-font t 'khudawadi "Noto Sans Khudawadi")
@@ -678,7 +680,8 @@
   (set-fontset-font t 'masaram-gondi "Noto Sans Masaram Gondi")
   (set-fontset-font t 'gunjala-gondi "Noto Sans Gunjala Gondi")
   (set-fontset-font t 'cuneiform "Noto Sans Cuneiform")
-  (set-fontset-font t 'cuneiform-numbers-and-punctuation "Noto Sans Cuneiform")
+  ;; Emacs 29.1: error: Invalid script or charset name: cuneiform-numbers-and-punctuation
+  ;(set-fontset-font t 'cuneiform-numbers-and-punctuation "Noto Sans Cuneiform")
   (set-fontset-font t 'egyptian "Noto Sans EgyptHiero")
   (set-fontset-font t 'anatolian "Noto Sans AnatoHiero")
   (set-fontset-font t 'mro "Noto Sans Mro")
@@ -686,7 +689,8 @@
   (set-fontset-font t 'pahawh-hmong "Noto Sans Pahawh Hmong")
   (set-fontset-font t 'miao "Noto Sans Miao")
   (set-fontset-font t 'tangut "Noto Serif Tangut")
-  (set-fontset-font t 'tangut-components "Noto Serif Tangut")
+  ;; Emacs 29.1: error: Invalid script or charset name: tangut-components
+  ;(set-fontset-font t 'tangut-components "Noto Serif Tangut")
   (set-fontset-font t '(#x16fe0 . #x16fe0) "Noto Serif Tangut")
   (set-fontset-font t 'duployan-shorthand "Noto Sans Duployan")
   (set-fontset-font t 'byzantine-musical-symbol "Noto Music")
