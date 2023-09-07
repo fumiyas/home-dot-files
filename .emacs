@@ -521,8 +521,8 @@
   "Reset current fontset."
   (interactive)
   ;; reset all settings in default fontset
-  (if (find-font (font-spec :family "Ricty Diminished Discord"))
-      (set-fontset-font t '(0 . #x3fffff) "Noto Sans"))
+  ;(if (find-font (font-spec :family "Ricty Diminished Discord"))
+  ;    (set-fontset-font t '(0 . #x3fffff) "Ricty Diminished Discord"))
   ;; multiple platform
   (set-fontset-font t 'latin "Ricty Diminished Discord")
   (set-fontset-font t 'greek "Noto Sans")
@@ -736,13 +736,15 @@
     (set-fontset-font t '(#x1fa70 . #x1fbff) "Segoe UI Emoji" nil 'append)
     (set-fontset-font t '(#x1f900 . #x1f9e0) "Segoe UI Emoji" nil 'append)
     (set-fontset-font t '(#x20000 . #x2a6ff) "花園明朝 B Regular")
-    (set-fontset-font t '(#x2a700 . #x2fffd) "花園明朝 C Regular"))
+    (set-fontset-font t '(#x2a700 . #x2fffd) "花園明朝 C Regular")
+  )
   (when (not (eq system-type 'windows-nt))
     ;(set-fontset-font t '( #x2e00 .  #xdfff) "Hanazono Mincho A Regular" nil 'append)
     ;(set-fontset-font t '( #xf137 .  #xf69d) "Hanazono Mincho A Regular")
     ;(set-fontset-font t '(#x20000 . #x2a6ff) "Hanazono Mincho B Regular")
     ;(set-fontset-font t '(#x2a700 . #x2fffd) "Hanazono Mincho C Regular")
-    ))
+  )
+)
 
 (reset-default-fontset)
 
