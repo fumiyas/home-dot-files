@@ -380,13 +380,13 @@ look() {
   fi
 
   if [ ! -f "$words_sorted" ] || [ "$words" -nt "$words_sorted" ]; then
-    sort <"$words" >"$words_sorted"
+    sort -f <"$words" >"$words_sorted"
     if diff -q "$words" "$words_sorted" >/dev/null; then
       echo "WARNING: $words already sorted"
     fi
   fi
 
-  command look "$@" "$words_sorted"
+  command look --ignore-case "$@" "$words_sorted"
 }
 
 make() {
