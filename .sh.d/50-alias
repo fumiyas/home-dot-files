@@ -38,6 +38,7 @@ alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
 
 alias c='printf "\017\033c"; stty sane; reset'
+alias 256color='for i in {0..255}; do printf "\e[48;5;%sm " $i; printf "\e[0m"; done; echo'
 tsize() {
   local cols lines
 
