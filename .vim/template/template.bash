@@ -7,7 +7,7 @@ shopt -s lastpipe || exit $?		## bash 4.2+
 #shopt -s nullglob || exit $?		## bash 2.0+
 #shopt -s failglob || exit $?		## bash 3.0+
 
-if tty >/dev/null 2>&1; then
+if [ -t 0 ]; then
   _pdeco_reset=$(tput sgr0)
   _pdeco_info=$(tput setaf 2)
   _pdeco_warn=$(tput setaf 3)
@@ -34,6 +34,19 @@ perr() {
 pdie() {
   perr "$1"
   exit "${2-1}"
+}
+
+prun() {
+  pinfo "Run a command-line: $*"
+  "$@"
+}
+
+prun_or_die() {
+  prun "$@"
+  local ret="$?"
+  if [[ $ret -ne 0 ]]; then
+    pdie "Command failed: $*: $ret" "$ret"
+  fi
 }
 
 ## ----------------------------------------------------------------------
