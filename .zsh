@@ -298,12 +298,27 @@ screen.*)
 #  }
   ;;
 *term|*term[-+]*|rxvt*|gnome*)
-  precmd_set_windowtitle() { print -Pn "\e]2;%n@%m:%~ (${TTY#/dev/})\a" }
+  precmd_windowtitle_fmt=
+  if [[ $LOGNAME != fumiyas ]]; then
+    precmd_windowtitle_fmt='%n'
+  fi
+  precmd_windowtitle_fmt+='@'
+  if [[ ! $(uname -n) =~ ^sugar(\.|$) ]]; then
+    precmd_windowtitle_fmt='%m'
+  fi
+  precmd_windowtitle_fmt+=":%~ (${TTY#/dev/})"
+
+  precmd_windowtitle_set() {
+    print -Pn "\e]2;$precmd_windowtitle_fmt\a"
+  }
+  ;;
+*)
+  alias precmd_windowtitle_set=:
   ;;
 esac
 
 precmd() {
-  precmd_set_windowtitle
+  precmd_windowtitle_set
   LC_ALL=en_US.UTF-8 vcs_info
   if [[ $PWD == $HOME ]]; then
     CWD='~'
