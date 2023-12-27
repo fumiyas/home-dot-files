@@ -16,6 +16,10 @@ for pager in less lv more; do
   fi
 done
 
+if type man-pager >/dev/null 2>&1; then
+  export MANPAGER="man-pager" ## See ~/bin/man-pager
+fi
+
 if type ifne >/dev/null 2>&1; then
   ## Do NOT set GIT_PAGER that overrides `[pager]` settings in git-config(1)
   #export GIT_PAGER="ifne $PAGER"
