@@ -517,6 +517,7 @@
 
 (advice-add 'set-fontset-font :around #'set-fontset-font:around)
 
+;(setq use-default-font-for-symbols nil)
 (defun reset-default-fontset ()
   "Reset current fontset."
   (interactive)

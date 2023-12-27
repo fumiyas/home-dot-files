@@ -129,7 +129,7 @@
 
 ; Identifier
 (setq wl-from "SATOH Fumiyasu (TSUCHIDA Fumiyasu) <fumiyas@osstech.co.jp>")
-(setq wl-organization "OSSTech Corp., Japan/ Samba-JP / LDAP-JP / Apache-JP")
+(setq wl-organization "OSSTech Corp., Japan / Samba-JP / LDAP-JP / Apache-JP")
 ;(setq wl-organization "OSS Technology Corp. / Samba-JP / Namazu Developer")
 (setq wl-local-domain "sugar.osstech.co.jp")
 ;(setq wl-local-domain "sugar.lan.sfo.jp")
@@ -298,7 +298,6 @@
 	    ("<ost-syslog-bounces:osstech.co.jp" . "+work/osstech/sys")
 
 	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
-	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
 	    ("openldap-technical-bounces" . "+ml/net/openldap-technical")
 	    ("openldap-devel-bounces" . "+ml/net/openldap-technical")
 
@@ -399,7 +398,8 @@
     "^X-Disclaimer:"
     "^X-Mailman-Version:"
     "^X-BeenThere:"
-    "^X-Accept-Language:"
+    "^Content-Language:"
+    "^(X-)?Accept-Language:"
     "^Status:"
     "^X-UIDL:"
     "^X-Flags:"
@@ -429,6 +429,7 @@
     "^X-ExtLoop1:"
     "^X-Original-To:"
     "^X-Original-Received:"
+    "^X-Original-Subject:"
     "^X-Debian:"
     "^X-vs:"
     "^X-Git-"
@@ -768,7 +769,7 @@
 (setq initial-frame-alist
     (append '(
 	(width	. 120)	; フレーム幅(文字数)
-	(height	. 50)	; フレーム高(文字数)
+	(height	. 60)	; フレーム高(文字数)
     ) initial-frame-alist)
 )
 
