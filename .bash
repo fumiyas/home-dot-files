@@ -25,30 +25,16 @@ PS3="#? "
 PS4="+"
 
 if type tput >/dev/null 2>&1 && [[ $(tput colors) -ge 8 ]]; then
-  ## 1/2	bold
-  ## 3/4	underline
-  ## 5	glay background
-  ## 6	black background
-  ## 7	white reverse
-
-  ## 30	black
-  ## 31	red
-  ## 32	green
-  ## 33	orange (?)
-  ## 34	blue
-  ## 35	purple
-  ## 36	cyan
-  ## 37	white
-
-  ## 40	black background
-  ## 41	red background
-  ## 42	green background
-  ## 43	orange (?) background
-  ## 44	blue background
-  ## 45	purple background
-  ## 46	cyan background
-  ## 47	white (light glay) background
-
+  ##  1         bold
+  ##  4         underline
+  ## 30, 40     black, background ...
+  ## 31, 41     red, background ...
+  ## 32, 42     green, background ...
+  ## 33, 43     yellow, background ...
+  ## 34, 44     blue, background ...
+  ## 35, 45     magenta, background ...
+  ## 36, 46     cyan, background ...
+  ## 37, 47     white, background ...
   PS1="\[\e[36m\]$PS1\[\e[m\]"
   PS2=""
   #PS2="\[\e[41m \[\e[m "
