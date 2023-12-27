@@ -120,7 +120,6 @@ fi
 
 DIRSTACKSIZE=20
 
-## ディレクトリ名のみの入力をcdの引数として実行
 setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
