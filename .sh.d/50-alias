@@ -260,7 +260,7 @@ alias2 cdrw-blank "$cdrecord -v blank=fast"
 alias2 cdrw-blank-slow "$cdrecord -v blank=all"
 unset cdrecord
 
-alias strace-x='strace -fttTCxyyv'
+alias strace-x='strace -fttTCxyyYv'
 alias ltrace-x='ltrace -fttTCS'
 alias truss-sol-x='truss -aedlDE -v all'
 alias truss-sol-xa='truss -aedlDE -v all -r all -w all'
