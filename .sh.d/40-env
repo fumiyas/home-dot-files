@@ -9,6 +9,13 @@ for editor in vim jvim vi; do
   fi
 done
 
+for editor in git-editor; do
+  if type $editor >/dev/null 2>&1; then
+    export GIT_EDITOR="$editor"
+    break
+  fi
+done
+
 for pager in less lv more; do
   if type $pager >/dev/null 2>&1; then
     export PAGER="$pager"
