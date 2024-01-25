@@ -60,9 +60,12 @@ endif
 " Update packages	:call dein#update()
 " Show update log	:echo dein#get_updates_log()
 
-if v:version >= 800
+if v:version >= 820
   let dein_dir=expand('~/git/vim/dein.vim')
   let dein_cache_dir=expand('~/.cache/dein.vim')
+elseif v:version >= 800
+  let dein_dir=expand('~/git/vim/dein.vim-2.2')
+  let dein_cache_dir=expand('~/.cache/dein.vim-2.2')
 else
   let dein_dir=expand('~/git/vim/dein.vim-1.5')
   let dein_cache_dir=expand('~/.cache/dein.vim-1.5')
