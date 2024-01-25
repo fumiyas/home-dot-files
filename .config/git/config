@@ -103,6 +103,7 @@
 
 [pull]
 	rebase = true
+	autoStash = true
 	#rebase = preserve
 [push]
 	default = nothing
