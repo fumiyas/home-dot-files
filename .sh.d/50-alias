@@ -34,6 +34,8 @@ alias nohistory='set +o sharehistory; SAVEHIST='
 alias sudo='sudo '
 alias xargs='xargs '
 
+alias journalctl-x='journalctl --output=short-iso'
+
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
 
@@ -109,8 +111,7 @@ alias httpd.py3='python3 -m http.server'
 alias json-pp.py3='python3 -m json.tool'
 alias quoted-printable.py3='python3 -m quopri'
 
-alias ps-x='ps -eFlyH'
-alias ps-u='ps -FHu "$LOGNAME"'
+alias ps-x='ps -eHo user:20,pid,ppid,state,pcpu,pmem,vsz,rss,tname,start,time,args'
 
 if [[ $UNAME == Linux ]]; then
   alias lsof-x='lsof +E'
@@ -130,6 +131,7 @@ alias dstat-disk='dstat --time --load --cpu --top-cpu --load --disk --top-io'
 alias dig-x='dig +qr +multiline'
 alias dig-answer-only='dig +noall +answer'
 
+alias rsync-x='rsync --stats --open-noatime --archive --crtimes --hard-links --sparse'
 alias rsync-compress="rsync --compress --skip-compress='7z/ace/avi/bz2/deb/gpg/gz/iso/jpeg/jpg/lz/lzma/lzo/mov/mp3/mp4/ogg/png/rar/rpm/rzip/tbz/tgz/tlz/txz/xz/z/zip/docx/xlsx/pptx/od[tspg]'"
 
 alias skype-web='mkdir -p -m 0755 $HOME/.local/share/skypeweb && start env GDK_BACKEND=x11 chromium --user-data-dir=$HOME/.local/share/skypeweb https://web.skype.com'
@@ -139,6 +141,7 @@ alias firefox='firefox --new-tab'
 alias wcp='wget -m -l3 --no-parent'
 alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 
+alias curl-q='curl-x --silent --show-error'
 alias curl-x='curl --remote-name --location --show-error --remote-header-name --xattr'
 alias curl-v='curl --write-out @<(
   echo -E "url_effective\t\t%{url_effective}\n"
