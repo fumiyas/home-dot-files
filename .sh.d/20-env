@@ -7,6 +7,8 @@ if [ "$UNAME" = "SunOS" ]; then
   UNAME="$UNAME`expr $UVER : '\(.\).*'`"
 fi
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 ## Generic
 ## ======================================================================
 
