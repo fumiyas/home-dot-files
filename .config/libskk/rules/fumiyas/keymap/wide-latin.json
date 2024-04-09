@@ -4,8 +4,9 @@
     ],
     "define": {
         "keymap": {
-	    "Escape": "abort-to-latin-unhandled",
-	    "Henkan_Mode": "set-input-mode-hiragana",
+            "Escape": "abort-to-latin-unhandled",
+            "Henkan": "set-input-mode-hiragana",
+            "Muhenkan": "set-input-mode-latin",
             "C-j": null
         }
     }
