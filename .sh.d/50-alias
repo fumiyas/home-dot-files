@@ -349,7 +349,7 @@ for a in grep egrep fgrep; do
   fi
 done
 type "gdiff" >/dev/null 2>&1 && c="gdiff" || c="diff"
-"$c" -x dummy /dev/null /dev/null 2>/dev/null && c="$c -x '.*.sw[po]'"
+"$c" -x dummy /dev/null /dev/null 2>/dev/null && c="$c -x '.*.sw[po]' -x '*~' -x '*.mo' -x __pycache__"
 alias2 diff "env LC_MESSAGES=C $c"
 
 unalias diff-highlight 2>/dev/null
