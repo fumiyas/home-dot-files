@@ -141,9 +141,10 @@ alias firefox='firefox --new-tab'
 alias wcp='wget -m -l3 --no-parent'
 alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 
-alias curl-q='curl-x --silent --show-error'
-alias curl-x='curl --remote-name --location --show-error --remote-header-name --xattr'
-alias curl-v='curl --write-out @<(
+## curl --fail-with-body requires curl 7.76.0 (Debian 12, RHEL 9)
+alias curl-q='curl-x --silent'
+alias curl-x='curl --fail-with-body --show-error --location --remote-name --remote-header-name --xattr'
+alias curl-v='curl --fail-with-body --write-out @<(
   echo -E "url_effective\t\t%{url_effective}\n"
   echo -E "http_version\t\t%{http_version}\n"
   echo -E "http_code\t\t%{http_code}\n"
