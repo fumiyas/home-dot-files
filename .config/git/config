@@ -71,7 +71,7 @@
 	defaultBranch = main
 
 [log]
-        date = iso8601
+	date = format-local:%FT%T%z
 	decorate = full
 	follow = true
 
