@@ -3,7 +3,13 @@
 ## KDE: Plasma Workspace ~/.config/plasma-workspace/env/env.sh
 ##
 
+export LANG="ja_JP.UTF-8"
 export PATH="$HOME/bin:$PATH"
+
+if [ -z "$DEBUGINFOD_URLS" ]; then
+    DEBUGINFOD_URLS=$(cat /dev/null "/etc/debuginfod"/*.urls 2>/dev/null | tr '\n' ' ')
+    [ -n "$DEBUGINFOD_URLS" ] && export DEBUGINFOD_URLS || unset DEBUGINFOD_URLS
+fi
 
 xset b off
 
