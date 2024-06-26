@@ -6,7 +6,7 @@
         "keymap": {
             "Escape": "abort-to-latin-unhandled",
             "Henkan": "set-input-mode-hiragana",
-            "Muhenkan": "set-input-mode-latin",
+            "Muhenkan": "abort-to-latin",
             "C-j": null,
             "\\": null
         }
