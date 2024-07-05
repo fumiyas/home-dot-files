@@ -143,7 +143,7 @@ alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 
 ## curl --fail-with-body requires curl 7.76.0 (Debian 12, RHEL 9)
 alias curl-q='curl-x --silent'
-alias curl-x='curl --fail-with-body --show-error --location --remote-name --remote-header-name --xattr'
+alias curl-x='curl --fail-with-body --show-error --location --remote-name --remote-header-name --remote-time --xattr --continue-at -'
 alias curl-v='curl --fail-with-body --write-out @<(
   echo -E "url_effective\t\t%{url_effective}\n"
   echo -E "http_version\t\t%{http_version}\n"
