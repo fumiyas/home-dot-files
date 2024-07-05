@@ -54,6 +54,8 @@ HISTCONTROL=ignorespace:erasedups
 shopt -s cmdhist lithist histappend histverify
 
 shopt -s globstar
+shopt -s cdspell
+shopt -s dirspell
 shopt -s checkwinsize
 shopt -s lastpipe
 
