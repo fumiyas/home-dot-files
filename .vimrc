@@ -458,8 +458,6 @@ set undofile
 
 set shortmess+=I
 
-set modeline
-
 set nolist
 "set listchars+=tab:>-
 "set listchars+=eol:$
@@ -467,6 +465,8 @@ set nolist
 "set listchars+=extends:~
 "set listchars+=precedes:~
 
+set title
+set modeline
 set ruler
 set showmode showmatch showcmd
 set scrolloff=5
@@ -631,6 +631,8 @@ vnoremap * "zy:let @/ = @z<CR>n
 " ======================================================================
 
 augroup vimrc
+  autocmd BufEnter * let &titlestring = "VIM: " . expand("%") . " - " . hostname() . ":" . getcwd()
+
 "  autocmd BufReadPre * setlocal noswapfile
 "  autocmd BufEnter ~/Dropbox/* set directory^=~/var/vim
 "  autocmd BufEnter * nested setlocal swapfile
