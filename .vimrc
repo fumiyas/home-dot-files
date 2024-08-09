@@ -627,11 +627,13 @@ nmap g# g#zz
 " Search selected string in Visual mode
 vnoremap * "zy:let @/ = @z<CR>n
 
+inoremap <C-l> <Esc>
+
 " Misc auto commands
 " ======================================================================
 
 augroup vimrc
-  autocmd BufEnter * let &titlestring = "VIM: " . expand("%") . " - " . hostname() . ":" . getcwd()
+  autocmd BufEnter * let &titlestring = hostname() . ":" . expand("%") . " (" . getcwd() . ") - VIM"
 
 "  autocmd BufReadPre * setlocal noswapfile
 "  autocmd BufEnter ~/Dropbox/* set directory^=~/var/vim
