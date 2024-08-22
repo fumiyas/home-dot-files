@@ -633,7 +633,33 @@ inoremap <C-l> <Esc>
 " ======================================================================
 
 augroup vimrc
-  autocmd BufEnter * let &titlestring = hostname() . ":" . expand("%") . " (" . getcwd() . ") - VIM"
+  function! WindowTitle()
+    let title = ""
+    let hostname = substitute(hostname(), "\\..*", "", "")
+    let username = $USER
+    let homedir = $HOME
+    let filename = expand("%")
+    let cwd = getcwd()
+    if username != "fumiyas"
+      let title .= username . "@"
+    endif
+    if hostname != "sugar"
+      let title .= hostname . ":"
+    endif
+    if filename != ""
+      let title .= filename
+    else
+      let title .= "<NONAME>"
+    endif
+    if cwd == homedir
+      let cwd = "~"
+    else
+      let cwd = substitute(cwd, "^" . homedir . "/", "~/", "")
+    endif
+    let title .= " (" . cwd . ") - VIM"
+    return title
+  endfunction
+  autocmd BufEnter * let &titlestring = WindowTitle()
 
 "  autocmd BufReadPre * setlocal noswapfile
 "  autocmd BufEnter ~/Dropbox/* set directory^=~/var/vim
