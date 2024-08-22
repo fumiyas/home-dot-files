@@ -362,7 +362,7 @@ function! s:syntax_query() abort
     echo synIDattr(id, "name")
   endfor
 endfunction
-command! SyntaxQuery call s:syntax_query()
+command! SQ call s:syntax_query()
 
 if &diff
   syntax off
