@@ -39,16 +39,16 @@ let &t_SI .= "\e[1 q"
 " Cursor mode in command mode: box, no blink
 let &t_EI .= "\e[2 q"
 
-if &term =~ '^\(x\|ml\)term'
-    " クリップボードからの貼り付け時に自動インデントを無効
-    let &t_SI .= "\e[?2004h"
-    let &t_EI .= "\e[?2004l"
-    function! XTermPasteBegin(ret)
-        set pastetoggle=<Esc>[201~
-        set paste
-        return a:ret
-    endfunction
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+if &term =~ 'term'
+  " クリップボードからの貼り付け時に自動インデントを無効
+  let &t_SI .= "\e[?2004h"
+  let &t_EI .= "\e[?2004l"
+  function! XTermPasteBegin(ret)
+    set pastetoggle=<Esc>[201~
+    set paste
+    return a:ret
+  endfunction
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 
 " Plugins
