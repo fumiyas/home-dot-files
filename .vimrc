@@ -431,6 +431,7 @@ let g:markdown_fenced_languages = [
 \  'xml',
 \  'yaml',
 \  'json',
+\  'email=mail',
 \]
 
 if s:dein_tap('vim-markdown')
