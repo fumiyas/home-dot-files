@@ -41,15 +41,22 @@
 ;; 入力・変換
 ;; ======================================================================
 
-;(global-set-key [hiragana-katakana] 'skk-mode)
-(if (featurep 'xemacs)
-    (global-set-key [henkan-mode] 'skk-mode)
-    (global-set-key [henkan] 'skk-mode)
-)
-;(global-set-key "\C-xs" 'skk-save-jisyo)
-;(global-set-key "\C-xj" 'skk-auto-fill-mode)
-;(global-set-key "\C-xJ" 'register-to-point)
-;(global-set-key "\C-xt" 'skk-tutorial)
+(defun skk-activate ()
+  (interactive)
+  (if skk-mode
+      (skk-kakutei)
+    (skk-mode)
+    ))
+(defun skk-deactivate ()
+  (interactive)
+  (if skk-mode
+      (skk-latin-mode-on)
+    ))
+
+(global-set-key (kbd "<henkan>") 'skk-activate)
+(global-set-key (kbd "<muhenkan>") 'skk-deactivate)
+
+;; ----------------------------------------------------------------------
 
 ;; C-m では確定のみ行い, 改行しない
 ;; バージョンによっては, なぜかうまく動いてくれずに▼がのこってしまうらしい
