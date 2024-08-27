@@ -25,7 +25,9 @@
 (setq skk-auto-okuri-process t)
 
 (setq skk-show-mode-show t)
-(setq skk-show-mode-style 'tooltip)
+;; モードの tooltip 表示はバグっていてエラーとなるのでコメントアウト
+;; skk-tooltip-show-at-point: Wrong type argument: number-or-marker-p, nil
+;(setq skk-show-mode-style 'tooltip)
 (setq skk-show-candidates-nth-henkan-char 1)
 (setq skk-henkan-number-to-display-candidates 9)
 (setq skk-henkan-show-candidates-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
