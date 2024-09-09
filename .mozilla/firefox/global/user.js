@@ -51,6 +51,9 @@ user_pref("browser.tabs.closeWindowWithLastTab", false);
 // [閉じたタブを復元] の記憶するタブの数
 user_pref("browser.sessionstore.max_tabs_undo", 1000);
 
+// Always ask you where to save files
+user_pref("browser.download.useDownloadDir", false);
+
 // テキストエリアへの中ボタンクリックでクリップボードでなくセレクションをペースト
 // This breaks copy-and-paste behavior on Google Docs, Twitter, Facebook
 //user_pref("dom.event.clipboardevents.enabled", false);
