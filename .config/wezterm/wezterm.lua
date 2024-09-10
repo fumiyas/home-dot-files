@@ -8,4 +8,7 @@ config.font = wezterm.font_with_fallback({
     { family = "Emoji One", assume_emoji_presentation = true },
 })
 
+config.hide_tab_bar_if_only_one_tab = true
+config.treat_east_asian_ambiguous_width_as_wide = true
+
 return config
