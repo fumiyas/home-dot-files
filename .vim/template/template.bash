@@ -1,4 +1,8 @@
 #!/bin/bash
+##
+## SPDX-FileCopyrightText: 20XX SATOH Fumiyasu @ OSSTech Corp., Japan
+## SPDX-License-Identifier: GPL-3.0-or-later
+##
 
 set -u
 set -o pipefail || exit $?		## bash 3.0+

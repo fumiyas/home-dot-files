@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 ## -*- coding: utf-8 -*- vim:shiftwidth=4:expandtab:
+##
+## SPDX-FileCopyrightText: 20XX SATOH Fumiyasu @ OSSTech Corp., Japan
+## SPDX-License-Identifier: GPL-3.0-or-later
+##
 
 from __future__ import print_function
 
