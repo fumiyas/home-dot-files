@@ -160,7 +160,8 @@ cd_path()
   builtin cd "$cd_new" || return $?
 }
 
-alias cd=cd_path
+unalias cd 2>/dev/null
+cd() { cd_path "$@"; }
 compdef cd_path=cd
 
 ## Heading for all respective groups of completion suggestions
