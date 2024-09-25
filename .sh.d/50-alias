@@ -507,7 +507,8 @@ mancat()
 rpm-qq()
 {
   rpm -q --qf "$(rpm --querytags |sort |sed 's/^\(.*\)$/\1: %{\1}/')\n" "$@" \
-  |egrep -v '^HEADER|: $|: \(none\)$'
+  |egrep -v '^HEADERIMMUTABLE: |^[A-Z]+: \(none\)$' \
+  ;
 }
 
 rpm-dump()
