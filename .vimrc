@@ -494,6 +494,7 @@ set comments=
 set history=10000
 set wildmenu
 set wildmode=longest:full
+set wildignorecase
 
 set cryptmethod=blowfish2
 
