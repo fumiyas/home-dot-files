@@ -409,13 +409,13 @@ else
   if exists('&cursorline')
     set cursorline
     augroup vimrc
-      autocmd Colorscheme * highlight CursorLine cterm=bold ctermbg=235
+      autocmd Colorscheme * highlight CursorLine cterm=bold ctermbg=17
     augroup END
   endif
   if exists('&cursorcolumn')
     set cursorcolumn
     augroup vimrc
-      autocmd Colorscheme * highlight CursorColumn cterm=bold ctermbg=235
+      autocmd Colorscheme * highlight CursorColumn cterm=bold ctermbg=17
     augroup END
   endif
 endif
