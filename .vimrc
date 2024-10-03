@@ -32,23 +32,54 @@ endif
 " ======================================================================
 
 " vim からの制御シーケンスの使用例
-" https://ttssh2.osdn.jp/manual/ja/usage/tips/vim.html
+" https://teratermproject.github.io/manual/5/ja/usage/tips/vim.html
 
 " Cursor mode in insert mode: box, blink
 let &t_SI .= "\e[1 q"
 " Cursor mode in command mode: box, no blink
 let &t_EI .= "\e[2 q"
 
-if &term =~ 'term'
-  " クリップボードからの貼り付け時に自動インデントを無効
-  let &t_SI .= "\e[?2004h"
-  let &t_EI .= "\e[?2004l"
-  function! XTermPasteBegin(ret)
-    set pastetoggle=<Esc>[201~
-    set paste
-    return a:ret
-  endfunction
-  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+" 挿入モードでの ESC キーを押した後の待ちを無くす
+let &t_SI .= "\e[?7727h"
+let &t_EI .= "\e[?7727l"
+inoremap <special> <Esc>O[ <Esc>
+
+if has("patch-8.0.0238")
+  " Bracketed Paste Mode対応バージョン(8.0.0238以降)では、特に設定しない
+  " 場合はTERMがxtermの時のみBracketed Paste Modeが使われる。
+  " tmux利用時はTERMがscreenなので、Bracketed Paste Modeを利用するには
+  " 以下の設定が必要となる。
+  if &term =~ "screen"
+    let &t_BE = "\e[?2004h"
+    let &t_BD = "\e[?2004l"
+    exec "set t_PS=\e[200~"
+    exec "set t_PE=\e[201~"
+  endif
+else
+  " 8.0.0210 〜 8.0.0237 ではVim本体でのBracketed Paste Mode対応の挙動が
+  " 望ましくない(自動インデントが無効にならない)ので、Vim本体側での対応を
+  " 無効にする。
+  if has("patch-8.0.0210")
+    set t_BE=
+  endif
+
+  " Vim本体がBracketed Paste Modeに対応していない時の為の設定。
+  if &term =~ "xterm" || &term =~ "screen"
+    let &t_ti .= "\e[?2004h"
+    let &t_te .= "\e[?2004l"
+
+    function XTermPasteBegin(ret)
+      set pastetoggle=<Esc>[201~
+      set paste
+      return a:ret
+    endfunction
+
+    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+    vnoremap <special> <expr> <Esc>[200~ XTermPasteBegin("c")
+    cnoremap <special> <Esc>[200~ <nop>
+    cnoremap <special> <Esc>[201~ <nop>
+  endif
 endif
 
 " Plugins
