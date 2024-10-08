@@ -3,8 +3,15 @@
 ## Author: SATOH Fumiyasu
 
 alias2() {
+  local alias="$1"; shift
+  if [[ -n ${1+set} ]]; then
+    cmd="$1"; shift
+  else
+    cmd=$(</dev/stdin)
+  fi
+
   # shellcheck disable=SC2139 # This expands when defined, not when used
-  alias "$1"="$2"
+  alias "$alias"="$cmd"
 }
 
 ## Generic
