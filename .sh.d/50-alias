@@ -98,6 +98,21 @@ wintime() {
   date --iso-8601=ns --date=@$(((wintime - 0x019db1ded53e8000)/10000000))
 }
 
+## ts(1) clone
+alias2 ts <<'EOF'
+awk '
+  BEGIN {
+    s = p = strftime("%s")
+  }
+  {
+    c = strftime("%s")
+    printf "%s %4ds %3ds: %s\n", strftime("%Y-%m-%dT%T"), c - s, c - p, $0
+    fflush()
+    p = c
+  }
+'
+EOF
+
 if dd status=progress </dev/null >&/dev/null; then
   alias dd='dd status=progress'
 fi
@@ -111,10 +126,6 @@ alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9d\\xa0]/\\x83@{[\$&^q( )]}/g"'
 ## http://richmegginson.livejournal.com/18726.html (POSIX incompatible?)
 alias ldifunwrap='sed -n '\''1 { h; $ !d; }; $ { x; s/\n //g; p; }; /^ / { H; d; }; /^ /! { x; s/\n //g; p; }'\'
 #alias ldifunwrap='awk '\''NR>1 && !sub(/^ /,"") { print s; s="" } { s = s $0 } END { print s }'\'
-
-if type ts >&/dev/null; then
-  alias ts='awk "{ print strftime(\"%Y-%m-%d %T\"), \$0; fflush(); }"'
-fi
 
 alias jsonl2json='jq -s "."'
 alias json2jsonl='jq -c ".[]"'
