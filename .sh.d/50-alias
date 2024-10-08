@@ -83,10 +83,10 @@ a2image() {
 }
 
 base64url() {
-  base64 "$@" |sed 's/+/-/g;s/\//_/g'
+  base64 "$@" |tr '/+' '_-'
 }
 base64url-decode() {
-  sed 's/-/+/g;s/_/\//g' |base64 --decode "$@"
+  tr '_-' '/+' |base64 --decode "$@"
 }
 
 unixtime() {
