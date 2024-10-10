@@ -1,7 +1,7 @@
 #!/bin/bash
 ##
 ## Bash profile
-## Copyright (c) 2007-2016 SATOH Fumiyasu @ OSS Technology Corp.
+## Copyright (c) 2007-2024 SATOH Fumiyasu @ OSSTech Corp.
 ## Copyright (c) 2006-2007 SATOH Fumiyasu @ MIRACLE LINUX Corp.
 ## Copyright (c) 1999-2003 SATOH Fumiyasu @ Bento Internet
 ##
@@ -36,17 +36,15 @@ if type tput >/dev/null 2>&1 && [[ $(tput colors) -ge 8 ]]; then
   ## 36, 46     cyan, background ...
   ## 37, 47     white, background ...
   PS1="\[\e[36m\]$PS1\[\e[m\]"
-  PS2=""
-  #PS2="\[\e[41m \[\e[m "
+  PS2="\[\e[41m \[\e[m "
 fi
 
 case "$TERM" in
-*term)
+*term*)
   PS1="$PS1\[\e]2;\$USER@\$HOSTNAME_DOT:\$PWD $(tty)\007\]"
   ;;
 esac
 
-## Command history
 HISTSIZE=100000
 HISTFILESIZE=100000
 HISTTIMEFORMAT='%Y/%m/%d %T '
