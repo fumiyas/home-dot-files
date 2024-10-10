@@ -4,3 +4,9 @@ set mark-symlinked-directories on
 set completion-ignore-case on
 set expand-tilde on
 set enable-bracketed-paste on
+
+set menu-complete-display-prefix on
+set show-all-if-ambiguous on
+TAB: menu-complete
+## Shift+Tab
+"\e[Z": menu-complete-backward
