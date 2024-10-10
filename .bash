@@ -69,3 +69,17 @@ if type complete >/dev/null 2>&1; then
   complete -u su finger
 fi
 
+## readline
+## ======================================================================
+
+bind "set meta-flag on"
+bind "set convert-meta off"
+bind "set mark-symlinked-directories on"
+bind "set completion-ignore-case on"
+bind "set expand-tilde on"
+bind "set enable-bracketed-paste on"
+
+bind "set menu-complete-display-prefix on"
+bind "set show-all-if-ambiguous on"
+bind 'TAB:menu-complete'
+bind '"\e[Z": menu-complete-backward'
