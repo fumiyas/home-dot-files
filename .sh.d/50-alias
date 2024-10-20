@@ -280,10 +280,22 @@ alias xo='xdg-open'
 alias acroread='command acroread -openInNewWindow'
 
 alias isoinfo-x='isoinfo -lR -i'
-type genisoimage >/dev/null 2>&1 && mkisofs="genisoimage" || mkisofs="mkisofs"
+if type xorriso >&/dev/null; then
+  mkisofs="xorriso -as mkisofs --"
+elif type genisoimage >&/dev/null; then
+  mkisofs="genisoimage"
+else
+  mkisofs="mkisofs"
+fi
 alias2 mkisofs-x "env TZ=UTC $mkisofs -r -J -iso-level 1 -input-charset UTF-8"
 unset mkisofs
-type wodim >/dev/null 2>&1 && cdrecord="wodim" || cdrecord="cdrecord"
+if type cdrskin >&/dev/null; then
+  cdrecord="cdrskin"
+elif type wodim >&/dev/null; then
+  cdrecord="wodim"
+else
+  cdrecord="cdrecord"
+fi
 alias2 cdrecord-x "$cdrecord -v"
 alias2 cdrw-blank "$cdrecord -v blank=fast"
 alias2 cdrw-blank-slow "$cdrecord -v blank=all"
