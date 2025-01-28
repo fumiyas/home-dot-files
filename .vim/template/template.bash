@@ -1,15 +1,15 @@
 #!/bin/bash
-##
-## SPDX-FileCopyrightText: 20XX SATOH Fumiyasu @ OSSTech Corp., Japan
-## SPDX-License-Identifier: GPL-3.0-or-later
-##
+#
+# SPDX-FileCopyrightText: 20XX SATOH Fumiyasu @ OSSTech Corp., Japan
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 
 set -u
-set -o pipefail || exit $?		## bash 3.0+
-shopt -s lastpipe || exit $?		## bash 4.2+
-#shopt -s inherit_errexit || exit $?	## bash 4.4+ for set -e
-#shopt -s nullglob || exit $?		## bash 2.0+
-#shopt -s failglob || exit $?		## bash 3.0+
+set -o pipefail || exit $?		# bash 3.0+
+shopt -s lastpipe || exit $?		# bash 4.2+
+#shopt -s inherit_errexit || exit $?	# bash 4.4+ for set -e
+#shopt -s nullglob || exit $?		# bash 2.0+
+#shopt -s failglob || exit $?		# bash 3.0+
 
 if [ -t 0 ]; then
   _pdeco_reset=$(tput sgr0)
@@ -53,7 +53,7 @@ prun_or_die() {
   fi
 }
 
-## ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 
 password_prompt() {
   local for="$1"; shift
@@ -89,7 +89,7 @@ string_escape() {
   echo -n "$str"
 }
 
-## ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 
 _cmds_at_exit=()
 
@@ -108,7 +108,7 @@ for signal in HUP INT TERM; do
   trap 'trap - EXIT '$signal'; cmds_at_exit; kill -'$signal' -$$' $signal
 done
 
-## ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 
 _temp_files=()
 _cmds_at_exit+=(clean_tempfiles)
@@ -132,7 +132,7 @@ clean_tempfiles() {
   [[ -n "${_temp_files[0]+set}" ]] && rm -rf "${_temp_files[@]}"
 }
 
-## ======================================================================
+# ======================================================================
 
 # shellcheck disable=SC2317
 getopts_want_arg()

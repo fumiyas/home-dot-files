@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-## -*- coding: utf-8 -*- vim:shiftwidth=4:expandtab:
-##
-## SPDX-FileCopyrightText: 20XX SATOH Fumiyasu @ OSSTech Corp., Japan
-## SPDX-License-Identifier: GPL-3.0-or-later
-##
+# -*- coding: utf-8 -*- vim:shiftwidth=4:expandtab:
+#
+# SPDX-FileCopyrightText: 20XX SATOH Fumiyasu @ OSSTech Corp., Japan
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 
 from __future__ import print_function
 
@@ -29,16 +29,16 @@ def main(argv):
 if __name__ == '__main__':
     logging_handlers = []
 
-    ## stderr
+    # stderr
     logging_handlers.append(logging.StreamHandler())
 
-    ## file
+    # file
     import datetime
     log_basename = f'{os.path.splitext(os.path.basename(sys.argv[0]))[0]}'
     log_filename = f'{log_basename}.{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}.log'
     logging_handlers.append(logging.FileHandler(log_filename))
 
-    ## syslog
+    # syslog
     import logging.handlers
     syslog_handler = logging.handlers.SysLogHandler(
         address='/dev/log',
@@ -55,7 +55,7 @@ if __name__ == '__main__':
         handlers=logging_handlers,
     )
 
-    ## Set a specific log level to a module
+    # Set a specific log level to a module
     logging.getLogger("urllib3").setLevel(logging.DEBUG)
 
     if len(sys.argv) < 2:
