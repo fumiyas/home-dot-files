@@ -7,8 +7,9 @@
 
 package PackageName;
 
-use strict;
+use v5.26;
 use warnings;
+use utf8;
 
 sub new
 {
