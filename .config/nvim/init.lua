@@ -59,3 +59,5 @@ vim.opt.shiftround = true
 
 vim.opt.backup = false
 vim.opt.endofline = false
+
+require("init/lazy")
