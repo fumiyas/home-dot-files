@@ -14,4 +14,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter", event = "CmdlineEnter" },
   { "haya14busa/vim-migemo", event = "CmdlineEnter" },
+  { "mechatroner/rainbow_csv", event = "CmdlineEnter", lazy = false },
 })
