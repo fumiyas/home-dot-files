@@ -5,6 +5,8 @@
 
 // キャレット (文字入力エリア内のカーソル) の点滅速度
 user_pref("ui.caretBlinkTime", 250);
+// キャレット (文字入力エリア内のカーソル) の幅
+user_pref("ui.caretWidth", 2);
 
 // URL バーの URL を省略表示しない
 user_pref("browser.urlbar.trimURLs", false);
