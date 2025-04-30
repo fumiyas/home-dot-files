@@ -14,5 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter", event = "CmdlineEnter" },
   { "haya14busa/vim-migemo", cmd = "Migemo" },
+  { "lukas-reineke/indent-blankline.nvim", event = "CmdlineEnter" },
   { "mechatroner/rainbow_csv", ft = { "csv", "tsv" } },
 })

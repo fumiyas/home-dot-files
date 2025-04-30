@@ -15,3 +15,12 @@ end
 if vim.fn.exists(":Migemo") > 0 then
   vim.keymap.set("", "//", ":<C-u>Migemo<CR>")
 end
+
+local ok, plugin = pcall(require, "ibl")
+if ok then
+  plugin.setup({
+    indent = {
+      char = "|",
+    },
+  })
+end
