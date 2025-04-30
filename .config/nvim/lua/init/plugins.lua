@@ -1,7 +1,3 @@
-if vim.fn.exists("g:Migemo") then
-  vim.keymap.set("", "//", ":<C-u>Migemo<CR>")
-end
-
 local ok, plugin = pcall(require, "nvim-treesitter.configs")
 if ok then
   plugin.setup({
@@ -14,4 +10,8 @@ if ok then
       enable = true,
     },
   })
+end
+
+if vim.fn.exists(":Migemo") > 0 then
+  vim.keymap.set("", "//", ":<C-u>Migemo<CR>")
 end
