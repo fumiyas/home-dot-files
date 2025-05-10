@@ -441,7 +441,10 @@ make() {
 
 alias rbenv='env RUBY_CONFIGURE_OPTS="--enable-load-relative" rbenv'
 
-if type vim >/dev/null 2>&1; then
+if type nvim >/dev/null 2>&1; then
+  alias vi='nvim'
+  alias vimdiff='nvim -d'
+elif type vim >/dev/null 2>&1; then
   alias vi='vim'
   alias vidos='env VIM_FILEFORMATS=dos vim'
   alias vimac='env VIM_FILEFORMATS=mac vim'
