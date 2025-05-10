@@ -377,7 +377,7 @@
     "^X-Face:"
     "^Face:"
     "^DKIM-Signature:"
-    "^DomainKeys-Signature:"
+    "^X-Original-DKIM-Signature:"
     "^X-Google-"
     "^X-Greylist:"
     "^X-Mailer:"
@@ -416,8 +416,6 @@
     "^Authentication-Results:"
     "^DomainKey-Signature:"
     "^X-Spam-"
-    "^X-ESAFE-"
-    "^X-MSW-SpamLogic:"
     "^Resent-Date:"
     "^X-OriginalArrivalTime:"
     "^X-No-Archive:"
@@ -439,12 +437,31 @@
     "^Autocrypt:"
     "^SpamDiagnosticMetadata:"
     "^SpamDiagnosticOutput:"
+    ;; Microsoft
     "^X-MS-"
     "^X-Microsoft-Antispam"
     "^X-Microsoft-Exchange-"
+    "^msip_labels:"
+    "^X-OriginatorOrg:"
+    "^x-ld-processed:"
+    ;; Gmail?
+    "^X-Gm-"
+    ;; TERRACE MAIL Security
+    "^X-TERRACE-"
+    ;; CC/Mail
+    "^X-CC-Mail-"
+    ;; SHieldMailChecker
+    "^x-securitypolicycheck:"
+    "^x-shieldmailcheckermailid:"
+    ;; ????
+    "^X-CSE-"
+    "^X-MailAdviser:"
+    "^X-ESAFE-"
+    "^X-MSW-SpamLogic:"
 ))
 
 (setq wl-message-sort-field-list '(
+    "^Return-Path"
     "^From"
     "^To"
     "^Cc"
