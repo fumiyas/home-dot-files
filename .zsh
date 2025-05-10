@@ -280,36 +280,21 @@ zstyle ':vcs_info:git:*' actionformats '(%s)[%b|%a]%c%u'
 
 ## ----------------------------------------------------------------------
 
-case "$TERM" in
-screen.*)
-  unset PROMPT
-  precmd_set_windowtitle() { echo -ne "\ek\e\\"; print -Pn "\e]0; %~ %n@%m\a" }
-#  unalias s
-#  function t()
-#  {
-#    echo -ne "\ek$1${2+ $2}${3+ $3}\e\\"
-#    "$@"
-#  }
-#  # tと同様・sudoの短縮も兼ねる
-#  function s()
-#  {
-#    echo -ne "\eks:$1${2+ $2}${3+ $3}\e\\"
-#    sudo "$@"
-#  }
-  ;;
-*term|*term[-+]*|rxvt*|gnome*)
-  precmd_windowtitle_fmt=
-  if [[ $LOGNAME != fumiyas ]]; then
-    precmd_windowtitle_fmt='%n'
-  fi
-  precmd_windowtitle_fmt+='@'
-  if [[ ! $(uname -n) =~ ^sugar(\.|$) ]]; then
-    precmd_windowtitle_fmt='%m'
-  fi
-  precmd_windowtitle_fmt+=":%~ (${TTY#/dev/})"
+precmd_windowtitle_fmt=
+if [[ $LOGNAME != fumiyas ]]; then
+  precmd_windowtitle_fmt+='%n'
+fi
+precmd_windowtitle_fmt+='@'
+if [[ ! $(uname -n) =~ ^sugar(\.|$) ]]; then
+  precmd_windowtitle_fmt+='%m'
+fi
+precmd_windowtitle_fmt+=":%~ (${TTY#/dev/})"
 
+case "$TERM" in
+*term|*term[-+]*|rxvt*|gnome*)
+  ## https://tldp.org/HOWTO/Xterm-Title-3.html
   precmd_windowtitle_set() {
-    print -Pn "\e]2;$precmd_windowtitle_fmt\a"
+    print -Pn "\e]0;${1-$precmd_windowtitle_fmt}\a"
   }
   ;;
 *)
