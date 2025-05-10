@@ -53,7 +53,7 @@ tsize() {
 
   if [[ $# -eq 0 ]]; then
     cols=100
-    lines=64
+    lines=63
   else
     if [[ -n ${1#-} ]]; then
       cols="$1"
@@ -71,6 +71,10 @@ tsize() {
 }
 ttitle()
 {
+  ## Operating System Controls (OSC): Change Window Title
+  ## See also:
+  ##   console_codes(4)
+  ##   Xterm Control Sequences: https://www.xfree86.org/4.8.0/ctlseqs.html
   printf "\e]2;%s\a" "$*"
 }
 
@@ -98,21 +102,6 @@ wintime() {
   date --iso-8601=ns --date=@$(((wintime - 0x019db1ded53e8000)/10000000))
 }
 
-## ts(1) clone
-alias2 ts <<'EOF'
-awk '
-  BEGIN {
-    s = p = strftime("%s")
-  }
-  {
-    c = strftime("%s")
-    printf "%s %4ds %3ds: %s\n", strftime("%Y-%m-%dT%T"), c - s, c - p, $0
-    fflush()
-    p = c
-  }
-'
-EOF
-
 if dd status=progress </dev/null >&/dev/null; then
   alias dd='dd status=progress'
 fi
@@ -134,7 +123,7 @@ alias pickle-dump.py3='python3 -m pickle'
 alias telnet.py3='python3 -m telnetlib'
 alias httpd.py3='python3 -m http.server'
 alias json-pp.py3='python3 -m json.tool'
-alias quoted-printable.py3='python3 -m quopri'
+alias quoted-printable.py3='python3 -m quopri; echo'
 
 alias ps-x='ps -eHo user:20,pid,ppid,state,pcpu,pmem,vsz,rss,tname,start,time,args'
 
@@ -156,7 +145,8 @@ alias dstat-disk='dstat --time --load --cpu --top-cpu --load --disk --top-io'
 alias dig-x='dig +qr +multiline'
 alias dig-answer-only='dig +noall +answer'
 
-alias rsync-x='rsync --stats --open-noatime --archive --crtimes --hard-links --sparse'
+alias rsync-x='rsync --stats --open-noatime --archive --atimes --crtimes --hard-links --sparse'
+alias rsync-xx='rsync-x --acls --xattrs'
 alias rsync-compress="rsync --compress --skip-compress='7z/ace/avi/bz2/deb/gpg/gz/iso/jpeg/jpg/lz/lzma/lzo/mov/mp3/mp4/ogg/png/rar/rpm/rzip/tbz/tgz/tlz/txz/xz/z/zip/docx/xlsx/pptx/od[tspg]'"
 
 alias skype-web='mkdir -p -m 0755 $HOME/.local/share/skypeweb && start env GDK_BACKEND=x11 chromium --user-data-dir=$HOME/.local/share/skypeweb https://web.skype.com'
@@ -168,7 +158,7 @@ alias wimg='wget -rH -nd -l 0 -A jpg,jpeg,gif,png --follow-tags=a'
 
 ## curl --fail-with-body requires curl 7.76.0 (Debian 12, RHEL 9)
 alias curl-q='curl-x --silent'
-alias curl-x='curl --fail-with-body --show-error --location --remote-name --remote-header-name --remote-time --xattr --continue-at -'
+alias curl-x='curl --fail-with-body --show-error --location --remote-name --remote-header-name --remote-time --xattr'
 alias curl-v='curl --fail-with-body --write-out @<(
   echo -E "url_effective\t\t%{url_effective}\n"
   echo -E "http_version\t\t%{http_version}\n"
