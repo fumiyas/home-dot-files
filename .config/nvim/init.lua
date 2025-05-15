@@ -1,4 +1,3 @@
-vim.opt.tags = {"./tags", "./TAGS", "tags", "TAGS;/"}
 --vim.opt.directory:prepend("~/.local//vim//")
 --vim.opt.undodir = "~/var/vim/undodir"
 vim.opt.undofile = true
@@ -12,7 +11,7 @@ vim.opt.shortmess:append({ I = true })
 
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
-vim.opt.wildignore = {".o", "*.a", "build", "__pycache__", "*.pyc"}
+vim.opt.wildignore = {"*.o", "*.a", "build", "__pycache__", "*.pyc"}
 vim.opt.wildignorecase = true
 
 vim.opt.list = false
@@ -21,6 +20,8 @@ vim.opt.listchars:append("eol:$")
 vim.opt.listchars:append("trail:-")
 vim.opt.listchars:append("extends:~")
 vim.opt.listchars:append("precedes:~")
+
+vim.opt.completeopt = {"menuone", "preview"}
 
 vim.opt.title = true
 vim.opt.modeline = true
@@ -49,7 +50,7 @@ vim.opt.backspace = {"indent", "eol", "start"}
 vim.opt.nrformats:remove("octal")
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.textwidth = 0
+vim.opt.textwidth = 80
 vim.opt.expandtab = true
 vim.opt.tabstop = 8
 vim.opt.smarttab = true
@@ -62,3 +63,5 @@ vim.opt.endofline = false
 
 require("init/lazy")
 require("init/plugins")
+
+vim.cmd.colorscheme("wildcharm")
