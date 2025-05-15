@@ -62,7 +62,6 @@ vim.opt.backup = false
 vim.opt.endofline = false
 
 require("init/lazy")
-require("init/plugins")
 
 vim.cmd.colorscheme(
   "wildcharm"
