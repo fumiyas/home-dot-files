@@ -64,4 +64,59 @@ vim.opt.endofline = false
 require("init/lazy")
 require("init/plugins")
 
-vim.cmd.colorscheme("wildcharm")
+vim.cmd.colorscheme(
+  "wildcharm"
+  --"elflord"
+  --"koehler"
+  --"pablo"
+  --"torte"
+  --"vim"
+)
+
+-- ======================================================================
+
+vim.api.nvim_create_augroup('init', {})
+
+-- Remove bogus history in the command-line window
+vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
+  group = "init",
+  callback = function()
+    vim.cmd([[: g/^qa\?!\?$/d]])
+    vim.cmd([[: g/^wq\?a\?!\?$/d]])
+    vim.cmd([[: g/^\(n\|rew\|sp\)$/d]])
+  end
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = "init",
+  pattern = { "po" },
+  callback = function()
+    vim.api.nvim_set_option_value("path", "./../..,./../../..,,", { scope = "local" })
+  end
+})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = "init",
+  pattern = { "spec" },
+  callback = function()
+    vim.api.nvim_set_option_value("path", ".,./../SOURCES,,", { scope = "local" })
+  end
+})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = "init",
+  pattern = { "go" },
+  callback = function()
+    vim.api.nvim_set_option_value("expandtab", false, { scope = "local" })
+    vim.api.nvim_set_option_value("shiftwidth", 8, { scope = "local" })
+  end
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile" }, {
+  group = "init",
+  pattern = { "*.bash" },
+  command = [[0r ~/.vim/template/template.bash]],
+})
+vim.api.nvim_create_autocmd({ "BufNewFile" }, {
+  group = "init",
+  pattern = { "*.py" },
+  command = [[0r ~/.vim/template/template.py]],
+})
