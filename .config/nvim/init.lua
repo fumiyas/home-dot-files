@@ -90,22 +90,22 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   group = "init",
   pattern = { "po" },
   callback = function()
-    vim.api.nvim_set_option_value("path", "./../..,./../../..,,", { scope = "local" })
+    vim.bo.path = "./../..,./../../..,,"
   end
 })
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = "init",
   pattern = { "spec" },
   callback = function()
-    vim.api.nvim_set_option_value("path", ".,./../SOURCES,,", { scope = "local" })
+    vim.bo.path = ".,./../SOURCES,,"
   end
 })
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = "init",
   pattern = { "go" },
   callback = function()
-    vim.api.nvim_set_option_value("expandtab", false, { scope = "local" })
-    vim.api.nvim_set_option_value("shiftwidth", 8, { scope = "local" })
+    vim.bo.expandtab = false
+    vim.bo.shiftwidth = 8
   end
 })
 
