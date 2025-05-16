@@ -78,11 +78,15 @@ vim.api.nvim_set_hl(0, "CursorColumn", { bold=true, bg="#000060" })
 
 -- ======================================================================
 
+vim.keymap.set("", "-", [[$]], { desc="Move cursor to the end of line" })
+
+vim.keymap.set("n", "<ESC><ESC>", [[:nohlsearch<CR>]])
+
 -- Copy to / Paste from clipboard (vim-fakeclip clone)
 vim.keymap.set("", "sy", [["+y]], { desc="Copy to clipboard" })
 vim.keymap.set("", "sd", [["+d]], { desc="Delete to clipboard" })
-vim.keymap.set("n", "syy", [["+yy]], { desc="Copy line to clipboard" })
-vim.keymap.set("n", "sdd", [["+dd]], { desc="Delete line to clipboard" })
+vim.keymap.set("n", "syy", [["+yy]], { desc="Copy the cursor line to clipboard" })
+vim.keymap.set("n", "sdd", [["+dd]], { desc="Delete the cursor line to clipboard" })
 vim.keymap.set("n", "sp", [["+p]], { desc="Paste from clipboard after the cursor" })
 vim.keymap.set("n", "sP", [["+P]], { desc="Copy to clipboard before the cursor" })
 
@@ -94,6 +98,15 @@ vim.keymap.set("n", "sgF",
   [[<Cmd>let @+=expand('%:t:r')<CR>:echo 'Clipboard << ' . @+<CR>]],
   { desc="Copy file basename to clipboard" }
 )
+
+vim.keymap.set("n", "J", [[mZJ`Z]], { desc="Join line (w/o cursor moving) (using mark Z)" })
+
+vim.keymap.set("v", "y", [[mZy`Z:sleep 100m<CR>gv]], { desc="Yank the selected range (w/o cursor moving) (sleep is for highlight on yank) (using mark Z)" })
+vim.keymap.set("v", "p", [[P]], { desc="Paste to the selected range (w/o swapping register content)" })
+vim.keymap.set("v", "<", [[<gv]], { desc="Shift indent of selected lines" })
+vim.keymap.set("v", ">", [[>gv]], { desc="Unshift indent of selected lines" })
+vim.keymap.set("v", "J", [[:m '>+1<CR>gv=gv]], { desc="Downward the selected line(s)" })
+vim.keymap.set("v", "K", [[:m '<-2<CR>gv=gv]], { desc="Upward the selected line(s)" })
 
 -- ======================================================================
 
