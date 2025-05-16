@@ -73,18 +73,27 @@ vim.cmd.colorscheme(
   --"vim"
 )
 
-vim.api.nvim_set_hl(0, "CursorLine", { bold=true, bg = "#000060" })
-vim.api.nvim_set_hl(0, "CursorColumn", { bold=true, bg = "#000060" })
+vim.api.nvim_set_hl(0, "CursorLine", { bold=true, bg="#000060" })
+vim.api.nvim_set_hl(0, "CursorColumn", { bold=true, bg="#000060" })
 
 -- ======================================================================
 
 -- Copy to / Paste from clipboard (vim-fakeclip clone)
-vim.keymap.set("", "sy", [["+y]])
-vim.keymap.set("", "sd", [["+d]])
-vim.keymap.set("n", "syy", [["+yy]])
-vim.keymap.set("n", "sdd", [["+dd]])
-vim.keymap.set("n", "sp", [["+p]])
-vim.keymap.set("n", "sP", [["+P]])
+vim.keymap.set("", "sy", [["+y]], { desc="Copy to clipboard" })
+vim.keymap.set("", "sd", [["+d]], { desc="Delete to clipboard" })
+vim.keymap.set("n", "syy", [["+yy]], { desc="Copy line to clipboard" })
+vim.keymap.set("n", "sdd", [["+dd]], { desc="Delete line to clipboard" })
+vim.keymap.set("n", "sp", [["+p]], { desc="Paste from clipboard after the cursor" })
+vim.keymap.set("n", "sP", [["+P]], { desc="Copy to clipboard before the cursor" })
+
+vim.keymap.set("n", "sgf",
+  [[<Cmd>let @+=expand('%')<CR>:echo 'Clipboard << ' . @+<CR>]],
+  { desc="Copy file path to clipboard" }
+)
+vim.keymap.set("n", "sgF",
+  [[<Cmd>let @+=expand('%:t:r')<CR>:echo 'Clipboard << ' . @+<CR>]],
+  { desc="Copy file basename to clipboard" }
+)
 
 -- ======================================================================
 
