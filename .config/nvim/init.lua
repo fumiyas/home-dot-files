@@ -133,3 +133,10 @@ vim.api.nvim_create_autocmd({ "BufNewFile" }, {
   pattern = { "*.py" },
   command = [[0r ~/.vim/template/template.py]],
 })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = "init",
+  callback = function()
+    vim.highlight.on_yank({ timeout = 300 })
+  end,
+})
