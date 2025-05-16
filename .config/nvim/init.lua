@@ -62,6 +62,8 @@ vim.opt.endofline = false
 
 require("init/lazy")
 
+-- ======================================================================
+
 vim.cmd.colorscheme(
   "wildcharm"
   --"elflord"
@@ -70,6 +72,9 @@ vim.cmd.colorscheme(
   --"torte"
   --"vim"
 )
+
+vim.api.nvim_set_hl(0, "CursorLine", { bold=true, bg = "darkblue" })
+vim.api.nvim_set_hl(0, "CursorColumn", { bold=true, bg = "darkblue" })
 
 -- ======================================================================
 
