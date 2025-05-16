@@ -48,7 +48,6 @@ vim.opt.comments = ""
 vim.opt.formatoptions = ""
 vim.opt.backspace = {"indent", "eol", "start"}
 vim.opt.nrformats:remove("octal")
-vim.opt.clipboard = "unnamedplus"
 
 vim.opt.textwidth = 80
 vim.opt.expandtab = true
@@ -71,6 +70,16 @@ vim.cmd.colorscheme(
   --"torte"
   --"vim"
 )
+
+-- ======================================================================
+
+-- Copy to / Paste from clipboard (vim-fakeclip clone)
+vim.keymap.set("", "sy", [["+y]])
+vim.keymap.set("", "sd", [["+d]])
+vim.keymap.set("n", "syy", [["+yy]])
+vim.keymap.set("n", "sdd", [["+dd]])
+vim.keymap.set("n", "sp", [["+p]])
+vim.keymap.set("n", "sP", [["+P]])
 
 -- ======================================================================
 
