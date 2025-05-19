@@ -57,6 +57,12 @@ require("lazy").setup {
     opts = init_plugins.ibl_options,
   },
   {
+    "dinhhuy258/git.nvim",
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+  },
+  {
     "mechatroner/rainbow_csv",
     ft = { "csv", "tsv" },
   },
