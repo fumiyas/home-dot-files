@@ -54,9 +54,18 @@ vim.api.nvim_create_autocmd({ "BufNew", "BufRead", "BufEnter" }, {
 --]]
 
 mod.ibl_options = function()
+  local highlight = {
+    "CursorColumn",
+    "Whitespace",
+  }
   return {
     indent = {
-      char = "|",
+      highlight = highlight,
+      char = "",
+    },
+    whitespace = {
+      highlight = highlight,
+      remove_blankline_trail = false,
     },
   }
 end
