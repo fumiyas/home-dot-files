@@ -1,13 +1,13 @@
 ## PATH
 ## ======================================================================
 
-shift $#
-
 if [ -n "${ZSH_VERSION}" ]; then
   setopt no_NOMATCH
 fi
 
 ## ======================================================================
+
+shift $#
 
 ## Standard
 set -- /bin /usr/bin /sbin /usr/sbin
@@ -30,6 +30,8 @@ for dir in "$@"; do
   PATH="${PATH:+$PATH:}$dir"
 done
 export PATH
+
+hash -r
 
 shift $#
 
