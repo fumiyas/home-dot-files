@@ -2,7 +2,7 @@
 ## Environment variable definition
 ##
 
-for editor in vim jvim vi; do
+for editor in nvim vim vi; do
   if type $editor >/dev/null 2>&1; then
     export EDITOR="$editor"
     break
