@@ -27,7 +27,12 @@ export XDG_CONFIG_HOME="$HOME/.config"
 ## Country and Language
 ## ======================================================================
 
-export TZ=JST-9
+if [ -f /etc/localtime ]; then
+  ## POSIX.1-2024
+  export TZ=Asia/Tokyo
+else
+  export TZ=JST-9
+fi
 
 ## NOTE: DO NOT unset LC_ALL because that breaks readline editing on
 ##       multibyte characters.
