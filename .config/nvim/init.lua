@@ -102,7 +102,7 @@ vim.keymap.set("n", "sgF",
 
 vim.keymap.set("n", "J", [[mZJ`Z]], { desc="Join line (w/o cursor moving) (using mark Z)" })
 
-vim.keymap.set("v", "y", [[mZy`Z:sleep 100m<CR>gv]], { desc="Yank the selected range (w/o cursor moving) (sleep is for highlight on yank) (using mark Z)" })
+--vim.keymap.set("v", "y", [[mZy`Z:sleep 100m<CR>gv]], { desc="Yank the selected range (w/o cursor moving) (sleep is for highlight on yank) (using mark Z)" })
 vim.keymap.set("v", "p", [[P]], { desc="Paste to the selected range (w/o swapping register content)" })
 vim.keymap.set("v", "<", [[<gv]], { desc="Shift indent of selected lines" })
 vim.keymap.set("v", ">", [[>gv]], { desc="Unshift indent of selected lines" })
