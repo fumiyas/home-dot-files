@@ -9,6 +9,7 @@ vim.opt.ambiwidth = "double"
 vim.opt.history = 10000
 vim.opt.shortmess:append({ I = true })
 vim.opt.laststatus = 3
+vim.opt.mouse = {}
 
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full"
