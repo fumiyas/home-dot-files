@@ -46,7 +46,8 @@ alias journalctl-x='journalctl --output=short-iso'
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
 
-alias c='printf "\017\033c"; stty sane; reset'
+## Reset terminal, enable cursor blinking (DECSCUSR)
+alias c='tput rs1; stty sane; reset; printf "\033[1 q"'
 alias 256color='for i in {0..255}; do printf "\e[48;5;%sm " $i; printf "\e[0m"; done; echo'
 tsize() {
   local cols lines
