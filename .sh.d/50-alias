@@ -116,8 +116,10 @@ alias zsh-metafy='perl -pe "s/[\\0\\x83-\\x9d\\xa0]/\\x83@{[\$&^q( )]}/g"'
 alias ldifunwrap='sed -n '\''1 { h; $ !d; }; $ { x; s/\n //g; p; }; /^ / { H; d; }; /^ /! { x; s/\n //g; p; }'\'
 #alias ldifunwrap='awk '\''NR>1 && !sub(/^ /,"") { print s; s="" } { s = s $0 } END { print s }'\'
 
-alias jsonl2json='jq -s "."'
-alias json2jsonl='jq -c ".[]"'
+alias json2color='jq --color-output "."'
+alias json2jsonl='jq --compact-output "."'
+alias jsonlist2jsonl='jq --compact-output ".[]"'
+alias jsonl2jsonlist='jq --slurp "."'
 
 alias pickle-dump.py3='python3 -m pickle'
 alias telnet.py3='python3 -m telnetlib'
