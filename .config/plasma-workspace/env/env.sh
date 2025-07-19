@@ -21,3 +21,5 @@ fi
 if type wcwidth-cjk >/dev/null 2>&1; then
   eval "$(wcwidth-cjk --sh-init)"
 fi
+
+pactl load-module module-native-protocol-tcp listen=127.0.0.1
