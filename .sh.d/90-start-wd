@@ -1,0 +1,4 @@
+## https://github.com/fumiyas/home-commands/blob/master/s
+if [[ -n ${START_WD-} ]]; then
+  cd "$START_WD"
+fi
