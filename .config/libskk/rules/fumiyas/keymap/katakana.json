@@ -8,7 +8,8 @@
             "Henkan": "set-input-mode-hiragana",
             "Muhenkan": "abort-to-latin",
             "C-j": null,
-            "\\": null
+            "\\": null,
+            "q": "set-input-mode-katakana"
         }
     }
 }
