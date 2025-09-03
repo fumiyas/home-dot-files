@@ -148,11 +148,11 @@ alias dstat-disk='dstat --time --load --cpu --top-cpu --load --disk --top-io'
 alias dig-x='dig +qr +multiline'
 alias dig-answer-only='dig +noall +answer'
 
+alias klist-keytab='klist -keKt'
+
 alias rsync-x='rsync --stats --open-noatime --archive --atimes --crtimes --hard-links --sparse'
 alias rsync-xx='rsync-x --acls --xattrs'
 alias rsync-compress="rsync --compress --skip-compress='7z/ace/avi/bz2/deb/gpg/gz/iso/jpeg/jpg/lz/lzma/lzo/mov/mp3/mp4/ogg/png/rar/rpm/rzip/tbz/tgz/tlz/txz/xz/z/zip/docx/xlsx/pptx/od[tspg]'"
-
-alias skype-web='mkdir -p -m 0755 $HOME/.local/share/skypeweb && start env GDK_BACKEND=x11 chromium --user-data-dir=$HOME/.local/share/skypeweb https://web.skype.com'
 
 alias firefox='firefox --new-tab'
 
