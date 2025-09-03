@@ -6,7 +6,7 @@
 PATH=/bin:/usr/bin:/usr/local/bin
 umask 0002
 ## Limit data size
-ulimit -H -d 10000000
+ulimit -H -d 40000000
 ## Limit processes (threads)
 ulimit -H -u 8000
 
