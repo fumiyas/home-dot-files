@@ -40,6 +40,11 @@ fi
 unset OUTPUT_CHARSET
 
 LANG=C
+
+if [ "${TERM-}" = "mlterm" ]; then
+  export TERM="xterm-256color"
+fi
+
 case "`tty`" in
 /dev/console|/dev/tty?|/dev/lft?)
   ;;
