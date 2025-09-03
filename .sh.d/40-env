@@ -34,8 +34,7 @@ if type ifne >/dev/null 2>&1; then
 fi
 
 ## Remove "exec " if script should continue after this command. [SC2093]
-## egrep is non-standard and deprecated. Use grep -E instead. [SC2196]
-export SHELLCHECK_OPTS='--exclude=SC2093,SC2196'
+export SHELLCHECK_OPTS='--exclude=SC2093'
 
 if lsmod 2>/dev/null |grep '^vboxdrv ' >/dev/null; then
   ## Linux KVM cannot run with another hypervisor, such as VirtualBox

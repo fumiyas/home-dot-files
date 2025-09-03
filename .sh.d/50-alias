@@ -258,10 +258,10 @@ alias crypt='mcrypt -a enigma --keymode scrypt --bare'
 
 alias cls='ls --color=always --classify'
 alias cgrep='grep --color=always'
-alias cegrep='egrep --color=always'
+alias cegrep='grep -E --color=always'
 ## Depend on GNU grep
-alias grep-r='egrep --recursive --binary-files=without-match'
-alias grep-R='egrep --dereference-recursive --binary-files=without-match'
+alias grep-r='grep -E --recursive --binary-files=without-match'
+alias grep-R='grep -E --dereference-recursive --binary-files=without-match'
 
 alias ra='. $HOME/.profile'
 
@@ -533,7 +533,7 @@ mancat()
 rpm-qq()
 {
   rpm -q --qf "$(rpm --querytags |sort |sed 's/^\(.*\)$/\1: %{\1}/')\n" "$@" \
-  |egrep -v '^HEADERIMMUTABLE: |^[A-Z]+: \(none\)$' \
+  |grep -E -v '^HEADERIMMUTABLE: |^[A-Z]+: \(none\)$' \
   ;
 }
 
