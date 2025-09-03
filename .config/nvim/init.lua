@@ -8,7 +8,7 @@ vim.opt.fileencodings = {"UCS-BOM", "UTF-8"}
 vim.opt.ambiwidth = "double"
 vim.opt.history = 10000
 vim.opt.shortmess:append({ I = true })
-vim.opt.laststatus = 3
+vim.opt.laststatus = 2
 vim.opt.mouse = {}
 
 vim.opt.wildmenu = true
