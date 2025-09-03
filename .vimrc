@@ -2,15 +2,16 @@
 " ======================================================================
 
 " Normal mode
-"	Open previous file	Ctrl+^
-"	Move to previous place	Ctrl+o
-"	Move to next place	Ctrl+i
+"   Open previous file	        Ctrl+^
+"   Move to previous place	Ctrl+O
+"   MOVE TO NEXT PLACE	        CTRL+I
 
 " Insert mode
-"	Add indent		Ctrl+t
-"	Delete indent		Ctrl+d
-"	Complete word		Ctrl+n
-"	Complete word		Ctrl+p
+"   Add indent		        Ctrl+T
+"   Delete indent		Ctrl+D
+"   Complete word		Ctrl+N
+"   Complete word		Ctrl+P
+"   Paste selection wo indent   Ctrl+R Ctrl+O *
 
 " ======================================================================
 
