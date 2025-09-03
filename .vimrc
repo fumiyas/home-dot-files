@@ -4,7 +4,7 @@
 " Normal mode
 "   Open previous file	        Ctrl+^
 "   Move to previous place	Ctrl+O
-"   MOVE TO NEXT PLACE	        CTRL+I
+"   Move to next place	        CTRL+I
 
 " Insert mode
 "   Add indent		        Ctrl+T
