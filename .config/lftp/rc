@@ -4,7 +4,7 @@ set dns:fatal-timeout 15
 set ftp:anon-pass ftp@example.com
 set ftp:fxp-passive-source on
 set ftp:passive-mode on
-set http:user-agent "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Faked)"
+#set http:user-agent "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Faked)"
 #set http:proxy http://127.0.0.1:3128
 set http:accept *
 
@@ -13,3 +13,5 @@ set ftp:use-feat off
 #set ssl:verify-certificate no
 #set ssl:ca-file "/etc/ssl/certs/ca-certificates.crt"
 #set ssl:check-hostname no;
+
+#set hftp:use-head off
