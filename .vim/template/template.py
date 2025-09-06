@@ -4,6 +4,11 @@
 # SPDX-FileCopyrightText: 20XX SATOH Fumiyasu @ OSSTech Corp., Japan
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+# ]
+# ///
 
 from __future__ import print_function
 
