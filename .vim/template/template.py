@@ -10,8 +10,6 @@
 # ]
 # ///
 
-from __future__ import print_function
-
 import logging
 import os
 import sys
@@ -34,16 +32,16 @@ def main(argv):
 if __name__ == '__main__':
     logging_handlers = []
 
-    # stderr
+    # logging to stderr handler
     logging_handlers.append(logging.StreamHandler())
 
-    # file
+    # logging to file handler
     import datetime
     log_basename = f'{os.path.splitext(os.path.basename(sys.argv[0]))[0]}'
     log_filename = f'{log_basename}.{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}.log'
     logging_handlers.append(logging.FileHandler(log_filename))
 
-    # syslog
+    # logging to syslog handler
     import logging.handlers
     syslog_handler = logging.handlers.SysLogHandler(
         address='/dev/log',
@@ -56,8 +54,8 @@ if __name__ == '__main__':
 
     logging.basicConfig(
         level=logging.WARN,
-        format=(f'{sys.argv[0]}: %(levelname)s: %(message)s'),
         handlers=logging_handlers,
+        format=(f'{sys.argv[0]}: %(levelname)s: %(message)s'),
     )
 
     # Set a specific log level to a module
