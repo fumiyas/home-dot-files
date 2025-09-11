@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if grep -q Microsoft /proc/version 2>/dev/null; then
+  ## WSL
+  export BROWSER='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+  alias start='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+fi
