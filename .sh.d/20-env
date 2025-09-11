@@ -1,10 +1,10 @@
 #!/bin/sh dummy
 
-UNAME=`uname`
-HOSTNAME=`hostname|sed 's/\..*//'`
+UNAME=$(uname)
+HOSTNAME=$(hostname|sed 's/\..*//')
 if [ "$UNAME" = "SunOS" ]; then
-  UVER=`uname -r`
-  UNAME="$UNAME`expr $UVER : '\(.\).*'`"
+  UVER=$(uname -r)
+  UNAME="$UNAME$(expr $UVER : '\(.\).*')"
 fi
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -45,7 +45,7 @@ if [ "${TERM-}" = "mlterm" ]; then
   export TERM="xterm-256color"
 fi
 
-case "`tty`" in
+case "$(tty)" in
 /dev/console|/dev/tty?|/dev/lft?)
   ;;
 *)
@@ -84,13 +84,13 @@ fi
 
 export LESS="--no-init --LONG-PROMPT --RAW-CONTROL-CHARS --jump-target=6 --ignore-case --shift=4"
 ## See terminfo(5)
-export LESS_TERMCAP_mb=`tput bold; tput setaf 1`		## turn on bold
-export LESS_TERMCAP_md=`tput bold; tput setaf 6`		## turn on blink
-export LESS_TERMCAP_me=`tput sgr0`				## turn off all
-export LESS_TERMCAP_so=`tput bold; tput setaf 3; tput setab 4`  ## begin standout mode
-export LESS_TERMCAP_se=`tput sgr0`				## exit standout mode
-export LESS_TERMCAP_us=`tput bold; tput setaf 3`		## begin underline mode
-export LESS_TERMCAP_ue=`tput sgr0`				## exit underline mode
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)		## turn on bold
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6)		## turn on blink
+export LESS_TERMCAP_me=$(tput sgr0)				## turn off all
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4)  ## begin standout mode
+export LESS_TERMCAP_se=$(tput sgr0)				## exit standout mode
+export LESS_TERMCAP_us=$(tput bold; tput setaf 3)		## begin underline mode
+export LESS_TERMCAP_ue=$(tput sgr0)				## exit underline mode
 
 export LV="-c -l"
 
@@ -139,7 +139,7 @@ export DEBFULLNAME="SATOH Fumiyasu"
 ## Misc.
 ## ======================================================================
 
-if [ x"$UNAME" = x"AIX" ]; then
+if [ "$UNAME" = "AIX" ]; then
   export LDR_CNTRL=MAXDATA=0x20000000
 fi
 

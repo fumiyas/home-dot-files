@@ -48,7 +48,7 @@ if type manpath >/dev/null 2>&1; then
   ## manpath(1) warns if MANPATH envvar is already set.
   unset MANPATH
   ## Some manpath(1) lists language specific directory. :-(
-  MANPATH="`manpath |sed 's#[^:]*/ja:##'`"
+  MANPATH="$(manpath |sed 's#[^:]*/ja:##')"
 else
   MANPATH="/usr/share/man"
 fi
