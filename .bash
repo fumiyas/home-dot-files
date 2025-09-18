@@ -47,7 +47,7 @@ esac
 
 HISTSIZE=100000
 HISTFILESIZE=100000
-HISTTIMEFORMAT='%Y/%m/%d %T '
+HISTTIMEFORMAT='%Y-%m-%d %T '
 HISTCONTROL=ignorespace:erasedups
 shopt -s cmdhist lithist histappend histverify
 
