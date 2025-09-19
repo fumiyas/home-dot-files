@@ -58,6 +58,7 @@
 	cwb = rev-parse --abbrev-ref @
 	root = rev-parse --show-toplevel
 	root-relative = rev-parse --show-cdup
+	origin = config --get remote.origin.url
 	b = branch -vv --color=always
 	ba = branch -a --color=always
 	tags = tag
