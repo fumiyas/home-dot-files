@@ -30,6 +30,11 @@ vim.opt.modeline = true
 vim.opt.ruler = true
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
+vim.opt.guicursor = table.concat({
+  "n-v-c:block",
+  "i-ci:block-blinkon10-blinkoff10",
+  "r:block"
+}, ",")
 vim.opt.colorcolumn = "+1"
 vim.opt.showmode = true
 vim.opt.showmatch = true
