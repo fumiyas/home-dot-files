@@ -223,3 +223,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank({ timeout = 300 })
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = "init",
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "InvisibleSpace", { bg = "DarkRed" })
+    vim.fn.matchadd("InvisibleSpace", [[　\|\s\+$]])
+  end,
+})
