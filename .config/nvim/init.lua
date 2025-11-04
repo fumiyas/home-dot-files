@@ -69,6 +69,27 @@ vim.opt.endofline = false
 
 require("init/lazy")
 
+require("nvim-treesitter").install {
+  "bash", "awk",
+  "c",
+  "go", "gomod", "gosum", "gotmpl",
+  "python", "ruby", "javascript", "powershell", "commonlisp",
+  "make", "cmake", "dockerfile",
+  "diff", "strace",
+  "sql", "tsv", "csv",
+  "git_config", "git_rebase", "gitignore",
+  --"gitcommit",
+  "markdown_inline",
+  "html", "htmldjango",
+  "http", "css", "xml",
+  "jinja_inline",
+  "yaml", "toml",
+  "json", "json5", "jsonc",
+  "ssh_config",
+}
+
+vim.treesitter.language.register("bash", { "sh", "zsh" })
+
 -- ======================================================================
 
 vim.cmd.colorscheme(
@@ -126,6 +147,39 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
     vim.cmd([[: g/^qa\?!\?$/d]])
     vim.cmd([[: g/^wq\?a\?!\?$/d]])
     vim.cmd([[: g/^\(n\|rew\|sp\)$/d]])
+  end
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = "init",
+  pattern = {
+    "bash", "awk",
+    "c",
+    "go", "gomod", "gosum", "gotmpl",
+    "python", "ruby", "javascript", "powershell", "commonlisp",
+    "make", "cmake", "dockerfile",
+    "diff", "strace",
+    "sql", "tsv", "csv",
+    "yaml", "toml", "json", "jsonc", "json5",
+    "http", "css", "xml",
+    "jinja",
+    "yaml", "toml",
+    "json", "json5", "jsonc",
+    "ssh_config",
+  },
+  callback = function()
+    vim.treesitter.start()
+  end
+})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = "init",
+  pattern = { "markdown", "html", "htmldjango" },
+  callback = function()
+    vim.treesitter.start()
+    vim.api.nvim_set_hl(0, '@markup.heading.1', { fg = 'LightGray', italic = true, reverse = true })
+    vim.api.nvim_set_hl(0, '@markup.heading.2', { fg = 'DarkGray', reverse = true })
+    vim.api.nvim_set_hl(0, '@markup.heading.3', { underline = true, italic = true })
+    vim.api.nvim_set_hl(0, '@markup.heading.4', { underline = true })
   end
 })
 

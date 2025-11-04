@@ -16,6 +16,8 @@ local init_plugins = require "init.plugins"
 require("lazy").setup {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
     opts = init_plugins.treesitter_options,
   },
