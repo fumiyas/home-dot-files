@@ -132,6 +132,9 @@ alias ps-x='ps -eHo user:20,pid,ppid,state,pcpu,pmem,vsz,rss,tname,start,time,ar
 
 if [[ $UNAME == Linux ]]; then
   alias lsof-x='lsof +E'
+  alias lsof-xn='lsof +E -n -l -P'
+else
+  alias lsof-n='lsof -n -l -P'
 fi
 
 alias ss-x='ss -aeiomp'
