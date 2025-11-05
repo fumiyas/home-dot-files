@@ -101,8 +101,8 @@ vim.cmd.colorscheme(
   --"vim"
 )
 
-vim.api.nvim_set_hl(0, "CursorLine", { bold=true, bg="#000060" })
-vim.api.nvim_set_hl(0, "CursorColumn", { bold=true, bg="#000060" })
+vim.api.nvim_set_hl(0, "CursorLine", { bold=true, bg="#000080" })
+vim.api.nvim_set_hl(0, "CursorColumn", { bold=true, bg="#000080" })
 
 -- ======================================================================
 
@@ -176,9 +176,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "markdown", "html", "htmldjango" },
   callback = function()
     vim.treesitter.start()
-    vim.api.nvim_set_hl(0, '@markup.heading.1', { fg = 'LightGray', italic = true, reverse = true })
-    vim.api.nvim_set_hl(0, '@markup.heading.2', { fg = 'DarkGray', reverse = true })
-    vim.api.nvim_set_hl(0, '@markup.heading.3', { underline = true, italic = true })
+    vim.api.nvim_set_hl(0, '@markup.heading.1', { bg = '#552222', italic = true, bold = true })
+    vim.api.nvim_set_hl(0, '@markup.heading.2', { bg = '#331111', italic = true })
+    vim.api.nvim_set_hl(0, '@markup.heading.3', { bg = '#222222', underline = true, italic = true })
     vim.api.nvim_set_hl(0, '@markup.heading.4', { underline = true })
   end
 })
@@ -228,7 +228,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   group = "init",
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, "InvisibleSpace", { bg = "DarkRed" })
+    vim.api.nvim_set_hl(0, "InvisibleSpace", { bg = "Red" })
     vim.fn.matchadd("InvisibleSpace", [[　\|\s\+$]])
   end,
 })
