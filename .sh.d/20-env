@@ -41,46 +41,49 @@ unset OUTPUT_CHARSET
 
 LANG=C
 
-if [ "${TERM-}" = "mlterm" ]; then
-  export TERM="xterm-256color"
-fi
-
 case "$(tty)" in
 /dev/console|/dev/tty?|/dev/lft?)
   ;;
-*)
+/*)
   case "$TERM" in
   linux|sun*)
     ;;
   *)
     case "$UNAME" in
     AIX*)
-      LANG=JA_JP
+      export LANG=JA_JP
       ;;
     *)
-      LANG=ja_JP.UTF-8
+      export LANG=ja_JP.UTF-8
       ;;
     esac
     ;;
   esac
   ;;
 esac
-export LANG
-
-## Debian groff(1) only?
-export GROFF_ENCODING=UTF-8
 
 export TERMINFO="$HOME/.terminfo"
 #export TERMCAP="$HOME/.termcap"
 
-if [ -n "$TERM" ] && [ -n "$SSH_CONNECTION" ]; then
-  for term in "$TERM"{-,+}256color "$TERM" "${TERM%%[-+]256color}" xtermc xterm; do
-    if infocmp "$term" >/dev/null 2>&1; then
-      export TERM="$term"
-      break
-    fi
-  done
+if [ -z "${SSH_CONNECTION-}" ]; then
+  case "${TERM-}" in
+  mlterm|xterm)
+    export TERM="xterm-256color"
+    ;;
+  esac
+else
+  if [ -n "${TERM-}" ]; then
+    for term in "$TERM"{-,+}256color "$TERM" "${TERM%%[-+]256color}" xtermc xterm; do
+      if infocmp "$term" >/dev/null 2>&1; then
+        export TERM="$term"
+        break
+      fi
+    done
+  fi
 fi
+
+## Debian groff(1) only?
+export GROFF_ENCODING=UTF-8
 
 export LESS="--no-init --LONG-PROMPT --RAW-CONTROL-CHARS --jump-target=6 --ignore-case --shift=4"
 ## See terminfo(5)
