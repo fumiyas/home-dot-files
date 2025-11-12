@@ -46,8 +46,13 @@ alias journalctl-x='journalctl --output=short-iso'
 alias lang-c='env LC_ALL=C LANG=C'
 alias nkf-x='nkf -x -m0'
 
-## Reset terminal, enable cursor blinking (DECSCUSR)
-alias c='tput rs1; stty sane; reset; printf "\033[1 q"'
+## Reset terminal by:
+##   * reset(1)
+##   * terminfo(5) reset_1string (this resets colors)
+## Change color by OSC 4 (See also ~/.mlterm/color)
+## Enable cursor blinking by DECSCUSR
+## Be sane terminal by stty(1)
+alias c='reset; tput rs1; printf "\033]4;4;rgb:00/80/FF\007""\033]4;14;rgb:00/D0/FF\007""\033[1 q"; stty sane'
 alias 256color='for i in {0..255}; do printf "\e[48;5;%sm " $i; printf "\e[0m"; done; echo'
 tsize() {
   local cols lines
