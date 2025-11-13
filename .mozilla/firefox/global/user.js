@@ -49,6 +49,9 @@ user_pref("browser.tabs.insertAfterCurrent", true);
 user_pref("browser.tabs.closeTabByDblclick", true);
 // 最後のタブを閉じたとき、ウィンドウ自体は閉じない
 user_pref("browser.tabs.closeWindowWithLastTab", false);
+// 別アプリからのリンクを開くときアクティブなタブの後に開く
+// (1: 現在のタブに開く, 2: 新規ウィンドウに開く, 3: 新規タブで開く)
+user_pref("browser.link.open_newwindow.override.external", 7);
 
 // [閉じたタブを復元] の記憶するタブの数
 user_pref("browser.sessionstore.max_tabs_undo", 1000);
