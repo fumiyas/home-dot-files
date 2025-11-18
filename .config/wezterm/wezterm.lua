@@ -15,7 +15,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.enable_scroll_bar = false
 config.scrollback_lines = 100000
 
-config.initial_rows = 64
+config.initial_rows = 70
 config.initial_cols = 100
 config.window_padding = {
   left = 0,
@@ -24,9 +24,10 @@ config.window_padding = {
   bottom = 0,
 }
 
-config.font_size = 20
+config.font_size = 21
 config.cell_width = 0.95
 config.line_height = 0.90
+config.use_resize_increments = true
 
 config.treat_east_asian_ambiguous_width_as_wide = true
 config.bold_brightens_ansi_colors = false
@@ -37,9 +38,27 @@ config.cursor_blink_ease_in = "Linear"
 config.cursor_blink_ease_out = "Linear"
 
 config.font = wezterm.font_with_fallback({
-    { family = "Ricty Diminished Discord" },
-    { family = "Emoji One", assume_emoji_presentation = true },
+  { family = "Ricty Diminished Discord" },
+  { family = "Emoji One", assume_emoji_presentation = true },
 })
+config.font_rules = {
+  {
+    intensity = 'Normal',
+    italic = false,
+    font = wezterm.font_with_fallback({
+      { family = "Ricty Diminished Discord", weight = "Light" },
+      { family = "Emoji One", assume_emoji_presentation = true },
+    }),
+  },
+  {
+    intensity = 'Bold',
+    italic = false,
+    font = wezterm.font_with_fallback({
+      { family = "Ricty Diminished Discord", weight = "Bold" },
+      { family = "Emoji One", assume_emoji_presentation = true },
+    }),
+  },
+}
 
 config.colors = {
   foreground = "white",
