@@ -1,3 +1,7 @@
+-- Searching the scroll back                  Ctrl+Shift+F
+--  Cycle through the pattern matching mode   Ctrl+R
+-- Copy the selected text to the clipboard    Ctrl+Shift+C
+
 local wezterm = require "wezterm"
 
 local config = wezterm.config_builder()
