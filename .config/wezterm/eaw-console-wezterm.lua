@@ -1,0 +1,1 @@
+../../git/eaw/locale-eaw/dist/eaw-console-wezterm.lua

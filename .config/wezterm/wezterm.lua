@@ -29,7 +29,8 @@ config.cell_width = 0.95
 config.line_height = 0.90
 config.use_resize_increments = true
 
-config.treat_east_asian_ambiguous_width_as_wide = true
+--config.treat_east_asian_ambiguous_width_as_wide = false
+config.cell_widths = require 'eaw-console-wezterm'
 config.bold_brightens_ansi_colors = false
 
 config.default_cursor_style = "BlinkingBlock"
