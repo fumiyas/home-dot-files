@@ -1,3 +1,12 @@
+-- This is a comment line. I love comments.
+--[[
+Comment lines.
+--]]
+--[=[
+Comment lines (inlucde `]]`)
+--]=]
+
+--print(vim.inspect(vim.opt.completeopt:get()))
 --vim.opt.directory:prepend("~/.local//vim//")
 --vim.opt.undodir = "~/var/vim/undodir"
 vim.opt.undofile = true
