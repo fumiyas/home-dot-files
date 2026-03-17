@@ -78,24 +78,32 @@ vim.opt.endofline = false
 
 require("init/lazy")
 
-require("nvim-treesitter").install {
-  "bash", "awk",
-  "c",
-  "go", "gomod", "gosum", "gotmpl",
-  "python", "ruby", "javascript", "powershell", "commonlisp",
-  "make", "cmake", "dockerfile",
-  "diff", "strace",
-  "sql", "tsv", "csv",
-  "git_config", "git_rebase", "gitignore",
-  --"gitcommit",
-  "markdown_inline",
-  "html", "htmldjango",
-  "http", "css", "xml",
-  "jinja_inline",
-  "yaml", "toml",
-  "json", "json5", "jsonc",
-  "ssh_config",
-}
+require("nvim-treesitter").install(
+  {
+    "bash", "awk",
+    "c",
+    "go", "gomod", "gosum", "gotmpl",
+    "python", "ruby", "javascript", "powershell", "commonlisp",
+    "make", "cmake", "dockerfile",
+    "diff", "strace",
+    "sql", "tsv", "csv",
+    "git_config", "git_rebase", "gitignore",
+    --"gitcommit",
+    "markdown", "markdown_inline",
+    "html", "htmldjango",
+    "http", "css", "xml",
+    "jinja", "jinja_inline",
+    "yaml", "toml",
+    "json", "json5",
+    "ssh_config",
+  },
+  {
+    force = false,
+    generate = true,
+    max_jobs = 4,
+    summary = false,
+  }
+)
 
 vim.treesitter.language.register("bash", { "sh", "zsh" })
 
