@@ -579,7 +579,7 @@ alias mysqldump-all-lock='mysqldump-all-bare --lock-all-tables'
 openssl-selfcert()
 {
   if [[ -z $1 ]]; then
-    echo "Usage: openssl_selfcert CN [DAYS]" 1>&2
+    echo "Usage: openssl-selfcert CN [DAYS]" 1>&2
     return
   fi
   (
@@ -588,11 +588,15 @@ openssl-selfcert()
       req \
       -new \
       -x509 \
-      -nodes \
       -subj "/CN=$1" \
+      -addext "subjectAltName=DNS:$1" \
+      -addext "basicConstraints=CA:true" \
+      -addext "authorityKeyIdentifier=keyid:always,issuer" \
+      -addext "subjectKeyIdentifier=hash" \
       -days "${2-3650}" \
-      -out "$1.crt" \
+      -nodes \
       -keyout "$1.key" \
+      -out "$1.crt" \
     ;
   )
 }
