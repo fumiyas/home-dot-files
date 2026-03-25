@@ -11,14 +11,8 @@ shift $#
 
 ## Standard
 set -- /bin /usr/bin /sbin /usr/sbin
-
 ## Generic (but local)
-set -- /usr/local/bin /usr/local/sbin ${1+"$@"}
-set -- ${1+"$@"} /usr/local/samba/bin /usr/local/samba/sbin
-
-## Project common tools
-set -- ${1+"$@"} /project/bin /project/sbin
-
+set -- /usr/local/bin /usr/local/sbin /snap/bin ${1+"$@"}
 ## My tools
 set -- "$HOME/bin" "$HOME/.local/bin" "$GOPATH/bin" ${1+"$@"} /opt/osstech/bin /opt/osstech/sbin
 
@@ -30,7 +24,6 @@ for dir in "$@"; do
   PATH="${PATH:+$PATH:}$dir"
 done
 export PATH
-
 hash -r
 
 shift $#
