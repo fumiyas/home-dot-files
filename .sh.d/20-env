@@ -117,21 +117,12 @@ export FTPPROMPT='%/>'
 #export PERSONAL_MIME_TYPES=$HOME/.netscape/mime.types
 #export PERSONAL_MAILCAP=$HOME/.netscape/mailcap
 
-## X Window System
+## X Window System FIXME: Remove
 ## ======================================================================
 
-#export XMODIFIERS=@im=uim
-#export GTK_IM_MODULE=uim
-#export QT_IM_MODULE=uim
-
-#export XAPPLRESDIR=$HOME/lib/app-defaults
-#export XMODIFIERS=@im=SCIM
-#export XMODIFIERS=@im=skkinput
-#export XMODIFIERS=@im=kinput2
-
-if [ -d /usr/openwin/lib/config ]; then
-  export IMAKEINCLUDE=-I/usr/openwin/lib/config
-fi
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
 
 ## Debian
 ## ======================================================================
