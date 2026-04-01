@@ -73,6 +73,8 @@ tsize() {
     fi
   fi
 
+  ## Window manipulation (XTWINOPS) -
+  ## Resize the text area to given height and width in characters
   printf '\e[8;%d;%dt' "$lines" "$cols"
 }
 ttitle()
