@@ -46,7 +46,7 @@ case "$(tty)" in
   ;;
 /*)
   case "$TERM" in
-  linux|sun*)
+  linux)
     ;;
   *)
     case "$UNAME" in
@@ -65,21 +65,20 @@ esac
 export TERMINFO="$HOME/.terminfo"
 #export TERMCAP="$HOME/.termcap"
 
-if [ -z "${SSH_CONNECTION-}" ]; then
-  case "${TERM-}" in
-  mlterm|xterm)
-    export TERM="xterm-256color"
-    ;;
-  esac
+export TERM_ORIG="${TERM-}"
+if [ "$TERM" = "xterm-ghostty" ]; then
+  export TERM="ghostty"
 else
-  if [ -n "${TERM-}" ]; then
-    for term in "$TERM"{-,+}256color "$TERM" "${TERM%%[-+]256color}" xtermc xterm; do
-      if infocmp "$term" >/dev/null 2>&1; then
-        export TERM="$term"
-        break
-      fi
-    done
-  fi
+  for term in "$TERM"{-,+}256color "$TERM" "${TERM%%[-+]256color}"; do
+    if TERM="$term" tput init >/dev/null 2>&1; then
+      export TERM="$term"
+      break
+    fi
+  done
+  unset term
+fi
+if ! tput init >/dev/null 2>&1; then
+  export TERM="xterm"
 fi
 
 ## Debian groff(1) only?

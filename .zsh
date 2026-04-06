@@ -291,7 +291,7 @@ fi
 precmd_windowtitle_fmt+=":%~ (${TTY#/dev/})"
 
 case "$TERM" in
-*term|*term[-+]*|rxvt*|gnome*)
+*term|*term[-+]*|ghostty|rxvt*|gnome*)
   ## https://tldp.org/HOWTO/Xterm-Title-3.html
   precmd_windowtitle_set() {
     print -Pn "\e]0;${1-$precmd_windowtitle_fmt}\a"
