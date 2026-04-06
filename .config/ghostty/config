@@ -1,0 +1,51 @@
+font-family = Ricty Diminished Discord"
+font-size = 15
+adjust-cell-width = -1
+adjust-cell-height = -2
+
+background = #000000
+
+title = ""
+title-report = true
+window-height = 70
+window-width = 100
+
+window-decoration = client
+window-padding-x = 0
+window-padding-y = 0
+#window-padding-balance = true
+
+scrollback-limit = 100000
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+cursor-style = block
+cursor-style-blink = true
+cursor-color = #FFAA00
+cursor-opacity = 0.5
+shell-integration = detect
+shell-integration-features = cursor,sudo,no-title,no-cursor
+
+quit-after-last-window-closed = true
+
+copy-on-select = clipboard
+selection-clear-on-copy = false
+selection-clear-on-typing = false
+
+working-directory = home
+window-inherit-working-directory = false
+
+#keybind = cmd+shift+comma=reload_config
+
+#keybind = cmd+d=new_split:right
+#keybind = cmd+shift+d=new_split:down
+#keybind = cmd+w=close_surface
+
+#keybind = ctrl+cmd+h=goto_split:left
+#keybind = ctrl+cmd+j=goto_split:bottom
+#keybind = ctrl+cmd+k=goto_split:top
+#keybind = ctrl+cmd+l=goto_split:right
+
+#keybind = cmd+up=jump_to_prompt:-1
+#keybind = cmd+down=jump_to_prompt:1
