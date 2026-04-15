@@ -1,5 +1,5 @@
-font-family = Ricty Diminished Discord"
-font-size = 15
+font-family = "Ricty Diminished Discord"
+font-size = 16
 adjust-cell-width = -1
 adjust-cell-height = -2
 
@@ -10,10 +10,11 @@ title-report = true
 window-height = 70
 window-width = 100
 
-window-decoration = client
+#window-decoration = client
 window-padding-x = 0
 window-padding-y = 0
 #window-padding-balance = true
+split-divider-color = red
 
 scrollback-limit = 100000
 
@@ -22,10 +23,12 @@ mouse-scroll-multiplier = 2
 
 cursor-style = block
 cursor-style-blink = true
-cursor-color = #FFAA00
+cursor-color = #FF6633
 cursor-opacity = 0.5
 shell-integration = detect
-shell-integration-features = cursor,sudo,no-title,no-cursor
+shell-integration-features = no-cursor,no-title,sudo
+bell-features = title,audio
+#bell-audio-path = "/usr/share/sounds/freedesktop/stereo/bell.oga"
 
 quit-after-last-window-closed = true
 
@@ -35,6 +38,9 @@ selection-clear-on-typing = false
 
 working-directory = home
 window-inherit-working-directory = false
+
+keybind = ctrl+[=text:\x1b
+keybind = ctrl+l=text:\x0c
 
 #keybind = cmd+shift+comma=reload_config
 
