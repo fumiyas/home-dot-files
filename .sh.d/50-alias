@@ -463,24 +463,24 @@ git-diff-reflog() {
 }
 
 git-patch() {
-  if [ $# -eq 0 ]; then
-    git format-patch --stdout "HEAD~"
-  elif [ $# -eq 1 ]; then
-    git format-patch --stdout "$1~..$1"
-  else
-    git format-patch --stdout "$1..$2"
+  local opt=
+  if [ -n "${1-}" ] && [ -z "${1##-*}" ]; then
+    opt="$1"
+    shift
   fi
+
+  local rev_range
+  if [ $# -eq 0 ]; then
+    rev_range="HEAD~"
+  elif [ $# -eq 1 ]; then
+    rev_range="$1~..$1"
+  else
+    rev_range="$1..$2"
+  fi
+  git format-patch --stdout $opt "$rev_range"
 }
 
-git-patch-mail() {
-  if [ $# -eq 0 ]; then
-    git format-patch --attach --stdout "HEAD~"
-  elif [ $# -eq 1 ]; then
-    git format-patch --attach --stdout "$1~..$1"
-  else
-    git format-patch --attach --stdout "$1~..$2"
-  fi
-}
+alias git-patch-mail='git-patch --attach'
 
 #type lv >/dev/null 2>&1 || { type less >/dev/null 2>&1 && alias lv='less'; }
 
