@@ -12,7 +12,7 @@ env_path_reset() {
   ## Standard
   set -- /bin /usr/bin /sbin /usr/sbin
   ## Generic (but local)
-  set -- /usr/local/bin /usr/local/sbin /snap/bin ${1+"$@"}
+  set -- /usr/local/bin /usr/local/sbin /snap/bin "$@"
   ## Nix
   if [ -n "${NIX_PROFILES-}" ]; then
     local nix_profiles="$NIX_PROFILES"
@@ -24,7 +24,7 @@ env_path_reset() {
     done
   fi
   ## My tools
-  set -- "$HOME/bin" "$HOME/.local/bin" "$GOPATH/bin" ${1+"$@"} /opt/osstech/bin /opt/osstech/sbin
+  set -- "$HOME/bin" "$HOME/.local/bin" "$GOPATH/bin" "$@" /opt/osstech/bin /opt/osstech/sbin
 
   PATH=""
   local dir
@@ -57,9 +57,9 @@ env_manpath_reset() {
   fi
 
   shift $#
-  set -- ${1+"$@"} /usr/openwin/man
-  set -- ${1+"$@"} /usr/local/man
-  set -- ${1+"$@"} /usr/local/*/man
+  set -- "$@" /usr/openwin/man
+  set -- "$@" /usr/local/man
+  set -- "$@" /usr/local/*/man
 
   if type manpath >/dev/null 2>&1; then
     ## manpath(1) warns if MANPATH envvar is already set.
