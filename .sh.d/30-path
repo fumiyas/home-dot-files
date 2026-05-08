@@ -1,62 +1,81 @@
 ## PATH
 ## ======================================================================
 
-if [ -n "${ZSH_VERSION}" ]; then
-  setopt no_NOMATCH
-fi
-
-## ======================================================================
-
-shift $#
-
-## Standard
-set -- /bin /usr/bin /sbin /usr/sbin
-## Generic (but local)
-set -- /usr/local/bin /usr/local/sbin /snap/bin ${1+"$@"}
-## My tools
-set -- "$HOME/bin" "$HOME/.local/bin" "$GOPATH/bin" ${1+"$@"} /opt/osstech/bin /opt/osstech/sbin
-
-PATH=""
-for dir in "$@"; do
-  if [ -L "$dir" ] || [ ! -d "$dir" ]; then
-    continue
+env_path_reset() {
+  if [ -n "${ZSH_VERSION}" ]; then
+    setopt LOCAL_OPTIONS
+    setopt SH_WORD_SPLIT
+    setopt no_NOMATCH
   fi
-  PATH="${PATH:+$PATH:}$dir"
-done
-export PATH
-hash -r
 
-shift $#
+  shift $#
+  ## Standard
+  set -- /bin /usr/bin /sbin /usr/sbin
+  ## Generic (but local)
+  set -- /usr/local/bin /usr/local/sbin /snap/bin ${1+"$@"}
+  ## Nix
+  if [ -n "${NIX_PROFILES-}" ]; then
+    local nix_profiles="$NIX_PROFILES"
+    while true; do
+      local nix_profile="${nix_profiles##* }"
+      set -- "$nix_profile/bin" "$@"
+      nix_profiles="${nix_profiles% *}"
+      [ "$nix_profile" = "$nix_profiles" ] && break
+    done
+  fi
+  ## My tools
+  set -- "$HOME/bin" "$HOME/.local/bin" "$GOPATH/bin" ${1+"$@"} /opt/osstech/bin /opt/osstech/sbin
+
+  PATH=""
+  local dir
+  for dir in "$@"; do
+    if [ ! -d "$dir" ]; then
+      continue
+    fi
+    if [ -L "$dir" ]; then
+      if [ "$dir" = "/bin" ] || [ "$dir" = "/sbin" ]; then
+        ## /usr-merge
+        continue
+      fi
+    fi
+    PATH="${PATH:+$PATH:}$dir"
+  done
+
+  export PATH
+  hash -r
+}
+
+env_path_reset
 
 ## MANPATH
 ## ======================================================================
 
-shift $#
-
-set -- ${1+"$@"} /usr/openwin/man
-set -- ${1+"$@"} /usr/local/man
-set -- ${1+"$@"} /usr/local/*/man
-
-if type manpath >/dev/null 2>&1; then
-  ## manpath(1) warns if MANPATH envvar is already set.
-  unset MANPATH
-  ## Some manpath(1) lists language specific directory. :-(
-  MANPATH="$(manpath |sed 's#[^:]*/ja:##')"
-else
-  MANPATH="/usr/share/man"
-fi
-for dir in "$@"; do
-  if [ -d "$dir" ]; then
-    MANPATH="${MANPATH:+$MANPATH:}$dir"
+env_manpath_reset() {
+  if [ -n "${ZSH_VERSION}" ]; then
+    setopt LOCAL_OPTIONS
+    setopt no_NOMATCH
   fi
-done
-export MANPATH
 
-shift $#
+  shift $#
+  set -- ${1+"$@"} /usr/openwin/man
+  set -- ${1+"$@"} /usr/local/man
+  set -- ${1+"$@"} /usr/local/*/man
 
-## ======================================================================
+  if type manpath >/dev/null 2>&1; then
+    ## manpath(1) warns if MANPATH envvar is already set.
+    unset MANPATH
+    ## Some manpath(1) lists language specific directory. :-(
+    MANPATH="$(manpath |sed 's#[^:]*/ja:##')"
+  else
+    MANPATH="/usr/share/man"
+  fi
+  for dir in "$@"; do
+    if [ -d "$dir" ]; then
+      MANPATH="${MANPATH:+$MANPATH:}$dir"
+    fi
+  done
 
-if [ -n "${ZSH_VERSION}" ]; then
-  setopt NOMATCH
-fi
+  export MANPATH
+}
 
+env_manpath_reset
