@@ -10,6 +10,8 @@ local config = wezterm.config_builder()
 config.default_cwd = os.getenv("PWD")
 
 config.enable_wayland = true
+config.use_ime = true
+config.mux_enable_ssh_agent = false
 
 config.hide_tab_bar_if_only_one_tab = true
 config.enable_scroll_bar = false
