@@ -17,7 +17,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.enable_scroll_bar = false
 config.scrollback_lines = 100000
 
-config.initial_rows = 70
+config.initial_rows = 72
 config.initial_cols = 100
 config.window_padding = {
   left = 0,
@@ -26,7 +26,7 @@ config.window_padding = {
   bottom = 0,
 }
 
-config.font_size = 21
+config.font_size = 16
 config.cell_width = 0.95
 config.line_height = 0.90
 config.use_resize_increments = true
