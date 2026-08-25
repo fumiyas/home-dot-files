@@ -761,7 +761,7 @@
 ;; http://www.emacswiki.org/cgi-bin/wiki/CopyAndPaste
 ;; ----------------------------------------------------------------------
 
-(setq x-select-enable-clipboard t)
+(setq select-active-regions nil)
 
 ;(set-selection-coding-system 'compound-text-unix)
 ;(set-clipboard-coding-system 'utf-8-unix)
