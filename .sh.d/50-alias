@@ -2,6 +2,9 @@
 ## Aliases and functions definition for bash, zsh
 ## Author: SATOH Fumiyasu
 
+## Early return if `[[` is not available.
+[[ true ]] 2> /dev/null || return
+
 alias2() {
   local alias="$1"; shift
   if [[ -n ${1+set} ]]; then

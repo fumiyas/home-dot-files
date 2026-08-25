@@ -1,5 +1,8 @@
 #!/bin/sh
 
+## Early return if `[[` is not available.
+[[ true ]] 2> /dev/null || return
+
 ## https://github.com/fumiyas/home-commands/blob/master/s
 if [[ -n ${START_WD-} ]]; then
   cd "$START_WD"
