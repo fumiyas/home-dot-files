@@ -150,6 +150,7 @@
 (setq next-line-add-newlines nil)
 (setq track-eol t)
 (setq-default indent-tabs-mode nil)
+(electric-indent-mode -1)
 (load-library "paren")
 
 ;; 対応する括弧をハイライト表示
