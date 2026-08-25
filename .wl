@@ -272,9 +272,6 @@
 	    ("^\\[sugj-tech:" . "+ml/samba/sugj-tech")
 	    ("^\\[sugj-web:" . "+ml/samba/sugj-web")
 
-	    ("^\\[debian-users " . "+ml/linux/debian-users")
-	    ("^\\[debian-devel " . "+ml/linux/debian-devel")
-
 	    ("^\\[LDAP-Staff:" . "+ml/net/ldap-staff")
 	    ("^\\[LDAP-Users:" . "+ml/net/ldap-users")
 	    ("^\\[DNSOPS " . "+ml/net/dnsops")
@@ -288,6 +285,7 @@
         ("Return-Path"
 	    ("<[a-z]+-support-bounces@osstech.co.jp" . "+work/osstech/support")
 	    ("<ost-consult-bounces@osstech.co.jp" . "+work/osstech/consult")
+	    ("<ost-qa-bounces@osstech.co.jp" . "+work/osstech/qa")
 	    ("<ost-partner-bounces@osstech.co.jp" . "+work/osstech/partner")
 	    ("<ost-scm-bounces@osstech.co.jp" . "+work/osstech/scm")
 	    ("<ost-sys-bounces@osstech.co.jp" . "+work/osstech/sys")
@@ -300,17 +298,17 @@
 	    ("samba-technical-bounces" . "+ml/samba/samba-technical")
 	    ("openldap-technical-bounces" . "+ml/net/openldap-technical")
 	    ("openldap-devel-bounces" . "+ml/net/openldap-technical")
-
-	    ("solaris2u-bounces@" . "+ml/os/solaris2u")
-	    ("users-bounces@opensolaris" . "+ml/os/solaris-ug")
-	    ("begin-bounces@ml.begi.net" . "+ml/linux/beginet-begin")
-	    ("freetalk-bounces@ml.begi.net" . "+ml/linux/beginet-freetalk")
-
+	    ("postfix-users-bounces" . "+ml/net/postfix-users")
+	    ("postfix-devel-bounces" . "+ml/net/postfix-devel")
 	    ("dovecot-bounces\\+[^@]+@" . "+ml/net/dovecot")
+	    ("mailman-users-bounces\\+[^@]+@" . "+ml/net/mailman")
+
+	    ("debian-users-bounces@debian.or.jp" . "+ml/linux/debian-users")
+	    ("debian-devel-sbounces@debian.or.jp" . "+ml/linux/debian-devel")
+
 	    ("postfix-jp-list-bounces@" . "+ml/net/postfix-jp")
 	    ("milter-manager-users-ja-bounces@" . "+ml/net/milter-manager-users-ja")
 	    ("spamassassin-jp-bounces\\+[^@]+@" . "+ml/net/spamassassin-jp")
-	    ("clamav-jp-users-bounces@" . "+ml/misc/clamav-jp")
 	    ("ml-admin@mysql.gr.jp" . "+ml/db/mysql-jp")
 
 	    ("apache-core-bounces\\+[^@]+@apache.jp" . "+ml/web/apache-core")
@@ -325,9 +323,7 @@
 
 	    ("ruby-list-bounces@" . "+ml/develop/ruby-list")
 	    ("ruby-dev-bounces@" . "+ml/develop/ruby-dev")
-	    ("rails=return=" . "+ml/develop/rails")
 	    ("skk-return-" . "+ml/misc/skk")
-	    ("nakajima.yasushi-pdfj-return-" . "+ml/misc/pdfj")
 	    ("edict-return-" . "+ml/misc/edict")
 	    ("gunma-ct-bounces@" . "+ml/friend/gunma-ct")
 	)
@@ -681,18 +677,11 @@
 	("^\\+trash$" (date 60) remove)
 	("^\\+dust$" (date 60) remove)
 	("^\\+work/osstech/consult$" (date 2000) wl-expire-localdir-date)
-	("^\\+work/ntt-west-admin$" (date 180) remove)
 ;	("^\\+ml/samba/sugj-" (date 365) remove)
 ;	("^\\+ml/samba/samba-" (date 365) remove)
 	("^\\+ml/linux" (date 365) remove)
-	("^\\+ml/web/new-httpd$" (date 365) remove)
-	("^\\+ml/web/php-users$" (date 365) remove)
-	("^\\+ml/web/cgi$" (date 365) remove)
-	("^\\+ml/net/djb-" (date 365) remove)
 ;	("^\\+ml/net/rt100i" (date 365) remove)
-	("^\\+ml/misc/security-memo" (date 365) remove)
 ;	("^\\+ml/misc/namazu-devel" (date 365) remove)
-	("^\\+ml/misc/openoffice" (date 365) remove)
 ;	("^\\+.*" (date 365) remove)
     )
 )
