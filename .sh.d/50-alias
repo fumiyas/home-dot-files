@@ -250,6 +250,8 @@ ssh()
   command ssh ${1+"$@"}
 }
 
+alias ssh-no-persist='ssh -o ControlPath=none'
+
 nmap-ssl-enum-ciphers() {
   if [[ $# -lt 1 ]]; then
     echo "Usage: nmap-ssl-enum-ciphers HOST[:PORT] [NMAP OPTIONS ...]"
