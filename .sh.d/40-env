@@ -33,6 +33,9 @@ if type ifne >/dev/null 2>&1; then
   export HG_PAGER="ifne $PAGER" ## See ~/.hgrc
 fi
 
+## Change a color scheme for null value to dark blue from black
+export JQ_COLORS='2;34'
+
 ## Remove "exec " if script should continue after this command. [SC2093]
 export SHELLCHECK_OPTS='--exclude=SC2093'
 
