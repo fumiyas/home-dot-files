@@ -90,6 +90,9 @@
 [diff "openxml"]
 	binary = true
 	textconv = any2text
+[diff "pdf"]
+	binary = true
+	textconv = any2text
 
 [difftool]
 	prompt = false
