@@ -456,10 +456,10 @@
 ;; misc plugins
 ;; ----------------------------------------------------------------------
 
-(require 'w3m-load)
-(require 'mime-w3m)
-(setq w3m-type 'w3mmee)
-(setq w3m-fill-column -4)
+;(require 'w3m-load)
+;(require 'mime-w3m)
+;(setq w3m-type 'w3mmee)
+;(setq w3m-fill-column -4)
 
 ;; ======================================================================
 
