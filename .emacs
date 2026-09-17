@@ -232,7 +232,7 @@
     skk-record-file "~/.skk/record"
     skk-jisyo "~/.skk/jisyo"
     skk-backup-jisyo "~/.skk/jisyo.bak")
-(set-input-method "japanese-skk")
+;(set-input-method "japanese-skk")
 ;; commented out at 2005-12-14...
 ;(toggle-input-method nil)
 
